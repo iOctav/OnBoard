@@ -12,7 +12,21 @@ const issuesSlice = createSlice({
     name: 'issues',
     initialState,
     reducers: {
-
+        addIssue: (state, action) => {
+            state.issues.push(action.payload);
+        },
+        updateIssue: (state, action) => {
+            const issue = state.issues.find(issue => issue.idReadable === action.payload.idReadable);
+            if (issue) {
+                issue.state = action.payload.state;
+            }
+        },
+        deleteIssue: (state, action) => {
+            const index = state.issues.findIndex(issue => issue.idReadable === action.payload.idReadable);
+            if (index !== -1) {
+                state.issues.splice(index, 1);
+            }
+        }
     },
 });
 

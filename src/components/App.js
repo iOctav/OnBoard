@@ -1,8 +1,7 @@
 import './App.css';
-import {ThemeProvider} from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import AgileBoardRow from './AgileBoardRow';
-import { selectAllIssues } from '../features/issues/issuesSlice';
-import { useSelector } from 'react-redux';
+import { useGetAgilesByIdQuery } from '../store/youtrackApi';
 
 const theme = {
     primaryFontSize: '14px',
@@ -13,16 +12,18 @@ const theme = {
 };
 
 function App() {
-  const issues = useSelector(selectAllIssues);
+  const { data, error, isLoading } = useGetAgilesByIdQuery('131-2')
+  if (isLoading) return 'Loading...';
+  if (error) return 'An error has occurred: ' + error.message;
+  const columnTitles = data.columnSettings.columns.map(column => column.presentation);
+  // const issues = useSelector(selectAllIssues);
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <AgileBoardRow cards={issues} states={STATES}/>
+        <AgileBoardRow cards={data.currentSprint.issues} columnField={data.columnSettings.field} columnStates={columnTitles}/>
       </div>
     </ThemeProvider>
   );
 }
 
 export default App;
-
-const STATES = ['Open', 'InProgress', 'Resolved', 'Closed'];

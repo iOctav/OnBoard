@@ -1,8 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
-import issuesSlice from '../features/issues/issuesSlice';
+import { setupListeners } from '@reduxjs/toolkit/query';
+import { youtrackApi } from '../store/youtrackApi';
 
-export default configureStore({
+export const store = configureStore({
     reducer: {
-        issues: issuesSlice,
+        // issues: issuesSlice,
+        [youtrackApi.reducerPath]: youtrackApi.reducer,
     },
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(youtrackApi.middleware),
 })
+
+setupListeners(store.dispatch)
