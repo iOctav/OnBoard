@@ -1,4 +1,6 @@
+import '@jetbrains/ring-ui/dist/style.css';
 import './App.css';
+
 import { ThemeProvider } from 'styled-components';
 import AgileBoardRow from './AgileBoardRow';
 import { useGetAgilesByIdQuery } from '../store/youtrackApi';
