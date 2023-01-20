@@ -14,11 +14,19 @@ export const youtrackApi = createApi({
       query: (id) => ({
         url: `agiles/${id}`,
         params: {
-          fields: 'id,name,owner(id,name,login),projects(id,name),sprints(id,name),visibleFor(name,id),visibleForProjectBased,updateableBy(id,name),updateableByProjectBased,hideOrphansSwimlane,orphansAtTheTop,currentSprint(id,name,issues(id,idReadable,visibility,summary,externalIssue(name),customFields(id,name,value(id,name)))),columnSettings(field(id,name),columns(presentation,isResolved,fieldValues(id,name))),cardSettings(fields(field(fieldDefaults(bundle(id,isUpdateable)),fieldType(id,presentation,valueType),id,instances(project(id)),localizedName,name,type),id,presentation(id)))',
+          fields: 'id,name,owner(id,name,login),projects(id,name),sprints(id,name),visibleFor(name,id),visibleForProjectBased,updateableBy(id,name),updateableByProjectBased,hideOrphansSwimlane,orphansAtTheTop,currentSprint(id,name,issues(id,idReadable,visibility,summary,externalIssue(name),customFields(id,name,value(id,name)))),columnSettings(field(id,name),columns(presentation,isResolved,fieldValues(id,name))),cardSettings(fields(field(fieldDefaults(bundle(id,isUpdateable,values(id,name))),fieldType(id,presentation,valueType),id,instances(project(id)),localizedName,name,type),id,presentation(id)))',
+        },
+      })
+    }),
+    getCustomFieldValues: builder.query({
+      query: (id) => ({
+        url: `admin/customFieldSettings/bundles/ownedField/${id}/values`,
+        params: {
+          fields: '$type,archived,assembleDate,avatarUrl,color(id),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
         },
       })
     }),
   }),
 });
 
-export const { useGetAgilesByIdQuery } = youtrackApi;
+export const { useGetAgilesByIdQuery, useGetCustomFieldValuesQuery } = youtrackApi;
