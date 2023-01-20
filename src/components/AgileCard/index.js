@@ -2,7 +2,10 @@ import styled from 'styled-components';
 
 import PropTypes from 'prop-types';
 import AgileCardAssignee from '../AgileCardAssignee';
-import AgileCardField from '../AgielCardField';
+import AgileCardField from '../AgileCardField';
+import { selectCardFields } from '../../features/agile/agileSlice';
+import { useSelector } from 'react-redux';
+import {useGetAgilesByIdQuery} from '../../store/youtrackApi';
 
 const AgileCardDiv = styled.div`
   box-sizing: border-box;
@@ -47,15 +50,29 @@ const SummarySpan = styled.span`
   font-family: "Inter", system-ui, Arial, sans-serif;
 `;
 
-function AgileCard({ idReadable, summary }) {
-    const cardFooterFields = ISSUE_FIELDS.map((field, i) =>
-        (<AgileCardField markerColor={field.markerColor} value={field.value} marginLeft={i > 0 ? 8 : 0} key={field.value}/>)
-    );
+function AgileCard({ issueData }) {
+    const { data, error, isLoading } = useGetAgilesByIdQuery('131-2', {
+        selectFromResult: ({ data, error, isLoading }) => ({
+            data: data?.cardSettings?.fields,
+            error,
+            isLoading
+            })
+        })
+
+    if (error)  return <div>{error.toString()}</div>
+    if (isLoading) return (<div>Loading</div>)
+
+    const cardFooterFields = data?.map((field, i) => {
+        let cardField = issueData.customFields.find(customField => customField.name === field.field.name);
+        // TODO: Investigate why there is no bundle for Subsystem field
+        if (!field.field.fieldDefaults.bundle) return null;
+        return (<AgileCardField customFieldId={field.field.fieldDefaults.bundle.id} data={field.field.fieldDefaults.bundle.values} value={cardField.value?.id} marginLeft={i > 0 ? 8 : 0} key={field?.id}/>);
+    });
 
     return <AgileCardDiv>
         <AgileCardSummaryDiv>
-            <IdLink href="/">{idReadable}</IdLink>
-            <SummarySpan>{summary}</SummarySpan>
+            <IdLink href="/">{issueData.idReadable}</IdLink>
+            <SummarySpan>{issueData.summary}</SummarySpan>
         </AgileCardSummaryDiv>
 
         <div className="agile-card-footer">
@@ -68,14 +85,7 @@ function AgileCard({ idReadable, summary }) {
 }
 
 AgileCard.propTypes = {
-    idReadable: PropTypes.string,
-    summary: PropTypes.string
+    issueData: PropTypes.object
 }
 
 export default AgileCard
-
-const ISSUE_FIELDS = [
-    { markerColor: 'green', value: 'Normal'},
-    { markerColor: null, value: 'Bug'},
-    { markerColor: null, value: 'Project Management'},
-];

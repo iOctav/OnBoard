@@ -14,15 +14,28 @@ const theme = {
 };
 
 function App() {
-  const { data, error, isLoading } = useGetAgilesByIdQuery('131-2')
-  if (isLoading) return 'Loading...';
-  if (error) return 'An error has occurred: ' + error.message;
-  const columnTitles = data.columnSettings.columns.map(column => column.presentation);
+  const { data: agile,
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  } = useGetAgilesByIdQuery('131-2')
+
+  let content
+
+  if (isLoading) {
+    content = <span>Loading</span>
+  } else if (isSuccess) {
+    const columnTitles = agile.columnSettings.columns.map(column => column.presentation);
+    content = <AgileBoardRow cards={agile.currentSprint.issues} columnField={agile.columnSettings.field} columnStates={columnTitles}/>
+  } else if (isError) {
+    content = <div>{error.toString()}</div>
+  }
   // const issues = useSelector(selectAllIssues);
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <AgileBoardRow cards={data.currentSprint.issues} columnField={data.columnSettings.field} columnStates={columnTitles}/>
+        {content}
       </div>
     </ThemeProvider>
   );

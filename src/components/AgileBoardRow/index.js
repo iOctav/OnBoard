@@ -12,8 +12,8 @@ function AgileBoardRow({cards, columnField, columnStates}) {
                   columnStates.map(state =>
                     <td key={'cell-' + state}>
                         {
-                            cards.filter(c => c.customFields.find(field => field.name === columnField.name).value.name === state)
-                            .map((c) => <AgileCard idReadable={c.idReadable} summary={c.summary} key={'agile-card-' + c.idReadable}/> )
+                            cards.filter(c => c.customFields.find(field => field.name === columnField.name)?.value.name === state)
+                            .map((c) => <AgileCard issueData={c} key={'agile-card-' + c.idReadable}/> )
                         }
                     </td>)
                 }
