@@ -2,8 +2,8 @@ import '@jetbrains/ring-ui/dist/style.css';
 import './App.css';
 
 import { ThemeProvider } from 'styled-components';
-import AgileBoardRow from './AgileBoardRow';
 import { useGetAgilesByIdQuery } from '../store/youtrackApi';
+import AgileBoard from './AgileBoard';
 
 const theme = {
     primaryFontSize: '14px',
@@ -26,8 +26,7 @@ function App() {
   if (isLoading) {
     content = <span>Loading</span>
   } else if (isSuccess) {
-    const columnTitles = agile.columnSettings.columns.map(column => column.presentation);
-    content = <AgileBoardRow cards={agile.currentSprint.issues} columnField={agile.columnSettings.field} columnStates={columnTitles}/>
+    content = <AgileBoard agileSettings={agile}/>
   } else if (isError) {
     content = <div>{error.toString()}</div>
   }
