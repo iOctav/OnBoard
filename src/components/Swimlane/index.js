@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import {useState} from 'react';
-import {faCaretDown, faCaretRight} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { useState } from 'react';
+import { faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Swimlane({title, columnNumber}) {
     const [rollUp, setRollUp] = useState(true);

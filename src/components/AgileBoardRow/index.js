@@ -4,22 +4,20 @@ import AgileCard from '../AgileCard';
 
 function AgileBoardRow({cards, columnField, columnStates}) {
     return (
-        <table>
-          <tbody>
-            <Swimlane title={'Issue Tracking'} columnNumber={columnStates.length}/>
-            <tr>
-                {
-                  columnStates.map(state =>
-                    <td key={'cell-' + state}>
-                        {
-                            cards.filter(c => c.customFields.find(field => field.name === columnField.name)?.value.name === state)
-                            .map((c) => <AgileCard issueData={c} key={'agile-card-' + c.idReadable}/> )
-                        }
-                    </td>)
-                }
-            </tr>
-          </tbody>
-        </table>
+      <tbody>
+        <Swimlane title={'Issue Tracking'} columnNumber={columnStates.length}/>
+        <tr>
+            {
+              columnStates.map(state =>
+                <td key={'cell-' + state}>
+                    {
+                        cards.filter(c => c.customFields.find(field => field.name === columnField.name)?.value.name === state)
+                        .map((c) => <AgileCard issueData={c} key={'agile-card-' + c.idReadable}/> )
+                    }
+                </td>)
+            }
+        </tr>
+      </tbody>
     );
 }
 
