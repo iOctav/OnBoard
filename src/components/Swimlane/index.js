@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-function Swimlane({title, columnNumber}) {
+function Swimlane({title, cardsNumber}) {
     const [rollUp, setRollUp] = useState(true);
     return (
         <tr>
@@ -11,6 +11,9 @@ function Swimlane({title, columnNumber}) {
                 <div>
                     <FontAwesomeIcon icon={rollUp ? faCaretDown : faCaretRight} onClick={() => setRollUp(prevState => !prevState)}/>
                     <span>{title}</span>
+                </div>
+                <div>
+                    <span>{cardsNumber}</span>
                 </div>
             </td>
             {[...Array(10).keys()].map(i => <td key={'fake-cell-' + i}/>)}
@@ -20,7 +23,7 @@ function Swimlane({title, columnNumber}) {
 
 Swimlane.propTypes = {
     title: PropTypes.string,
-    columnNumber: PropTypes.number
+    cardsNumber: PropTypes.number
 }
 
 export default Swimlane
