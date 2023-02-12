@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import AgileBoardRow from '../AgileBoardRow';
+import AgileBoardRows from '../AgileBoardRows';
 import AgileBoardHeader from '../AgileBoardHeader';
 
 function AgileBoard({agileSettings}) {
@@ -10,7 +10,7 @@ function AgileBoard({agileSettings}) {
         { agileSettings.columnSettings.columns.map(column => <col key={'col-' + column.presentation} />) }
       </colgroup>
       <AgileBoardHeader columnSettings={agileSettings.columnSettings}></AgileBoardHeader>
-      <AgileBoardRow cards={agileSettings.currentSprint.issues} columnField={agileSettings.columnSettings.field} columnStates={columnTitles}/>
+      <AgileBoardRows cards={agileSettings.currentSprint.issues} columnField={agileSettings.columnSettings.field} columnStates={columnTitles} swimlaneSettings={agileSettings.swimlaneSettings}/>
     </table>
   );
 }

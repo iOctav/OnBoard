@@ -14,7 +14,7 @@ export const youtrackApi = createApi({
       query: (id) => ({
         url: `agiles/${id}`,
         params: {
-          fields: 'id,name,owner(id,name,login),projects(id,name),sprints(id,name),visibleFor(name,id),visibleForProjectBased,updateableBy(id,name),updateableByProjectBased,hideOrphansSwimlane,orphansAtTheTop,currentSprint(id,name,issues(id,idReadable,visibility,summary,externalIssue(name),customFields(id,name,value(id,name)))),columnSettings(field(id,name),columns(presentation,isResolved,fieldValues(id,name))),cardSettings(fields(field(fieldDefaults(bundle(id,isUpdateable,values(id,name))),fieldType(id,presentation,valueType),id,instances(project(id)),localizedName,name,type),id,presentation(id)))',
+          fields: 'id,name,owner(id,name,login),projects(id,name),sprints(id,name),visibleFor(name,id),visibleForProjectBased,updateableBy(id,name),updateableByProjectBased,hideOrphansSwimlane,orphansAtTheTop,currentSprint(id,name,issues(id,idReadable,visibility,summary,externalIssue(name),customFields(id,name,value(id,name)))),columnSettings(field(id,name),columns(presentation,isResolved,fieldValues(id,name))),cardSettings(fields(field(fieldDefaults(bundle(id,isUpdateable,values(id,name))),fieldType(id,presentation,valueType),id,instances(project(id)),localizedName,name,type),id,presentation(id))),swimlaneSettings($type,defaultCardType(id,name),enabled,field(customField(fieldDefaults(bundle(id,isUpdateable)),fieldType(id,presentation,valueType),id,instances(project(id)),localizedName,name,type),id,instant,multiValue,name,presentation),id,values(id,isResolved,name,presentation,value))',
         },
       })
     }),

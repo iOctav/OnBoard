@@ -6,8 +6,9 @@ function AgileBoardHeader({columnSettings}) {
     <thead>
       <tr>
         {
-          columnSettings.columns.map(column => (<HeaderCell key={'cell-head-' + column.presentation} caption={column.presentation} cardsCount={0}></HeaderCell>))
-          // columnSettings.columns.map(column => <td>{column.presentation}</td>)
+          columnSettings.columns.map(column => (
+            <HeaderCell key={'cell-head-' + column.presentation} caption={column.presentation} cardsCount={0}></HeaderCell>)
+          )
         }
       </tr>
     </thead>
