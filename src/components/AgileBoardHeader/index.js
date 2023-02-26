@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import HeaderCell from '../HeaderCell';
 
-function AgileBoardHeader({columnSettings}) {
+function AgileBoardHeader({columns}) {
   return (
     <thead>
       <tr>
         {
-          columnSettings.columns.map(column => (
-            <HeaderCell key={'cell-head-' + column.presentation} caption={column.presentation} cardsCount={0}></HeaderCell>)
+          columns.map(column => (
+            <HeaderCell key={'cell-head-' + column.id} caption={column.agileColumn.presentation} cardsCount={0}></HeaderCell>)
           )
         }
       </tr>
@@ -16,7 +16,7 @@ function AgileBoardHeader({columnSettings}) {
 }
 
 AgileBoardHeader.propTypes = {
-  columnSettings: PropTypes.object
+  columns: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default AgileBoardHeader
