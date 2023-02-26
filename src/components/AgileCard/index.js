@@ -63,7 +63,7 @@ function AgileCard({ issueData }) {
     if (isLoading) return (<div>Loading</div>)
 
     const cardFooterFields = data?.map((field, i) => {
-        let cardField = issueData.customFields.find(customField => customField.name === field.field.name);
+        let cardField = issueData.fields.find(customField => customField.name === field.field.name);
         // TODO: Investigate why there is no bundle for Subsystem field
         if (!field.field.fieldDefaults.bundle) return null;
         return (<AgileCardField customFieldId={field.field.fieldDefaults.bundle.id} data={field.field.fieldDefaults.bundle.values} value={cardField.value?.id} marginLeft={i > 0 ? 8 : 0} key={field?.id}/>);

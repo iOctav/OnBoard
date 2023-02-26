@@ -2,7 +2,7 @@ import '@jetbrains/ring-ui/dist/style.css';
 import './App.css';
 
 import { ThemeProvider } from 'styled-components';
-import { useGetAgilesByIdQuery } from '../store/youtrackApi';
+import { useGetCurrentSprintForSpecificAgileQuery } from '../store/youtrackApi';
 import AgileBoard from './AgileBoard';
 
 const theme = {
@@ -19,14 +19,14 @@ function App() {
     isSuccess,
     isError,
     error
-  } = useGetAgilesByIdQuery('131-2')
+  } = useGetCurrentSprintForSpecificAgileQuery('131-2')
 
   let content
 
   if (isLoading) {
     content = <span>Loading</span>
   } else if (isSuccess) {
-    content = <AgileBoard agileSettings={agile}/>
+    content = <AgileBoard sprint={agile}/>
   } else if (isError) {
     content = <div>{error.toString()}</div>
   }

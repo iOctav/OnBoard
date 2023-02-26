@@ -2,21 +2,24 @@ import PropTypes from 'prop-types';
 import AgileBoardRows from '../AgileBoardRows';
 import AgileBoardHeader from '../AgileBoardHeader';
 
-function AgileBoard({agileSettings}) {
-  const columnTitles = agileSettings.columnSettings.columns.map(column => column.presentation);
+function AgileBoard({sprint}) {
+  const columns = sprint.board.columns;
   return (
     <table>
       <colgroup>
-        { agileSettings.columnSettings.columns.map(column => <col key={'col-' + column.presentation} />) }
+        { columns.map(column => <col key={'col-' + column.id} />) }
       </colgroup>
-      <AgileBoardHeader columnSettings={agileSettings.columnSettings}></AgileBoardHeader>
-      <AgileBoardRows cards={agileSettings.currentSprint.issues} columnField={agileSettings.columnSettings.field} columnStates={columnTitles} swimlaneSettings={agileSettings.swimlaneSettings}/>
+      <AgileBoardHeader columns={columns}></AgileBoardHeader>
+      <AgileBoardRows orphanRow={sprint.board.orphanRow}
+                      trimmedSwimlanes={sprint.board.trimmedSwimlanes}
+                      hideOrphansSwimlane={sprint.agile.hideOrphansSwimlane}
+                      orphansAtTheTop={sprint.agile.orphansAtTheTop} />
     </table>
   );
 }
 
 AgileBoard.propTypes = {
-  agileSettings: PropTypes.object
+  sprint: PropTypes.object
 }
 
 export default AgileBoard
