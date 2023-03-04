@@ -4,13 +4,14 @@ import AgileCard from '../AgileCard';
 import { useGetIssuesQuery } from '../../store/youtrackApi';
 import AgileCardPreview from '../AgileCardPreview';
 import { useTranslation } from 'react-i18next';
+import NewCardButton from '../NewCardButton';
 
 function makeAgileRow(row, issuesDict, swimlaneTitle = undefined) {
   const issuesCount = row.cells.reduce((acc, cell) => acc + cell.issues.length, 0);
   return (
     <tbody key={'categorized-row-' + row.id}>
     { !!swimlaneTitle &&
-      <Swimlane title={swimlaneTitle} cardsNumber={issuesCount} ></Swimlane> }
+      <Swimlane title={swimlaneTitle} cardsNumber={issuesCount} columnsNumber={row.cells.length} ></Swimlane> }
     <tr>
       {
         row.cells.map(cell =>
@@ -20,6 +21,7 @@ function makeAgileRow(row, issuesDict, swimlaneTitle = undefined) {
                 ? <AgileCard issueData={issuesDict[c.id]} key={'agile-card-' + c.id}/>
                 : <AgileCardPreview issueData={c} key={'agile-card-' + c.id}/> )
             }
+            <NewCardButton/>
           </td>
         )
       }
@@ -31,7 +33,7 @@ function makeAgileRow(row, issuesDict, swimlaneTitle = undefined) {
 function AgileBoardRows({orphanRow, trimmedSwimlanes, hideOrphansSwimlane, orphansAtTheTop}) {
   let content;
   let issuesDict;
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   // TODO: refactor this calculation
   const issueIds = [orphanRow, ...trimmedSwimlanes]
