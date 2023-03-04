@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import AgileBoardRows from '../AgileBoardRows';
 import AgileBoardHeader from '../AgileBoardHeader';
+import AgileSearchQueryPanel from '../AgileSearchQueryPanel';
 
 const AgileBoardTable = styled.table`
   min-width: 720px;
@@ -17,16 +18,19 @@ const AgileBoardTable = styled.table`
 function AgileBoard({sprint}) {
   const columns = sprint.board.columns;
   return (
-    <AgileBoardTable>
-      <colgroup>
-        { columns.map(column => <col key={'col-' + column.id} />) }
-      </colgroup>
-      <AgileBoardHeader columns={columns}></AgileBoardHeader>
-      <AgileBoardRows orphanRow={sprint.board.orphanRow}
-                      trimmedSwimlanes={sprint.board.trimmedSwimlanes}
-                      hideOrphansSwimlane={sprint.agile.hideOrphansSwimlane}
-                      orphansAtTheTop={sprint.agile.orphansAtTheTop} />
-    </AgileBoardTable>
+    <div>
+      <AgileSearchQueryPanel/>
+      <AgileBoardTable>
+        <colgroup>
+          { columns.map(column => <col key={'col-' + column.id} />) }
+        </colgroup>
+        <AgileBoardHeader columns={columns}></AgileBoardHeader>
+        <AgileBoardRows orphanRow={sprint.board.orphanRow}
+                        trimmedSwimlanes={sprint.board.trimmedSwimlanes}
+                        hideOrphansSwimlane={sprint.agile.hideOrphansSwimlane}
+                        orphansAtTheTop={sprint.agile.orphansAtTheTop} />
+      </AgileBoardTable>
+    </div>
   );
 }
 
