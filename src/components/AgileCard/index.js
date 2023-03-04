@@ -3,9 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import AgileCardAssignee from '../AgileCardAssignee';
 import AgileCardField from '../AgileCardField';
-import { selectCardFields } from '../../features/agile/agileSlice';
-import { useSelector } from 'react-redux';
-import {useGetAgilesByIdQuery} from '../../store/youtrackApi';
+import { useGetAgilesByIdQuery } from '../../store/youtrackApi';
 
 const AgileCardDiv = styled.div`
   box-sizing: border-box;
