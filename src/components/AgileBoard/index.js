@@ -1,11 +1,23 @@
+import styled from 'styled-components';
+
 import PropTypes from 'prop-types';
 import AgileBoardRows from '../AgileBoardRows';
 import AgileBoardHeader from '../AgileBoardHeader';
 
+const AgileBoardTable = styled.table`
+  min-width: 720px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: auto;
+  border-collapse: collapse;
+  table-layout: fixed;
+`;
+
 function AgileBoard({sprint}) {
   const columns = sprint.board.columns;
   return (
-    <table>
+    <AgileBoardTable>
       <colgroup>
         { columns.map(column => <col key={'col-' + column.id} />) }
       </colgroup>
@@ -14,7 +26,7 @@ function AgileBoard({sprint}) {
                       trimmedSwimlanes={sprint.board.trimmedSwimlanes}
                       hideOrphansSwimlane={sprint.agile.hideOrphansSwimlane}
                       orphansAtTheTop={sprint.agile.orphansAtTheTop} />
-    </table>
+    </AgileBoardTable>
   );
 }
 
