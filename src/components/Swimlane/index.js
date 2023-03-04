@@ -1,16 +1,25 @@
+import styled from 'styled-components';
+
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import caretDown10px from '@jetbrains/icons/caret-down-10px';
+import caretRight10px from '@jetbrains/icons/caret-right-10px';
+import drag from '@jetbrains/icons/drag';
+import Button from '@jetbrains/ring-ui/dist/button/button';
+import Icon from '@jetbrains/ring-ui/dist/icon/icon';
 
-function Swimlane({title, cardsNumber, columnsNumber}) {
+const DraggableIcon = styled(Icon)`
+    cursor: move;
+`;
+
+function Swimlane({title, isOrphan, cardsNumber, columnsNumber, }) {
     const [rollUp, setRollUp] = useState(true);
     return (
         <tr>
             <td>
                 <div>
-                    <FontAwesomeIcon icon={rollUp ? faCaretDown : faCaretRight} onClick={() => setRollUp(prevState => !prevState)}/>
-                    <span>{title}</span>
+                    { !isOrphan && <DraggableIcon glyph={drag} /> }
+                    <Button icon={rollUp ? caretDown10px : caretRight10px} onClick={() => setRollUp(prevState => !prevState)}>{title}</Button>
                 </div>
                 <div>
                     <span>{cardsNumber}</span>
@@ -23,6 +32,7 @@ function Swimlane({title, cardsNumber, columnsNumber}) {
 
 Swimlane.propTypes = {
     title: PropTypes.string,
+    isOrphan: PropTypes.bool,
     cardsNumber: PropTypes.number,
     columnsNumber: PropTypes.number,
 }
