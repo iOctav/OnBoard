@@ -3,6 +3,7 @@ import Swimlane from '../Swimlane';
 import AgileCard from '../AgileCard';
 import { useGetIssuesQuery } from '../../store/youtrackApi';
 import AgileCardPreview from '../AgileCardPreview';
+import { useTranslation } from 'react-i18next';
 
 function makeAgileRow(row, issuesDict, swimlaneTitle = undefined) {
   const issuesCount = row.cells.reduce((acc, cell) => acc + cell.issues.length, 0);
@@ -30,6 +31,7 @@ function makeAgileRow(row, issuesDict, swimlaneTitle = undefined) {
 function AgileBoardRows({orphanRow, trimmedSwimlanes, hideOrphansSwimlane, orphansAtTheTop}) {
   let content;
   let issuesDict;
+  const { t, i18n } = useTranslation();
 
   // TODO: refactor this calculation
   const issueIds = [orphanRow, ...trimmedSwimlanes]
@@ -56,7 +58,7 @@ function AgileBoardRows({orphanRow, trimmedSwimlanes, hideOrphansSwimlane, orpha
   if (hideOrphansSwimlane) {
     content = swimlanesAgileRow
   } else {
-    const orphanAgileRow = makeAgileRow(orphanRow, issuesDict, 'Uncategorized Cards')
+    const orphanAgileRow = makeAgileRow(orphanRow, issuesDict, t('Uncategorized Cards'))
     if (orphansAtTheTop) {
       content = [orphanAgileRow, ...swimlanesAgileRow];
     } else {
