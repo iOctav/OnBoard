@@ -12,29 +12,26 @@ const AgileSearchPanelDiv = styled.div`
   width: 100%;
 `;
 
-const FloatButton = styled(Button)`
-    float: left;
-`;
-
 const FloatSelect = styled(Select)`
-    float: left;
-`;
-
-const FloatInput = styled(Input)`
   float: left;
 `;
 
-// TODO: Remove hardcoded agiles 
+const OverflowDiv = styled.div`
+  overflow: auto;
+`;
+
+// TODO: Remove hardcoded agiles and use rtk query to get them
 function AgileSearchQueryPanel() {
   const { t } = useTranslation();
   return (
     <AgileSearchPanelDiv className="agile-search-panel">
       <FloatSelect selected={{key: "131-0", label: "Demo Project Board"}}
-              style={{float: 'left'}}
               type="INLINE" filter={true} data={[{key: "131-0", label: "Demo Project Board"}]}>
       </FloatSelect>
-      <FloatInput placeholder={t('Filter cards on the board')} style={{float: 'left'}} size={Size.FULL}></FloatInput>
-      <FloatButton icon={search12pxIcon} short title={t('Search issues')}></FloatButton>
+      <OverflowDiv>
+        <Input placeholder={t('Filter cards on the board')} size={Size.AUTO}></Input>
+        <Button icon={search12pxIcon} short title={t('Search issues')}></Button>
+      </OverflowDiv>
     </AgileSearchPanelDiv>
   );
 }
