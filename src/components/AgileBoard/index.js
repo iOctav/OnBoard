@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import AgileBoardRows from '../AgileBoardRows';
 import AgileBoardHeader from '../AgileBoardHeader';
 import AgileSearchQueryPanel from '../AgileSearchQueryPanel';
+import AgileTopToolbar from '../AgileTopToolbar';
 
 const AgileBoardTable = styled.table`
   min-width: 720px;
@@ -19,6 +20,7 @@ function AgileBoard({sprint}) {
   return (
     <div>
       <AgileSearchQueryPanel/>
+      <AgileTopToolbar/>
       <AgileBoardTable>
         <colgroup>
           { columns.map(column => <col key={'col-' + column.id} />) }
