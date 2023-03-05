@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
+import { useGetIssuesQuery } from '../../store/youtrackApi';
 import Swimlane from '../Swimlane';
 import AgileCard from '../AgileCard';
-import { useGetIssuesQuery } from '../../store/youtrackApi';
 import AgileCardPreview from '../AgileCardPreview';
-import { useTranslation } from 'react-i18next';
 import NewCardButton from '../NewCardButton';
 
 const BorderedTd = styled.td`
-  border-bottom: 1px solid grey;
-  border-right: 1px solid grey;
+  border-bottom: 1px solid var(--ring-line-color);
+  border-right: 1px solid var(--ring-line-color);
   border-collapse: collapse;
 `;
 

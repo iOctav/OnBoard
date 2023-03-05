@@ -3,10 +3,13 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const youtrackApi = createApi({
   reducerPath: 'youtrackApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.REACT_APP_YOUTRACK_BASE_URL,
-    prepareHeaders: (headers) => {
-      headers.set('Authorization', `Bearer ${process.env.REACT_APP_YOUTRACK_TOKEN}`);
-      return headers;
+    baseUrl: process.env.REACT_APP_YOUTRACK_BASE_URL.replace(/\/$|$/, '/')  + 'api',
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`)
+      }
+      return headers
     }
   }),
   endpoints: (builder) => ({
