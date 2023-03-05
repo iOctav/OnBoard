@@ -4,6 +4,7 @@ import './App.css';
 import { ThemeProvider } from 'styled-components';
 import { useGetCurrentSprintForSpecificAgileQuery } from '../store/youtrackApi';
 import AgileBoard from './AgileBoard';
+import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
 
 const theme = {
     primaryFontSize: '14px',
@@ -24,7 +25,7 @@ function App() {
   let content
 
   if (isLoading) {
-    content = <span>Loading</span>
+    content = <LoaderScreen/>
   } else if (isSuccess) {
     content = <AgileBoard sprint={agile}/>
   } else if (isError) {

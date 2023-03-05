@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 import PropTypes from 'prop-types';
 import Swimlane from '../Swimlane';
 import AgileCard from '../AgileCard';
@@ -5,6 +7,13 @@ import { useGetIssuesQuery } from '../../store/youtrackApi';
 import AgileCardPreview from '../AgileCardPreview';
 import { useTranslation } from 'react-i18next';
 import NewCardButton from '../NewCardButton';
+
+const BorderedTd = styled.td`
+  border-bottom: 1px solid grey;
+  border-right: 1px solid grey;
+  border-collapse: collapse;
+`;
+
 
 function makeAgileRow(row, issuesDict, swimlaneTitle = undefined) {
   const issuesCount = row.cells.reduce((acc, cell) => acc + cell.issues.length, 0);
@@ -15,14 +24,14 @@ function makeAgileRow(row, issuesDict, swimlaneTitle = undefined) {
     <tr>
       {
         row.cells.map(cell =>
-          <td key={'cell-' + cell.id}>
+          <BorderedTd key={'cell-' + cell.id}>
             {
               cell.issues.map((c) => issuesDict
                 ? <AgileCard issueData={issuesDict[c.id]} key={'agile-card-' + c.id}/>
                 : <AgileCardPreview issueData={c} key={'agile-card-' + c.id}/> )
             }
             <NewCardButton/>
-          </td>
+          </BorderedTd>
         )
       }
     </tr>

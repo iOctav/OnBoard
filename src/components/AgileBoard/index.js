@@ -11,7 +11,6 @@ const AgileBoardTable = styled.table`
   height: 100%;
   box-sizing: border-box;
   overflow: auto;
-  border-collapse: collapse;
   table-layout: fixed;
 `;
 
