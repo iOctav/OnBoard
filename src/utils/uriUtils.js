@@ -1,0 +1,1 @@
+export const trimLastSlash = (uri) => uri.replace(/\/$|$/, '');

@@ -2,9 +2,9 @@ import '@jetbrains/ring-ui/dist/style.css';
 import './App.css';
 
 import { ThemeProvider } from 'styled-components';
-import { useGetCurrentSprintForSpecificAgileQuery } from '../store/youtrackApi';
 import AgileBoard from './AgileBoard';
-import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
+import { Routes, Route } from 'react-router-dom';
+import { AuthOutlet } from '../features/auth/AuthOutlet';
 
 const theme = {
     primaryFontSize: '14px',
@@ -15,27 +15,15 @@ const theme = {
 };
 
 function App() {
-  const { data: agile,
-    isLoading,
-    isSuccess,
-    isError,
-    error
-  } = useGetCurrentSprintForSpecificAgileQuery('131-2')
-
-  let content
-
-  if (isLoading) {
-    content = <LoaderScreen/>
-  } else if (isSuccess) {
-    content = <AgileBoard sprint={agile}/>
-  } else if (isError) {
-    content = <div>{error.toString()}</div>
-  }
   // const issues = useSelector(selectAllIssues);
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        {content}
+        <Routes>
+          <Route path="*" element={<AuthOutlet />}>
+            <Route index element={<AgileBoard/>} />
+          </Route>
+        </Routes>
       </div>
     </ThemeProvider>
   );

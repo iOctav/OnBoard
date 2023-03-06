@@ -12,11 +12,12 @@ const AgileTopToolbarDiv = styled.div`
 
 const FloatRightButton = styled(Button)`
   float: right;
-  border: 1px solid grey;
+  border: 1px solid var(--ring-line-color);
 `;
 
 const FloatLeftButton = styled(Button)`
   float: left;
+  border: 1px solid var(--ring-line-color);
 `;
 
 function AgileTopToolbar() {

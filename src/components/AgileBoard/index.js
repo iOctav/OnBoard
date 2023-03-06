@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
-import PropTypes from 'prop-types';
 import AgileBoardRows from '../AgileBoardRows';
 import AgileBoardHeader from '../AgileBoardHeader';
 import AgileSearchQueryPanel from '../AgileSearchQueryPanel';
 import AgileTopToolbar from '../AgileTopToolbar';
+import {useGetCurrentSprintForSpecificAgileQuery} from '../../store/youtrackApi';
+import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
 
 const AgileBoardTable = styled.table`
   min-width: 720px;
@@ -15,10 +16,21 @@ const AgileBoardTable = styled.table`
   table-layout: fixed;
 `;
 
-function AgileBoard({sprint}) {
-  const columns = sprint.board.columns;
-  return (
-    <div>
+function AgileBoard() {
+  const { data: sprint,
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  } = useGetCurrentSprintForSpecificAgileQuery('131-2')
+
+  let content
+
+  if (isLoading) {
+    content = <LoaderScreen/>
+  } else if (isSuccess) {
+    const columns = sprint.board.columns;
+    content = <div>
       <AgileSearchQueryPanel/>
       <AgileTopToolbar/>
       <AgileBoardTable>
@@ -32,11 +44,14 @@ function AgileBoard({sprint}) {
                         orphansAtTheTop={sprint.agile.orphansAtTheTop} />
       </AgileBoardTable>
     </div>
-  );
+  } else if (isError) {
+    content = <div>{error.toString()}</div>
+  }
+
+  return content;
 }
 
 AgileBoard.propTypes = {
-  sprint: PropTypes.object
 }
 
 export default AgileBoard
