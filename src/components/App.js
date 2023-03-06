@@ -4,7 +4,7 @@ import './App.css';
 import { ThemeProvider } from 'styled-components';
 import AgileBoard from './AgileBoard';
 import { Routes, Route } from 'react-router-dom';
-import { PrivateOutlet } from '../utils/PrivateOutlet';
+import { AuthOutlet } from '../features/auth/AuthOutlet';
 
 const theme = {
     primaryFontSize: '14px',
@@ -20,7 +20,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <Routes>
-          <Route path="*" element={<PrivateOutlet />}>
+          <Route path="*" element={<AuthOutlet />}>
             <Route index element={<AgileBoard/>} />
           </Route>
         </Routes>
