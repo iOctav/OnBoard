@@ -5,6 +5,7 @@ import { setCredentials } from './authSlice';
 import { useDispatch } from 'react-redux';
 import { getHashParams, removeHashParamsFromUrl } from '../../utils/hashUtils';
 import { getAuthorizeHref } from './oauthConfig';
+import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
 
 const hashParams = getHashParams();
 removeHashParamsFromUrl();
@@ -22,14 +23,13 @@ export function AuthOutlet() {
         user: {login: 'root'},
         token: hashParams.access_token,
         expires_at: expires_in ? expirationDate : null}));
+    } else {
+      window.open(getAuthorizeHref(), '_self')
     }
   }, [dispatch]);
 
   if (!auth.user) {
-    return (<button
-      aria-label="Log in using Youtrack HUB OAuth 2.0"
-      onClick={() => window.open(getAuthorizeHref(), '_self')}
-    >Log in</button>)
+    return (<LoaderScreen/>)
   }
 
   return (<Outlet />);
