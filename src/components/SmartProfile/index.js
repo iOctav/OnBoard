@@ -1,17 +1,19 @@
 import DropdownMenu from '@jetbrains/ring-ui/dist/dropdown-menu/dropdown-menu';
 import Avatar from '@jetbrains/ring-ui/dist/avatar/avatar';
-import { trimLastSlash } from '../../utils/uriUtils';
 import { Size } from '@jetbrains/ring-ui/dist/avatar/avatar';
-import { useAuth } from '../../hooks/useAuth';
+import { profilePageUri } from '../../services/linkService';
+import { useGetCurrentUserInfoQuery } from '../../store/youtrackApi';
 
 function SmartProfile() {
-  const auth = useAuth();
-  const baseServiceUrl = trimLastSlash(process.env.REACT_APP_YOUTRACK_BASE_URL);
+  const { data, error, isLoading } = useGetCurrentUserInfoQuery();
 
-  const profileAnchor = (<div><Avatar size={Size.Size32} username={auth.user.login}/></div>);
+  if (error)  return (<div><Avatar size={Size.Size32}/></div>);
+  if (isLoading) return (<div><Avatar size={Size.Size32}/></div>);
+
+  const profileAnchor = (<div><Avatar size={Size.Size32} username={data.name} /></div>);
 
   const dropdownMenuData = [
-    { label: 'Profile', href: (baseServiceUrl + '/users/me') },
+    { label: 'Profile', href: profilePageUri() },
     { label: 'Appearance', href: '#' },
     { label: 'Switch user', href: '#' },
     { label: 'Log out', href: '#' },

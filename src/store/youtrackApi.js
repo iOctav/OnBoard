@@ -22,6 +22,14 @@ export const youtrackApi = createApi({
         },
       })
     }),
+    getAgiles: builder.query({
+      query: () => ({
+        url: `agiles`,
+        params: {
+          fields: 'id,name,favorite,sprints(id,name),owner(id,fullName)',
+        },
+      })
+    }),
     getCurrentSprintForSpecificAgile: builder.query({
       query: (id) => ({
         url: `agiles/${id}/sprints/current`,
@@ -46,11 +54,21 @@ export const youtrackApi = createApi({
       query: (id) => ({
         url: `admin/customFieldSettings/bundles/ownedField/${id}/values`,
         params: {
-          fields: '$type,archived,assembleDate,avatarUrl,color(id),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
+          fields: 'archived,assembleDate,avatarUrl,color(id),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
+        },
+      })
+    }),
+    getCurrentUserInfo: builder.query({
+      query: () => ({
+        url: `users/me`,
+        params: {
+          fields: 'id,login,name,email,savedQueries(name,id),tags(name,id)',
         },
       })
     }),
   }),
 });
 
-export const { useGetAgilesByIdQuery, useGetCustomFieldValuesQuery, useGetCurrentSprintForSpecificAgileQuery, useGetIssuesQuery } = youtrackApi;
+export const { useGetAgilesByIdQuery, useGetCustomFieldValuesQuery,
+  useGetCurrentSprintForSpecificAgileQuery, useGetIssuesQuery,
+  useGetCurrentUserInfoQuery, useLazyGetAgilesQuery } = youtrackApi;
