@@ -2,9 +2,9 @@ import '@jetbrains/ring-ui/dist/style.css';
 import './App.css';
 
 import { ThemeProvider } from 'styled-components';
-import AgileBoard from './AgileBoard';
 import { Routes, Route } from 'react-router-dom';
 import { AuthOutlet } from '../features/auth/AuthOutlet';
+import AgilePage from './AgilePage';
 
 const theme = {
     primaryFontSize: '14px',
@@ -21,7 +21,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="*" element={<AuthOutlet />}>
-            <Route index element={<AgileBoard/>} />
+            <Route index element={<AgilePage/>} />
           </Route>
         </Routes>
       </div>

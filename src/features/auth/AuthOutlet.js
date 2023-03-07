@@ -18,11 +18,11 @@ export function AuthOutlet() {
     if (hashParams.access_token) {
       const expires_in = hashParams.expires_in;
       const now = new Date();
-      let expirationDate = new Date(now.getTime() + (1000 * expires_in));
+      let expirationTime = now.getTime() + (1000 * expires_in);
       dispatch(setCredentials({
         user: {login: 'root'},
         token: hashParams.access_token,
-        expires_at: expires_in ? expirationDate : null}));
+        expires_at: expires_in ? expirationTime : null}));
     } else {
       window.open(getAuthorizeHref(), '_self')
     }

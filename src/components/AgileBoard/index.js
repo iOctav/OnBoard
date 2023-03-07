@@ -4,7 +4,7 @@ import AgileBoardRows from '../AgileBoardRows';
 import AgileBoardHeader from '../AgileBoardHeader';
 import AgileSearchQueryPanel from '../AgileSearchQueryPanel';
 import AgileTopToolbar from '../AgileTopToolbar';
-import {useGetCurrentSprintForSpecificAgileQuery} from '../../store/youtrackApi';
+import { useGetCurrentSprintForSpecificAgileQuery } from '../../store/youtrackApi';
 import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
 
 const AgileBoardTable = styled.table`
@@ -49,9 +49,6 @@ function AgileBoard() {
   }
 
   return content;
-}
-
-AgileBoard.propTypes = {
 }
 
 export default AgileBoard

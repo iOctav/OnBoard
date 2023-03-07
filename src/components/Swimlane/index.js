@@ -7,7 +7,7 @@ import caretRight10px from '@jetbrains/icons/caret-right-10px';
 import drag from '@jetbrains/icons/drag';
 import Button from '@jetbrains/ring-ui/dist/button/button';
 import Icon from '@jetbrains/ring-ui/dist/icon/icon';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 const DraggableIcon = styled(Icon)`
     cursor: move;
