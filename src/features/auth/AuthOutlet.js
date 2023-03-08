@@ -23,6 +23,7 @@ export function AuthOutlet() {
         user: {login: 'root'},
         token: hashParams.access_token,
         expires_at: expires_in ? expirationTime : null}));
+
     } else {
       window.open(getAuthorizeHref(), '_self')
     }
