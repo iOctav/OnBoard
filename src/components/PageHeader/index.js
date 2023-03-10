@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 import Button from '@jetbrains/ring-ui/dist/button/button';
 import DropdownMenu from '@jetbrains/ring-ui/dist/dropdown-menu/dropdown-menu';
 import Header from '@jetbrains/ring-ui/dist/header/header';
@@ -8,17 +10,24 @@ import careDown10pxIcon from '@jetbrains/icons/caret-down-10px';
 import bellIcon from '@jetbrains/icons/bell';
 import helpIcon from '@jetbrains/icons/help-20px';
 import settingsIcon from '@jetbrains/icons/settings-20px';
+import {ReactComponent as smallObLogo} from './ob-logo-small.svg';
 import Tray from '@jetbrains/ring-ui/dist/header/tray';
 import TrayIcon from '@jetbrains/ring-ui/dist/header/tray-icon';
 import Select from '@jetbrains/ring-ui/dist/select/select';
 import SmartProfile from '../SmartProfile';
 import {
   agilesPageUri,
-  dashboardsPageUri, ganttChartsPageUri, homePageUri,
+  dashboardsPageUri, ganttChartsPageUri,
   issuesPageUri, knowledgeBasePageUri,
   projectsPageUri, createAgileBoardPageUri,
   reportsPageUri, timesheetsPageUri
 } from '../../services/linkService';
+import Logo from '@jetbrains/ring-ui/dist/header/logo';
+
+const StyledObHeader = styled(Header)`
+  font-size: 13px;
+  font-family: "Inter", system-ui, Arial, sans-serif;
+`;
 
 function PageYTHeader() {
   // TODO: Why it's crashing when translation is used here
@@ -30,8 +39,10 @@ function PageYTHeader() {
   const dropdownAnchor = (<Button primary>Create <Icon glyph={careDown10pxIcon}></Icon></Button>);
   const issuesDataset = [];
   return (
-    <Header theme={Theme.LIGHT} className={'compactHeader'}>
-      <a title="YT" href={homePageUri()}>YT Logo</a>
+    <StyledObHeader theme={Theme.LIGHT} className={'compactHeader'}>
+      <a href="/">
+        <Logo glyph={smallObLogo} size={Logo.Size.Size40}/>
+      </a>
       <span>
         <Link href={issuesPageUri()}>Issues</Link>
         <Select type="INLINE" filter={true} data={issuesDataset} label={''} />
@@ -50,7 +61,7 @@ function PageYTHeader() {
         <TrayIcon title="Administration" icon={settingsIcon}/>
         <SmartProfile/>
       </Tray>
-    </Header>
+    </StyledObHeader>
   )
 }
 export default PageYTHeader
