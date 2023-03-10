@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import AgileCardAssignee from '../AgileCardAssignee';
 import AgileCardField from '../AgileCardField';
 import { useGetAgilesByIdQuery } from '../../store/youtrackApi';
+import { useParams } from 'react-router-dom';
 
 const AgileCardDiv = styled.div`
   box-sizing: border-box;
@@ -49,7 +50,8 @@ const SummarySpan = styled.span`
 `;
 
 function AgileCard({ issueData }) {
-    const { data, error, isLoading } = useGetAgilesByIdQuery('131-2', {
+    const { agileId } = useParams();
+    const { data, error, isLoading } = useGetAgilesByIdQuery(agileId, {
         selectFromResult: ({ data, error, isLoading }) => ({
             data: data?.cardSettings?.fields,
             error,
