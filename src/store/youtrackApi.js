@@ -44,7 +44,7 @@ export const youtrackApi = createApi({
         method: 'POST',
         body: ids.map(id => ({ id: id })),
         params: {
-          fields: 'attachments(id),fields($type,hasStateMachine,id,isUpdatable,name,projectCustomField($type,bundle(id),canBeEmpty,emptyFieldText,field(fieldType(isMultiValue,valueType),id,localizedName,name,ordinal),id,isEstimation,isPublic,isSpentTime,ordinal,size),value($type,archived,avatarUrl,buildIntegration,buildLink,color(background,id),description,fullName,id,isResolved,localizedName,login,markdownText,minutes,name,presentation,ringId,text)),id,idReadable,isDraft,numberInProject,project($type,archived,id,name,plugins(timeTrackingSettings(enabled,estimate(field(id,name),id),timeSpent(field(id,name),id))),ringId,shortName),reporter($type,id,login,ringId),resolved,subtasks(id,issuesSize,unresolvedIssuesSize)',
+          fields: 'attachments(id),fields($type,hasStateMachine,id,isUpdatable,name,projectCustomField($type,bundle(id),canBeEmpty,emptyFieldText,field(fieldType(isMultiValue,valueType),id,localizedName,name,ordinal),id,isEstimation,isPublic,isSpentTime,ordinal,size),value($type,archived,avatarUrl,buildIntegration,buildLink,color(background,id),description,fullName,id,isResolved,localizedName,login,markdownText,minutes,name,presentation,ringId,text)),id,idReadable,summary,isDraft,numberInProject,project($type,archived,id,name,plugins(timeTrackingSettings(enabled,estimate(field(id,name),id),timeSpent(field(id,name),id))),ringId,shortName),reporter($type,id,login,ringId),resolved,subtasks(id,issuesSize,unresolvedIssuesSize)',
           top: -1,
           topLinks: 3,
         },
@@ -74,9 +74,59 @@ export const youtrackApi = createApi({
         },
       })
     }),
+    getEnumBundleValues: builder.query({
+      query: (id) => ({
+        url: `admin/customFieldSettings/bundles/enum/${id}/values`,
+        params: {
+          fields: 'archived,assembleDate,avatarUrl,color(id),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
+        },
+      })
+    }),
+    getOwnedBundleValues: builder.query({
+      query: (id) => ({
+        url: `admin/customFieldSettings/bundles/ownedField/${id}/values`,
+        params: {
+          fields: 'archived,assembleDate,avatarUrl,color(id),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
+        },
+      })
+    }),
+    getStateBundleValues: builder.query({
+      query: (id) => ({
+        url: `admin/customFieldSettings/bundles/state/${id}/values`,
+        params: {
+          fields: 'archived,assembleDate,avatarUrl,color(id),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
+        },
+      })
+    }),
+    getVersionBundleValues: builder.query({
+      query: (id) => ({
+        url: `admin/customFieldSettings/bundles/version/${id}/values`,
+        params: {
+          fields: 'archived,assembleDate,avatarUrl,color(id),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
+        },
+      })
+    }),
+    getUserBundleValues: builder.query({
+      query: (id) => ({
+        url: `admin/customFieldSettings/bundles/user/${id}/aggregatedUsers`,
+        params: {
+          fields: 'archived,assembleDate,avatarUrl,color(id),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
+        },
+      })
+    }),
+    getBuildBundleValues: builder.query({
+      query: (id) => ({
+        url: `admin/customFieldSettings/bundles/build/${id}/values`,
+        params: {
+          fields: 'archived,assembleDate,avatarUrl,color(id),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
+        },
+      })
+    }),
   }),
 });
 
 export const { useGetAgilesByIdQuery, useGetCustomFieldValuesQuery,
   useGetSpecificSprintForSpecificAgileQuery, useGetIssuesQuery,
-  useGetCurrentUserInfoQuery, useLazyGetAgilesQuery, useGetAgileUserProfileQuery } = youtrackApi;
+  useGetCurrentUserInfoQuery, useLazyGetAgilesQuery, useGetAgileUserProfileQuery,
+  useLazyGetEnumBundleValuesQuery, useLazyGetOwnedBundleValuesQuery, useLazyGetStateBundleValuesQuery,
+  useLazyGetVersionBundleValuesQuery, useLazyGetUserBundleValuesQuery, useLazyGetBuildBundleValuesQuery } = youtrackApi;

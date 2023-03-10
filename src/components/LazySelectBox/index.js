@@ -2,7 +2,7 @@ import Select from '@jetbrains/ring-ui/dist/select/select';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
-function LazySelectBox({type, label, selected, lazyDataLoaderHook, makeDataset, ...rest}) {
+function LazySelectBox({lazyDataLoaderHook, lazyDataLoaderHookParams, makeDataset, ...rest}) {
   const [loading, setAgilesLoading] = useState(true);
   const [dataset, setDataset] = useState([]);
   const [getData, results] = lazyDataLoaderHook();
@@ -13,23 +13,20 @@ function LazySelectBox({type, label, selected, lazyDataLoaderHook, makeDataset, 
     }
   },[results])
   return (<Select
-    type={type}
-    label={label}
     filter={true}
     data={dataset}
-    selected={selected}
     loading={loading}
-    onOpen={() => loading && getData()}
+    onOpen={() => loading && getData(lazyDataLoaderHookParams)}
     {...rest}/>
   );
 }
 
 LazySelectBox.propTypes = {
-  type: PropTypes.string,
   label: PropTypes.string,
-  selected: PropTypes.object,
+  selected: PropTypes.oneOfType([PropTypes.object, PropTypes.arrayOf(PropTypes.object)]),
   lazyDataLoaderHook: PropTypes.func,
-  makeDataset: PropTypes.func,
+  lazyDataLoaderHookParams: PropTypes.any,
+  makeDataset: PropTypes.func
 }
 
 export default LazySelectBox

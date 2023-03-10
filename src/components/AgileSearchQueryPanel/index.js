@@ -49,8 +49,7 @@ function AgileSearchQueryPanel() {
               makeDataset={(data) => [...data.filter(item => item.favorite).map(mapAgileDataItem),
                 { key: 'separator', rgItemType: List.ListProps.Type.SEPARATOR },
                 ...data.filter(item => !item.favorite).map(mapAgileDataItem)]}
-              onSelect={switchAgileBoard}
-              width="318px">
+              onSelect={switchAgileBoard}>
       </FloatSelect>
       <OverflowDiv>
         <ReducedInput placeholder={t('Filter cards on the board')} size={Size.AUTO}></ReducedInput>

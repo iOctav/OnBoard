@@ -11,3 +11,4 @@ export const createAgileBoardPageUri = () => '/agiles/create';
 export const profilePageUri = () => '/users/me';
 export const currentAgileBoardUri = (agileId) => `/agiles/${agileId}/current`;
 export const agileBoardUri = (agileId, sprintId) => `/agiles/${agileId}/${sprintId}`;
+export const issueDetails = (id, summary) => `/issue/${id}/${summary}`;
