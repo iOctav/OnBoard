@@ -20,7 +20,7 @@ import {
   reportsPageUri, timesheetsPageUri
 } from '../../services/linkService';
 
-function AgilePageHeader() {
+function PageYTHeader() {
   // TODO: Why it's crashing when translation is used here
   // const { t } = useTranslation();
   const dropdownMenuData = [
@@ -53,4 +53,4 @@ function AgilePageHeader() {
     </Header>
   )
 }
-export default AgilePageHeader
+export default PageYTHeader

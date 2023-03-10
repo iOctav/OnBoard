@@ -4,8 +4,9 @@ import AgileBoardRows from '../AgileBoardRows';
 import AgileBoardHeader from '../AgileBoardHeader';
 import AgileSearchQueryPanel from '../AgileSearchQueryPanel';
 import AgileTopToolbar from '../AgileTopToolbar';
-import { useGetCurrentSprintForSpecificAgileQuery } from '../../store/youtrackApi';
+import { useGetSpecificSprintForSpecificAgileQuery } from '../../store/youtrackApi';
 import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
+import { useParams}  from 'react-router-dom';
 
 const AgileBoardTable = styled.table`
   min-width: 720px;
@@ -17,12 +18,13 @@ const AgileBoardTable = styled.table`
 `;
 
 function AgileBoard() {
+  const { agileId, sprintId } = useParams();
   const { data: sprint,
     isLoading,
     isSuccess,
     isError,
     error
-  } = useGetCurrentSprintForSpecificAgileQuery('131-2')
+  } = useGetSpecificSprintForSpecificAgileQuery({agileId, sprintId})
 
   let content
 
