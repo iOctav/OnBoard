@@ -26,7 +26,7 @@ function makeAgileRow(row, issuesDict, swimlaneTitle = undefined) {
         row.cells.map(cell =>
           <BorderedTd key={'cell-' + cell.id}>
             {
-              cell.issues.map((c) => issuesDict
+              cell.issues.map((c) => issuesDict && issuesDict[c.id]
                 ? <AgileCard issueData={issuesDict[c.id]} key={'agile-card-' + c.id}/>
                 : <AgileCardPreview issueData={c} key={'agile-card-' + c.id}/> )
             }

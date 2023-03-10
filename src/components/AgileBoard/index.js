@@ -24,7 +24,7 @@ function AgileBoard() {
     isSuccess,
     isError,
     error
-  } = useGetSpecificSprintForSpecificAgileQuery({agileId, sprintId})
+  } = useGetSpecificSprintForSpecificAgileQuery({agileId, sprintId: (sprintId || 'current')})
 
   let content
 
@@ -53,4 +53,4 @@ function AgileBoard() {
   return content;
 }
 
-export default AgileBoard
+export default AgileBoard;
