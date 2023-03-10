@@ -3,13 +3,12 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import AgileCardAssignee from '../AgileCardAssignee';
 import AgileCardField from '../AgileCardField';
-import { useGetAgilesByIdQuery } from '../../store/youtrackApi';
-import { useParams } from 'react-router-dom';
+import {issueDetails} from '../../services/linkService';
 
 const AgileCardDiv = styled.div`
   box-sizing: border-box;
   width: 458.88px;
-  height: 82px;
+  height: 120px;
   background: #FFFFFF;
   border: 1px solid #DFE5EB;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
@@ -49,29 +48,19 @@ const SummarySpan = styled.span`
   font-family: "Inter", system-ui, Arial, sans-serif;
 `;
 
+function compareCardField(a, b) {
+    return a.projectCustomField.ordinal - b.projectCustomField.ordinal;
+}
+
 function AgileCard({ issueData }) {
-    const { agileId } = useParams();
-    const { data, error, isLoading } = useGetAgilesByIdQuery(agileId, {
-        selectFromResult: ({ data, error, isLoading }) => ({
-            data: data?.cardSettings?.fields,
-            error,
-            isLoading
-            })
-        })
-
-    if (error)  return <div>{error.toString()}</div>
-    if (isLoading) return (<div>Loading</div>)
-
-    const cardFooterFields = data?.map((field, i) => {
-        let cardField = issueData.fields.find(customField => customField.name === field.field.name);
-        // TODO: Investigate why there is no bundle for Subsystem field
-        if (!field.field.fieldDefaults.bundle) return null;
-        return (<AgileCardField customFieldId={field.field.fieldDefaults.bundle.id} data={field.field.fieldDefaults.bundle.values} value={cardField.value?.id} marginLeft={i > 0 ? 8 : 0} key={field?.id}/>);
+    const cardFooterFields = [...issueData.fields].sort(compareCardField).map(field => {
+        return (<AgileCardField field={field} key={field?.id}/>);
     });
+    const issueDetailsLink = issueDetails(issueData.idReadable, issueData.summary);
 
     return <AgileCardDiv>
         <AgileCardSummaryDiv>
-            <IdLink href="/">{issueData.idReadable}</IdLink>
+            <IdLink href={issueDetailsLink} target="_blank">{issueData.idReadable}</IdLink>
             <SummarySpan>{issueData.summary}</SummarySpan>
         </AgileCardSummaryDiv>
 
