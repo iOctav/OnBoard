@@ -9,3 +9,5 @@ export const timesheetsPageUri = () => '/timesheets';
 export const ganttChartsPageUri = () => '/gantt-charts';
 export const createAgileBoardPageUri = () => '/agiles/create';
 export const profilePageUri = () => '/users/me';
+export const currentAgileBoardUri = (agileId) => `/agiles/${agileId}/current`;
+export const agileBoardUri = (agileId, sprintId) => `/agiles/${agileId}/${sprintId}`;

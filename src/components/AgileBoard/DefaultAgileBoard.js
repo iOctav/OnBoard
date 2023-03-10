@@ -1,6 +1,7 @@
 import { useGetAgileUserProfileQuery } from '../../store/youtrackApi';
-import {Navigate} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
+import { agileBoardUri } from '../../services/linkService';
 
 function DefaultAgileBoard() {
   const { data: agileUserProfile,
@@ -17,7 +18,7 @@ function DefaultAgileBoard() {
   } else if (isSuccess) {
     const agileId = agileUserProfile?.defaultAgile?.id;
     const sprintId = agileUserProfile?.defaultAgile?.currentSprint?.id || 'current';
-    content = (<Navigate to={`/agiles/${agileId}/${sprintId}`}/>);
+    content = (<Navigate to={agileBoardUri(agileId, sprintId)}/>);
   } else if (isError) {
     content = <div>{error.toString()}</div>
   }
