@@ -33,7 +33,7 @@ function AgileBoard() {
   } else if (isSuccess) {
     const columns = sprint.board.columns;
     content = <div>
-      <AgileSearchQueryPanel/>
+      <AgileSearchQueryPanel currentAgileId={agileId} currentAgileName={sprint.agile.name}/>
       <AgileTopToolbar/>
       <AgileBoardTable>
         <colgroup>
