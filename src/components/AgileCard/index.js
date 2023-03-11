@@ -9,7 +9,7 @@ import { ASSIGNEE_FIELDNAME } from '../../utils/cardFieldConstants';
 const AgileCardDiv = styled.div`
   box-sizing: border-box;
   width: 458.88px;
-  height: 120px;
+  height: 105px;
   background: #FFFFFF;
   border: 1px solid #DFE5EB;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
@@ -20,21 +20,21 @@ const AgileCardSummaryDiv = styled.div`
   display: block;
   border-collapse: collapse;
   color: rgb(31, 35, 38);
-  line-height: ${props => props.theme.lineHeight};
-  font-size: ${props => props.theme.primaryFontSize};
+  line-height: var(--ring-line-height);
+  font-size: var(--ring-font-size);
   min-height: 36px;
   text-overflow: ellipsis;
-  margin-bottom: ${props => props.theme.unit};
+  margin-bottom: var(--ring-unit);
   overflow: hidden;
 `;
 
 const IdLink = styled.a`
-  margin-right: ${props => props.theme.unit};
+  margin-right: var(--ring-unit);
   font-family: "Inter", system-ui, Arial, sans-serif;
   border-collapse: collapse;
   cursor: pointer;
-  font-size: ${props => props.theme.primaryFontSize};
-  color: ${props => props.theme.secondaryColor};
+  font-size: var(--ring-font-size);
+  color: var(--ring-secondary-color);
   font-variant: tabular-nums;
   text-decoration: none;
 

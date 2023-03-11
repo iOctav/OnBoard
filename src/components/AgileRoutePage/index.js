@@ -6,7 +6,7 @@ import RedirectPage from '../RedirectPage';
 import OAuth from '../../features/auth/OAuth';
 import DefaultAgileBoard from '../AgileBoard/DefaultAgileBoard';
 
-function AgilePage() {
+function AgileRoutePage() {
   return (<div className="agile-page">
     <PageYTHeader/>
     <Routes>
@@ -24,4 +24,4 @@ function AgilePage() {
     </Routes>
   </div>);
 }
-export default AgilePage
+export default AgileRoutePage

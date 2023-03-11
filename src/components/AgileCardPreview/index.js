@@ -16,11 +16,11 @@ const AgileCardSummaryDiv = styled.div`
   display: block;
   border-collapse: collapse;
   color: rgb(31, 35, 38);
-  line-height: ${props => props.theme.lineHeight};
-  font-size: ${props => props.theme.primaryFontSize};
+  line-height: var(--ring-line-height);
+  font-size: var(--ring-font-size);
   min-height: 36px;
   text-overflow: ellipsis;
-  margin-bottom: ${props => props.theme.unit};
+  margin-bottom: var(--ring-unit);
   overflow: hidden;
 `;
 
