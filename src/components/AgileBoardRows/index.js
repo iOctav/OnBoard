@@ -69,7 +69,7 @@ function AgileBoardRows({orphanRow, trimmedSwimlanes, hideOrphansSwimlane, orpha
   if (hideOrphansSwimlane) {
     content = swimlanesAgileRow
   } else {
-    const orphanAgileRow = makeAgileRow(orphanRow, issuesDict, t('Uncategorized Cards'))
+    const orphanAgileRow = makeAgileRow(orphanRow, issuesDict, trimmedSwimlanes.length > 0 && t('Uncategorized Cards'))
     if (orphansAtTheTop) {
       content = [orphanAgileRow, ...swimlanesAgileRow];
     } else {
