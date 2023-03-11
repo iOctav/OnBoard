@@ -60,7 +60,7 @@ function AgileCard({ issueData }) {
     const issueDetailsLink = issueDetails(issueData.idReadable, issueData.summary);
     const assigneeField = issueData.fields.find(field => field.name === ASSIGNEE_FIELDNAME);
 
-    return <AgileCardDiv>
+    return <AgileCardDiv className="ob-agile-card">
         <AgileCardSummaryDiv>
             <IdLink href={issueDetailsLink} target="_blank">{issueData.idReadable}</IdLink>
             <SummarySpan>{issueData.summary}</SummarySpan>

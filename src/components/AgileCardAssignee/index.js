@@ -6,6 +6,7 @@ import LazySelectBox from '../LazySelectBox';
 import { useLazyGetUserBundleValuesQuery } from '../../store/youtrackApi';
 import Avatar, { Size } from '@jetbrains/ring-ui/dist/avatar/avatar';
 import { useState } from 'react';
+import Button from '@jetbrains/ring-ui/dist/button/button';
 
 const AddPerson14px = styled(AddPerson)`
   width: 14px;
@@ -31,7 +32,7 @@ function AgileCardAssignee({field}) {
                          customAnchor={({wrapperProps, buttonProps, popup}) => (
                            <span {...wrapperProps}>
                              {
-                               selectedItem ? <Avatar size={Size.Size14} username={selectedItem.username} {...buttonProps}/> : <AddPerson14px {...buttonProps}/>
+                               selectedItem ? <Avatar size={Size.Size14} username={selectedItem.username} {...buttonProps}/> : <Button icon={AddPerson14px} title="Set assignee" {...buttonProps}>{''}</Button>
                              }
                              {popup}
                             </span>)}>
