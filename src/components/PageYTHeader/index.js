@@ -10,7 +10,8 @@ import careDown10pxIcon from '@jetbrains/icons/caret-down-10px';
 import bellIcon from '@jetbrains/icons/bell';
 import helpIcon from '@jetbrains/icons/help-20px';
 import settingsIcon from '@jetbrains/icons/settings-20px';
-import {ReactComponent as smallObLogo} from './ob-logo-small.svg';
+import { ReactComponent as smallObLogo } from './ob-logo-small.svg';
+import { ReactComponent as largeObLogo } from './ob-logo-large.svg';
 import Tray from '@jetbrains/ring-ui/dist/header/tray';
 import TrayIcon from '@jetbrains/ring-ui/dist/header/tray-icon';
 import Select from '@jetbrains/ring-ui/dist/select/select';
@@ -23,13 +24,14 @@ import {
   reportsPageUri, timesheetsPageUri
 } from '../../services/linkService';
 import Logo from '@jetbrains/ring-ui/dist/header/logo';
+import PropTypes from 'prop-types';
 
 const StyledObHeader = styled(Header)`
   font-size: 13px;
   font-family: "Inter", system-ui, Arial, sans-serif;
 `;
 
-function PageYTHeader() {
+function PageYTHeader({isCompact}) {
   // TODO: Why it's crashing when translation is used here
   // const { t } = useTranslation();
   const dropdownMenuData = [
@@ -41,7 +43,10 @@ function PageYTHeader() {
   return (
     <StyledObHeader theme={Theme.LIGHT} className={'compactHeader'}>
       <a href="/">
-        <Logo glyph={smallObLogo} size={Logo.Size.Size40}/>
+        {isCompact
+          ? <Logo className="compactLogo" glyph={smallObLogo} size={Logo.Size.Size40}/>
+          : <Logo glyph={largeObLogo} size={Logo.Size.Size128}/>
+        }
       </a>
       <span>
         <Link href={issuesPageUri()}>Issues</Link>
@@ -64,4 +69,9 @@ function PageYTHeader() {
     </StyledObHeader>
   )
 }
+
+PageYTHeader.propTypes = {
+  isCompact: PropTypes.bool,
+}
+
 export default PageYTHeader

@@ -1,5 +1,5 @@
 import AgileBoard from '../AgileBoard';
-import PageYTHeader from '../PageHeader';
+import PageYTHeader from '../PageYTHeader';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import AuthOutlet from '../../features/auth/AuthOutlet';
 import RedirectPage from '../RedirectPage';
