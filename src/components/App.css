@@ -41,3 +41,20 @@
   font-size: var(--ring-font-size);
   font-family: var(--ring-font-family);
 }
+
+.ob-agile-card {
+  background-color: var(--ring-content-background-color);
+  position: relative;
+  padding: calc(var(--ring-unit));
+  font-size: var(--ring-font-size-smaller);
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  display: inline-block;
+  cursor: default;
+  box-sizing: border-box;
+  box-shadow: 0 0 3px 0 rgb(0 0 0 / 10%);
+  border-radius: var(--ring-border-radius);
+  border: 1px solid var(--ring-line-color);
+  transition: 0.3s linear height;
+}
