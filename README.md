@@ -4,7 +4,7 @@ The OnBoard project is a web application that allows users to create and manage 
 
 ## Installation
 
-`.env` file is required to run the application. The file should contain the following:
+`.env` file is required to run the application. The file should contain the following:\
 REACT_APP_YOUTRACK_BASE_URL=**base url of youtrack server**\
 REACT_APP_AUTHORIZATION_ENDPOINT=**auth endpoint of youtrack server**\
 REACT_APP_REDIRECT_URI=http://localhost:3000/oauth \
