@@ -11,6 +11,7 @@ import LazySelectBox from '../LazySelectBox';
 import { useNavigate } from 'react-router-dom';
 import { currentAgileBoardUri } from '../../services/linkService';
 import List from '@jetbrains/ring-ui/dist/list/list';
+import PropTypes from 'prop-types';
 
 const AgileSearchPanelDiv = styled.div`
   margin: 0 calc(var(--ring-unit) * 4);
@@ -33,26 +34,27 @@ const FloatRightButton = styled(Button)`
   float: right;
 `;
 
-// TODO: Remove hardcoded agiles and use rtk query to get them
-function AgileSearchQueryPanel() {
+function AgileSearchQueryPanel({currentAgileId, currentAgileName}) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const switchAgileBoard = ({key}) => navigate(currentAgileBoardUri(key));
-  const mapAgileDataItem = agile => ({label: agile.name, key: agile.id, description: agile.owner.fullName,
-    icon: agile.favorite ? starFilled : starEmpty});
+  const mapAgileDataItem = agile => ({
+    label: agile.name, key: agile.id, description: agile.owner.fullName,
+    icon: agile.favorite ? starFilled : starEmpty
+  });
 
   return (
     <AgileSearchPanelDiv className="agile-search-panel">
       <FloatSelect
-              type="BUTTON"
-              buttonClassName="ob-agile-select-button"
-              label="Agile boards"
-              size={Size.AUTO}
-              lazyDataLoaderHook={useLazyGetAgilesQuery}
-              makeDataset={(data) => [...data.filter(item => item.favorite).map(mapAgileDataItem),
-                { key: 'separator', rgItemType: List.ListProps.Type.SEPARATOR },
-                ...data.filter(item => !item.favorite).map(mapAgileDataItem)]}
-              onSelect={switchAgileBoard}>
+        type="BUTTON"
+        buttonClassName="ob-agile-select-button"
+        selected={{ label: currentAgileName, key: currentAgileId }}
+        size={Size.AUTO}
+        lazyDataLoaderHook={useLazyGetAgilesQuery}
+        makeDataset={(data) => [...data.filter(item => item.favorite).map(mapAgileDataItem),
+          {key: 'separator', rgItemType: List.ListProps.Type.SEPARATOR},
+          ...data.filter(item => !item.favorite).map(mapAgileDataItem)]}
+        onSelect={switchAgileBoard}>
       </FloatSelect>
       <OverflowDiv>
         <ReducedInput placeholder={t('Filter cards on the board')} size={Size.AUTO}></ReducedInput>
@@ -60,6 +62,11 @@ function AgileSearchQueryPanel() {
       </OverflowDiv>
     </AgileSearchPanelDiv>
   );
+}
+
+AgileSearchQueryPanel.propTypes = {
+  currentAgileId: PropTypes.string,
+  currentAgileName: PropTypes.string,
 }
 
 export default AgileSearchQueryPanel
