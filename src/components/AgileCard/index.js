@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import AgileCardAssignee from '../AgileCardAssignee';
 import AgileCardField from '../AgileCardField';
-import {issueDetails} from '../../services/linkService';
+import { issueDetails } from '../../services/linkService';
+import { ASSIGNEE_FIELDNAME } from '../../utils/cardFieldConstants';
 
 const AgileCardDiv = styled.div`
   box-sizing: border-box;
@@ -57,6 +58,7 @@ function AgileCard({ issueData }) {
         return (<AgileCardField field={field} key={field?.id}/>);
     });
     const issueDetailsLink = issueDetails(issueData.idReadable, issueData.summary);
+    const assigneeField = issueData.fields.find(field => field.name === ASSIGNEE_FIELDNAME);
 
     return <AgileCardDiv>
         <AgileCardSummaryDiv>
@@ -66,7 +68,7 @@ function AgileCard({ issueData }) {
 
         <div className="agile-card-footer">
             <span className="agile-card-enumeration">
-                <AgileCardAssignee/>
+                <AgileCardAssignee field={assigneeField}/>
                 {cardFooterFields}
             </span>
         </div>

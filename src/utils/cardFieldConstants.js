@@ -1,0 +1,1 @@
+export const ASSIGNEE_FIELDNAME = 'Assignee';
