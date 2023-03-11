@@ -58,3 +58,15 @@
   border: 1px solid var(--ring-line-color);
   transition: 0.3s linear height;
 }
+
+.ob-agile-select-button {
+  color: var(--ring-white-text-color);
+  background-color: var(--ring-main-color);
+  box-shadow: none;
+}
+
+.ob-agile-select-button:hover {
+  transition: none;
+  background-color: var(--ring-main-hover-color);
+  box-shadow: none;
+}

@@ -44,7 +44,10 @@ function AgileSearchQueryPanel() {
   return (
     <AgileSearchPanelDiv className="agile-search-panel">
       <FloatSelect
-              type="INLINE"
+              type="BUTTON"
+              buttonClassName="ob-agile-select-button"
+              label="Agile boards"
+              size={Size.AUTO}
               lazyDataLoaderHook={useLazyGetAgilesQuery}
               makeDataset={(data) => [...data.filter(item => item.favorite).map(mapAgileDataItem),
                 { key: 'separator', rgItemType: List.ListProps.Type.SEPARATOR },
