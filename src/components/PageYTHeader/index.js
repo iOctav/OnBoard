@@ -5,13 +5,14 @@ import DropdownMenu from '@jetbrains/ring-ui/dist/dropdown-menu/dropdown-menu';
 import Header from '@jetbrains/ring-ui/dist/header/header';
 import Icon from '@jetbrains/ring-ui/dist/icon';
 import Link from '@jetbrains/ring-ui/dist/link/link';
-import Theme from '@jetbrains/ring-ui/dist/global/theme';
+import Theme, { useTheme } from '@jetbrains/ring-ui/dist/global/theme';
 import careDown10pxIcon from '@jetbrains/icons/caret-down-10px';
 import bellIcon from '@jetbrains/icons/bell';
 import helpIcon from '@jetbrains/icons/help-20px';
 import settingsIcon from '@jetbrains/icons/settings-20px';
 import { ReactComponent as smallObLogo } from './ob-logo-small.svg';
-import { ReactComponent as largeObLogo } from './ob-logo-large.svg';
+import { ReactComponent as largeObLogoLight } from './ob-logo-large.light.svg';
+import { ReactComponent as largeObLogoDark } from './ob-logo-large.dark.svg';
 import Tray from '@jetbrains/ring-ui/dist/header/tray';
 import TrayIcon from '@jetbrains/ring-ui/dist/header/tray-icon';
 import Select from '@jetbrains/ring-ui/dist/select/select';
@@ -34,6 +35,7 @@ const StyledObHeader = styled(Header)`
 function PageYTHeader({isCompact}) {
   // TODO: Why it's crashing when translation is used here
   // const { t } = useTranslation();
+  const theme = useTheme();
   const dropdownMenuData = [
     { label: 'Card...' },
     { label: 'Board...', href: createAgileBoardPageUri() },
@@ -41,11 +43,11 @@ function PageYTHeader({isCompact}) {
   const dropdownAnchor = (<Button primary>Create <Icon glyph={careDown10pxIcon}></Icon></Button>);
   const issuesDataset = [];
   return (
-    <StyledObHeader theme={Theme.LIGHT} className={'compactHeader'}>
+    <StyledObHeader theme={theme} className={'compactHeader'}>
       <a href="/">
         {isCompact
           ? <Logo className="compactLogo" glyph={smallObLogo} size={Logo.Size.Size40}/>
-          : <Logo glyph={largeObLogo} size={Logo.Size.Size128}/>
+          : <Logo glyph={theme === Theme.LIGHT ? largeObLogoLight : largeObLogoDark} size={Logo.Size.Size128}/>
         }
       </a>
       <span>
