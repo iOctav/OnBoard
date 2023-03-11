@@ -31,11 +31,12 @@ function AgileCardAssignee({field}) {
                          onSelect={(item) => setSelectedItem(item.key !== UnassignedKey ? item : undefined)}
                          customAnchor={({wrapperProps, buttonProps, popup}) => (
                            <span {...wrapperProps}>
-                             {
-                               selectedItem ? <Avatar size={Size.Size14} username={selectedItem.username} {...buttonProps}/> : <Button icon={AddPerson14px} title="Set assignee" {...buttonProps}>{''}</Button>
+                             { selectedItem
+                                 ? <Avatar size={Size.Size14} username={selectedItem.username} {...buttonProps}/>
+                                 : <Button icon={AddPerson14px} title="Set assignee" {...buttonProps}>{''}</Button>
                              }
                              {popup}
-                            </span>)}>
+                           </span>)}>
           </LazySelectBox>
         </span>
     );
