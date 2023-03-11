@@ -12,6 +12,11 @@ const BorderedTd = styled.td`
   border-bottom: 1px solid var(--ring-line-color);
   border-right: 1px solid var(--ring-line-color);
   border-collapse: collapse;
+  vertical-align: top;
+  text-align: left;
+  &:hover .new-card-button-action-text {
+    display: inline;
+  };
 `;
 
 
