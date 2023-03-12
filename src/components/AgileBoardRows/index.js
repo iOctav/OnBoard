@@ -70,7 +70,7 @@ function AgileBoardRows({orphanRow, trimmedSwimlanes, hideOrphansSwimlane, orpha
   } else if (isError) {
   }
 
-  const swimlanesAgileRow = trimmedSwimlanes.map(row => makeAgileRow(row, issuesDict, row.value.presentation))
+  const swimlanesAgileRow = trimmedSwimlanes.map(row => makeAgileRow(row, issuesDict, row.value?.presentation || row.issue?.summary))
   if (hideOrphansSwimlane) {
     content = swimlanesAgileRow
   } else {
