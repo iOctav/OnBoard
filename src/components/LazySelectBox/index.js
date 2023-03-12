@@ -24,9 +24,9 @@ function LazySelectBox({lazyDataLoaderHook, lazyDataLoaderHookParams, makeDatase
 LazySelectBox.propTypes = {
   label: PropTypes.string,
   selected: PropTypes.oneOfType([PropTypes.object, PropTypes.arrayOf(PropTypes.object)]),
-  lazyDataLoaderHook: PropTypes.func,
+  lazyDataLoaderHook: PropTypes.func.isRequired,
   lazyDataLoaderHookParams: PropTypes.any,
-  makeDataset: PropTypes.func
+  makeDataset: PropTypes.func.isRequired
 }
 
 export default LazySelectBox

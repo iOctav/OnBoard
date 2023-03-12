@@ -32,10 +32,12 @@ function Swimlane({title, isOrphan, cardsNumber, columnsNumber, }) {
     return (
         <tr>
             <td>
+              {!!title && (
                 <FloatLeftDiv>
                     { !isOrphan && <DraggableIcon glyph={drag} /> }
                     <Button icon={rollUp ? caretDown10px : caretRight10px} onClick={() => setRollUp(prevState => !prevState)}>{title}</Button>
                 </FloatLeftDiv>
+              )}
             </td>
             {/*TODO: Could crash if column less than 3*/}
             {[...Array(columnsNumber - 2).keys()].map(i => <td key={'fake-cell-' + i}/>)}
