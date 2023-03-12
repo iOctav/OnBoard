@@ -10,7 +10,7 @@ function RedirectPage() {
     }, 2000);
 
     return () => clearTimeout(timeout);
-  }, []);
+  }, [location.pathname]);
 
   return <>Will redirect in 2 seconds...</>;
 }

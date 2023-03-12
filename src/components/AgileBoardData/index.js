@@ -6,8 +6,7 @@ function AgileBoardData({agileId, sprintId}) {
   const { data: sprint,
     isLoading,
     isSuccess,
-    isError,
-    error
+    isError
   } = useGetSpecificSprintForSpecificAgileQuery({agileId, sprintId: (sprintId || 'current')})
 
   if (isLoading) {
