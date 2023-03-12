@@ -47,7 +47,11 @@ function AgileBoard() {
       <AgileBoardSettings visible={settingsVisible}
                           agileId={agile.id}
                           agileName={agile.name}
-                          columnSettings={agile.columnSettings}/>
+                          projectShortName={agile.projects[0]?.shortName}
+                          columnSettings={agile.columnSettings}
+                          swimlaneSettings={agile.swimlaneSettings}
+                          hideOrphansSwimlane={agile.hideOrphansSwimlane}
+                          orphansAtTheTop={agile.orphansAtTheTop}/>
       <AgileBoardTable>
         <colgroup>
           { columns.map(column => <col key={'col-' + column.id} />) }

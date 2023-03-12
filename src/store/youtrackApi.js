@@ -146,6 +146,37 @@ export const youtrackApi = createApi({
         },
       })
     }),
+    getValuesFilterFields: builder.query({
+      query: (shortName) => ({
+        url: `filterFields?fieldTypes=version%5B1%5D&fieldTypes=ownedField%5B1%5D&fieldTypes=state%5B1%5D&fieldTypes=user%5B1%5D&fieldTypes=enum%5B1%5D&fieldTypes=build%5B1%5D&fieldTypes=version%5B*%5D&fieldTypes=ownedField%5B*%5D&fieldTypes=user%5B*%5D&fieldTypes=enum%5B*%5D&fieldTypes=build%5B*%5D&fieldTypes=project&fieldTypes=tag&fieldTypes=date&fieldTypes=date+and+time&fieldTypes=instant`,
+        params: {
+          fields: '$type,aggregateable,customField(fieldType(id,isBundleType,presentation,valueType),id,localizedName,name,ordinal),id,instant,name,presentation,projects(id,name),sortable',
+          filteringType: 'contains',
+          fld: shortName,
+          getUnusedVisibleFields: true
+        },
+      })
+    }),
+    getIssuesFilterFields: builder.query({
+      query: (shortName) => ({
+        url: `filterFields?fieldTypes=version%5B1%5D&fieldTypes=version%5B*%5D&fieldTypes=ownedField%5B1%5D&fieldTypes=ownedField%5B*%5D&fieldTypes=state%5B1%5D&fieldTypes=enum%5B1%5D&fieldTypes=enum%5B*%5D&fieldTypes=build%5B1%5D&fieldTypes=build%5B*%5D`,
+        params: {
+          fields: '$type,aggregateable,customField(fieldType(id,isBundleType,presentation,valueType),id,localizedName,name,ordinal),id,instant,name,presentation,projects(id,name),sortable',
+          filteringType: 'contains',
+          fld: shortName,
+          getUnusedVisibleFields: true
+        },
+      })
+    }),
+    getAvailableSwimlaneFields: builder.query({
+      query: (agileId) => ({
+        url: `agiles/${agileId}/swimlaneSettings/availableSwimlaneFields`,
+        params: {
+          fields: 'id,name,presentation',
+
+        },
+      })
+    }),
   }),
 });
 
@@ -154,4 +185,5 @@ export const { useGetAgilesByIdQuery, useGetCustomFieldValuesQuery,
   useGetCurrentUserInfoQuery, useLazyGetAgilesQuery, useGetAgileUserProfileQuery,
   useLazyGetEnumBundleValuesQuery, useLazyGetOwnedBundleValuesQuery, useLazyGetStateBundleValuesQuery,
   useLazyGetVersionBundleValuesQuery, useLazyGetUserBundleValuesQuery, useLazyGetBuildBundleValuesQuery,
-  useLazyGetAvailableColumnFieldsQuery, useLazyGetColumnSettingsAvailableColumnFieldsQuery } = youtrackApi;
+  useLazyGetAvailableColumnFieldsQuery, useLazyGetColumnSettingsAvailableColumnFieldsQuery,
+  useLazyGetValuesFilterFieldsQuery, useLazyGetIssuesFilterFieldsQuery, useLazyGetAvailableSwimlaneFieldsQuery } = youtrackApi;
