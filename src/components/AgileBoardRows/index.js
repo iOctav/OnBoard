@@ -24,8 +24,7 @@ function makeAgileRow(row, issuesDict, swimlaneTitle = undefined) {
   const issuesCount = row.cells.reduce((acc, cell) => acc + cell.issues.length, 0);
   return (
     <tbody key={'categorized-row-' + row.id}>
-    { !!swimlaneTitle &&
-      <Swimlane title={swimlaneTitle} cardsNumber={issuesCount} columnsNumber={row.cells.length} ></Swimlane> }
+      { <Swimlane title={swimlaneTitle} cardsNumber={issuesCount} columnsNumber={row.cells.length} ></Swimlane> }
     <tr>
       {
         row.cells.map(cell =>
@@ -48,6 +47,7 @@ function AgileBoardRows({orphanRow, trimmedSwimlanes, hideOrphansSwimlane, orpha
   let content;
   let issuesDict;
   const { t } = useTranslation();
+
 
   // TODO: refactor this calculation
   const issueIds = [orphanRow, ...trimmedSwimlanes]
@@ -74,7 +74,8 @@ function AgileBoardRows({orphanRow, trimmedSwimlanes, hideOrphansSwimlane, orpha
   if (hideOrphansSwimlane) {
     content = swimlanesAgileRow
   } else {
-    const orphanAgileRow = makeAgileRow(orphanRow, issuesDict, trimmedSwimlanes.length > 0 && t('Uncategorized Cards'))
+    const orphanAgileRow = makeAgileRow(orphanRow, issuesDict,
+      trimmedSwimlanes.length > 0 ? t('Uncategorized Cards') : undefined)
     if (orphansAtTheTop) {
       content = [orphanAgileRow, ...swimlanesAgileRow];
     } else {

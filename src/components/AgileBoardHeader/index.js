@@ -7,7 +7,7 @@ function AgileBoardHeader({columns}) {
       <tr>
         {
           columns.map(column => (
-            <HeaderCell key={'cell-head-' + column.id} caption={column.agileColumn.presentation} cardsCount={0}></HeaderCell>)
+            <HeaderCell key={'cell-head-' + column.id} caption={column.fieldValues.map(field => field.presentation).join(', ')} cardsCount={0}></HeaderCell>)
           )
         }
       </tr>
