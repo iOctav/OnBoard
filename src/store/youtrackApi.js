@@ -130,6 +130,22 @@ export const youtrackApi = createApi({
         },
       })
     }),
+    getAvailableColumnFields: builder.query({
+      query: (id) => ({
+        url: `agiles/${id}/availableColumnFields`,
+        params: {
+          fields: 'fieldDefaults(bundle(id,isUpdateable)),fieldType(id,presentation,valueType),id,instances(project(id)),localizedName,name,type',
+        },
+      })
+    }),
+    getColumnSettingsAvailableColumnFields: builder.query({
+      query: (id) => ({
+        url: `agiles/${id}/columnSettings/availableColumnFields`,
+        params: {
+          fields: 'id,name,presentation',
+        },
+      })
+    }),
   }),
 });
 
@@ -137,4 +153,5 @@ export const { useGetAgilesByIdQuery, useGetCustomFieldValuesQuery,
   useGetSpecificSprintForSpecificAgileQuery, useLazyGetSprintsForAgileQuery, useGetIssuesQuery,
   useGetCurrentUserInfoQuery, useLazyGetAgilesQuery, useGetAgileUserProfileQuery,
   useLazyGetEnumBundleValuesQuery, useLazyGetOwnedBundleValuesQuery, useLazyGetStateBundleValuesQuery,
-  useLazyGetVersionBundleValuesQuery, useLazyGetUserBundleValuesQuery, useLazyGetBuildBundleValuesQuery } = youtrackApi;
+  useLazyGetVersionBundleValuesQuery, useLazyGetUserBundleValuesQuery, useLazyGetBuildBundleValuesQuery,
+  useLazyGetAvailableColumnFieldsQuery, useLazyGetColumnSettingsAvailableColumnFieldsQuery } = youtrackApi;

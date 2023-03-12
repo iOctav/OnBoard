@@ -12,7 +12,7 @@ function AuthOutlet() {
     if (!auth.user) {
       window.open(getAuthorizeHref(location.pathname), '_self')
     }
-  }, [auth]);
+  }, [auth, location.pathname]);
 
   if (!auth.user) {
     return (<LoaderScreen/>)
