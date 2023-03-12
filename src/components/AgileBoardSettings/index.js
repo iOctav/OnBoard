@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Tabs, Tab } from '@jetbrains/ring-ui/dist/tabs/tabs';
 import { useCallback, useState } from 'react';
-import ColumnsSettings from './ColumnsSettings';
+import ColumnsSettings from '../ColumnsSettings';
+import SwimlanesSettings from '../SwimlanesSettings';
+import { useTranslation } from 'react-i18next';
 
 const HeaderSpan = styled.span`
   font-size: 24px;
@@ -28,11 +30,13 @@ const TabsContainer = styled(Tabs)`
   margin-top: calc(var(--ring-unit) * 2);
 `;
 
-function AgileBoardSettings({visible, agileId, agileName, columnSettings}) {
+function AgileBoardSettings({visible, agileId, agileName, columnSettings, swimlaneSettings, projectShortName, hideOrphansSwimlane, orphansAtTheTop}) {
+  const { t } = useTranslation();
   const [selected, setSelected] = useState('2');
   const selectHandler = useCallback((key) => {
     setSelected(key);
   }, []);
+
   return visible && (<AgileBoardSettingsContainer className="agile-board-settings">
     <HeaderSettingsDiv className="agile-board-settings-title">
       <HeaderSpan>Board Settings</HeaderSpan>
@@ -41,12 +45,18 @@ function AgileBoardSettings({visible, agileId, agileName, columnSettings}) {
     <TabsContainer autoCollapse
         selected={selected}
         onSelect={selectHandler}>
-      <Tab disabled id="1" key="general" title="General">Will be soon</Tab>
-      <Tab id="2" key="2" title="Columns and Swimlanes">
+      <Tab disabled id="1" key="general" title={t('General')}>Will be soon</Tab>
+      <Tab id="2" key="2" title={t('Columns and Swimlanes')}>
         <ColumnsSettings agileId={agileId} columnSettings={columnSettings}/>
+        <SwimlanesSettings
+          agileId={agileId}
+          swimlaneSettings={swimlaneSettings}
+          projectShortName={projectShortName}
+          orphansAtTheTop={orphansAtTheTop}
+          hideOrphansSwimlane={hideOrphansSwimlane}/>
       </Tab>
-      <Tab disabled id="3" key="3" title="Card">Will be soon</Tab>
-      <Tab disabled id="4" key="4" title="Chart">Will be soon</Tab>
+      <Tab disabled id="3" key="3" title={t('Card')}>Will be soon</Tab>
+      <Tab disabled id="4" key="4" title={t('Chart')}>Will be soon</Tab>
     </TabsContainer>
   </AgileBoardSettingsContainer>);
 }
@@ -56,6 +66,10 @@ AgileBoardSettings.propTypes = {
   agileId: PropTypes.string.isRequired,
   agileName: PropTypes.string.isRequired,
   columnSettings: PropTypes.object,
+  swimlaneSettings: PropTypes.object,
+  projectShortName: PropTypes.string,
+  hideOrphansSwimlane: PropTypes.bool,
+  orphansAtTheTop: PropTypes.bool,
 }
 
 export default AgileBoardSettings

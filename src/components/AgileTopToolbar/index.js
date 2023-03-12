@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 import Button from '@jetbrains/ring-ui/dist/button/button';
 import AgileSprintSelect from '../AgileSprintSelect';
 import PropTypes from 'prop-types';
-import Settings16pxIcon from './Settings16pxIcon';
-import Backlog16pxIcon from './Backlog16pxIcon';
-import Chart16pxIcon from './Chart16pxIcon';
+import Settings16pxIcon from './icons/Settings16pxIcon';
+import Backlog16pxIcon from './icons/Backlog16pxIcon';
+import Chart16pxIcon from './icons/Chart16pxIcon';
 import ButtonGroup from '@jetbrains/ring-ui/dist/button-group/button-group';
 import { useState } from 'react';
 
