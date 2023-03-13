@@ -7,6 +7,7 @@ import ColumnsSettings from '../ColumnsSettings';
 import SwimlanesSettings from '../SwimlanesSettings';
 import { useTranslation } from 'react-i18next';
 import ChartSettings from '../ChartSettings';
+import GeneralSettings from '../GeneralSettings';
 
 const HeaderSpan = styled.span`
   font-size: 24px;
@@ -48,7 +49,9 @@ function AgileBoardSettings({visible, agileId, agileName, columnSettings,
     <TabsContainer autoCollapse
         selected={selected}
         onSelect={selectHandler}>
-      <Tab disabled id="1" key="general" title={t('General')}>Will be soon</Tab>
+      <Tab id="1" key="general" title={t('General')}>
+        <GeneralSettings agileName={agileName}></GeneralSettings>
+      </Tab>
       <Tab id="2" key="2" title={t('Columns and Swimlanes')}>
         <ColumnsSettings agileId={agileId} columnSettings={columnSettings}/>
         <SwimlanesSettings
