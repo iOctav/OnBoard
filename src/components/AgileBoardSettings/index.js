@@ -6,6 +6,7 @@ import { useCallback, useState } from 'react';
 import ColumnsSettings from '../ColumnsSettings';
 import SwimlanesSettings from '../SwimlanesSettings';
 import { useTranslation } from 'react-i18next';
+import ChartSettings from '../ChartSettings';
 
 const HeaderSpan = styled.span`
   font-size: 24px;
@@ -30,7 +31,9 @@ const TabsContainer = styled(Tabs)`
   margin-top: calc(var(--ring-unit) * 2);
 `;
 
-function AgileBoardSettings({visible, agileId, agileName, columnSettings, swimlaneSettings, projectShortName, hideOrphansSwimlane, orphansAtTheTop}) {
+function AgileBoardSettings({visible, agileId, agileName, columnSettings,
+    swimlaneSettings, projectShortName, hideOrphansSwimlane, orphansAtTheTop,
+    reportSettings}) {
   const { t } = useTranslation();
   const [selected, setSelected] = useState('2');
   const selectHandler = useCallback((key) => {
@@ -56,7 +59,9 @@ function AgileBoardSettings({visible, agileId, agileName, columnSettings, swimla
           hideOrphansSwimlane={hideOrphansSwimlane}/>
       </Tab>
       <Tab disabled id="3" key="3" title={t('Card')}>Will be soon</Tab>
-      <Tab disabled id="4" key="4" title={t('Chart')}>Will be soon</Tab>
+      <Tab id="4" key="4" title={t('Chart')}>
+        <ChartSettings reportSettings={reportSettings}/>
+      </Tab>
     </TabsContainer>
   </AgileBoardSettingsContainer>);
 }
@@ -67,6 +72,7 @@ AgileBoardSettings.propTypes = {
   agileName: PropTypes.string.isRequired,
   columnSettings: PropTypes.object,
   swimlaneSettings: PropTypes.object,
+  reportSettings: PropTypes.object,
   projectShortName: PropTypes.string,
   hideOrphansSwimlane: PropTypes.bool,
   orphansAtTheTop: PropTypes.bool,
