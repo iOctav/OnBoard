@@ -42,7 +42,7 @@ function calculateSwimlaneType(swimlaneSettings) {
   return SwimlaneType.None;
 }
 
-function SwimlanesSettings({agileId, swimlaneSettings, projectShortName, hideOrphansSwimlane, orphansAtTheTop}) {
+function SwimlanesSettings({agileId, swimlaneSettings, projectShortNames, hideOrphansSwimlane, orphansAtTheTop}) {
   const { t } = useTranslation();
   const [selectedField, setSelectedField] = useState({label: swimlaneSettings.field?.presentation, key: swimlaneSettings.field?.id});
   const [swimlaneType, setSwimlaneType] = useState(calculateSwimlaneType(swimlaneSettings));
@@ -72,7 +72,7 @@ function SwimlanesSettings({agileId, swimlaneSettings, projectShortName, hideOrp
               selected={selectedField}
               makeDataset={data => data.map(field => ({value: field.id, label: field.name, description: field.customField?.fieldType?.presentation, aggregateable: field.aggregateable}))}
               lazyDataLoaderHook={useLazyGetValuesFilterFieldsQuery}
-              lazyDataLoaderHookParams={projectShortName}
+              lazyDataLoaderHookParams={projectShortNames}
               size={Size.M}
               height={ControlsHeight.S}
               onSelect={setSelectedField}/>
@@ -84,7 +84,7 @@ function SwimlanesSettings({agileId, swimlaneSettings, projectShortName, hideOrp
               selected={selectedField}
               makeDataset={data => data.map(field => ({value: field.id, label: field.name, description: field.customField?.fieldType?.presentation, aggregateable: field.aggregateable}))}
               lazyDataLoaderHook={useLazyGetIssuesFilterFieldsQuery}
-              lazyDataLoaderHookParams={projectShortName}
+              lazyDataLoaderHookParams={projectShortNames}
               size={Size.M}
               height={ControlsHeight.S}
               onSelect={setSelectedField}/>
@@ -106,7 +106,7 @@ function SwimlanesSettings({agileId, swimlaneSettings, projectShortName, hideOrp
 SwimlanesSettings.propTypes = {
   agileId: PropTypes.string.isRequired,
   swimlaneSettings: PropTypes.object.isRequired,
-  projectShortName: PropTypes.string.isRequired,
+  projectShortNames: PropTypes.arrayOf(PropTypes.string).isRequired,
   hideOrphansSwimlane: PropTypes.bool.isRequired,
   orphansAtTheTop: PropTypes.bool.isRequired,
 };

@@ -47,7 +47,7 @@ function AgileBoard() {
       <AgileBoardSettings visible={settingsVisible}
                           agileId={agile.id}
                           agileName={agile.name}
-                          projectShortName={agile.projects[0]?.shortName}
+                          projectShortNames={agile.projects?.map(proj => proj.shortName)}
                           columnSettings={agile.columnSettings}
                           swimlaneSettings={agile.swimlaneSettings}
                           hideOrphansSwimlane={agile.hideOrphansSwimlane}

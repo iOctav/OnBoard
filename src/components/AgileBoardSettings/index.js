@@ -32,7 +32,7 @@ const TabsContainer = styled(Tabs)`
 `;
 
 function AgileBoardSettings({visible, agileId, agileName, columnSettings,
-    swimlaneSettings, projectShortName, hideOrphansSwimlane, orphansAtTheTop,
+    swimlaneSettings, projectShortNames, hideOrphansSwimlane, orphansAtTheTop,
     reportSettings}) {
   const { t } = useTranslation();
   const [selected, setSelected] = useState('2');
@@ -54,7 +54,7 @@ function AgileBoardSettings({visible, agileId, agileName, columnSettings,
         <SwimlanesSettings
           agileId={agileId}
           swimlaneSettings={swimlaneSettings}
-          projectShortName={projectShortName}
+          projectShortNames={projectShortNames}
           orphansAtTheTop={orphansAtTheTop}
           hideOrphansSwimlane={hideOrphansSwimlane}/>
       </Tab>
@@ -73,7 +73,7 @@ AgileBoardSettings.propTypes = {
   columnSettings: PropTypes.object,
   swimlaneSettings: PropTypes.object,
   reportSettings: PropTypes.object,
-  projectShortName: PropTypes.string,
+  projectShortNames: PropTypes.arrayOf(PropTypes.string),
   hideOrphansSwimlane: PropTypes.bool,
   orphansAtTheTop: PropTypes.bool,
 }
