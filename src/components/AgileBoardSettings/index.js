@@ -8,6 +8,7 @@ import SwimlanesSettings from '../SwimlanesSettings';
 import { useTranslation } from 'react-i18next';
 import ChartSettings from '../ChartSettings';
 import GeneralSettings from '../GeneralSettings';
+import CardSettings from '../CardSettings';
 
 const HeaderSpan = styled.span`
   font-size: 24px;
@@ -32,11 +33,12 @@ const TabsContainer = styled(Tabs)`
   margin-top: calc(var(--ring-unit) * 2);
 `;
 
-function AgileBoardSettings({visible, agileId, agileName, columnSettings,
-    swimlaneSettings, hideOrphansSwimlane, orphansAtTheTop,
-    reportSettings, owner, sprintsSettings, projects}) {
+function AgileBoardSettings({visible, agileId, agileName, columnSettings, colorCoding,
+    swimlaneSettings, hideOrphansSwimlane, orphansAtTheTop, colorizeCustomFields,
+    reportSettings, owner, sprintsSettings, projects, cardSettings, estimationField,
+    originalEstimationField}) {
   const { t } = useTranslation();
-  const [selected, setSelected] = useState('1');
+  const [selected, setSelected] = useState('3');
   const selectHandler = useCallback((key) => {
     setSelected(key);
   }, []);
@@ -64,7 +66,15 @@ function AgileBoardSettings({visible, agileId, agileName, columnSettings,
           orphansAtTheTop={orphansAtTheTop}
           hideOrphansSwimlane={hideOrphansSwimlane}/>
       </Tab>
-      <Tab disabled id="3" key="3" title={t('Card')}>Will be soon</Tab>
+      <Tab id="3" key="3" title={t('Card')}>
+        <CardSettings cardSettings={cardSettings}
+                      cardOnSeveralSprints={sprintsSettings.cardOnSeveralSprints}
+                      colorizeCustomFields={colorizeCustomFields}
+                      projectShortNames={projectShortNames}
+                      colorCoding={colorCoding}
+                      estimationField={estimationField}
+                      originalEstimationField={originalEstimationField}/>
+      </Tab>
       <Tab id="4" key="4" title={t('Chart')}>
         <ChartSettings reportSettings={reportSettings}/>
       </Tab>
@@ -84,7 +94,12 @@ AgileBoardSettings.propTypes = {
   orphansAtTheTop: PropTypes.bool,
   owner: PropTypes.object,
   sprintsSettings: PropTypes.object,
-  projects: PropTypes.arrayOf(PropTypes.object)
+  projects: PropTypes.arrayOf(PropTypes.object),
+  cardSettings: PropTypes.object,
+  colorizeCustomFields: PropTypes.bool,
+  colorCoding: PropTypes.object,
+  estimationField: PropTypes.object,
+  originalEstimationField: PropTypes.object,
 }
 
 export default AgileBoardSettings
