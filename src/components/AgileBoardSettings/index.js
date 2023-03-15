@@ -33,13 +33,14 @@ const TabsContainer = styled(Tabs)`
 `;
 
 function AgileBoardSettings({visible, agileId, agileName, columnSettings,
-    swimlaneSettings, projectShortNames, hideOrphansSwimlane, orphansAtTheTop,
-    reportSettings}) {
+    swimlaneSettings, hideOrphansSwimlane, orphansAtTheTop,
+    reportSettings, owner, sprintsSettings, projects}) {
   const { t } = useTranslation();
-  const [selected, setSelected] = useState('2');
+  const [selected, setSelected] = useState('1');
   const selectHandler = useCallback((key) => {
     setSelected(key);
   }, []);
+  const projectShortNames = projects.map(project => project.shortName);
 
   return visible && (<AgileBoardSettingsContainer className="agile-board-settings">
     <HeaderSettingsDiv className="agile-board-settings-title">
@@ -50,7 +51,9 @@ function AgileBoardSettings({visible, agileId, agileName, columnSettings,
         selected={selected}
         onSelect={selectHandler}>
       <Tab id="1" key="general" title={t('General')}>
-        <GeneralSettings agileName={agileName}></GeneralSettings>
+        <GeneralSettings agileName={agileName} agileId={agileId}
+                         initialOwner={owner} sprintsSettings={sprintsSettings}
+                         projects={projects}/>
       </Tab>
       <Tab id="2" key="2" title={t('Columns and Swimlanes')}>
         <ColumnsSettings agileId={agileId} columnSettings={columnSettings}/>
@@ -79,6 +82,9 @@ AgileBoardSettings.propTypes = {
   projectShortNames: PropTypes.arrayOf(PropTypes.string),
   hideOrphansSwimlane: PropTypes.bool,
   orphansAtTheTop: PropTypes.bool,
+  owner: PropTypes.object,
+  sprintsSettings: PropTypes.object,
+  projects: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default AgileBoardSettings

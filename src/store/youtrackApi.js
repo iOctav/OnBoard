@@ -175,6 +175,24 @@ export const youtrackApi = createApi({
         },
       })
     }),
+    getUsers: builder.query({
+      query: () => ({
+        url: `users`,
+        params: {
+          fields: 'id,name,login,email,avatar/url',
+
+        },
+      })
+    }),
+    getProjects: builder.query({
+      query: () => ({
+        url: `admin/projects`,
+        params: {
+          fields: 'archived,id,isDemo,name,pinned,ringId,shortName,template',
+          sorting: 'natural',
+        },
+      })
+    }),
   }),
 });
 
@@ -184,4 +202,5 @@ export const { useGetAgilesByIdQuery, useGetCustomFieldValuesQuery,
   useLazyGetEnumBundleValuesQuery, useLazyGetOwnedBundleValuesQuery, useLazyGetStateBundleValuesQuery,
   useLazyGetVersionBundleValuesQuery, useLazyGetUserBundleValuesQuery, useLazyGetBuildBundleValuesQuery,
   useLazyGetAvailableColumnFieldsQuery, useLazyGetColumnSettingsAvailableColumnFieldsQuery,
-  useLazyGetValuesFilterFieldsQuery, useLazyGetIssuesFilterFieldsQuery, useLazyGetAvailableSwimlaneFieldsQuery } = youtrackApi;
+  useLazyGetValuesFilterFieldsQuery, useLazyGetIssuesFilterFieldsQuery, useLazyGetAvailableSwimlaneFieldsQuery,
+  useLazyGetUsersQuery, useLazyGetProjectsQuery } = youtrackApi;
