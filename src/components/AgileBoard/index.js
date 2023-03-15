@@ -54,7 +54,12 @@ function AgileBoard() {
                           orphansAtTheTop={agile.orphansAtTheTop}
                           reportSettings={agile.extensions?.reportSettings}
                           owner={agile.owner}
-                          sprintsSettings={agile.sprintsSettings}/>
+                          sprintsSettings={agile.sprintsSettings}
+                          cardSettings={agile.cardSettings}
+                          colorizeCustomFields={agile.colorizeCustomFields}
+                          colorCoding={agile.colorCoding}
+                          estimationField={agile.estimationField}
+                          originalEstimationField={agile.originalEstimationField}/>
       <AgileBoardTable>
         <colgroup>
           { columns.map(column => <col key={'col-' + column.id} />) }
