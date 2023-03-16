@@ -130,6 +130,98 @@ export const youtrackApi = createApi({
         },
       })
     }),
+    getAvailableColumnFields: builder.query({
+      query: (id) => ({
+        url: `agiles/${id}/availableColumnFields`,
+        params: {
+          fields: 'fieldDefaults(bundle(id,isUpdateable)),fieldType(id,presentation,valueType),id,instances(project(id)),localizedName,name,type',
+        },
+      })
+    }),
+    getColumnSettingsAvailableColumnFields: builder.query({
+      query: (id) => ({
+        url: `agiles/${id}/columnSettings/availableColumnFields`,
+        params: {
+          fields: 'id,name,presentation',
+        },
+      })
+    }),
+    getValuesFilterFields: builder.query({
+      query: (shortNames) => ({
+        url: `filterFields?${shortNames.map(name => `fld=${name}&`).join('')}fieldTypes=version%5B1%5D&fieldTypes=ownedField%5B1%5D&fieldTypes=state%5B1%5D&fieldTypes=user%5B1%5D&fieldTypes=enum%5B1%5D&fieldTypes=build%5B1%5D&fieldTypes=version%5B*%5D&fieldTypes=ownedField%5B*%5D&fieldTypes=user%5B*%5D&fieldTypes=enum%5B*%5D&fieldTypes=build%5B*%5D&fieldTypes=project&fieldTypes=tag&fieldTypes=date&fieldTypes=date+and+time&fieldTypes=instant`,
+        params: {
+          fields: '$type,aggregateable,customField(fieldType(id,isBundleType,presentation,valueType),id,localizedName,name,ordinal),id,instant,name,presentation,projects(id,name),sortable',
+          filteringType: 'contains',
+          getUnusedVisibleFields: true
+        },
+      })
+    }),
+    getIssuesFilterFields: builder.query({
+      query: (shortNames) => ({
+        url: `filterFields?${shortNames.map(name => `fld=${name}&`).join('')}fieldTypes=version%5B1%5D&fieldTypes=version%5B*%5D&fieldTypes=ownedField%5B1%5D&fieldTypes=ownedField%5B*%5D&fieldTypes=state%5B1%5D&fieldTypes=enum%5B1%5D&fieldTypes=enum%5B*%5D&fieldTypes=build%5B1%5D&fieldTypes=build%5B*%5D`,
+        params: {
+          fields: '$type,aggregateable,customField(fieldType(id,isBundleType,presentation,valueType),id,localizedName,name,ordinal),id,instant,name,presentation,projects(id,name),sortable',
+          filteringType: 'contains',
+          getUnusedVisibleFields: true
+        },
+      })
+    }),
+    getColorSchemeFilterFields: builder.query({
+      query: (shortNames) => ({
+        url: `filterFields?${shortNames.map(name => `fld=${name}&`).join('')}fieldTypes=build%5B*%5D&fieldTypes=version%5B1%5D&fieldTypes=version%5B*%5D&fieldTypes=enum%5B1%5D&fieldTypes=enum%5B*%5D&fieldTypes=state%5B1%5D&fieldTypes=ownedField%5B1%5D&fieldTypes=ownedField%5B*%5D`,
+        params: {
+          fields: '$type,aggregateable,customField(fieldType(id,isBundleType,presentation,valueType),id,localizedName,name,ordinal),id,instant,name,presentation,projects(id,name),sortable',
+          filteringType: 'contains',
+          getUnusedVisibleFields: true
+        },
+      })
+    }),
+    getEstimationFilterFields: builder.query({
+      query: (shortNames) => ({
+        url: `filterFields?${shortNames.map(name => `fld=${name}&`).join('')}fieldTypes=period&fieldTypes=integer&fieldTypes=float`,
+        params: {
+          fields: '$type,aggregateable,customField(fieldType(id,isBundleType,presentation,valueType),id,localizedName,name,ordinal),id,instant,name,presentation,projects(id,name),sortable',
+          filteringType: 'contains',
+          getUnusedVisibleFields: true
+        },
+      })
+    }),
+    getAvailableSwimlaneFields: builder.query({
+      query: (agileId) => ({
+        url: `agiles/${agileId}/swimlaneSettings/availableSwimlaneFields`,
+        params: {
+          fields: 'id,name,presentation',
+
+        },
+      })
+    }),
+    getUsers: builder.query({
+      query: () => ({
+        url: `users`,
+        params: {
+          fields: 'avatarUrl,banBadge,banned,email,fullName,id,login,ringId',
+
+        },
+      })
+    }),
+    getProjects: builder.query({
+      query: () => ({
+        url: `admin/projects`,
+        params: {
+          fields: 'archived,id,isDemo,name,pinned,ringId,shortName,template',
+          sorting: 'natural',
+        },
+      })
+    }),
+    getVisibilityGroups: builder.query({
+      query: () => ({
+        url: `groups`,
+        params: {
+          fields: 'allUsersGroup,icon,id,name,ringId',
+
+        },
+      })
+    }),
   }),
 });
 
@@ -137,4 +229,8 @@ export const { useGetAgilesByIdQuery, useGetCustomFieldValuesQuery,
   useGetSpecificSprintForSpecificAgileQuery, useLazyGetSprintsForAgileQuery, useGetIssuesQuery,
   useGetCurrentUserInfoQuery, useLazyGetAgilesQuery, useGetAgileUserProfileQuery,
   useLazyGetEnumBundleValuesQuery, useLazyGetOwnedBundleValuesQuery, useLazyGetStateBundleValuesQuery,
-  useLazyGetVersionBundleValuesQuery, useLazyGetUserBundleValuesQuery, useLazyGetBuildBundleValuesQuery } = youtrackApi;
+  useLazyGetVersionBundleValuesQuery, useLazyGetUserBundleValuesQuery, useLazyGetBuildBundleValuesQuery,
+  useLazyGetAvailableColumnFieldsQuery, useLazyGetColorSchemeFilterFieldsQuery, useLazyGetEstimationFilterFieldsQuery,
+  useLazyGetColumnSettingsAvailableColumnFieldsQuery,
+  useLazyGetValuesFilterFieldsQuery, useLazyGetIssuesFilterFieldsQuery, useLazyGetAvailableSwimlaneFieldsQuery,
+  useLazyGetUsersQuery, useLazyGetProjectsQuery, useLazyGetVisibilityGroupsQuery } = youtrackApi;

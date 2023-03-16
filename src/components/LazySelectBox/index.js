@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
 function LazySelectBox({lazyDataLoaderHook, lazyDataLoaderHookParams, makeDataset, ...rest}) {
-  const [loading, setAgilesLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [dataset, setDataset] = useState([]);
   const [getData, results] = lazyDataLoaderHook();
   useEffect(() => {
     if(results && results.data) {
-      setAgilesLoading(false);
+      setLoading(false);
       setDataset(makeDataset(results.data));
     }
-  },[results])
+  },[results, makeDataset])
   return (<Select
     filter={true}
     data={dataset}
@@ -22,8 +22,6 @@ function LazySelectBox({lazyDataLoaderHook, lazyDataLoaderHookParams, makeDatase
 }
 
 LazySelectBox.propTypes = {
-  label: PropTypes.string,
-  selected: PropTypes.oneOfType([PropTypes.object, PropTypes.arrayOf(PropTypes.object)]),
   lazyDataLoaderHook: PropTypes.func.isRequired,
   lazyDataLoaderHookParams: PropTypes.any,
   makeDataset: PropTypes.func.isRequired

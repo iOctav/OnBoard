@@ -13,7 +13,6 @@ const BorderedTd = styled.td`
   border-right: 1px solid var(--ring-line-color);
   border-collapse: collapse;
   vertical-align: top;
-  text-align: left;
   &:hover .new-card-button-action-text {
     display: inline;
   };
@@ -60,8 +59,7 @@ function AgileBoardRows({orphanRow, trimmedSwimlanes, hideOrphansSwimlane, orpha
   const { data: issues,
     isLoading,
     isSuccess,
-    isError,
-    error
+    isError
   } = useGetIssuesQuery(issueIds);
 
   if (isLoading) {

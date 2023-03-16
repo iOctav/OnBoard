@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import AgileBoardRows from '../AgileBoardRows';
 import AgileBoardHeader from '../AgileBoardHeader';
 import AgileSearchQueryPanel from '../AgileSearchQueryPanel';
 import AgileTopToolbar from '../AgileTopToolbar';
@@ -8,6 +7,8 @@ import { useGetAgilesByIdQuery } from '../../store/youtrackApi';
 import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
 import { useParams}  from 'react-router-dom';
 import AgileBoardData from '../AgileBoardData';
+import AgileBoardSettings from '../AgileBoardSettings';
+import { useState } from 'react';
 
 const AgileBoardTable = styled.table`
   min-width: 720px;
@@ -20,6 +21,7 @@ const AgileBoardTable = styled.table`
 
 function AgileBoard() {
   const { agileId, sprintId } = useParams();
+  const [settingsVisible, setSettingsVisible] = useState(false);
   const { data: agile,
     isLoading,
     isSuccess,
@@ -34,11 +36,31 @@ function AgileBoard() {
   } else if (isSuccess) {
     const columns = agile.columnSettings.columns;
     const realSprintId = sprintId.toLowerCase() === 'current'
-      ? agile.currentSprint.id : sprintId
-    const sprint = agile.sprints.find(sprint => sprint.id === realSprintId)
+      ? agile.currentSprint.id : sprintId;
+    const sprint = agile.sprints.find(sprint => sprint.id === realSprintId);
     content = <div>
       <AgileSearchQueryPanel currentAgileId={agile.id} currentAgileName={agile.name}/>
-      <AgileTopToolbar sprintsDisabled={agile.sprintsSettings.disableSprints} agileId={agile.id} sprint={{id: sprint.id, name: sprint.name, from: sprint.start, to: sprint.finish}}/>
+      <AgileTopToolbar sprintsDisabled={agile.sprintsSettings.disableSprints}
+                       agileId={agile.id}
+                       sprint={{id: sprint.id, name: sprint.name, from: sprint.start, to: sprint.finish}}
+                       onSettingsButtonClick={() => setSettingsVisible((state) => !state)}/>
+      <AgileBoardSettings visible={settingsVisible}
+                          agileId={agile.id}
+                          agileName={agile.name}
+                          projects={agile.projects}
+                          columnSettings={agile.columnSettings}
+                          swimlaneSettings={agile.swimlaneSettings}
+                          hideOrphansSwimlane={agile.hideOrphansSwimlane}
+                          orphansAtTheTop={agile.orphansAtTheTop}
+                          reportSettings={agile.extensions?.reportSettings}
+                          owner={agile.owner}
+                          sprintsSettings={agile.sprintsSettings}
+                          cardSettings={agile.cardSettings}
+                          colorizeCustomFields={agile.colorizeCustomFields}
+                          colorCoding={agile.colorCoding}
+                          estimationField={agile.estimationField}
+                          originalEstimationField={agile.originalEstimationField}
+                          readSharingSettings={agile.readSharingSettings} updateSharingSettings={agile.updateSharingSettings}/>
       <AgileBoardTable>
         <colgroup>
           { columns.map(column => <col key={'col-' + column.id} />) }
