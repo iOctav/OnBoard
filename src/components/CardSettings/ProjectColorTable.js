@@ -22,14 +22,12 @@ function ProjectColorTable({projectColors}) {
                         selectedProjectColors.find(project => project.id === item.id).color.id = colorId)}/>
         )},
   ]
-  const data = [...selectedProjectColors].map(col => ({...col, key: col.id}));
+  const data = selectedProjectColors ? [...selectedProjectColors].map(col => ({...col, key: col.id})) : [];
   const selection = new Selection({data: data});
-  return (
-    <Table data={data}
-           selectable={false}
-           selection={selection} onSelect={() => {}}
-           columns={tableColumns}/>
-  );
+  return selectedProjectColors && (<Table data={data}
+             selectable={false}
+             selection={selection} onSelect={() => {}}
+             columns={tableColumns}/>);
 
 }
 

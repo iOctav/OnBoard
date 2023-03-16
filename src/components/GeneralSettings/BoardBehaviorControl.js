@@ -58,7 +58,7 @@ BoardBehaviorControl.propTypes = {
   sprintsEnabled: PropTypes.bool.isRequired,
   addNewIssueToKanban: PropTypes.bool.isRequired,
   isExplicit: PropTypes.bool.isRequired,
-  explicitQuery: PropTypes.string.isRequired,
+  explicitQuery: PropTypes.string,
   hideSubtasksOfCards: PropTypes.bool.isRequired,
   defaultSprint: PropTypes.object,
   agileId: PropTypes.string,

@@ -32,7 +32,7 @@ function GeneralSettings({agileName, agileId, initialOwner, sprintsSettings, pro
   const [ name, setName ] = useState(agileName);
   const [ owner, setOwner ] = useState({key: initialOwner.id, label: initialOwner.fullName})
   const [ enableSprints, setEnableSprints ] = useState(!sprintsSettings.disableSprints);
-  const [ projectTags, setProjectTags ] = useState(projects.map(project => ({key: project.id, label: project.shortName})));
+  const [ projectTags, setProjectTags ] = useState(projects.map(project => ({key: project.id, label: project.name})));
   let canViewGroupsAndUsers = [...readSharingSettings.permittedGroups.map(group => ({key: group.id, label: group.name})),
     ...readSharingSettings.permittedUsers.map(user => ({key: user.id, label: user.name}))];
   if (readSharingSettings.projectBased) {
@@ -60,7 +60,8 @@ function GeneralSettings({agileName, agileId, initialOwner, sprintsSettings, pro
           selected={owner}
           onSelect={setOwner}
           lazyDataLoaderHook={useLazyGetUsersQuery}
-          makeDataset={(data) => data.map((user) => ({key: user.id, label: user.name, type: 'user', showGeneratedAvatar: true, username: user.name}))} />
+          makeDataset={(data) => data.map((user) => ({key: user.id, label: `${user.fullName}${user.login !== user.fullName ? ' (' + user.login + ')' : ''}`,
+            type: 'user', icon: user.avatarUrl}))} />
       </span>
     </SettingsControl>
     <SettingsControl label={t('Projects')}>
@@ -68,7 +69,7 @@ function GeneralSettings({agileName, agileId, initialOwner, sprintsSettings, pro
         onAddTag={(tag) => setProjectTags([...projectTags, tag.tag])}
         tags={projectTags}
         lazyDataLoaderHook={useLazyGetProjectsQuery}
-        makeDataSource={data => data.map(project => ({key: project.id, label: project.shortName}))}/>
+        makeDataSource={data => data.map(project => ({key: project.id, label: project.name}))}/>
     </SettingsControl>
     <SettingsControl label={t('Can view and use the board')}>
       <UsersGroupsSelect type="INLINE"
