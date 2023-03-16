@@ -59,7 +59,8 @@ function AgileBoard() {
                           colorizeCustomFields={agile.colorizeCustomFields}
                           colorCoding={agile.colorCoding}
                           estimationField={agile.estimationField}
-                          originalEstimationField={agile.originalEstimationField}/>
+                          originalEstimationField={agile.originalEstimationField}
+                          readSharingSettings={agile.readSharingSettings} updateSharingSettings={agile.updateSharingSettings}/>
       <AgileBoardTable>
         <colgroup>
           { columns.map(column => <col key={'col-' + column.id} />) }

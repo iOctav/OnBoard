@@ -14,6 +14,7 @@ import ButtonGroup from '@jetbrains/ring-ui/dist/button-group/button-group';
 import BoardBehaviorControl from './BoardBehaviorControl';
 import UnderControlDescription from './UnderControlDescription';
 import LazyTagBox from '../LazyTagBox';
+import UsersGroupsSelect from './UsersGroupsSelect';
 
 const InlineInput = styled(Input)`
   display: inline-block;
@@ -26,12 +27,24 @@ const FloatRightButtonGroup = styled.div`
   z-index: 1;
 `;
 
-function GeneralSettings({agileName, agileId, initialOwner, sprintsSettings, projects}) {
+function GeneralSettings({agileName, agileId, initialOwner, sprintsSettings, projects, readSharingSettings, updateSharingSettings}) {
   const { t } = useTranslation();
   const [ name, setName ] = useState(agileName);
   const [ owner, setOwner ] = useState({key: initialOwner.id, label: initialOwner.fullName})
   const [ enableSprints, setEnableSprints ] = useState(!sprintsSettings.disableSprints);
   const [ projectTags, setProjectTags ] = useState(projects.map(project => ({key: project.id, label: project.shortName})));
+  let canViewGroupsAndUsers = [...readSharingSettings.permittedGroups.map(group => ({key: group.id, label: group.name})),
+    ...readSharingSettings.permittedUsers.map(user => ({key: user.id, label: user.name}))];
+  if (readSharingSettings.projectBased) {
+    canViewGroupsAndUsers.push({key: 'project-base', label: 'issue readers'});
+  }
+  const [ canView, setCanView ] = useState(canViewGroupsAndUsers);
+  let canEditGroupsAndUsers = [...updateSharingSettings.permittedGroups.map(group => ({key: group.id, label: group.name})),
+    ...updateSharingSettings.permittedUsers.map(user => ({key: user.id, label: user.name}))];
+  if (updateSharingSettings.projectBased) {
+    canEditGroupsAndUsers.push({key: 'project-base', label: 'project updaters'});
+  }
+  const [ canEdit, setCanEdit ] = useState(canEditGroupsAndUsers);
   return (<div>
     <FloatRightButtonGroup className="general-settings-action-buttons">
       <Button onClick={() => {}} height={ControlsHeight.S}>{t('Clone board')}</Button>
@@ -58,11 +71,19 @@ function GeneralSettings({agileName, agileId, initialOwner, sprintsSettings, pro
         makeDataSource={data => data.map(project => ({key: project.id, label: project.shortName}))}/>
     </SettingsControl>
     <SettingsControl label={t('Can view and use the board')}>
-      <div>Group and users control. Will be soon</div>
+      <UsersGroupsSelect type="INLINE"
+                         projectBasedLabel="issue readers"
+                         deselectAllUsersAndGroups={() => setCanView([])}
+                         selected={canView}
+                         onChange={setCanView}/>
       <UnderControlDescription>{t('Members can view this board including fields and values that are used in the board settings')}</UnderControlDescription>
     </SettingsControl>
     <SettingsControl label={t('Can edit board settings')}>
-      <div>Group and users control. Will be soon</div>
+      <UsersGroupsSelect type="INLINE"
+                         projectBasedLabel="project updaters"
+                         deselectAllUsersAndGroups={() => setCanEdit([])}
+                         selected={canEdit}
+                         onChange={setCanEdit}/>
       <UnderControlDescription>{t('Users with ')}<b>{t('Low-level administration')}</b>
         {t(' permission can edit the settings of any board that they can view and use')}</UnderControlDescription>
     </SettingsControl>
@@ -96,6 +117,7 @@ GeneralSettings.propTypes = {
   initialOwner: PropTypes.object.isRequired,
   sprintsSettings: PropTypes.object.isRequired,
   projects: PropTypes.arrayOf(PropTypes.object).isRequired,
+  readSharingSettings: PropTypes.object.isRequired,
 };
 
 export default GeneralSettings;
