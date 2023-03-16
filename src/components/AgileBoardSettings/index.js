@@ -33,12 +33,12 @@ const TabsContainer = styled(Tabs)`
   margin-top: calc(var(--ring-unit) * 2);
 `;
 
-function AgileBoardSettings({visible, agileId, agileName, columnSettings, colorCoding,
+function AgileBoardSettings({visible, selectedTab, agileId, agileName, columnSettings, colorCoding,
     swimlaneSettings, hideOrphansSwimlane, orphansAtTheTop, colorizeCustomFields,
     reportSettings, owner, sprintsSettings, projects, cardSettings, estimationField,
     originalEstimationField, readSharingSettings, updateSharingSettings}) {
   const { t } = useTranslation();
-  const [selected, setSelected] = useState('general');
+  const [selected, setSelected] = useState(selectedTab || 'general');
   const selectHandler = useCallback((key) => {
     setSelected(key);
   }, []);
@@ -86,6 +86,7 @@ function AgileBoardSettings({visible, agileId, agileName, columnSettings, colorC
 
 AgileBoardSettings.propTypes = {
   visible: PropTypes.bool.isRequired,
+  selectedTab: PropTypes.string,
   agileId: PropTypes.string.isRequired,
   agileName: PropTypes.string.isRequired,
   columnSettings: PropTypes.object,
