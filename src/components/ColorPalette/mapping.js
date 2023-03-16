@@ -1,0 +1,51 @@
+export const MAPPING = [
+  [
+    { index: 16, tone: 0, brightness: 0 },
+    { index: 27, tone: 0, brightness: 1 },
+    { index: 30, tone: 0, brightness: 2 },
+    { index: 31, tone: 0, brightness: 3 },
+    { index: 35, tone: 0, brightness: 4 },
+  ],
+  [
+    { index: 17, tone: 1, brightness: 0 },
+    { index: 14, tone: 1, brightness: 1 },
+    { index: 10, tone: 1, brightness: 2 },
+    { index: 3, tone: 1, brightness: 3 },
+    { index: 32, tone: 1, brightness: 4 },
+  ],
+  [
+    { index: 15, tone: 2, brightness: 0 },
+    { index: 24, tone: 2, brightness: 1 },
+    { index: 28, tone: 2, brightness: 2 },
+    { index: 7, tone: 2, brightness: 3 },
+    { index: 33, tone: 2, brightness: 4 },
+  ],
+  [
+    { index: 21, tone: 3, brightness: 0 },
+    { index: 25, tone: 3, brightness: 1 },
+    { index: 29, tone: 3, brightness: 2 },
+    { index: 4, tone: 3, brightness: 3 },
+    { index: 6, tone: 3, brightness: 4 },
+  ],
+  [
+    { index: 22, tone: 4, brightness: 0 },
+    { index: 19, tone: 4, brightness: 1 },
+    { index: 12, tone: 4, brightness: 2 },
+    { index: 9, tone: 4, brightness: 3 },
+    { index: 5, tone: 4, brightness: 4 },
+  ],
+  [
+    { index: 18, tone: 5, brightness: 0 },
+    { index: 13, tone: 5, brightness: 1 },
+    { index: 11, tone: 5, brightness: 2 },
+    { index: 20, tone: 5, brightness: 3 },
+    { index: 8, tone: 5, brightness: 4 },
+  ],
+  [
+    { index: 23, tone: 6, brightness: 0 },
+    { index: 26, tone: 6, brightness: 1 },
+    { index: 2, tone: 6, brightness: 2 },
+    { index: 1, tone: 6, brightness: 3 },
+    { index: 34, tone: 6, brightness: 4 },
+  ],
+];

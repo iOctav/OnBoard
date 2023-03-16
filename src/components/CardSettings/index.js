@@ -9,16 +9,19 @@ import LazySelectBox from '../LazySelectBox';
 import { useLazyGetColorSchemeFilterFieldsQuery, useLazyGetEstimationFilterFieldsQuery } from '../../store/youtrackApi';
 import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import { ControlsHeight } from '@jetbrains/ring-ui/dist/global/controls-height';
+import ProjectColorTable from './ProjectColorTable';
+import CustomFieldsTable from './CustomFieldsTable';
 
 const CheckBoxContainer = styled.div`
   position: relative;
   margin: calc(var(--ring-unit) * 3) 0 16px;
 `;
 
-function CardSettings({cardSettings, colorCoding, estimationField, originalEstimationField, colorizeCustomFields, cardOnSeveralSprints, projectShortNames}) {
+function CardSettings({cardSettings, colorCoding, estimationField, originalEstimationField, colorizeCustomFields, cardOnSeveralSprints, projects}) {
   const { t } = useTranslation();
   const [colorizeCustomFieldsValue, setColorizeCustomFieldsValue] = useState(colorizeCustomFields);
   const [cardOnSeveralSprintsValue, setCardOnSeveralSprintsValue] = useState(cardOnSeveralSprints);
+  const projectShortNames = projects.map(project => project.shortName);
   const noEstimationField = { label: t('No current estimation field'), key: 'no-estimation' };
   const noColorItem = { label: t('No color scheme'), key: 'no-color' };
   const projectColorItem = { label: t('Project'), key: 'project-colors' };
@@ -65,6 +68,7 @@ function CardSettings({cardSettings, colorCoding, estimationField, originalEstim
                      onSelect={setColorScheme}/>
     </SettingsControl>
     <SettingsControl label={t('Custom fields')}/>
+    <CustomFieldsTable fields={cardSettings.fields} projects={projects}/>
     <CheckBoxContainer>
       <Checkbox label={t('Show colors for other custom fields')}
                 checked={colorizeCustomFieldsValue}
@@ -75,6 +79,9 @@ function CardSettings({cardSettings, colorCoding, estimationField, originalEstim
                 checked={cardOnSeveralSprintsValue}
                 onChange={(event) => setCardOnSeveralSprintsValue(!event.target.checked)}/>
     </CheckBoxContainer>
+    { colorScheme.key === projectColorItem.key &&
+      <ProjectColorTable projectColors={colorCoding.projectColors}></ProjectColorTable>
+    }
   </div>);
 }
 
@@ -82,7 +89,7 @@ CardSettings.propTypes = {
   cardSettings: PropTypes.object.isRequired,
   colorizeCustomFields: PropTypes.bool.isRequired,
   cardOnSeveralSprints: PropTypes.bool.isRequired,
-  projectShortNames: PropTypes.array,
+  projects: PropTypes.arrayOf(PropTypes.object),
   estimationField: PropTypes.object,
   originalEstimationField: PropTypes.object,
   colorCoding: PropTypes.object,
