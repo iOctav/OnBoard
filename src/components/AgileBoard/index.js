@@ -5,7 +5,7 @@ import AgileSearchQueryPanel from '../AgileSearchQueryPanel';
 import AgileTopToolbar from '../AgileTopToolbar';
 import { useGetAgilesByIdQuery } from '../../store/youtrackApi';
 import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
-import { useParams}  from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import AgileBoardData from '../AgileBoardData';
 import AgileBoardSettings from '../AgileBoardSettings';
 import { useState } from 'react';
@@ -21,7 +21,8 @@ const AgileBoardTable = styled.table`
 
 function AgileBoard() {
   const { agileId, sprintId } = useParams();
-  const [settingsVisible, setSettingsVisible] = useState(false);
+  const { search } = useLocation();
+  const [settingsVisible, setSettingsVisible] = useState(search.startsWith('?settings'));
   const { data: agile,
     isLoading,
     isSuccess,
@@ -45,6 +46,7 @@ function AgileBoard() {
                        sprint={{id: sprint.id, name: sprint.name, from: sprint.start, to: sprint.finish}}
                        onSettingsButtonClick={() => setSettingsVisible((state) => !state)}/>
       <AgileBoardSettings visible={settingsVisible}
+                          selectedTab={new URLSearchParams(search).get('tab')}
                           agileId={agile.id}
                           agileName={agile.name}
                           projects={agile.projects}
