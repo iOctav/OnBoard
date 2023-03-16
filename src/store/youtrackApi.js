@@ -199,7 +199,7 @@ export const youtrackApi = createApi({
       query: () => ({
         url: `users`,
         params: {
-          fields: 'id,name,login,email,avatar/url',
+          fields: 'avatarUrl,banBadge,banned,email,fullName,id,login,ringId',
 
         },
       })
@@ -210,6 +210,15 @@ export const youtrackApi = createApi({
         params: {
           fields: 'archived,id,isDemo,name,pinned,ringId,shortName,template',
           sorting: 'natural',
+        },
+      })
+    }),
+    getVisibilityGroups: builder.query({
+      query: () => ({
+        url: `groups`,
+        params: {
+          fields: 'allUsersGroup,icon,id,name,ringId',
+
         },
       })
     }),
@@ -224,4 +233,4 @@ export const { useGetAgilesByIdQuery, useGetCustomFieldValuesQuery,
   useLazyGetAvailableColumnFieldsQuery, useLazyGetColorSchemeFilterFieldsQuery, useLazyGetEstimationFilterFieldsQuery,
   useLazyGetColumnSettingsAvailableColumnFieldsQuery,
   useLazyGetValuesFilterFieldsQuery, useLazyGetIssuesFilterFieldsQuery, useLazyGetAvailableSwimlaneFieldsQuery,
-  useLazyGetUsersQuery, useLazyGetProjectsQuery } = youtrackApi;
+  useLazyGetUsersQuery, useLazyGetProjectsQuery, useLazyGetVisibilityGroupsQuery } = youtrackApi;

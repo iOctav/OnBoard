@@ -36,7 +36,7 @@ const TabsContainer = styled(Tabs)`
 function AgileBoardSettings({visible, agileId, agileName, columnSettings, colorCoding,
     swimlaneSettings, hideOrphansSwimlane, orphansAtTheTop, colorizeCustomFields,
     reportSettings, owner, sprintsSettings, projects, cardSettings, estimationField,
-    originalEstimationField}) {
+    originalEstimationField, readSharingSettings, updateSharingSettings}) {
   const { t } = useTranslation();
   const [selected, setSelected] = useState('3');
   const selectHandler = useCallback((key) => {
@@ -55,7 +55,8 @@ function AgileBoardSettings({visible, agileId, agileName, columnSettings, colorC
       <Tab id="1" key="general" title={t('General')}>
         <GeneralSettings agileName={agileName} agileId={agileId}
                          initialOwner={owner} sprintsSettings={sprintsSettings}
-                         projects={projects}/>
+                         projects={projects} readSharingSettings={readSharingSettings}
+                         updateSharingSettings={updateSharingSettings}/>
       </Tab>
       <Tab id="2" key="2" title={t('Columns and Swimlanes')}>
         <ColumnsSettings agileId={agileId} columnSettings={columnSettings}/>
@@ -100,6 +101,8 @@ AgileBoardSettings.propTypes = {
   colorCoding: PropTypes.object,
   estimationField: PropTypes.object,
   originalEstimationField: PropTypes.object,
+  readSharingSettings: PropTypes.object,
+  updateSharingSettings: PropTypes.object,
 }
 
 export default AgileBoardSettings
