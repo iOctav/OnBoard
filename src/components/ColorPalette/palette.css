@@ -1,0 +1,222 @@
+/*******************************************************************************/
+/**    Title: Stylesheet for ring color pallete
+/**    Author: JetBrains
+/**    Date: 2021
+/**    Code version: 5.0.112
+/**    Availability: https://github.com/JetBrains/ring-ui
+/******************************************************************************/
+
+.ring-palette_color-0 {
+    color: #444;
+    background-color: transparent;
+}
+
+.ring-palette_color-1,
+.ring-palette_tone-0-0 {
+    color: #888;
+    background-color: #e6e6e6;
+}
+
+.ring-palette_color-2,
+.ring-palette_tone-1-0 {
+    color: #4da400;
+    background-color: #e6f6cf;
+}
+
+.ring-palette_color-3,
+.ring-palette_tone-2-0 {
+    color: #45818e;
+    background-color: #d8f7f3;
+}
+
+.ring-palette_color-4,
+.ring-palette_tone-3-0 {
+    color: #3d85c6;
+    background-color: #e0f1fb;
+}
+
+.ring-palette_color-5,
+.ring-palette_tone-4-0 {
+    color: #dc5766;
+    background-color: #fce5f1;
+}
+
+.ring-palette_color-6,
+.ring-palette_tone-5-0 {
+    color: #b45f06;
+    background-color: #ffee9c;
+}
+
+.ring-palette_color-7,
+.ring-palette_tone-6-0 {
+    color: #b45f06;
+    background-color: #f7e9c1;
+}
+
+.ring-palette_color-8,
+.ring-palette_tone-0-1 {
+    color: #444;
+    background-color: #bababa;
+}
+
+.ring-palette_color-9,
+.ring-palette_tone-1-1 {
+    color: #444;
+    background-color: #b7e281;
+}
+
+.ring-palette_color-10,
+.ring-palette_tone-2-1 {
+    color: #444;
+    background-color: #92e1d5;
+}
+
+.ring-palette_color-11,
+.ring-palette_tone-3-1 {
+    color: #444;
+    background-color: #a6e0fc;
+}
+
+.ring-palette_color-12,
+.ring-palette_tone-4-1 {
+    color: #444;
+    background-color: #ffc8ea;
+}
+
+.ring-palette_color-13,
+.ring-palette_tone-5-1 {
+    color: #444;
+    background-color: #fed74a;
+}
+
+.ring-palette_color-14,
+.ring-palette_tone-6-1 {
+    color: #444;
+    background-color: #e0c378;
+}
+
+.ring-palette_color-15,
+.ring-palette_tone-0-2 {
+    color: #fff;
+    background-color: #878787;
+}
+
+.ring-palette_color-16,
+.ring-palette_tone-1-2 {
+    color: #fff;
+    background-color: #7dbd36;
+}
+
+.ring-palette_color-17,
+.ring-palette_tone-2-2 {
+    color: #fff;
+    background-color: #25beb2;
+}
+
+.ring-palette_color-18,
+.ring-palette_tone-3-2 {
+    color: #fff;
+    background-color: #42a3df;
+}
+
+.ring-palette_color-19,
+.ring-palette_tone-4-2 {
+    color: #fff;
+    background-color: #ff7bc3;
+}
+
+.ring-palette_color-20,
+.ring-palette_tone-5-2 {
+    color: #fff;
+    background-color: #ff7123;
+}
+
+.ring-palette_color-21,
+.ring-palette_tone-6-2 {
+    color: #fff;
+    background-color: #ce6700;
+}
+
+.ring-palette_color-22,
+.ring-palette_tone-0-3 {
+    color: #fff;
+    background-color: #4d4d4d;
+}
+
+.ring-palette_color-23,
+.ring-palette_tone-1-3 {
+    color: #fff;
+    background-color: #409600;
+}
+
+.ring-palette_color-24,
+.ring-palette_tone-2-3 {
+    color: #fff;
+    background-color: #2f9890;
+}
+
+.ring-palette_color-25,
+.ring-palette_tone-3-3 {
+    color: #fff;
+    background-color: #0070e4;
+}
+
+.ring-palette_color-26,
+.ring-palette_tone-4-3 {
+    color: #fff;
+    background-color: #dc0083;
+}
+
+.ring-palette_color-27,
+.ring-palette_tone-5-3 {
+    color: #fff;
+    background-color: #e30000;
+}
+
+.ring-palette_color-28,
+.ring-palette_tone-6-3 {
+    color: #fff;
+    background-color: #8d5100;
+}
+
+.ring-palette_color-29,
+.ring-palette_tone-0-4 {
+    color: #fff;
+    background-color: #1a1a1a;
+}
+
+.ring-palette_color-30,
+.ring-palette_tone-1-4 {
+    color: #fff;
+    background-color: #246512;
+}
+
+.ring-palette_color-31,
+.ring-palette_tone-2-4 {
+    color: #fff;
+    background-color: #00665e;
+}
+
+.ring-palette_color-32,
+.ring-palette_tone-3-4 {
+    color: #fff;
+    background-color: #0050a1;
+}
+
+.ring-palette_color-33,
+.ring-palette_tone-4-4 {
+    color: #fff;
+    background-color: #900052;
+}
+
+.ring-palette_color-34,
+.ring-palette_tone-5-4 {
+    color: #fff;
+    background-color: #8e1600;
+}
+
+.ring-palette_color-35,
+.ring-palette_tone-6-4 {
+    color: #fff;
+    background-color: #553000;
+}

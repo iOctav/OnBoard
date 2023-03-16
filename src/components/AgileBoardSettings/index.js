@@ -70,7 +70,7 @@ function AgileBoardSettings({visible, agileId, agileName, columnSettings, colorC
         <CardSettings cardSettings={cardSettings}
                       cardOnSeveralSprints={sprintsSettings.cardOnSeveralSprints}
                       colorizeCustomFields={colorizeCustomFields}
-                      projectShortNames={projectShortNames}
+                      projects={projects}
                       colorCoding={colorCoding}
                       estimationField={estimationField}
                       originalEstimationField={originalEstimationField}/>
