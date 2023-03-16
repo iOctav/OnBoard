@@ -38,7 +38,7 @@ function AgileBoardSettings({visible, agileId, agileName, columnSettings, colorC
     reportSettings, owner, sprintsSettings, projects, cardSettings, estimationField,
     originalEstimationField, readSharingSettings, updateSharingSettings}) {
   const { t } = useTranslation();
-  const [selected, setSelected] = useState('3');
+  const [selected, setSelected] = useState('general');
   const selectHandler = useCallback((key) => {
     setSelected(key);
   }, []);
@@ -52,13 +52,13 @@ function AgileBoardSettings({visible, agileId, agileName, columnSettings, colorC
     <TabsContainer autoCollapse
         selected={selected}
         onSelect={selectHandler}>
-      <Tab id="1" key="general" title={t('General')}>
+      <Tab id="general" key="general" title={t('General')}>
         <GeneralSettings agileName={agileName} agileId={agileId}
                          initialOwner={owner} sprintsSettings={sprintsSettings}
                          projects={projects} readSharingSettings={readSharingSettings}
                          updateSharingSettings={updateSharingSettings}/>
       </Tab>
-      <Tab id="2" key="2" title={t('Columns and Swimlanes')}>
+      <Tab id="columns-and swimlanes" key="columns-and swimlanes" title={t('Columns and Swimlanes')}>
         <ColumnsSettings agileId={agileId} columnSettings={columnSettings}/>
         <SwimlanesSettings
           agileId={agileId}
@@ -67,16 +67,17 @@ function AgileBoardSettings({visible, agileId, agileName, columnSettings, colorC
           orphansAtTheTop={orphansAtTheTop}
           hideOrphansSwimlane={hideOrphansSwimlane}/>
       </Tab>
-      <Tab id="3" key="3" title={t('Card')}>
+      <Tab id="card" key="card" title={t('Card')}>
         <CardSettings cardSettings={cardSettings}
                       cardOnSeveralSprints={sprintsSettings.cardOnSeveralSprints}
                       colorizeCustomFields={colorizeCustomFields}
                       projects={projects}
                       colorCoding={colorCoding}
                       estimationField={estimationField}
-                      originalEstimationField={originalEstimationField}/>
+                      originalEstimationField={originalEstimationField}
+                      sprintsEnabled={!sprintsSettings.disableSprints}/>
       </Tab>
-      <Tab id="4" key="4" title={t('Chart')}>
+      <Tab id="chart" key="chart" title={t('Chart')}>
         <ChartSettings reportSettings={reportSettings}/>
       </Tab>
     </TabsContainer>

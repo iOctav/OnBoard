@@ -172,7 +172,7 @@ export const youtrackApi = createApi({
         params: {
           fields: '$type,aggregateable,customField(fieldType(id,isBundleType,presentation,valueType),id,localizedName,name,ordinal),id,instant,name,presentation,projects(id,name),sortable',
           filteringType: 'contains',
-          getUnusedVisibleFields: true
+          getUnusedVisibleFields: true,
         },
       })
     }),
@@ -182,7 +182,7 @@ export const youtrackApi = createApi({
         params: {
           fields: '$type,aggregateable,customField(fieldType(id,isBundleType,presentation,valueType),id,localizedName,name,ordinal),id,instant,name,presentation,projects(id,name),sortable',
           filteringType: 'contains',
-          getUnusedVisibleFields: true
+          getUnusedVisibleFields: true,
         },
       })
     }),
@@ -222,6 +222,16 @@ export const youtrackApi = createApi({
         },
       })
     }),
+    getCustomFilterFields: builder.query({
+      query: (shortNames) => ({
+        url: `filterFields?${shortNames.map(name => `fld=${name}&`).join('')}fieldTypes=custom`,
+        params: {
+          fields: '$type,aggregateable,customField(fieldType(id,isBundleType,presentation,valueType),id,localizedName,name,ordinal),id,instant,name,presentation,projects(id,name),sortable',
+          filteringType: 'contains',
+          getUnusedVisibleFields: true,
+        },
+      })
+    }),
   }),
 });
 
@@ -231,6 +241,6 @@ export const { useGetAgilesByIdQuery, useGetCustomFieldValuesQuery,
   useLazyGetEnumBundleValuesQuery, useLazyGetOwnedBundleValuesQuery, useLazyGetStateBundleValuesQuery,
   useLazyGetVersionBundleValuesQuery, useLazyGetUserBundleValuesQuery, useLazyGetBuildBundleValuesQuery,
   useLazyGetAvailableColumnFieldsQuery, useLazyGetColorSchemeFilterFieldsQuery, useLazyGetEstimationFilterFieldsQuery,
-  useLazyGetColumnSettingsAvailableColumnFieldsQuery,
+  useLazyGetColumnSettingsAvailableColumnFieldsQuery, useLazyGetCustomFilterFieldsQuery,
   useLazyGetValuesFilterFieldsQuery, useLazyGetIssuesFilterFieldsQuery, useLazyGetAvailableSwimlaneFieldsQuery,
   useLazyGetUsersQuery, useLazyGetProjectsQuery, useLazyGetVisibilityGroupsQuery } = youtrackApi;
