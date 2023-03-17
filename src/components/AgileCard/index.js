@@ -5,6 +5,8 @@ import AgileCardAssignee from '../AgileCardAssignee';
 import AgileCardField from '../AgileCardField';
 import { issueDetails } from '../../services/linkService';
 import { ASSIGNEE_FIELDNAME } from '../../utils/cardFieldConstants';
+import { useDrag } from 'react-dnd';
+import { ItemTypes } from '../../utils/item-types';
 
 const AgileCardDiv = styled.div`
   box-sizing: border-box;
@@ -54,13 +56,23 @@ function compareCardField(a, b) {
 }
 
 function AgileCard({ issueData }) {
+    const [{ isDragging }, drag] = useDrag(() => ({
+        type: ItemTypes.AgileCard,
+        item: { id: issueData.id },
+        collect: (monitor) => ({
+            isDragging: !!monitor.isDragging()
+        })
+    }));
     const cardFooterFields = [...issueData.fields].sort(compareCardField).map(field => {
         return (<AgileCardField field={field} key={field?.id}/>);
     });
     const issueDetailsLink = issueDetails(issueData.idReadable, issueData.summary);
     const assigneeField = issueData.fields.find(field => field.name === ASSIGNEE_FIELDNAME);
 
-    return <AgileCardDiv className="ob-agile-card">
+    return <AgileCardDiv ref={drag}
+              style={{
+                  opacity: isDragging ? 0.5 : 1,
+              }} className="ob-agile-card">
         <AgileCardSummaryDiv>
             <IdLink href={issueDetailsLink} target="_blank">{issueData.idReadable}</IdLink>
             <SummarySpan>{issueData.summary}</SummarySpan>
