@@ -28,7 +28,7 @@ const CustomFieldsTableContainer = styled.div`
 
 function CustomFieldsTable({fields, projects}) {
   const { t } = useTranslation();
-  const [customFields, setCustomFields] = useState(fields);
+  const [customFields] = useState(fields);
   const displayDataSet = [{key: 'FULL_NAME', label: t('Value')}, {key: 'LETTER', label: t('First latter')}];
   const projectDict = Object.fromEntries(projects.map(x => [x.id, x.name]));
   const projectShortNames = projects.map(x => x.shortName);

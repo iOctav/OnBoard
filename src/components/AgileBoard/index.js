@@ -69,7 +69,9 @@ function AgileBoard() {
           { columns.map(column => <col key={'col-' + column.id} />) }
         </colgroup>
         <AgileBoardHeader columns={columns}></AgileBoardHeader>
-        <AgileBoardData agileId={agile.id} sprintId={realSprintId}/>
+        <AgileBoardData agileId={agile.id} sprintId={realSprintId}
+                        hideOrphansSwimlane={agile.hideOrphansSwimlane}
+                        orphansAtTheTop={agile.orphansAtTheTop}/>
       </AgileBoardTable>
     </div>
   } else if (isError) {
