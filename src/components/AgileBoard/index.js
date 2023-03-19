@@ -22,7 +22,7 @@ const AgileBoardTable = styled.table`
 function AgileBoard() {
   const { agileId, sprintId } = useParams();
   const { search } = useLocation();
-  const [settingsVisible, setSettingsVisible] = useState(search.startsWith('settings'));
+  const [settingsVisible, setSettingsVisible] = useState(search.startsWith('?settings'));
   const { data: agile,
     isLoading,
     isSuccess,
@@ -69,7 +69,9 @@ function AgileBoard() {
           { columns.map(column => <col key={'col-' + column.id} />) }
         </colgroup>
         <AgileBoardHeader columns={columns}></AgileBoardHeader>
-        <AgileBoardData columnSettings={agile.columnSettings} swimlane={agile.swimlaneSettings} agileId={agile.id} sprintId={realSprintId}/>
+        <AgileBoardData agileId={agile.id} sprintId={realSprintId}
+                        hideOrphansSwimlane={agile.hideOrphansSwimlane}
+                        orphansAtTheTop={agile.orphansAtTheTop}/>
       </AgileBoardTable>
     </div>
   } else if (isError) {
