@@ -50,6 +50,7 @@
   },
   "devDependencies": {
     "@babel/preset-react": "^7.18.6",
-    "eslint": "^8.27.0"
+    "eslint": "^8.27.0",
+    "identity-obj-proxy": "^3.0.0"
   }
 }
