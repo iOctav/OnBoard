@@ -42,7 +42,7 @@ function UsersGroupsSelect({projectBasedLabel, deselectAllUsersAndGroups, ...res
         ...[...users.data].map(user => ({ key: user.id, label: user.fullName, description: user.login, type: 'user', showGeneratedAvatar: true, username: user.fullName })),
       ])
     }
-  },[users, groups])
+  },[users, groups, deselectAllUsersAndGroups, projectBasedLabel, t]);
   return (<Select
       filter={true}
       tags = {{}}

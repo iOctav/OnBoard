@@ -21,7 +21,7 @@ const AttributeListContainer = styled.div`
 
 function SwimlaneAttributesList({agileId, fieldValues}) {
   const { t } = useTranslation();
-  const [selectedAttributes, setSelectedAttributes] = useState(fieldValues);
+  const [selectedAttributes] = useState(fieldValues);
   const tableColumns = [
     {key: 'name', id: 'name', getValue: (item, column) => (<div>
         <span>{item.name}</span>

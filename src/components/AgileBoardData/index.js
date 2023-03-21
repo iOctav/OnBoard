@@ -2,7 +2,7 @@ import { useGetSpecificSprintForSpecificAgileQuery } from '../../store/youtrackA
 import AgileBoardRows from '../AgileBoardRows';
 import PropTypes from 'prop-types';
 
-function AgileBoardData({agileId, sprintId, columnSettings, swimlane}) {
+function AgileBoardData({agileId, sprintId, columnSettings, swimlane, hideOrphansSwimlane, orphansAtTheTop}) {
   const { data: sprint,
     isLoading,
     isSuccess,
@@ -17,8 +17,8 @@ function AgileBoardData({agileId, sprintId, columnSettings, swimlane}) {
       swimlane={swimlane}
       orphanRow={sprint.board.orphanRow}
       trimmedSwimlanes={sprint.board.trimmedSwimlanes}
-      hideOrphansSwimlane={sprint.agile.hideOrphansSwimlane}
-      orphansAtTheTop={sprint.agile.orphansAtTheTop}/>
+      hideOrphansSwimlane={hideOrphansSwimlane}
+      orphansAtTheTop={orphansAtTheTop}/>
   } else if (isError) {
     return null;
   }
@@ -29,6 +29,8 @@ AgileBoardData.propTypes = {
   sprintId: PropTypes.string,
   columnSettings: PropTypes.object,
   swimlane: PropTypes.object,
+  hideOrphansSwimlane: PropTypes.bool,
+  orphansAtTheTop: PropTypes.bool,
 };
 
 export default AgileBoardData;
