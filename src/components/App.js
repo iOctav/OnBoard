@@ -7,7 +7,7 @@ import Theme, { ThemeProvider } from '@jetbrains/ring-ui/dist/global/theme';
 function App() {
   return (
     <ThemeProvider theme={Theme.AUTO}>
-      <div className="App">
+      <div data-testid="app-container" className="App">
         <AgileRoutePage/>
       </div>
     </ThemeProvider>
