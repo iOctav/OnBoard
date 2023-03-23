@@ -7,7 +7,7 @@ import { useState } from 'react';
 import {
   useLazyGetAvailableColumnFieldsQuery,
   useLazyGetColumnSettingsAvailableColumnFieldsQuery
-} from '../../store/youtrackApi';
+} from '../../app/services/youtrackApi';
 import { ControlsHeight } from '@jetbrains/ring-ui/dist/global/controls-height';
 import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import ColumnsSettingsTable from './ColumnsSettingsTable';

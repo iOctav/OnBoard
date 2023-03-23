@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import AgileBoardHeader from '../AgileBoardHeader';
 import AgileSearchQueryPanel from '../AgileSearchQueryPanel';
 import AgileTopToolbar from '../AgileTopToolbar';
-import { useGetAgilesByIdQuery } from '../../store/youtrackApi';
+import { useGetAgilesByIdQuery } from '../../app/services/youtrackApi';
 import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
 import { useLocation, useParams } from 'react-router-dom';
 import AgileBoardData from '../AgileBoardData';

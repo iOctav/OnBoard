@@ -9,7 +9,7 @@ import Button from '@jetbrains/ring-ui/dist/button/button';
 import Selection from '@jetbrains/ring-ui/dist/table/selection';
 import { useState } from 'react';
 import LazySelectBox from '../LazySelectBox';
-import { useLazyGetAvailableSwimlaneFieldsQuery } from '../../store/youtrackApi';
+import { useLazyGetAvailableSwimlaneFieldsQuery } from '../../app/services/youtrackApi';
 
 const FloatRightButton = styled(Button)`
   float: right;

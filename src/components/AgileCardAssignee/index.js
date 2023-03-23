@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ReactComponent as AddPerson } from './add-person.svg';
 import PropTypes from 'prop-types';
 import LazySelectBox from '../LazySelectBox';
-import { useLazyGetUserBundleValuesQuery } from '../../store/youtrackApi';
+import { useLazyGetUserBundleValuesQuery } from '../../app/services/youtrackApi';
 import Avatar, { Size } from '@jetbrains/ring-ui/dist/avatar/avatar';
 import { useState } from 'react';
 import Button from '@jetbrains/ring-ui/dist/button/button';

@@ -2,7 +2,7 @@ import DropdownMenu from '@jetbrains/ring-ui/dist/dropdown-menu/dropdown-menu';
 import Avatar from '@jetbrains/ring-ui/dist/avatar/avatar';
 import { Size } from '@jetbrains/ring-ui/dist/avatar/avatar';
 import { profilePageUri } from '../../services/linkService';
-import { useGetCurrentUserInfoQuery } from '../../store/youtrackApi';
+import { useGetCurrentUserInfoQuery } from '../../app/services/youtrackApi';
 
 function SmartProfile() {
   const { data, error, isLoading } = useGetCurrentUserInfoQuery();

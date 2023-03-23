@@ -9,7 +9,7 @@ import {
     useLazyGetStateBundleValuesQuery,
     useLazyGetUserBundleValuesQuery,
     useLazyGetVersionBundleValuesQuery
-} from '../../store/youtrackApi';
+} from '../../app/services/youtrackApi';
 import {useState} from 'react';
 
 const CardFieldAnchor = styled.span`

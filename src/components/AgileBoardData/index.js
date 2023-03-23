@@ -1,13 +1,13 @@
-import { useGetSpecificSprintForSpecificAgileQuery } from '../../store/youtrackApi';
 import AgileBoardRows from '../AgileBoardRows';
 import PropTypes from 'prop-types';
+import { useGetSpecificSprintForSpecificAgileQuery } from '../../features/sprint/sprintSlice';
 
 function AgileBoardData({agileId, sprintId, hideOrphansSwimlane, orphansAtTheTop}) {
   const { data: sprint,
     isLoading,
     isSuccess,
     isError
-  } = useGetSpecificSprintForSpecificAgileQuery({agileId, sprintId: (sprintId || 'current')})
+  } = useGetSpecificSprintForSpecificAgileQuery({agileId, sprintId: (sprintId || 'current')});
 
   if (isLoading) {
     return null;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { useGetIssuesQuery } from '../../store/youtrackApi';
+import { useGetIssuesQuery } from '../../app/services/youtrackApi';
 import Swimlane from '../Swimlane';
 import AgileCard from '../AgileCard';
 import AgileCardPreview from '../AgileCardPreview';
