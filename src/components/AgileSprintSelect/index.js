@@ -5,7 +5,7 @@ import formatDate from 'date-fns/format';
 import isSameMonth from 'date-fns/isSameMonth';
 import isSameYear from 'date-fns/isSameYear';
 import LazySelectBox from '../LazySelectBox';
-import { useLazyGetSprintsForAgileQuery } from '../../store/youtrackApi';
+import { useLazyGetSprintsForAgileQuery } from '../../app/services/youtrackApi';
 import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import { useNavigate } from 'react-router-dom';
 import { agileBoardUri } from '../../services/linkService';

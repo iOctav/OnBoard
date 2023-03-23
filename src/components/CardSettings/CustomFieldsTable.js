@@ -10,7 +10,7 @@ import Button from '@jetbrains/ring-ui/dist/button/button';
 import Selection from '@jetbrains/ring-ui/dist/table/selection';
 import PropTypes from 'prop-types';
 import LazySelectBox from '../LazySelectBox';
-import { useLazyGetCustomFilterFieldsQuery } from '../../store/youtrackApi';
+import { useLazyGetCustomFilterFieldsQuery } from '../../app/services/youtrackApi';
 import { Size } from '@jetbrains/ring-ui/dist/input/input';
 
 const GreyInlineButton = styled(Button)`

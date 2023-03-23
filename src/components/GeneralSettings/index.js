@@ -8,7 +8,7 @@ import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import { useState } from 'react';
 import { ControlsHeight } from '@jetbrains/ring-ui/dist/global/controls-height';
 import LazySelectBox from '../LazySelectBox';
-import { useLazyGetProjectsQuery, useLazyGetUsersQuery } from '../../store/youtrackApi';
+import { useLazyGetProjectsQuery, useLazyGetUsersQuery } from '../../app/services/youtrackApi';
 import Button from '@jetbrains/ring-ui/dist/button/button';
 import ButtonGroup from '@jetbrains/ring-ui/dist/button-group/button-group';
 import BoardBehaviorControl from './BoardBehaviorControl';
