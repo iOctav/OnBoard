@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import Checkbox from '@jetbrains/ring-ui/dist/checkbox/checkbox';
 import { useState } from 'react';
 import LazySelectBox from '../LazySelectBox';
-import { useLazyGetColorSchemeFilterFieldsQuery, useLazyGetEstimationFilterFieldsQuery } from '../../store/youtrackApi';
+import { useLazyGetColorSchemeFilterFieldsQuery, useLazyGetEstimationFilterFieldsQuery } from '../../app/services/youtrackApi';
 import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import { ControlsHeight } from '@jetbrains/ring-ui/dist/global/controls-height';
 import ProjectColorTable from './ProjectColorTable';

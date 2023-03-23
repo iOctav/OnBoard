@@ -7,7 +7,7 @@ import { ControlsHeight } from '@jetbrains/ring-ui/dist/global/controls-height';
 import Input from '@jetbrains/ring-ui/dist/input/input';
 import Checkbox from '@jetbrains/ring-ui/dist/checkbox/checkbox';
 import LazySelectBox from '../LazySelectBox';
-import { useLazyGetIssuesFilterFieldsQuery, useLazyGetSprintsForAgileQuery } from '../../store/youtrackApi';
+import { useLazyGetIssuesFilterFieldsQuery, useLazyGetSprintsForAgileQuery } from '../../app/services/youtrackApi';
 import UnderControlDescription from './UnderControlDescription';
 
 function BoardBehaviorControl({sprintsEnabled, addNewIssueToKanban, isExplicit, explicitQuery,

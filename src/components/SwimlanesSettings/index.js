@@ -7,7 +7,7 @@ import Button from '@jetbrains/ring-ui/dist/button/button';
 import { ControlsHeight } from '@jetbrains/ring-ui/dist/global/controls-height';
 import { useState } from 'react';
 import { SwimlaneType } from './swimlane-type';
-import { useLazyGetValuesFilterFieldsQuery, useLazyGetIssuesFilterFieldsQuery } from '../../store/youtrackApi';
+import { useLazyGetValuesFilterFieldsQuery, useLazyGetIssuesFilterFieldsQuery } from '../../app/services/youtrackApi';
 import LazySelectBox from '../LazySelectBox';
 import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import Checkbox from '@jetbrains/ring-ui/dist/checkbox/checkbox';

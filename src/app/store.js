@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { youtrackApi } from '../store/youtrackApi';
+import { youtrackApi } from './services/youtrackApi';
 import authReducer from '../features/auth/authSlice'
 
 export const store = configureStore({
