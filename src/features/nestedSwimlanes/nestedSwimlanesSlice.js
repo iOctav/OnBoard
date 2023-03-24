@@ -13,7 +13,7 @@ const nestedSwimlanesSlice = createSlice({
   name: "nestedSwimlanes",
   initialState: notificationsAdapter.getInitialState(),
   reducers: {
-    addNestedSwimlane(state, action) {
+    createNestedSwimlane(state, action) {
       notificationsAdapter.addOne(state, {
         id: action.payload.order,
         order: action.payload.order,
@@ -22,6 +22,7 @@ const nestedSwimlanesSlice = createSlice({
         values: [],
       });
     },
+    updateNestedSwimlane: notificationsAdapter.updateOne,
     removeNestedSwimlane: notificationsAdapter.removeOne,
   },
   extraReducers(builder) {
@@ -44,7 +45,7 @@ const nestedSwimlanesSlice = createSlice({
   },
 });
 
-export const { addNestedSwimlane, removeNestedSwimlane } = nestedSwimlanesSlice.actions
+export const { createNestedSwimlane, updateNestedSwimlane, removeNestedSwimlane } = nestedSwimlanesSlice.actions
 
 export default nestedSwimlanesSlice.reducer;
 
