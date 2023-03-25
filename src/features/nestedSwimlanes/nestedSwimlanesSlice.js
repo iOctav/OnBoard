@@ -3,32 +3,32 @@ import { youtrackApi } from '../../app/services/youtrackApi';
 import { calculateSwimlaneType } from '../../utils/swimlanesUtils';
 import { SwimlaneType } from './swimlane-type';
 
-const notificationsAdapter = createEntityAdapter();
+const swimlanesAdapter = createEntityAdapter();
 
 const matchAgileUpdated = isAnyOf(
   youtrackApi.endpoints.getAgilesById.matchFulfilled
 )
 
 const nestedSwimlanesSlice = createSlice({
-  name: "nestedSwimlanes",
-  initialState: notificationsAdapter.getInitialState(),
+  name: 'nestedSwimlanes',
+  initialState: swimlanesAdapter.getInitialState(),
   reducers: {
     createNestedSwimlane(state, action) {
-      notificationsAdapter.addOne(state, {
+      swimlanesAdapter.addOne(state, {
         id: action.payload.id,
         type: SwimlaneType.None,
         field: {},
         values: [],
       });
     },
-    updateNestedSwimlane: notificationsAdapter.updateOne,
-    removeNestedSwimlane: notificationsAdapter.removeOne,
+    updateNestedSwimlane: swimlanesAdapter.updateOne,
+    removeNestedSwimlane: swimlanesAdapter.removeOne,
   },
   extraReducers(builder) {
     builder.addMatcher(matchAgileUpdated, (state, action) => {
       if (action.payload.swimlaneSettings?.enabled) {
         const generalSwimlane = action.payload.swimlaneSettings;
-        generalSwimlane && notificationsAdapter.upsertOne(state, {
+        generalSwimlane && swimlanesAdapter.upsertOne(state, {
           id: 0,
           type: calculateSwimlaneType(true, generalSwimlane?.$type),
           field: {
@@ -50,8 +50,7 @@ export default nestedSwimlanesSlice.reducer;
 
 export const {
   selectAll: selectSwimlanesMetadata,
-  selectEntities: selectMetadataEntities,
   selectById: selectSwimlaneMetadataById,
   selectTotal: selectSwimlanesDepth,
-} = notificationsAdapter.getSelectors((state) => state.nestedSwimlanes);
+} = swimlanesAdapter.getSelectors((state) => state.nestedSwimlanes);
 

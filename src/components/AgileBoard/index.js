@@ -1,6 +1,6 @@
 import AgileSearchQueryPanel from '../AgileSearchQueryPanel';
 import AgileTopToolbar from '../AgileTopToolbar';
-import { useGetAgilesByIdQuery } from '../../app/services/youtrackApi';
+import { useGetAgilesByIdQuery } from '../../features/agile/agileSlice';
 import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
 import { useLocation, useParams } from 'react-router-dom';
 import AgileBoardSettings from '../AgileBoardSettings';
