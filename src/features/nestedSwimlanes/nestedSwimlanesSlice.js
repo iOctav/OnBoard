@@ -15,8 +15,7 @@ const nestedSwimlanesSlice = createSlice({
   reducers: {
     createNestedSwimlane(state, action) {
       notificationsAdapter.addOne(state, {
-        id: action.payload.order,
-        order: action.payload.order,
+        id: action.payload.id,
         type: SwimlaneType.None,
         field: {},
         values: [],
@@ -30,11 +29,11 @@ const nestedSwimlanesSlice = createSlice({
       if (action.payload.swimlaneSettings?.enabled) {
         const generalSwimlane = action.payload.swimlaneSettings;
         generalSwimlane && notificationsAdapter.upsertOne(state, {
-          id: generalSwimlane.id,
-          order: 0,
+          id: 0,
           type: calculateSwimlaneType(true, generalSwimlane?.$type),
           field: {
             id: generalSwimlane.field.id,
+            name: generalSwimlane.field.name,
             presentation: generalSwimlane.field.presentation,
             aggregateable: generalSwimlane.values?.length > 0 || generalSwimlane.field.multiValue,
           },
@@ -52,4 +51,7 @@ export default nestedSwimlanesSlice.reducer;
 export const {
   selectAll: selectSwimlanesMetadata,
   selectEntities: selectMetadataEntities,
+  selectById: selectSwimlaneMetadataById,
+  selectTotal: selectSwimlanesDepth,
 } = notificationsAdapter.getSelectors((state) => state.nestedSwimlanes);
+
