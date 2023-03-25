@@ -17,6 +17,7 @@ import { ControlsHeight } from '@jetbrains/ring-ui/dist/global/controls-height';
 import { useLazyGetIssuesFilterFieldsQuery, useLazyGetValuesFilterFieldsQuery } from '../../app/services/youtrackApi';
 import LazySelectBox from '../LazySelectBox';
 import { Size } from '@jetbrains/ring-ui/dist/input/input';
+import SwimlaneValuesTagBox from './SwimlaneValuesTagBox';
 
 function NestedSwimlanesList({projectShortNames}) {
   const { t } = useTranslation();
@@ -45,7 +46,7 @@ function NestedSwimlanesList({projectShortNames}) {
           onSelect={(field) => dispatch(updateNestedSwimlane({id: item.id, changes: { field:
                 { id: field.value, presentation: field.label, aggregateable: field.aggregateable, name: field.name }}}))}/>)
       },
-    {key: 'values', id: 'values', title: t('Values'), getValue: (item) => (<span>{item.values?.length > 0 ? 'Have': 'None'}</span>)},
+    {key: 'values', id: 'values', title: t('Values'), getValue: (item) => (item.field?.id && <SwimlaneValuesTagBox swimlane={item}/>)},
     {key: 'remove', id: 'remove', getValue: (item) => (item.id === swimlanes.length - 1 && <Button icon={closeIcon} onClick={() => dispatch(removeNestedSwimlane(item.id))} title={t('Remove')}/>)},
   ];
   const data = swimlanes.map(col => ({...col, key: col.id}));

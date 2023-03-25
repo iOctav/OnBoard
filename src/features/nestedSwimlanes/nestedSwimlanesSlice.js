@@ -37,7 +37,7 @@ const nestedSwimlanesSlice = createSlice({
             presentation: generalSwimlane.field.presentation,
             aggregateable: generalSwimlane.values?.length > 0 || generalSwimlane.field.multiValue,
           },
-          values: [...generalSwimlane.values].map(val => ({id: val.id, name: val.name, presentation: val.presentation}))
+          values: [...generalSwimlane.values].map(val => ({key: val.id, name: val.name, label: val.presentation}))
         });
       }
     });
