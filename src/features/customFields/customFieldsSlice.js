@@ -35,3 +35,7 @@ const customFieldsSlice = createSlice({
 });
 
 export default customFieldsSlice.reducer;
+
+export const {
+  selectById: selectCustomFieldMetadataById,
+} = customFieldsAdapter.getSelectors((state) => state.customFields);
