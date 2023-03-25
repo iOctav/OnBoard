@@ -40,8 +40,11 @@ const makeEmptyTrimmedSwimlanes = (swimlane) => {
     collapsed: false,
     id: `${swimlane.id}-${index}`,
     matchesQuery: true,
-    name: value.presentation,
+    name: value.name,
     timeTrackingData: null,
+    value: {
+      presentation: value.name,
+    },
   }));
 };
 
@@ -79,18 +82,18 @@ function BoardRow({row, issuesDict, swimlaneTitle, level}) {
         swimlaneFieldIndex > -1 || (swimlaneFieldIndex = issueData?.fields
           .findIndex(field => field.name.toLowerCase() === swimlane?.field?.name?.toLowerCase()));
         const swimlaneFieldValue = issueData?.fields[swimlaneFieldIndex]?.value;
-        if (!swimlaneFieldValue) {
-          const orphanCell = orphanRow.cells.slice(-1)[0];
-          orphanCell.issues.push(issue);
-          orphanCell.issuesCount++;
-        } else {
+        if (swimlaneFieldValue) {
           const trimmedSwimlane = trimmedSwimlanes.find(nestedSwimlane => nestedSwimlane.name === swimlaneFieldValue.name);
           if (trimmedSwimlane) {
             const trimmedSwimlaneCell = trimmedSwimlane.cells.slice(-1)[0];
             trimmedSwimlaneCell.issues.push(issue);
             trimmedSwimlaneCell.issuesCount++;
+            return;
           }
         }
+        const orphanCell = orphanRow.cells.slice(-1)[0];
+        orphanCell.issues.push(issue);
+        orphanCell.issuesCount++;
       })
     });
 

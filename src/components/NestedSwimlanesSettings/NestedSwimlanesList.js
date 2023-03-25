@@ -18,36 +18,47 @@ import { useLazyGetIssuesFilterFieldsQuery, useLazyGetValuesFilterFieldsQuery } 
 import LazySelectBox from '../LazySelectBox';
 import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import SwimlaneValuesTagBox from './SwimlaneValuesTagBox';
+import { selectCustomFieldIds } from '../../features/customFields/customFieldsSlice';
 
 function NestedSwimlanesList({projectShortNames}) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const swimlanes = useSelector(selectSwimlanesMetadata);
+  const availableFields = useSelector(selectCustomFieldIds);
 
   const tableColumns = [
     {key: 'type', id: 'type', title: t('Identifier'), getValue: (item) => (
       <ButtonGroup>
         <Button active={item.type === SwimlaneType.Values} height={ControlsHeight.S}
-                onClick={() => dispatch(updateNestedSwimlane({id: item.id, changes: { type: SwimlaneType.Values }}))}>{t('Values')}
+                onClick={() => item.type !== SwimlaneType.Values &&
+                  dispatch(updateNestedSwimlane({id: item.id, changes: { type: SwimlaneType.Values, values: [] }}))}>{t('Values')}
         </Button>
         <Button active={item.type === SwimlaneType.Issues} height={ControlsHeight.S} disabled
-                onClick={() => dispatch(updateNestedSwimlane({id: item.id, changes: { type: SwimlaneType.Issues }}))}>{t('Issues')}
+                onClick={() => item.type !== SwimlaneType.Issues &&
+                  dispatch(updateNestedSwimlane({id: item.id, changes: { type: SwimlaneType.Issues, values: [] }}))}>{t('Issues')}
         </Button>
       </ButtonGroup>
       )},
     {key: 'field', id: 'field', title: t('Field'), getValue: (item) => (item.type === SwimlaneType.Values || item.type === SwimlaneType.Issues) &&
         (<LazySelectBox
           selected={{label: item.field?.presentation, key: item.field?.id}}
-          makeDataset={data => data.map(field => ({value: field.id, label: field.name, description: field.customField?.fieldType?.presentation, aggregateable: field.aggregateable}))}
+          makeDataset={data => data.filter(field => availableFields.includes(field.id)).map(field => ({value: field.id, label: field.name, description: field.customField?.fieldType?.presentation, aggregateable: field.aggregateable}))}
           lazyDataLoaderHook={item.type === SwimlaneType.Values ? useLazyGetValuesFilterFieldsQuery : useLazyGetIssuesFilterFieldsQuery}
           lazyDataLoaderHookParams={projectShortNames}
           size={Size.M}
           height={ControlsHeight.S}
-          onSelect={(field) => dispatch(updateNestedSwimlane({id: item.id, changes: { field:
-                { id: field.value, presentation: field.label, aggregateable: field.aggregateable, name: field.name }}}))}/>)
+          onSelect={field => field.value !== item.field?.id &&
+            dispatch(updateNestedSwimlane({id: item.id, changes:
+                { field:
+                    { id: field.value, presentation: field.label, aggregateable: field.aggregateable, name: field.label },
+                  values: []
+                }}
+            ))}
+        />)
       },
     {key: 'values', id: 'values', title: t('Values'), getValue: (item) => (item.field?.id && <SwimlaneValuesTagBox swimlane={item}/>)},
-    {key: 'remove', id: 'remove', getValue: (item) => (item.id === swimlanes.length - 1 && <Button icon={closeIcon} onClick={() => dispatch(removeNestedSwimlane(item.id))} title={t('Remove')}/>)},
+    {key: 'remove', id: 'remove', getValue: (item) => (item.id === swimlanes.length - 1 &&
+        <Button icon={closeIcon} onClick={() => dispatch(removeNestedSwimlane(item.id))} title={t('Remove')}/>)},
   ];
   const data = swimlanes.map(col => ({...col, key: col.id}));
   const selection = new Selection({data: data});
