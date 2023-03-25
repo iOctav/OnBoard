@@ -1,53 +1,9 @@
-import styled from 'styled-components';
-
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { useGetIssuesQuery } from '../../app/services/youtrackApi';
-import Swimlane from '../Swimlane';
-import AgileCard from '../AgileCard';
-import AgileCardPreview from '../AgileCardPreview';
-import NewCardButton from '../NewCardButton';
-import AgileBoardCell from '../AgileBoardCell';
+import BoardRow from './BoardRow';
 
-const BorderedTd = styled.td`
-  border-bottom: 1px solid var(--ring-line-color);
-  border-right: 1px solid var(--ring-line-color);
-  border-collapse: collapse;
-  vertical-align: top;
-  &:hover .new-card-button-action-text {
-    display: inline;
-  };
-`;
-
-
-function makeAgileRow(row, issuesDict, columnSettings, swimlane, swimlaneTitle = undefined) {
-  const issuesCount = row.cells.reduce((acc, cell) => acc + cell.issues.length, 0);
-  return (
-    <tbody key={'categorized-row-' + row.id}>
-      { <Swimlane title={swimlaneTitle} cardsNumber={issuesCount} columnsNumber={row.cells.length} ></Swimlane> }
-    <tr>
-      {
-        row.cells.map((cell, index) => {
-            const column = columnSettings.columns[index];
-            return (<BorderedTd key={ 'cell-' + cell.id }>
-              <AgileBoardCell key={ 'agile-cell-' + cell.id } columnFieldId={columnSettings.field.name} swimlaneFieldlId={swimlane.field.name} columnName={ column.fieldValues[0].name } swimlaneName={ row.name }>
-                {
-                  cell.issues.map((c) => issuesDict && issuesDict[c.id]
-                    ? <AgileCard issueData={ issuesDict[c.id] } key={ 'agile-card-' + c.id }/>
-                    : <AgileCardPreview issueData={ c } key={ 'agile-card-' + c.id }/>)
-                }
-                <NewCardButton/>
-              </AgileBoardCell>
-            </BorderedTd>);
-          }
-        )
-      }
-    </tr>
-    </tbody>
-  );
-}
-
-function AgileBoardRows({columnSettings, swimlane, orphanRow, trimmedSwimlanes, hideOrphansSwimlane, orphansAtTheTop}) {
+function AgileBoardRows({orphanRow, trimmedSwimlanes, hideOrphansSwimlane, orphansAtTheTop, level}) {
   let content;
   let issuesDict;
   const { t } = useTranslation();
@@ -73,12 +29,15 @@ function AgileBoardRows({columnSettings, swimlane, orphanRow, trimmedSwimlanes, 
   } else if (isError) {
   }
 
-  const swimlanesAgileRow = trimmedSwimlanes.map(row => makeAgileRow(row, issuesDict, columnSettings, swimlane,row.value?.presentation || row.issue?.summary))
+  const swimlanesAgileRow = trimmedSwimlanes.map(row =>
+    (<BoardRow key={`${row.id}-${level}`} level={level} row={row} issuesDict={issuesDict}
+               swimlaneTitle={row.value?.presentation || row.issue?.summary}/>));
   if (hideOrphansSwimlane) {
     content = swimlanesAgileRow
   } else {
-    const orphanAgileRow = makeAgileRow(orphanRow, issuesDict, columnSettings, swimlane,
-      trimmedSwimlanes.length > 0 ? t('Uncategorized Cards') : undefined)
+    const orphanAgileRow =
+      (<BoardRow key={`${orphanRow.id}-${level}`} row={orphanRow} issuesDict={issuesDict} level={level}
+                 swimlaneTitle={trimmedSwimlanes.length > 0 ? t('Uncategorized Cards') : undefined}/>);
     if (orphansAtTheTop) {
       content = [orphanAgileRow, ...swimlanesAgileRow];
     } else {
@@ -89,12 +48,11 @@ function AgileBoardRows({columnSettings, swimlane, orphanRow, trimmedSwimlanes, 
 }
 
 AgileBoardRows.propTypes = {
-  columnSettings: PropTypes.object,
-  swimlane: PropTypes.object,
   orphanRow: PropTypes.object,
   trimmedSwimlanes: PropTypes.arrayOf(PropTypes.object),
   hideOrphansSwimlane: PropTypes.bool,
-  orphansAtTheTop: PropTypes.bool
+  orphansAtTheTop: PropTypes.bool,
+  level: PropTypes.number,
 }
 
 export default AgileBoardRows

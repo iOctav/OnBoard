@@ -22,7 +22,7 @@ function NestedSwimlanesList({projectShortNames}) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const swimlanes = useSelector(selectSwimlanesMetadata);
-  console.log(swimlanes);
+
   const tableColumns = [
     {key: 'type', id: 'type', title: t('Identifier'), getValue: (item) => (
       <ButtonGroup>
@@ -42,7 +42,8 @@ function NestedSwimlanesList({projectShortNames}) {
           lazyDataLoaderHookParams={projectShortNames}
           size={Size.M}
           height={ControlsHeight.S}
-          onSelect={(field) => dispatch(updateNestedSwimlane({id: item.id, changes: { field: {id: field.value, presentation: field.label, aggregateable: field.aggregateable}}}))}/>)
+          onSelect={(field) => dispatch(updateNestedSwimlane({id: item.id, changes: { field:
+                { id: field.value, presentation: field.label, aggregateable: field.aggregateable, name: field.name }}}))}/>)
       },
     {key: 'values', id: 'values', title: t('Values'), getValue: (item) => (<span>{item.values?.length > 0 ? 'Have': 'None'}</span>)},
     {key: 'remove', id: 'remove', getValue: (item) => (<Button icon={closeIcon} onClick={() => dispatch(removeNestedSwimlane(item.id))} title={t('Remove')}/>)},
@@ -50,13 +51,13 @@ function NestedSwimlanesList({projectShortNames}) {
   const data = swimlanes.map(col => ({...col, key: col.id}));
   const selection = new Selection({data: data});
   return (<div>
-    <Table draggable alwaysShowDragHandle sortKey="order"
+    <Table draggable alwaysShowDragHandle sortKey="id"
            metaColumnStyle={{display: 'none'}}
            data={swimlanes}
            selectable={false}
            selection={selection} onSelect={() => {}}
-           columns={tableColumns}/>
-    <Button text onClick={() => dispatch(createNestedSwimlane({order: swimlanes.length}))}>Add swimlane</Button>
+           columns={tableColumns} />
+    <Button text onClick={() => dispatch(createNestedSwimlane({id: swimlanes.length}))}>Add swimlane</Button>
   </div>);
 }
 
