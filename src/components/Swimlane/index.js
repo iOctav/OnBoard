@@ -29,6 +29,11 @@ const CardsCounterSpan = styled.span`
   color: var(--ring-secondary-color);
 `;
 
+const SwimlaneTitle = styled.span`
+  font-weight: bold;
+  font-size: var(--ring-font-size-larger);
+`;
+
 function Swimlane({title, isOrphan, cardsNumber, columnsNumber, level}) {
   const [rollUp, setRollUp] = useState(true);
   const swimlanesDepth = useSelector(selectSwimlanesDepth);
@@ -40,7 +45,9 @@ function Swimlane({title, isOrphan, cardsNumber, columnsNumber, level}) {
         {!!title && (
           <FloatLeftDiv level={level}>
               { !isOrphan && <DraggableIcon glyph={drag} /> }
-              <Button icon={rollUp ? caretDown10px : caretRight10px} onClick={() => setRollUp(prevState => !prevState)}>{title}</Button>
+            <Button icon={rollUp ? caretDown10px : caretRight10px} onClick={() => setRollUp(prevState => !prevState)}>
+              <SwimlaneTitle>{title}</SwimlaneTitle>
+            </Button>
           </FloatLeftDiv>
         )}
       </td>

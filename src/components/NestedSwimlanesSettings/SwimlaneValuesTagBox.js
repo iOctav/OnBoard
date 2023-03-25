@@ -36,7 +36,7 @@ function SwimlaneValuesTagBox({swimlane}) {
     onAddTag={(tag) => dispatch(updateNestedSwimlane({id: swimlane.id, changes: { values: [...swimlane.values, tag.tag]}}))}
     lazyDataLoaderHook={lazyDataBundleHook}
     lazyDataLoaderHookParams={customField?.bundle?.id}
-    makeDataSource={(data) => data.map(item => ({label: item.name, key: item.id}))}/>)
+    makeDataSource={(data) => data.map(item => ({label: item.name, key: item.id, id: item.id, name: item.name}))}/>)
 }
 
 SwimlaneValuesTagBox.propTypes = {
