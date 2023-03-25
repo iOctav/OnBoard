@@ -29,7 +29,7 @@ function NestedSwimlanesList({projectShortNames}) {
         <Button active={item.type === SwimlaneType.Values} height={ControlsHeight.S}
                 onClick={() => dispatch(updateNestedSwimlane({id: item.id, changes: { type: SwimlaneType.Values }}))}>{t('Values')}
         </Button>
-        <Button active={item.type === SwimlaneType.Issues} height={ControlsHeight.S}
+        <Button active={item.type === SwimlaneType.Issues} height={ControlsHeight.S} disabled
                 onClick={() => dispatch(updateNestedSwimlane({id: item.id, changes: { type: SwimlaneType.Issues }}))}>{t('Issues')}
         </Button>
       </ButtonGroup>
@@ -46,7 +46,7 @@ function NestedSwimlanesList({projectShortNames}) {
                 { id: field.value, presentation: field.label, aggregateable: field.aggregateable, name: field.name }}}))}/>)
       },
     {key: 'values', id: 'values', title: t('Values'), getValue: (item) => (<span>{item.values?.length > 0 ? 'Have': 'None'}</span>)},
-    {key: 'remove', id: 'remove', getValue: (item) => (<Button icon={closeIcon} onClick={() => dispatch(removeNestedSwimlane(item.id))} title={t('Remove')}/>)},
+    {key: 'remove', id: 'remove', getValue: (item) => (item.id === swimlanes.length - 1 && <Button icon={closeIcon} onClick={() => dispatch(removeNestedSwimlane(item.id))} title={t('Remove')}/>)},
   ];
   const data = swimlanes.map(col => ({...col, key: col.id}));
   const selection = new Selection({data: data});
