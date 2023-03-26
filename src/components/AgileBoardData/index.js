@@ -12,11 +12,14 @@ function AgileBoardData({agileId, sprintId, hideOrphansSwimlane, orphansAtTheTop
   if (isLoading) {
     return null;
   } else if (isSuccess) {
-    return <AgileBoardRows
-      orphanRow={sprint.board.orphanRow}
-      trimmedSwimlanes={sprint.board.trimmedSwimlanes}
-      hideOrphansSwimlane={hideOrphansSwimlane}
-      orphansAtTheTop={orphansAtTheTop}/>
+    return(<tbody>
+      <AgileBoardRows
+        orphanRow={sprint.board.orphanRow}
+        trimmedSwimlanes={sprint.board.trimmedSwimlanes}
+        hideOrphansSwimlane={hideOrphansSwimlane}
+        orphansAtTheTop={orphansAtTheTop}
+        level={0}/>
+    </tbody>);
   } else if (isError) {
     return null;
   }

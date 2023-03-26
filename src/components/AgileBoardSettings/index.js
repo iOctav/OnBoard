@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import ChartSettings from '../ChartSettings';
 import GeneralSettings from '../GeneralSettings';
 import CardSettings from '../CardSettings';
+import NestedSwimlanesSettings from '../NestedSwimlanesSettings';
 
 const HeaderSpan = styled.span`
   font-size: 24px;
@@ -79,6 +80,12 @@ function AgileBoardSettings({visible, selectedTab, agileId, agileName, columnSet
       </Tab>
       <Tab id="chart" key="chart" title={t('Chart')}>
         <ChartSettings reportSettings={reportSettings}/>
+      </Tab>
+      <Tab id="nested-swimlanes" key="nested-swimlanes" title={t('Nested Swimlanes')}>
+        <NestedSwimlanesSettings agileId={agileId}
+                                 swimlaneSettings={swimlaneSettings}
+                                 switchToColAndSwimTab={() => setSelected('columns-and swimlanes')}
+                                 projectShortNames={projectShortNames}/>
       </Tab>
     </TabsContainer>
   </AgileBoardSettingsContainer>);

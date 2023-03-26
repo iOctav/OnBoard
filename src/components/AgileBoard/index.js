@@ -1,23 +1,11 @@
-import styled from 'styled-components';
-
-import AgileBoardHeader from '../AgileBoardHeader';
 import AgileSearchQueryPanel from '../AgileSearchQueryPanel';
 import AgileTopToolbar from '../AgileTopToolbar';
-import { useGetAgilesByIdQuery } from '../../app/services/youtrackApi';
+import { useGetAgilesByIdQuery } from '../../features/agile/agileSlice';
 import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
 import { useLocation, useParams } from 'react-router-dom';
-import AgileBoardData from '../AgileBoardData';
 import AgileBoardSettings from '../AgileBoardSettings';
 import { useState } from 'react';
-
-const AgileBoardTable = styled.table`
-  min-width: 720px;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  overflow: auto;
-  table-layout: fixed;
-`;
+import AgileBoardTable from '../AgileBoardTable';
 
 function AgileBoard() {
   const { agileId, sprintId } = useParams();
@@ -64,15 +52,11 @@ function AgileBoard() {
                           originalEstimationField={agile.originalEstimationField}
                           readSharingSettings={agile.readSharingSettings}
                           updateSharingSettings={agile.updateSharingSettings}/>
-      <AgileBoardTable>
-        <colgroup>
-          { columns.map(column => <col key={'col-' + column.id} />) }
-        </colgroup>
-        <AgileBoardHeader columns={columns}></AgileBoardHeader>
-        <AgileBoardData agileId={agile.id} sprintId={realSprintId}
-                        hideOrphansSwimlane={agile.hideOrphansSwimlane}
-                        orphansAtTheTop={agile.orphansAtTheTop}/>
-      </AgileBoardTable>
+
+      <AgileBoardTable agileId={agile.id} sprintId={realSprintId}
+                      columns={columns}
+                      hideOrphansSwimlane={agile.hideOrphansSwimlane}
+                      orphansAtTheTop={agile.orphansAtTheTop}/>
     </div>
   } else if (isError) {
     content = <div>{error.toString()}</div>

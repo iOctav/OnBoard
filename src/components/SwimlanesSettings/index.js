@@ -6,13 +6,14 @@ import ButtonGroup from '@jetbrains/ring-ui/dist/button-group/button-group';
 import Button from '@jetbrains/ring-ui/dist/button/button';
 import { ControlsHeight } from '@jetbrains/ring-ui/dist/global/controls-height';
 import { useState } from 'react';
-import { SwimlaneType } from './swimlane-type';
+import { SwimlaneType } from '../../features/nestedSwimlanes/swimlane-type';
 import { useLazyGetValuesFilterFieldsQuery, useLazyGetIssuesFilterFieldsQuery } from '../../app/services/youtrackApi';
 import LazySelectBox from '../LazySelectBox';
 import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import Checkbox from '@jetbrains/ring-ui/dist/checkbox/checkbox';
 import Select from '@jetbrains/ring-ui/dist/select/select';
 import SwimlaneAttributesList from './SwimlaneAttributesList';
+import { calculateSwimlaneType } from '../../utils/swimlanesUtils';
 
 const SettingsLabel = styled.span`
   padding-right: 0;
@@ -30,22 +31,10 @@ const MarginedCheckboxContainer = styled.div`
   margin-top: calc(var(--ring-unit) * 3);
 `;
 
-function calculateSwimlaneType(swimlaneSettings) {
-  if (swimlaneSettings.enabled) {
-    if (swimlaneSettings.$type === 'AttributeBasedSwimlaneSettings') {
-      return SwimlaneType.Values;
-    }
-    if (swimlaneSettings.$type === 'IssueBasedSwimlaneSettings') {
-      return SwimlaneType.Issues;
-    }
-  }
-  return SwimlaneType.None;
-}
-
 function SwimlanesSettings({agileId, swimlaneSettings, projectShortNames, hideOrphansSwimlane, orphansAtTheTop}) {
   const { t } = useTranslation();
   const [selectedField, setSelectedField] = useState({label: swimlaneSettings.field?.presentation, key: swimlaneSettings.field?.id});
-  const [swimlaneType, setSwimlaneType] = useState(calculateSwimlaneType(swimlaneSettings));
+  const [swimlaneType, setSwimlaneType] = useState(calculateSwimlaneType(swimlaneSettings.enabled, swimlaneSettings.$type));
   const [showOrphan, setShowOrphan] = useState(!hideOrphansSwimlane);
   const swimlanePositionValue = { label: t('at the top of the board'), key: 'at-top' }
   return (<div className="columns-settings">
@@ -67,23 +56,11 @@ function SwimlanesSettings({agileId, swimlaneSettings, projectShortNames, hideOr
         (<span>
           <span>{t(' from field ')}</span>
           {
-            swimlaneType === SwimlaneType.Values &&
+            (swimlaneType === SwimlaneType.Values || swimlaneType === SwimlaneType.Issues) &&
             <MarginedSelectBox
               selected={selectedField}
               makeDataset={data => data.map(field => ({value: field.id, label: field.name, description: field.customField?.fieldType?.presentation, aggregateable: field.aggregateable}))}
-              lazyDataLoaderHook={useLazyGetValuesFilterFieldsQuery}
-              lazyDataLoaderHookParams={projectShortNames}
-              size={Size.M}
-              height={ControlsHeight.S}
-              onSelect={setSelectedField}/>
-          }
-
-          {
-            swimlaneType === SwimlaneType.Issues &&
-            <MarginedSelectBox
-              selected={selectedField}
-              makeDataset={data => data.map(field => ({value: field.id, label: field.name, description: field.customField?.fieldType?.presentation, aggregateable: field.aggregateable}))}
-              lazyDataLoaderHook={useLazyGetIssuesFilterFieldsQuery}
+              lazyDataLoaderHook={swimlaneType === SwimlaneType.Values ? useLazyGetValuesFilterFieldsQuery : useLazyGetIssuesFilterFieldsQuery}
               lazyDataLoaderHookParams={projectShortNames}
               size={Size.M}
               height={ControlsHeight.S}
