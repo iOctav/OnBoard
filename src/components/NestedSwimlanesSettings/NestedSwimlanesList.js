@@ -41,6 +41,25 @@ const BorderedSpan = styled.span`
   margin-left: 5px;
 `;
 
+const LevelMarker = styled.span`
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 20px;
+  padding: 0 8px;
+  cursor: default;
+  vertical-align: baseline;
+  color: var(--ring-secondary-color);
+  border: 1px var(--ring-line-color) solid;
+  border-radius: var(--ring-border-radius);
+  background-color: var(--ring-content-background-color);
+  font-size: var(--ring-font-size-smaller);
+  font-weight: normal;
+  font-style: normal;
+  line-height: 17px;
+  margin-left: 5px;
+`;
+
 function NestedSwimlanesList({agileId, projectShortNames}) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -71,7 +90,8 @@ function NestedSwimlanesList({agileId, projectShortNames}) {
                     dispatch(updateNestedSwimlane({id: item.id, changes: { type: SwimlaneType.Issues, values: [] }}))}>{t('Issues')}
           </Button>
         </ButtonGroup>
-        {item.order === 0 && (<BorderedSpan><span>{t('General')}</span></BorderedSpan>)}
+        {item.order > 0 ? (<LevelMarker>L{item.order}</LevelMarker>) : (<BorderedSpan><span>{t('General')}</span></BorderedSpan>)}
+
        </>
       )},
     {key: 'field', id: 'field', title: t('Field'), getValue: (item) => (item.type === SwimlaneType.Values || item.type === SwimlaneType.Issues) &&
@@ -93,25 +113,28 @@ function NestedSwimlanesList({agileId, projectShortNames}) {
         />)
       },
     {key: 'values', id: 'values', title: t('Values'), getValue: (item) => (item.field?.id && <SwimlaneValuesTagBox swimlane={item}/>)},
+    {key: 'enableColor', id: 'enableColor', title: t('Enable background color'),
+      getValue: (item) => (<Checkbox disabled={item.order === 0} checked={item.enableColor}
+                                     onChange={(event) => dispatch(updateNestedSwimlane({id: item.id,
+                                       changes: { enableColor: event.target.checked}}))} />)},
     {key: 'hideOrphan', id: 'hideOrphan', title: t('Show swimlane for uncategorized cards'),
       getValue: (item) => (<Checkbox disabled={item.order === 0} checked={!item.hideOrphansSwimlane}
                                      onChange={(event) => dispatch(updateNestedSwimlane({id: item.id,
                                        changes: { hideOrphansSwimlane: !event.target.checked}}))} />)},
-    {key: 'remove', id: 'remove', getValue: (item) => (item.order === Object.keys(swimlanes).length - 1 &&
-        <Button icon={closeIcon} onClick={() => dispatch(removeNestedSwimlane(item.id))} title={t('Remove')}/>)},
   ];
   const data = Object.keys(swimlanes).map(key => ({...swimlanes[key], key: key}))
     .sort((a, b) => a.order - b.order);
   const selection = new Selection({data: data});
   return (<div>
     <Table draggable alwaysShowDragHandle sortOrder sortKey="order"
-           onReorder={(reorder) => swapSwimlanes(reorder.data[reorder.oldIndex].id, reorder.data[reorder.newIndex].id)}
+           onReorder={(reorder) => swapSwimlanes(data[reorder.oldIndex].id, data[reorder.newIndex].id)}
            metaColumnStyle={{display: 'none'}}
            data={data}
            selectable={false}
            selection={selection} onSelect={() => {}}
            columns={tableColumns} />
-    <Button text onClick={() => dispatch(createNestedSwimlane({id: Object.keys(swimlanes).length, order: Object.keys(swimlanes).length}))}>Add swimlane</Button>
+    <Button text onClick={() => dispatch(createNestedSwimlane({order: data[data.length - 1].order + 1}))}>Add swimlane</Button>
+    <Button disabled={data.length < 2} text onClick={() => dispatch(removeNestedSwimlane(data[data.length-1].id))}>Remove last</Button>
   </div>);
 }
 

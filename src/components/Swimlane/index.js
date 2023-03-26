@@ -39,7 +39,25 @@ const SwimlaneContainer = styled.div`
   padding: var(--ring-unit);
 `;
 
-function Swimlane({title, isOrphan, cardsNumber, columnsNumber, level, rollUp, onRollUp}) {
+const LevelMarker = styled.span`
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 20px;
+  padding: 0 8px;
+  cursor: default;
+  vertical-align: baseline;
+  color: var(--ring-secondary-color);
+  border: 1px var(--ring-line-color) solid;
+  border-radius: var(--ring-border-radius);
+  background-color: var(--ring-content-background-color);
+  font-size: var(--ring-font-size-smaller);
+  font-weight: normal;
+  font-style: normal;
+  line-height: 17px;
+`;
+
+function Swimlane({title, isOrphan, cardsNumber, columnsNumber, level, rollUp, onRollUp, background}) {
   const swimlanesDepth = useSelector(selectSwimlanesDepth);
   const extraSpans = swimlanesDepth > 1 ? swimlanesDepth - 1 : 0;
   const { t } = useTranslation();
@@ -49,12 +67,15 @@ function Swimlane({title, isOrphan, cardsNumber, columnsNumber, level, rollUp, o
         {!!title && (
           <SwimlaneContainer>
             <FloatLeftDiv level={level}>
+              <div>
                 { !isOrphan && <DraggableIcon glyph={drag} /> }
-              <Button iconClassName="ob-main-text-color" icon={rollUp ? caretDown10px : caretRight10px} onClick={() => {
-                onRollUp(!rollUp);
-              }}>
-                <SwimlaneTitle className="ob-main-text-color">{title}</SwimlaneTitle>
-              </Button>
+                { level > 0 && <LevelMarker>L{level}</LevelMarker> }
+                <Button style={background && {backgroundColor: background}} iconClassName="ob-main-text-color" icon={rollUp ? caretDown10px : caretRight10px} onClick={() => {
+                  onRollUp(!rollUp);
+                }}>
+                  <SwimlaneTitle className="ob-main-text-color">{title}</SwimlaneTitle>
+                </Button>
+              </div>
             </FloatLeftDiv>
             <FloatRightDiv>
               { !!cardsNumber && (<CardsCounterSpan>{cardsNumber} {t(cardsNumber > 1 ? 'cards' : 'card')}</CardsCounterSpan>)}
@@ -79,6 +100,7 @@ Swimlane.propTypes = {
   level: PropTypes.number,
   rollUp: PropTypes.bool,
   onRollUp: PropTypes.func,
+  background: PropTypes.string,
 }
 
 export default Swimlane

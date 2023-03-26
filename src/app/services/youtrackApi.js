@@ -47,7 +47,7 @@ export const youtrackApi = createApi({
       query: (id) => ({
         url: `admin/customFieldSettings/bundles/ownedField/${id}/values`,
         params: {
-          fields: 'archived,assembleDate,avatarUrl,color(id),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
+          fields: 'archived,assembleDate,avatarUrl,color(id,background),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
         },
       })
     }),
@@ -71,7 +71,7 @@ export const youtrackApi = createApi({
       query: (id) => ({
         url: `admin/customFieldSettings/bundles/enum/${id}/values`,
         params: {
-          fields: 'archived,assembleDate,avatarUrl,color(id),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
+          fields: 'archived,assembleDate,avatarUrl,color(id,background),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
         },
       })
     }),
@@ -79,7 +79,7 @@ export const youtrackApi = createApi({
       query: (id) => ({
         url: `admin/customFieldSettings/bundles/ownedField/${id}/values`,
         params: {
-          fields: 'archived,assembleDate,avatarUrl,color(id),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
+          fields: 'archived,assembleDate,avatarUrl,color(id,background),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
         },
       })
     }),
@@ -87,7 +87,7 @@ export const youtrackApi = createApi({
       query: (id) => ({
         url: `admin/customFieldSettings/bundles/state/${id}/values`,
         params: {
-          fields: 'archived,assembleDate,avatarUrl,color(id),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
+          fields: 'archived,assembleDate,avatarUrl,color(id,background),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
         },
       })
     }),
@@ -95,7 +95,7 @@ export const youtrackApi = createApi({
       query: (id) => ({
         url: `admin/customFieldSettings/bundles/version/${id}/values`,
         params: {
-          fields: 'archived,assembleDate,avatarUrl,color(id),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
+          fields: 'archived,assembleDate,avatarUrl,color(id,background),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
         },
       })
     }),
@@ -103,7 +103,7 @@ export const youtrackApi = createApi({
       query: (id) => ({
         url: `admin/customFieldSettings/bundles/user/${id}/aggregatedUsers`,
         params: {
-          fields: 'archived,assembleDate,avatarUrl,color(id),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
+          fields: 'archived,assembleDate,avatarUrl,color(id,background),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
         },
       })
     }),
@@ -111,7 +111,7 @@ export const youtrackApi = createApi({
       query: (id) => ({
         url: `admin/customFieldSettings/bundles/build/${id}/values`,
         params: {
-          fields: 'archived,assembleDate,avatarUrl,color(id),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
+          fields: 'archived,assembleDate,avatarUrl,color(id,background),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
         },
       })
     }),

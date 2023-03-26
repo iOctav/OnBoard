@@ -38,7 +38,8 @@ function SwimlaneValuesTagBox({swimlane}) {
               onAddTag={(tag) => dispatch(updateNestedSwimlane({id: swimlane.id, changes: { values: [...swimlane.values, tag.tag]}}))}
               lazyDataLoaderHook={lazyDataBundleHook}
               lazyDataLoaderHookParams={customField?.bundle?.id}
-              makeDataSource={(data) => data.map(item => ({label: item.name, key: item.name, id: item.id}))}/>)
+              makeDataSource={(data) => data.map(item => ({label: item.name, key: item.name, id: item.id,
+                color: item.color?.id !== '0' ? item.color?.background : null}))}/>)
   } else {
     return null;
   }
