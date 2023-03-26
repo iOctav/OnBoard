@@ -2,6 +2,7 @@ import { createEntityAdapter, createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { youtrackApi } from '../../app/services/youtrackApi';
 import { calculateSwimlaneType } from '../../utils/swimlanesUtils';
 import { SwimlaneType } from './swimlane-type';
+import { v4 as uuidv4 } from 'uuid';
 
 export const extendedYoutrackApi = youtrackApi.injectEndpoints({
   endpoints: builder => ({
@@ -34,7 +35,7 @@ const nestedSwimlanesSlice = createSlice({
   reducers: {
     createNestedSwimlane(state, action) {
       swimlanesAdapter.addOne(state, {
-        id: action.payload.id,
+        id: uuidv4(),
         order: action.payload.order,
         type: SwimlaneType.None,
         field: {},
@@ -49,7 +50,7 @@ const nestedSwimlanesSlice = createSlice({
       if (action.payload.swimlaneSettings?.enabled) {
         const generalSwimlane = action.payload.swimlaneSettings;
         generalSwimlane && swimlanesAdapter.upsertOne(state, {
-          id: 0,
+          id: uuidv4(),
           order: 0,
           type: calculateSwimlaneType(true, generalSwimlane?.$type),
           field: {

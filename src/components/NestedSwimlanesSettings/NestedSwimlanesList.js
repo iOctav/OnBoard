@@ -47,14 +47,14 @@ function NestedSwimlanesList({agileId, projectShortNames}) {
   const availableFields = useSelector(selectCustomFieldIds);
   const [updateGeneralSwimlane] = useUpdateGeneralSwimlaneSettingsMutation();
 
-  const swapSwimlanes = (index1, index2) => {
-    const order1 = swimlanes[index1].order;
-    if (order1 === 0 || swimlanes[index2].order === 0) {
+  const swapSwimlanes = (id1, id2) => {
+    const order1 = swimlanes[id1].order;
+    if (order1 === 0 || swimlanes[id2].order === 0) {
       return;
     }
 
-    dispatch(updateNestedSwimlane({id: index1, changes: { order: swimlanes[index2].order }}));
-    dispatch(updateNestedSwimlane({id: index2, changes: { order: order1 }}));
+    dispatch(updateNestedSwimlane({id: id1, changes: { order: swimlanes[id2].order }}));
+    dispatch(updateNestedSwimlane({id: id2, changes: { order: order1 }}));
   };
 
   const tableColumns = [
@@ -99,7 +99,7 @@ function NestedSwimlanesList({agileId, projectShortNames}) {
   const selection = new Selection({data: data});
   return (<div>
     <Table draggable alwaysShowDragHandle sortOrder sortKey="order"
-           onReorder={(reorder) => swapSwimlanes(reorder.oldIndex, reorder.newIndex)}
+           onReorder={(reorder) => swapSwimlanes(reorder.data[reorder.oldIndex].id, reorder.data[reorder.newIndex].id)}
            metaColumnStyle={{display: 'none'}}
            data={data}
            selectable={false}
