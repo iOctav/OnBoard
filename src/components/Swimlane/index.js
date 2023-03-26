@@ -1,3 +1,4 @@
+import '../ColorPalette/palette.css';
 import styled from 'styled-components';
 
 import PropTypes from 'prop-types';
@@ -9,6 +10,7 @@ import Icon from '@jetbrains/ring-ui/dist/icon/icon';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { selectSwimlanesDepth } from '../../features/nestedSwimlanes/nestedSwimlanesSlice';
+import { COLORS } from '../ColorPalette/colors';
 
 const DraggableIcon = styled(Icon)`
   cursor: move;
@@ -47,20 +49,20 @@ const LevelMarker = styled.span`
   padding: 0 8px;
   cursor: default;
   vertical-align: baseline;
-  color: var(--ring-secondary-color);
   border: 1px var(--ring-line-color) solid;
   border-radius: var(--ring-border-radius);
-  background-color: var(--ring-content-background-color);
   font-size: var(--ring-font-size-smaller);
   font-weight: normal;
   font-style: normal;
   line-height: 17px;
 `;
 
-function Swimlane({title, isOrphan, cardsNumber, columnsNumber, level, rollUp, onRollUp, background}) {
+function Swimlane({title, isOrphan, cardsNumber, columnsNumber, level, rollUp, onRollUp, backgroundId}) {
   const swimlanesDepth = useSelector(selectSwimlanesDepth);
-  const extraSpans = swimlanesDepth > 1 ? swimlanesDepth - 1 : 0;
   const { t } = useTranslation();
+  const extraSpans = swimlanesDepth > 1 ? swimlanesDepth - 1 : 0;
+  const bgId = parseInt(backgroundId);
+
   return (
     <tr>
       <td colSpan={columnsNumber + extraSpans}>
@@ -69,8 +71,8 @@ function Swimlane({title, isOrphan, cardsNumber, columnsNumber, level, rollUp, o
             <FloatLeftDiv level={level}>
               <div>
                 { !isOrphan && <DraggableIcon glyph={drag} /> }
-                { level > 0 && <LevelMarker>L{level}</LevelMarker> }
-                <Button style={background && {backgroundColor: background}} iconClassName="ob-main-text-color" icon={rollUp ? caretDown10px : caretRight10px} onClick={() => {
+                { level > 0 && <LevelMarker className={bgId && `ring-palette_tone-${COLORS[bgId].tone}-${COLORS[bgId].brightness}`}>L{level}</LevelMarker> }
+                <Button iconClassName="ob-main-text-color" icon={rollUp ? caretDown10px : caretRight10px} onClick={() => {
                   onRollUp(!rollUp);
                 }}>
                   <SwimlaneTitle className="ob-main-text-color">{title}</SwimlaneTitle>
@@ -100,7 +102,7 @@ Swimlane.propTypes = {
   level: PropTypes.number,
   rollUp: PropTypes.bool,
   onRollUp: PropTypes.func,
-  background: PropTypes.string,
+  backgroundId: PropTypes.string,
 }
 
 export default Swimlane
