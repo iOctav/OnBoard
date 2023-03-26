@@ -76,6 +76,7 @@ function NestedSwimlanesList({agileId, projectShortNames}) {
     {key: 'field', id: 'field', title: t('Field'), getValue: (item) => (item.type === SwimlaneType.Values || item.type === SwimlaneType.Issues) &&
         (<LazySelectBox
           selected={{label: item.field?.presentation, key: item.field?.id}}
+          disabled={item.order === 0}
           makeDataset={data => data.filter(field => availableFields.includes(field.id)).map(field => ({value: field.id, label: field.name, description: field.customField?.fieldType?.presentation, aggregateable: field.aggregateable}))}
           lazyDataLoaderHook={item.type === SwimlaneType.Values ? useLazyGetValuesFilterFieldsQuery : useLazyGetIssuesFilterFieldsQuery}
           lazyDataLoaderHookParams={projectShortNames}
