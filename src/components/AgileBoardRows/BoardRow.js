@@ -100,7 +100,7 @@ function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan}) {
     });
 
     swimlaneContent =
-      (<AgileBoardRows orphanRow={orphanRow} level={level+1} orphansAtTheTop={true} hideOrphansSwimlane={false} trimmedSwimlanes={trimmedSwimlanes}/>)
+      (<AgileBoardRows orphanRow={orphanRow} level={level+1} orphansAtTheTop={true} hideOrphansSwimlane={swimlane.hideOrphansSwimlane} trimmedSwimlanes={trimmedSwimlanes}/>)
   }
   return (<>
     { (swimlaneTitle || level === 0) && <Swimlane title={swimlaneTitle} cardsNumber={issuesCount} isOrphan={isOrphan}

@@ -20,6 +20,7 @@ import LazySelectBox from '../LazySelectBox';
 import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import SwimlaneValuesTagBox from './SwimlaneValuesTagBox';
 import { selectCustomFieldIds } from '../../features/customFields/customFieldsSlice';
+import Checkbox from '@jetbrains/ring-ui/dist/checkbox/checkbox';
 
 const BorderedSpan = styled.span`
   display: inline-block;
@@ -92,6 +93,10 @@ function NestedSwimlanesList({agileId, projectShortNames}) {
         />)
       },
     {key: 'values', id: 'values', title: t('Values'), getValue: (item) => (item.field?.id && <SwimlaneValuesTagBox swimlane={item}/>)},
+    {key: 'hideOrphan', id: 'hideOrphan', title: t('Show swimlane for uncategorized cards'),
+      getValue: (item) => (<Checkbox disabled={item.order === 0} checked={!item.hideOrphansSwimlane}
+                                     onChange={(event) => dispatch(updateNestedSwimlane({id: item.id,
+                                       changes: { hideOrphansSwimlane: !event.target.checked}}))} />)},
     {key: 'remove', id: 'remove', getValue: (item) => (item.order === Object.keys(swimlanes).length - 1 &&
         <Button icon={closeIcon} onClick={() => dispatch(removeNestedSwimlane(item.id))} title={t('Remove')}/>)},
   ];

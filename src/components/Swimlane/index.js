@@ -15,7 +15,7 @@ const DraggableIcon = styled(Icon)`
 `;
 
 const FloatLeftDiv = styled.div`
-  ${props => `padding-left: calc(var(--ring-unit) * ${props.level});`}
+  ${props => `margin-left: calc(var(--ring-unit) * ${props.level});`}
   float: left;
 `;
 
@@ -35,29 +35,38 @@ const SwimlaneTitle = styled.span`
   color: var(--ring-text-color);
 `;
 
+const SwimlaneContainer = styled.div`
+  padding: var(--ring-unit);
+`;
+
 function Swimlane({title, isOrphan, cardsNumber, columnsNumber, level, rollUp, onRollUp}) {
   const swimlanesDepth = useSelector(selectSwimlanesDepth);
   const extraSpans = swimlanesDepth > 1 ? swimlanesDepth - 1 : 0;
   const { t } = useTranslation();
   return (
     <tr>
-      <td colSpan={columnsNumber + extraSpans - 1}>
+      <td colSpan={columnsNumber + extraSpans}>
         {!!title && (
-          <FloatLeftDiv level={level}>
-              { !isOrphan && <DraggableIcon glyph={drag} /> }
-            <Button iconClassName="ob-main-text-color" icon={rollUp ? caretDown10px : caretRight10px} onClick={() => {
-              onRollUp(!rollUp);
-            }}>
-              <SwimlaneTitle className="ob-main-text-color">{title}</SwimlaneTitle>
-            </Button>
-          </FloatLeftDiv>
+          <SwimlaneContainer>
+            <FloatLeftDiv level={level}>
+                { !isOrphan && <DraggableIcon glyph={drag} /> }
+              <Button iconClassName="ob-main-text-color" icon={rollUp ? caretDown10px : caretRight10px} onClick={() => {
+                onRollUp(!rollUp);
+              }}>
+                <SwimlaneTitle className="ob-main-text-color">{title}</SwimlaneTitle>
+              </Button>
+            </FloatLeftDiv>
+            <FloatRightDiv>
+              { !!cardsNumber && (<CardsCounterSpan>{cardsNumber} {t(cardsNumber > 1 ? 'cards' : 'card')}</CardsCounterSpan>)}
+            </FloatRightDiv>
+          </SwimlaneContainer>
         )}
       </td>
-      <td>
-          <FloatRightDiv>
-              { !!cardsNumber && (<CardsCounterSpan>{cardsNumber} {t(cardsNumber > 1 ? 'cards' : 'card')}</CardsCounterSpan>)}
-          </FloatRightDiv>
-      </td>
+      {/*<td>*/}
+      {/*    <FloatRightDiv>*/}
+      {/*        { !!cardsNumber && (<CardsCounterSpan>{cardsNumber} {t(cardsNumber > 1 ? 'cards' : 'card')}</CardsCounterSpan>)}*/}
+      {/*    </FloatRightDiv>*/}
+      {/*</td>*/}
     </tr>
   );
 }

@@ -40,6 +40,7 @@ const nestedSwimlanesSlice = createSlice({
         type: SwimlaneType.None,
         field: {},
         values: [],
+        hideOrphansSwimlane: false,
       });
     },
     updateNestedSwimlane: swimlanesAdapter.updateOne,
@@ -59,7 +60,8 @@ const nestedSwimlanesSlice = createSlice({
             presentation: generalSwimlane.field.presentation,
             aggregateable: generalSwimlane.values?.length > 0 || generalSwimlane.field.multiValue,
           },
-          values: [...generalSwimlane.values].map(val => ({key: val.name, id: val.id, label: val.presentation}))
+          values: [...generalSwimlane.values].map(val => ({key: val.name, id: val.id, label: val.presentation})),
+          hideOrphansSwimlane: action.payload.hideOrphansSwimlane,
         });
       }
     });
