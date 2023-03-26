@@ -36,7 +36,7 @@ function AgileBoardRows({orphanRow, trimmedSwimlanes, hideOrphansSwimlane, orpha
     content = swimlanesAgileRow
   } else {
     const orphanAgileRow =
-      (<BoardRow key={`${orphanRow.id}-${level}`} row={orphanRow} issuesDict={issuesDict} level={level}
+      (<BoardRow isOrphan key={`${orphanRow.id}-${level}`} row={orphanRow} issuesDict={issuesDict} level={level}
                  swimlaneTitle={trimmedSwimlanes.length > 0 ? t('Uncategorized Cards') : undefined}/>);
     if (orphansAtTheTop) {
       content = [orphanAgileRow, ...swimlanesAgileRow];

@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types';
 import {
   useLazyGetBuildBundleValuesQuery,
-  useLazyGetEnumBundleValuesQuery, useLazyGetOwnedBundleValuesQuery, useLazyGetProjectsQuery,
+  useLazyGetEnumBundleValuesQuery,
+  useLazyGetOwnedBundleValuesQuery,
   useLazyGetStateBundleValuesQuery,
-  useLazyGetUserBundleValuesQuery, useLazyGetVersionBundleValuesQuery
+  useLazyGetUserBundleValuesQuery,
+  useLazyGetVersionBundleValuesQuery
 } from '../../app/services/youtrackApi';
 import LazyTagBox from '../LazyTagBox';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import { selectCustomFieldMetadataById } from '../../features/customFields/customFieldsSlice';
-import { useState } from 'react';
 import { updateNestedSwimlane } from '../../features/nestedSwimlanes/nestedSwimlanesSlice';
 
 const mapTypeDataRequest = (fieldType) => {

@@ -66,3 +66,7 @@
   background-color: var(--ring-main-hover-color);
   box-shadow: none;
 }
+
+.ob-main-text-color {
+  color: var(--ring-text-color) !important;
+}
