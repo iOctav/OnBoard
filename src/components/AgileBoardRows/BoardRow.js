@@ -44,13 +44,14 @@ const makeEmptyTrimmedSwimlanes = (swimlane) => {
     value: {
       presentation: value.label,
     },
+    background: swimlane.enableColor ? value.color : null,
   }));
 };
 
 function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan}) {
   // TODO: Optimizer gettings swimlane by level
   const swimlanes = useSelector(selectSwimlanesMetadata);
-  const swimlane = swimlanes.find(sl => sl.order === level + 1);
+  const nestedSwimlane = swimlanes.find(sl => sl.order === level + 1);
   const swimlanesDepth = useSelector(selectSwimlanesDepth);
   const [rollUp, setRollUp] = useState(!row.collapsed);
 
@@ -74,15 +75,16 @@ function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan}) {
     </tr>);
   } else {
     const orphanRow = makeEmptyOrphanRow();
-    const trimmedSwimlanes = swimlane.field && swimlane.values.length > 0 ? makeEmptyTrimmedSwimlanes(swimlane) : [];
+    const trimmedSwimlanes = nestedSwimlane.field && nestedSwimlane.values.length > 0 ? makeEmptyTrimmedSwimlanes(nestedSwimlane) : [];
     let swimlaneFieldIndex = -1;
     row.cells.forEach(cell => {
       orphanRow.cells.push({...cell, issues: [], issuesCount: 0});
       trimmedSwimlanes.forEach(swimlane => swimlane.cells.push({...cell, issues: [], issuesCount: 0}));
+      if (!issuesDict) return;
       cell.issues?.forEach(issue => {
         const issueData = issuesDict[issue.id];
         swimlaneFieldIndex > -1 || (swimlaneFieldIndex = issueData?.fields
-          .findIndex(field => field.name.toLowerCase() === swimlane?.field?.name?.toLowerCase()));
+          .findIndex(field => field.name.toLowerCase() === nestedSwimlane?.field?.name?.toLowerCase()));
         const swimlaneFieldValue = issueData?.fields[swimlaneFieldIndex]?.value;
         if (swimlaneFieldValue) {
           const trimmedSwimlane = trimmedSwimlanes.find(nestedSwimlane => nestedSwimlane.name === swimlaneFieldValue.name);
@@ -100,11 +102,11 @@ function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan}) {
     });
 
     swimlaneContent =
-      (<AgileBoardRows orphanRow={orphanRow} level={level+1} orphansAtTheTop={true} hideOrphansSwimlane={swimlane.hideOrphansSwimlane} trimmedSwimlanes={trimmedSwimlanes}/>)
+      (<AgileBoardRows orphanRow={orphanRow} level={level+1} orphansAtTheTop={true} hideOrphansSwimlane={nestedSwimlane.hideOrphansSwimlane} trimmedSwimlanes={trimmedSwimlanes}/>)
   }
   return (<>
     { (swimlaneTitle || level === 0) && <Swimlane title={swimlaneTitle} cardsNumber={issuesCount} isOrphan={isOrphan}
-                                                  columnsNumber={row.cells.length} level={level}
+                                                  columnsNumber={row.cells.length} level={level} background={row.background}
                                                   rollUp={rollUp} onRollUp={setRollUp} /> }
     { rollUp && swimlaneContent }
   </>);
