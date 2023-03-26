@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import { selectCustomFieldMetadataById } from '../../features/customFields/customFieldsSlice';
 import { updateNestedSwimlane } from '../../features/nestedSwimlanes/nestedSwimlanesSlice';
+import DateValuesSelect from './DateValuesSelect';
 
 const mapTypeDataRequest = (fieldType) => {
   switch (fieldType) {
@@ -39,9 +40,9 @@ function SwimlaneValuesTagBox({swimlane}) {
               lazyDataLoaderHook={lazyDataBundleHook}
               lazyDataLoaderHookParams={customField?.bundle?.id}
               makeDataSource={(data) => data.map(item => ({label: item.name, key: item.name, id: item.id,
-                color: item.color?.id !== '0' ? item.color?.background : null}))}/>)
+                colorId: item.color?.id !== '0' ? item.color?.id : null}))}/>)
   } else {
-    return null;
+    return (<DateValuesSelect swimlane={swimlane}/>);
   }
 
 }

@@ -21,6 +21,13 @@ import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import SwimlaneValuesTagBox from './SwimlaneValuesTagBox';
 import { selectCustomFieldIds } from '../../features/customFields/customFieldsSlice';
 import Checkbox from '@jetbrains/ring-ui/dist/checkbox/checkbox';
+import {
+  DateSwimlanePastPeriods,
+  DateSwimlanePeriods, getDatasetByDatePeriodType,
+  getDateFieldType,
+  IsDateField
+} from '../../features/customFields/dateFieldUtils';
+import { DatePeriodType } from '../../features/customFields/date-period-type';
 
 const BorderedSpan = styled.span`
   display: inline-block;
@@ -98,18 +105,25 @@ function NestedSwimlanesList({agileId, projectShortNames}) {
         (<LazySelectBox
           selected={{label: item.field?.presentation, key: item.field?.id}}
           disabled={item.order === 0}
-          makeDataset={data => data.filter(field => availableFields.includes(field.id)).map(field => ({value: field.id, label: field.name, description: field.customField?.fieldType?.presentation, aggregateable: field.aggregateable}))}
+          makeDataset={data => data.filter(field => availableFields.includes(field.id) || field.instant)
+            .map(field => ({value: field.id,
+              label: field.name, description: field.customField?.fieldType?.presentation,
+              fieldTypeId: field?.customField?.fieldType?.id,
+              aggregateable: field.aggregateable}))}
           lazyDataLoaderHook={item.type === SwimlaneType.Values ? useLazyGetValuesFilterFieldsQuery : useLazyGetIssuesFilterFieldsQuery}
           lazyDataLoaderHookParams={projectShortNames}
           size={Size.M}
           height={ControlsHeight.S}
-          onSelect={field => field.value !== item.field?.id &&
-            dispatch(updateNestedSwimlane({id: item.id, changes:
-                { field:
-                    { id: field.value, presentation: field.label, aggregateable: field.aggregateable, name: field.label },
-                  values: []
-                }}
-            ))}
+          onSelect={field => {
+            if (field.value !== item.field?.id) {
+              const dateType = getDateFieldType(field.fieldTypeId, field.value);
+              dispatch(updateNestedSwimlane({id: item.id, changes:
+                  { field:
+                      { id: field.value, presentation: field.label, aggregateable: field.aggregateable, name: field.label, dateType: dateType },
+                    values: !dateType ? [] :  getDatasetByDatePeriodType(dateType)
+                  }}
+              ))
+            }}}
         />)
       },
     {key: 'values', id: 'values', title: t('Values'), getValue: (item) => (item.field?.id && <SwimlaneValuesTagBox swimlane={item}/>)},

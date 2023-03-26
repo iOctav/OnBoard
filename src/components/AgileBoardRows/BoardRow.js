@@ -10,6 +10,11 @@ import { selectSwimlanesDepth, selectSwimlanesMetadata } from '../../features/ne
 import AgileBoardRows from './index';
 import FakeTableCells from '../FakeTableCells';
 import { useState } from 'react';
+import {
+  getDateSwimlanePeriod,
+  getPredefinedDateValue,
+  getSwimlanePeriodLabel
+} from '../../features/customFields/dateFieldUtils';
 
 const BorderedTd = styled.td`
   border-bottom: 1px solid var(--ring-line-color);
@@ -42,9 +47,10 @@ const makeEmptyTrimmedSwimlanes = (swimlane) => {
     name: value.key,
     timeTrackingData: null,
     value: {
-      presentation: value.label,
+      presentation: swimlane.field?.dateType ? getSwimlanePeriodLabel(value.key) : value.label,
     },
-    background: swimlane.enableColor ? value.color : null,
+    dateType: swimlane.field?.dateType,
+    backgroundId: swimlane.enableColor ? value.colorId : null,
   }));
 };
 
@@ -85,9 +91,14 @@ function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan}) {
         const issueData = issuesDict[issue.id];
         swimlaneFieldIndex > -1 || (swimlaneFieldIndex = issueData?.fields
           .findIndex(field => field.name.toLowerCase() === nestedSwimlane?.field?.name?.toLowerCase()));
-        const swimlaneFieldValue = issueData?.fields[swimlaneFieldIndex]?.value;
+        const swimlaneFieldValue = issueData?.fields[swimlaneFieldIndex]?.value ||
+          getPredefinedDateValue(issueData, nestedSwimlane?.field?.name);
         if (swimlaneFieldValue) {
-          const trimmedSwimlane = trimmedSwimlanes.find(nestedSwimlane => nestedSwimlane.name === swimlaneFieldValue.name);
+          const trimmedSwimlane = trimmedSwimlanes.find(smln => {
+            return !smln.dateType
+              ? smln.name === swimlaneFieldValue?.name
+              : smln.name === getDateSwimlanePeriod(swimlaneFieldValue);
+          });
           if (trimmedSwimlane) {
             const trimmedSwimlaneCell = trimmedSwimlane.cells.slice(-1)[0];
             trimmedSwimlaneCell.issues.push(issue);
@@ -106,7 +117,7 @@ function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan}) {
   }
   return (<>
     { (swimlaneTitle || level === 0) && <Swimlane title={swimlaneTitle} cardsNumber={issuesCount} isOrphan={isOrphan}
-                                                  columnsNumber={row.cells.length} level={level} background={row.background}
+                                                  columnsNumber={row.cells.length} level={level} backgroundId={row.backgroundId}
                                                   rollUp={rollUp} onRollUp={setRollUp} /> }
     { rollUp && swimlaneContent }
   </>);

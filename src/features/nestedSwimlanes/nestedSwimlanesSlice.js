@@ -3,6 +3,8 @@ import { youtrackApi } from '../../app/services/youtrackApi';
 import { calculateSwimlaneType } from '../../utils/swimlanesUtils';
 import { SwimlaneType } from './swimlane-type';
 import { v4 as uuidv4 } from 'uuid';
+import { DateSwimlanePastPeriods, DateSwimlanePeriods, getDateFieldType } from '../customFields/dateFieldUtils';
+import { DatePeriodType } from '../customFields/date-period-type';
 
 export const extendedYoutrackApi = youtrackApi.injectEndpoints({
   endpoints: builder => ({
@@ -42,6 +44,7 @@ const nestedSwimlanesSlice = createSlice({
         values: [],
         hideOrphansSwimlane: false,
         enableColor: false,
+        dateType: undefined,
       });
     },
     updateNestedSwimlane: swimlanesAdapter.updateOne,
@@ -51,6 +54,7 @@ const nestedSwimlanesSlice = createSlice({
     builder.addMatcher(matchAgileUpdated, (state, action) => {
       if (action.payload.swimlaneSettings?.enabled) {
         const generalSwimlane = action.payload.swimlaneSettings;
+        const dateType = getDateFieldType(generalSwimlane?.field?.customField?.fieldType?.id, generalSwimlane?.field?.id);
         generalSwimlane && swimlanesAdapter.upsertOne(state, {
           id: uuidv4(),
           order: 0,
@@ -60,8 +64,10 @@ const nestedSwimlanesSlice = createSlice({
             name: generalSwimlane.field.name,
             presentation: generalSwimlane.field.presentation,
             aggregateable: generalSwimlane.values?.length > 0 || generalSwimlane.field.multiValue,
+            dateType: dateType,
           },
-          values: [...generalSwimlane.values].map(val => ({key: val.name, id: val.id, label: val.presentation, color: null})),
+          values:  !dateType ? [...generalSwimlane.values].map(val => ({key: val.name, id: val.id, label: val.presentation, color: null}))
+            : dateType === DatePeriodType.Both ? DateSwimlanePeriods : DateSwimlanePastPeriods,
           hideOrphansSwimlane: action.payload.hideOrphansSwimlane,
           enableColor: false,
         });
