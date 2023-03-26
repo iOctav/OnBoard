@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import { selectSwimlanesDepth, selectSwimlanesMetadata } from '../../features/nestedSwimlanes/nestedSwimlanesSlice';
 import AgileBoardRows from './index';
 import FakeTableCells from '../FakeTableCells';
+import { useState } from 'react';
 
 const BorderedTd = styled.td`
   border-bottom: 1px solid var(--ring-line-color);
@@ -46,11 +47,12 @@ const makeEmptyTrimmedSwimlanes = (swimlane) => {
   }));
 };
 
-function BoardRow({row, issuesDict, swimlaneTitle, level}) {
+function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan}) {
   // TODO: Optimizer gettings swimlane by level
   const swimlanes = useSelector(selectSwimlanesMetadata);
   const swimlane = swimlanes.find(sl => sl.order === level + 1);
   const swimlanesDepth = useSelector(selectSwimlanesDepth);
+  const [rollUp, setRollUp] = useState(!row.collapsed);
 
   const issuesCount = row.cells.reduce((acc, cell) => acc + cell.issues.length, 0);
   let swimlaneContent;
@@ -101,8 +103,10 @@ function BoardRow({row, issuesDict, swimlaneTitle, level}) {
       (<AgileBoardRows orphanRow={orphanRow} level={level+1} orphansAtTheTop={true} hideOrphansSwimlane={false} trimmedSwimlanes={trimmedSwimlanes}/>)
   }
   return (<>
-    { (swimlaneTitle || level === 0) && <Swimlane title={swimlaneTitle} cardsNumber={issuesCount} columnsNumber={row.cells.length} level={level}/> }
-    { swimlaneContent }
+    { (swimlaneTitle || level === 0) && <Swimlane title={swimlaneTitle} cardsNumber={issuesCount} isOrphan={isOrphan}
+                                                  columnsNumber={row.cells.length} level={level}
+                                                  rollUp={rollUp} onRollUp={setRollUp} /> }
+    { rollUp && swimlaneContent }
   </>);
 }
 
@@ -111,6 +115,7 @@ BoardRow.propTypes = {
   issuesDict: PropTypes.object,
   swimlaneTitle: PropTypes.string,
   level: PropTypes.number,
+  isOrphan: PropTypes.bool,
 }
 
 export default BoardRow;
