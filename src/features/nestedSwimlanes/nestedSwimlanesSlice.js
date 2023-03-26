@@ -3,6 +3,25 @@ import { youtrackApi } from '../../app/services/youtrackApi';
 import { calculateSwimlaneType } from '../../utils/swimlanesUtils';
 import { SwimlaneType } from './swimlane-type';
 
+export const extendedYoutrackApi = youtrackApi.injectEndpoints({
+  endpoints: builder => ({
+    updateGeneralSwimlaneSettings: builder.mutation({
+      query: ({ agileId, ...patch }) => ({
+        url: `agiles/${agileId}`,
+        method: 'POST',
+        body: patch,
+        params: {
+          fields: '$type, id',
+          muteUpdateNotifications: true,
+        }
+      }),
+      invalidatesTags: ['Board'],
+    }),
+  })
+})
+
+export const { useUpdateGeneralSwimlaneSettingsMutation } = extendedYoutrackApi
+
 const swimlanesAdapter = createEntityAdapter();
 
 const matchAgileUpdated = isAnyOf(
@@ -16,6 +35,7 @@ const nestedSwimlanesSlice = createSlice({
     createNestedSwimlane(state, action) {
       swimlanesAdapter.addOne(state, {
         id: action.payload.id,
+        order: action.payload.order,
         type: SwimlaneType.None,
         field: {},
         values: [],
@@ -30,6 +50,7 @@ const nestedSwimlanesSlice = createSlice({
         const generalSwimlane = action.payload.swimlaneSettings;
         generalSwimlane && swimlanesAdapter.upsertOne(state, {
           id: 0,
+          order: 0,
           type: calculateSwimlaneType(true, generalSwimlane?.$type),
           field: {
             id: generalSwimlane.field.id,
@@ -37,7 +58,7 @@ const nestedSwimlanesSlice = createSlice({
             presentation: generalSwimlane.field.presentation,
             aggregateable: generalSwimlane.values?.length > 0 || generalSwimlane.field.multiValue,
           },
-          values: [...generalSwimlane.values].map(val => ({key: val.id, name: val.name, label: val.presentation}))
+          values: [...generalSwimlane.values].map(val => ({key: val.name, id: val.id, label: val.presentation}))
         });
       }
     });
@@ -50,7 +71,7 @@ export default nestedSwimlanesSlice.reducer;
 
 export const {
   selectAll: selectSwimlanesMetadata,
+  selectEntities: selectSwimlanesMetadataEntities,
   selectById: selectSwimlaneMetadataById,
   selectTotal: selectSwimlanesDepth,
 } = swimlanesAdapter.getSelectors((state) => state.nestedSwimlanes);
-

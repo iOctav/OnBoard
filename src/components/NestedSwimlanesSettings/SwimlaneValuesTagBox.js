@@ -31,12 +31,17 @@ function SwimlaneValuesTagBox({swimlane}) {
   const dispatch = useDispatch();
 
   const lazyDataBundleHook = mapTypeDataRequest(customField?.bundle?.type);
-  return (<LazyTagBox placeholder={t('Add project')} size={Size.L}
-    tags={swimlane.values}
-    onAddTag={(tag) => dispatch(updateNestedSwimlane({id: swimlane.id, changes: { values: [...swimlane.values, tag.tag]}}))}
-    lazyDataLoaderHook={lazyDataBundleHook}
-    lazyDataLoaderHookParams={customField?.bundle?.id}
-    makeDataSource={(data) => data.map(item => ({label: item.name, key: item.id, id: item.id, name: item.name}))}/>)
+  if (lazyDataBundleHook) {
+    return (<LazyTagBox placeholder={t('Add project')} size={Size.L}
+              tags={swimlane.values}
+              onAddTag={(tag) => dispatch(updateNestedSwimlane({id: swimlane.id, changes: { values: [...swimlane.values, tag.tag]}}))}
+              lazyDataLoaderHook={lazyDataBundleHook}
+              lazyDataLoaderHookParams={customField?.bundle?.id}
+              makeDataSource={(data) => data.map(item => ({label: item.name, key: item.name, id: item.id}))}/>)
+  } else {
+    return null;
+  }
+
 }
 
 SwimlaneValuesTagBox.propTypes = {

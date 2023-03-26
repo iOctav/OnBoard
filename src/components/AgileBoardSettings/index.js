@@ -82,7 +82,8 @@ function AgileBoardSettings({visible, selectedTab, agileId, agileName, columnSet
         <ChartSettings reportSettings={reportSettings}/>
       </Tab>
       <Tab id="nested-swimlanes" key="nested-swimlanes" title={t('Nested Swimlanes')}>
-        <NestedSwimlanesSettings swimlaneSettings={swimlaneSettings}
+        <NestedSwimlanesSettings agileId={agileId}
+                                 swimlaneSettings={swimlaneSettings}
                                  switchToColAndSwimTab={() => setSelected('columns-and swimlanes')}
                                  projectShortNames={projectShortNames}/>
       </Tab>
