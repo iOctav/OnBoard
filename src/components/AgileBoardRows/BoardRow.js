@@ -6,9 +6,7 @@ import AgileCard from '../AgileCard';
 import AgileCardPreview from '../AgileCardPreview';
 import NewCardButton from '../NewCardButton';
 import { useSelector } from 'react-redux';
-import {
-  selectSwimlaneMetadataById, selectSwimlanesDepth
-} from '../../features/nestedSwimlanes/nestedSwimlanesSlice';
+import { selectSwimlanesDepth, selectSwimlanesMetadata } from '../../features/nestedSwimlanes/nestedSwimlanesSlice';
 import AgileBoardRows from './index';
 import FakeTableCells from '../FakeTableCells';
 
@@ -40,16 +38,18 @@ const makeEmptyTrimmedSwimlanes = (swimlane) => {
     collapsed: false,
     id: `${swimlane.id}-${index}`,
     matchesQuery: true,
-    name: value.name,
+    name: value.key,
     timeTrackingData: null,
     value: {
-      presentation: value.name,
+      presentation: value.label,
     },
   }));
 };
 
 function BoardRow({row, issuesDict, swimlaneTitle, level}) {
-  const swimlane = useSelector((state) => selectSwimlaneMetadataById(state, level + 1));
+  // TODO: Optimizer gettings swimlane by level
+  const swimlanes = useSelector(selectSwimlanesMetadata);
+  const swimlane = swimlanes.find(sl => sl.order === level + 1);
   const swimlanesDepth = useSelector(selectSwimlanesDepth);
 
   const issuesCount = row.cells.reduce((acc, cell) => acc + cell.issues.length, 0);

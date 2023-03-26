@@ -13,6 +13,7 @@ export const youtrackApi = createApi({
       return headers
     }
   }),
+  tagTypes: ['Board'],
   endpoints: (builder) => ({
     getAgiles: builder.query({
       query: () => ({
