@@ -47,7 +47,7 @@ const makeEmptyTrimmedSwimlanes = (swimlane) => {
     name: value.key,
     timeTrackingData: null,
     value: {
-      presentation: swimlane.field?.dateType ? getSwimlanePeriodLabel(value.key) : value.label,
+      presentation: swimlane.field?.dateType ? getSwimlanePeriodLabel(value.key, swimlane.field.presentation) : value.label,
     },
     dateType: swimlane.field?.dateType,
     backgroundId: swimlane.enableColor ? value.colorId : null,

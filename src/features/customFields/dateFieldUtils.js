@@ -66,20 +66,20 @@ export const getDateSwimlanePeriod = (date) => {
   return isDateBefore ? 'month-ago' : 'month-later';
 }
 
-export const getSwimlanePeriodLabel = (period) => {
+export const getSwimlanePeriodLabel = (period, fieldPresentation) => {
   const dueDateString = 'Due Date '
   const today = new Date();
   switch (period) {
-    case 'today': return dueDateString + 'today';
-    case 'yesterday': return dueDateString + 'yesterday';
-    case 'tomorrow': return dueDateString + 'tomorrow';
-    case 'last-week': return dueDateString + `between ${ formatDate(subDays(today, 7), 'd MMM yyyy') } and ${ formatDate(subDays(today, 2), 'd MMM yyyy') }`;
-    case 'next-week': return dueDateString + `between ${ formatDate(addDays(today, 2), 'd MMM yyyy') } and ${ formatDate(addDays(today, 7), 'd MMM yyyy') }`;
-    case 'last-month': return dueDateString + `between ${ formatDate(subDays(today, 30), 'd MMM yyyy') } and ${ formatDate(subDays(today, 8), 'd MMM yyyy') }`;
-    case 'next-month': return dueDateString + `between ${ formatDate(addDays(today, 8), 'd MMM yyyy') } and ${ formatDate(addDays(today, 30), 'd MMM yyyy') }`;
-    case 'month-ago': return dueDateString + `between ${ formatDate(subDays(today, 31), 'd MMM yyyy') } and earlier`;
-    case 'month-later': return dueDateString + `between ${ formatDate(addDays(today, 31), 'd MMM yyyy') } and later`;
-    default: return dueDateString;
+    case 'today': return fieldPresentation + ' today';
+    case 'yesterday': return fieldPresentation + ' yesterday';
+    case 'tomorrow': return fieldPresentation + ' tomorrow';
+    case 'last-week': return fieldPresentation + ` between ${ formatDate(subDays(today, 7), 'd MMM yyyy') } and ${ formatDate(subDays(today, 2), 'd MMM yyyy') }`;
+    case 'next-week': return fieldPresentation + ` between ${ formatDate(addDays(today, 2), 'd MMM yyyy') } and ${ formatDate(addDays(today, 7), 'd MMM yyyy') }`;
+    case 'last-month': return fieldPresentation + ` between ${ formatDate(subDays(today, 30), 'd MMM yyyy') } and ${ formatDate(subDays(today, 8), 'd MMM yyyy') }`;
+    case 'next-month': return fieldPresentation + ` between ${ formatDate(addDays(today, 8), 'd MMM yyyy') } and ${ formatDate(addDays(today, 30), 'd MMM yyyy') }`;
+    case 'month-ago': return fieldPresentation + ` between ${ formatDate(subDays(today, 31), 'd MMM yyyy') } and earlier`;
+    case 'month-later': return fieldPresentation + ` between ${ formatDate(addDays(today, 31), 'd MMM yyyy') } and later`;
+    default: return fieldPresentation;
   }
 }
 
