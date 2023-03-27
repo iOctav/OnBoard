@@ -31,7 +31,7 @@ const MarginedCheckboxContainer = styled.div`
   margin-top: calc(var(--ring-unit) * 3);
 `;
 
-function SwimlanesSettings({agileId, swimlaneSettings, projectShortNames, hideOrphansSwimlane, orphansAtTheTop}) {
+function SwimlanesSettings({disabled, agileId, swimlaneSettings, projectShortNames, hideOrphansSwimlane, orphansAtTheTop}) {
   const { t } = useTranslation();
   const [selectedField, setSelectedField] = useState({label: swimlaneSettings.field?.presentation, key: swimlaneSettings.field?.id});
   const [swimlaneType, setSwimlaneType] = useState(calculateSwimlaneType(swimlaneSettings.enabled, swimlaneSettings.$type));
@@ -41,13 +41,13 @@ function SwimlanesSettings({agileId, swimlaneSettings, projectShortNames, hideOr
     <span>
       <SettingsLabel><b>{t('Swimlanes')}</b>{t(' are identified by')}</SettingsLabel>
       <ButtonGroup>
-        <Button active={swimlaneType === SwimlaneType.None} height={ControlsHeight.S}
+        <Button disabled={disabled} active={swimlaneType === SwimlaneType.None} height={ControlsHeight.S}
                 onClick={() => setSwimlaneType(SwimlaneType.None)}>{t('No swimlanes')}
         </Button>
-        <Button active={swimlaneType === SwimlaneType.Values} height={ControlsHeight.S}
+        <Button disabled={disabled} active={swimlaneType === SwimlaneType.Values} height={ControlsHeight.S}
                 onClick={() => setSwimlaneType(SwimlaneType.Values)}>{t('Values')}
         </Button>
-        <Button active={swimlaneType === SwimlaneType.Issues} height={ControlsHeight.S}
+        <Button disabled={disabled} active={swimlaneType === SwimlaneType.Issues} height={ControlsHeight.S}
                 onClick={() => setSwimlaneType(SwimlaneType.Issues)}>{t('Issues')}
         </Button>
       </ButtonGroup>
@@ -57,7 +57,7 @@ function SwimlanesSettings({agileId, swimlaneSettings, projectShortNames, hideOr
           <span>{t(' from field ')}</span>
           {
             (swimlaneType === SwimlaneType.Values || swimlaneType === SwimlaneType.Issues) &&
-            <MarginedSelectBox
+            <MarginedSelectBox disabled={disabled}
               selected={selectedField}
               makeDataset={data => data.map(field => ({value: field.id, label: field.name, description: field.customField?.fieldType?.presentation, aggregateable: field.aggregateable}))}
               lazyDataLoaderHook={swimlaneType === SwimlaneType.Values ? useLazyGetValuesFilterFieldsQuery : useLazyGetIssuesFilterFieldsQuery}
@@ -69,11 +69,11 @@ function SwimlanesSettings({agileId, swimlaneSettings, projectShortNames, hideOr
         </span>)
       }
     </span>
-    { !selectedField.aggregateable && (swimlaneType !== SwimlaneType.None) && (<SwimlaneAttributesList agileId={agileId} fieldValues={swimlaneSettings.values}/>)}
+    { !selectedField.aggregateable && (swimlaneType !== SwimlaneType.None) && (<SwimlaneAttributesList disabled={disabled} agileId={agileId} fieldValues={swimlaneSettings.values}/>)}
     <MarginedCheckboxContainer>
-      <Checkbox checked={showOrphan} label={t('Show swimlane for uncategorized cards')} onChange={(event) => setShowOrphan(event.target.checked)}/>
+      <Checkbox disabled={disabled} checked={showOrphan} label={t('Show swimlane for uncategorized cards')} onChange={(event) => setShowOrphan(event.target.checked)}/>
       { showOrphan
-        ? (<Select type="INLINE" data={[swimlanePositionValue]} selected={orphansAtTheTop && swimlanePositionValue}></Select>)
+        ? (<Select disabled={disabled} type="INLINE" data={[swimlanePositionValue]} selected={orphansAtTheTop && swimlanePositionValue}></Select>)
         : <span>{t('at the top of the board ')}</span>
       }
     </MarginedCheckboxContainer>
@@ -81,6 +81,7 @@ function SwimlanesSettings({agileId, swimlaneSettings, projectShortNames, hideOr
 }
 
 SwimlanesSettings.propTypes = {
+  disabled: PropTypes.bool,
   agileId: PropTypes.string.isRequired,
   swimlaneSettings: PropTypes.object.isRequired,
   projectShortNames: PropTypes.arrayOf(PropTypes.string).isRequired,

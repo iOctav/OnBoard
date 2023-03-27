@@ -34,7 +34,7 @@ const TabsContainer = styled(Tabs)`
   margin-top: calc(var(--ring-unit) * 2);
 `;
 
-function AgileBoardSettings({visible, selectedTab, agileId, agileName, columnSettings, colorCoding,
+function AgileBoardSettings({visible, disabled, selectedTab, agileId, agileName, columnSettings, colorCoding,
     swimlaneSettings, hideOrphansSwimlane, orphansAtTheTop, colorizeCustomFields,
     reportSettings, owner, sprintsSettings, projects, cardSettings, estimationField,
     originalEstimationField, readSharingSettings, updateSharingSettings}) {
@@ -54,14 +54,15 @@ function AgileBoardSettings({visible, selectedTab, agileId, agileName, columnSet
         selected={selected}
         onSelect={selectHandler}>
       <Tab id="general" key="general" title={t('General')}>
-        <GeneralSettings agileName={agileName} agileId={agileId}
+        <GeneralSettings disabled={disabled} agileName={agileName} agileId={agileId}
                          initialOwner={owner} sprintsSettings={sprintsSettings}
                          projects={projects} readSharingSettings={readSharingSettings}
                          updateSharingSettings={updateSharingSettings}/>
       </Tab>
       <Tab id="columns-and swimlanes" key="columns-and swimlanes" title={t('Columns and Swimlanes')}>
-        <ColumnsSettings agileId={agileId} columnSettings={columnSettings}/>
+        <ColumnsSettings disabled={disabled} agileId={agileId} columnSettings={columnSettings}/>
         <SwimlanesSettings
+          disabled={disabled}
           agileId={agileId}
           swimlaneSettings={swimlaneSettings}
           projectShortNames={projectShortNames}
@@ -69,7 +70,8 @@ function AgileBoardSettings({visible, selectedTab, agileId, agileName, columnSet
           hideOrphansSwimlane={hideOrphansSwimlane}/>
       </Tab>
       <Tab id="card" key="card" title={t('Card')}>
-        <CardSettings cardSettings={cardSettings}
+        <CardSettings disabled={disabled}
+                      cardSettings={cardSettings}
                       cardOnSeveralSprints={sprintsSettings.cardOnSeveralSprints}
                       colorizeCustomFields={colorizeCustomFields}
                       projects={projects}
@@ -79,7 +81,7 @@ function AgileBoardSettings({visible, selectedTab, agileId, agileName, columnSet
                       sprintsEnabled={!sprintsSettings.disableSprints}/>
       </Tab>
       <Tab id="chart" key="chart" title={t('Chart')}>
-        <ChartSettings reportSettings={reportSettings}/>
+        <ChartSettings disabled={disabled} reportSettings={reportSettings}/>
       </Tab>
       <Tab id="nested-swimlanes" key="nested-swimlanes" title={t('Nested Swimlanes')}>
         <NestedSwimlanesSettings agileId={agileId}
@@ -93,6 +95,7 @@ function AgileBoardSettings({visible, selectedTab, agileId, agileName, columnSet
 
 AgileBoardSettings.propTypes = {
   visible: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool,
   selectedTab: PropTypes.string,
   agileId: PropTypes.string.isRequired,
   agileName: PropTypes.string.isRequired,

@@ -16,7 +16,7 @@ const MarginedSelectBox = styled(LazySelectBox)`
   margin: 0 calc(var(--ring-unit));
 `;
 
-function ColumnsSettings({agileId, columnSettings}) {
+function ColumnsSettings({disabled, agileId, columnSettings}) {
   const { t } = useTranslation();
   const [selected, setSelected] = useState({key: columnSettings.field.id, label: columnSettings.field.name});
   const usedColumns = columnSettings.columns.reduce((acc, column) => [...acc, ...column.fieldValues], []).map(field => field.name);
@@ -24,6 +24,7 @@ function ColumnsSettings({agileId, columnSettings}) {
     <span>
       <span><b>{t('Columns')}</b>{t(' are identified by')}</span>
       <MarginedSelectBox
+        disabled={disabled}
         selected={selected}
         makeDataset={data => data.map(field => ({value: field.id, label: field.name, description: field.fieldType.presentation}))}
         lazyDataLoaderHook={useLazyGetAvailableColumnFieldsQuery}
@@ -33,8 +34,9 @@ function ColumnsSettings({agileId, columnSettings}) {
         onSelect={setSelected}
         add={{label: t('New custom field'), alwaysVisible: true}}/>
     </span>
-    <ColumnsSettingsTable columns={columnSettings.columns}/>
+    <ColumnsSettingsTable disabled={disabled} columns={columnSettings.columns}/>
     <LazySelectBox
+      disabled={disabled}
       type="INLINE"
       label={t('Add column')}
       lazyDataLoaderHook={useLazyGetColumnSettingsAvailableColumnFieldsQuery}
@@ -45,6 +47,7 @@ function ColumnsSettings({agileId, columnSettings}) {
 }
 
 ColumnsSettings.propTypes = {
+  disabled: PropTypes.bool,
   agileId: PropTypes.string.isRequired,
   columnSettings: PropTypes.object,
 };

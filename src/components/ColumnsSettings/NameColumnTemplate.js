@@ -24,7 +24,7 @@ const BorderedSpan = styled.span`
   line-height: 17px;
 `;
 
-function NameColumnTemplate({fieldValues}) {
+function NameColumnTemplate({disabled, fieldValues}) {
   const { t } = useTranslation();
 
   if (fieldValues.length > 1) {
@@ -33,13 +33,13 @@ function NameColumnTemplate({fieldValues}) {
       fieldValues.map(
         field =>
           (<div key={field.id}>
-            <Button
+            <Button disabled={disabled}
               data-movable-handle
               title="Drag to reorder"
               icon={dragIcon}></Button>
             <span>{field.name}</span>
             {field.isResolved && (<BorderedSpan><span>{t('Resolved')}</span></BorderedSpan>)}
-            <Button icon={pencilIcon} title={t('Edit')}/>
+            <Button disabled={disabled} icon={pencilIcon} title={t('Edit')}/>
           </div>)
       )
     }
@@ -49,11 +49,12 @@ function NameColumnTemplate({fieldValues}) {
   return (<div key={field.id}>
     <span>{field.name}</span>
     {field.isResolved && (<BorderedSpan><span>{t('Resolved')}</span></BorderedSpan>)}
-    <Button icon={pencilIcon} title={t('Edit')}/>
+    <Button disabled={disabled} icon={pencilIcon} title={t('Edit')}/>
   </div>);
 }
 
 NameColumnTemplate.propTypes = {
+  disabled: PropTypes.bool,
   fieldValues: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
