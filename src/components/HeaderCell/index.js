@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import Button from '@jetbrains/ring-ui/dist/button/button';
 import chevronLeft from '@jetbrains/icons/chevron-left';
 import chevronRight from '@jetbrains/icons/chevron-right';
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateColumn } from '../../features/sprint/sprintSlice';
 
-const FloatRightCounterDiv = styled.div`
+const FloatRightCounterDiv = styled.span`
     float: right;
     min-width: 14px;
     padding: 0 4px;
@@ -30,13 +31,29 @@ const HeaderCellTd = styled.td`
     border-collapse: collapse;
 `;
 
-function HeaderCell({caption, cardsCount}) {
-  const [collapsed, setCollapsed] = useState(false);
+const HeaderTitle = styled.div`
+  cursor: pointer;
+  font-size: var(--yt-secondary-font-size);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  float: left;
+  line-height: 20px;
+  max-width: 100%;
+`;
+
+function HeaderCell({column}) {
+  const dispatch = useDispatch();
+
   return (
     <HeaderCellTd>
-      <FloatLeftButton icon={collapsed ? chevronRight : chevronLeft} onClick={() => setCollapsed(prevState => !prevState)}>{caption}</FloatLeftButton>
-      <span className="agile-table-column-icon"></span>
-      <FloatRightCounterDiv className="agile-table-column-counter">{cardsCount}</FloatRightCounterDiv>
+      <HeaderTitle>
+        <FloatLeftButton icon={column.collapsed ? chevronRight : chevronLeft}
+                         onClick={() => dispatch(updateColumn({id: column.id, changes: { collapsed: !column.collapsed}}))}>
+          {column.agileColumn?.fieldValues.map(field => field.presentation).join(', ')}
+        </FloatLeftButton>
+        {/*<FloatRightCounterDiv className="agile-table-column-counter">{cardsCount}</FloatRightCounterDiv>*/}
+      </HeaderTitle>
     </HeaderCellTd>
   );
 }

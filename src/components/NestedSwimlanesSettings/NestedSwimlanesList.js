@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { Table } from '@jetbrains/ring-ui/dist/table/table';
-import closeIcon from '@jetbrains/icons/close-12px';
 import Button from '@jetbrains/ring-ui/dist/button/button';
 import Selection from '@jetbrains/ring-ui/dist/table/selection';
 import {
@@ -21,13 +20,9 @@ import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import SwimlaneValuesTagBox from './SwimlaneValuesTagBox';
 import { selectCustomFieldIds } from '../../features/customFields/customFieldsSlice';
 import Checkbox from '@jetbrains/ring-ui/dist/checkbox/checkbox';
-import {
-  DateSwimlanePastPeriods,
-  DateSwimlanePeriods, getDatasetByDatePeriodType,
-  getDateFieldType,
-  IsDateField
+import { getDatasetByDatePeriodType,
+  getDateFieldType
 } from '../../features/customFields/dateFieldUtils';
-import { DatePeriodType } from '../../features/customFields/date-period-type';
 
 const BorderedSpan = styled.span`
   display: inline-block;

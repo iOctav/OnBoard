@@ -1,15 +1,18 @@
-import PropTypes from 'prop-types';
 import HeaderCell from '../HeaderCell';
 import FakeTableCells from '../FakeTableCells';
+import { useSelector } from 'react-redux';
+import { selectColumnsMetadata } from '../../features/sprint/sprintSlice';
 
-function AgileBoardHeader({columns}) {
+function AgileBoardHeader() {
+  const columns = useSelector(selectColumnsMetadata);
+
   return (
     <thead>
       <tr>
         <FakeTableCells/>
         {
           columns.map(column => (
-            <HeaderCell key={'cell-head-' + column.id} caption={column.fieldValues.map(field => field.presentation).join(', ')} cardsCount={0}></HeaderCell>)
+            <HeaderCell key={'cell-head-' + column.id} column={column}></HeaderCell>)
           )
         }
       </tr>
@@ -18,7 +21,6 @@ function AgileBoardHeader({columns}) {
 }
 
 AgileBoardHeader.propTypes = {
-  columns: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default AgileBoardHeader

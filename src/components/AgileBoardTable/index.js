@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import AgileBoardHeader from '../AgileBoardHeader';
 import AgileBoardData from '../AgileBoardData';
 import AgileBoardColGroup from './AgileBoardColGroup';
+import { useGetSpecificSprintForSpecificAgileQuery } from '../../features/sprint/sprintSlice';
+import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
 
 const TableContainer = styled.table`
   min-width: 720px;
@@ -15,16 +17,25 @@ const TableContainer = styled.table`
 `;
 
 function AgileBoardTable({agileId, sprintId, columns, hideOrphansSwimlane, orphansAtTheTop}) {
-  return <TableContainer>
-    {/*<colgroup>*/}
-    {/*  { columns.map(column => <col key={'col-' + column.id} />) }*/}
-    {/*</colgroup>*/}
-    <AgileBoardColGroup columnsCount={columns.length}/>
-    <AgileBoardHeader columns={columns}></AgileBoardHeader>
-    <AgileBoardData agileId={agileId} sprintId={sprintId}
-                     hideOrphansSwimlane={hideOrphansSwimlane}
-                     orphansAtTheTop={orphansAtTheTop}/>
-  </TableContainer>;
+  const { data: sprint,
+    isLoading,
+    isSuccess,
+    isError
+  } = useGetSpecificSprintForSpecificAgileQuery({agileId, sprintId: (sprintId || 'current')});
+
+  if (isLoading) {
+    return <LoaderScreen/>;
+  } else if (isSuccess) {
+    return (<TableContainer>
+      <AgileBoardColGroup/>
+      <AgileBoardHeader/>
+      <AgileBoardData sprint={sprint}
+                      hideOrphansSwimlane={hideOrphansSwimlane}
+                      orphansAtTheTop={orphansAtTheTop}/>
+    </TableContainer>);
+  } else if (isError) {
+    return null;
+  }
 }
 
 AgileBoardTable.propTypes = {

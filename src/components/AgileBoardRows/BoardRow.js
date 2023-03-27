@@ -15,6 +15,7 @@ import {
   getPredefinedDateValue,
   getSwimlanePeriodLabel
 } from '../../features/customFields/dateFieldUtils';
+import { selectColumnsMetadata } from '../../features/sprint/sprintSlice';
 
 const BorderedTd = styled.td`
   border-bottom: 1px solid var(--ring-line-color);
@@ -24,6 +25,15 @@ const BorderedTd = styled.td`
   &:hover .new-card-button-action-text {
     display: inline;
   };
+`;
+
+const CollapsedIssue = styled.div`
+  background-color: white;
+  display: inline-block;
+  width: calc(var(--ring-unit));
+  height: calc(var(--ring-unit));
+  margin: 2px;
+  outline: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 const makeEmptyOrphanRow = () => {
@@ -59,6 +69,7 @@ function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan}) {
   const swimlanes = useSelector(selectSwimlanesMetadata);
   const nestedSwimlane = swimlanes.find(sl => sl.order === level + 1);
   const swimlanesDepth = useSelector(selectSwimlanesDepth);
+  const columns = useSelector(selectColumnsMetadata);
   const [rollUp, setRollUp] = useState(!row.collapsed);
 
   const issuesCount = row.cells.reduce((acc, cell) => acc + cell.issues.length, 0);
@@ -67,21 +78,23 @@ function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan}) {
     swimlaneContent = (<tr>
       <FakeTableCells/>
       {
-        row.cells.map(cell =>
-          <BorderedTd key={'cell-' + cell.id}>
-            {
-              cell.issues.map((c) => issuesDict && issuesDict[c.id]
-                ? <AgileCard issueData={issuesDict[c.id]} key={'agile-card-' + c.id}/>
-                : <AgileCardPreview issueData={c} key={'agile-card-' + c.id}/> )
-            }
-            <NewCardButton/>
-          </BorderedTd>
+        row.cells.map((cell, index) =>
+          (<BorderedTd key={'cell-' + cell.id}>
+            { !columns[index].collapsed
+              ? (<div>
+                  { cell.issues.map((c) => issuesDict && issuesDict[c.id]
+                      ? <AgileCard issueData={issuesDict[c.id]} key={'agile-card-' + c.id}/>
+                      : <AgileCardPreview issueData={c} key={'agile-card-' + c.id}/> )}
+                  <NewCardButton/>
+                </div>)
+              : cell.issues.map((c) => <CollapsedIssue key={'agile-card-' + c.id}/>)}
+          </BorderedTd>)
         )
       }
     </tr>);
   } else {
     const orphanRow = makeEmptyOrphanRow();
-    const trimmedSwimlanes = nestedSwimlane.field && nestedSwimlane.values.length > 0 ? makeEmptyTrimmedSwimlanes(nestedSwimlane) : [];
+    const trimmedSwimlanes = nestedSwimlane?.field && nestedSwimlane.values.length > 0 ? makeEmptyTrimmedSwimlanes(nestedSwimlane) : [];
     let swimlaneFieldIndex = -1;
     row.cells.forEach(cell => {
       orphanRow.cells.push({...cell, issues: [], issuesCount: 0});
@@ -113,7 +126,7 @@ function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan}) {
     });
 
     swimlaneContent =
-      (<AgileBoardRows orphanRow={orphanRow} level={level+1} orphansAtTheTop={true} hideOrphansSwimlane={nestedSwimlane.hideOrphansSwimlane} trimmedSwimlanes={trimmedSwimlanes}/>)
+      (<AgileBoardRows orphanRow={orphanRow} level={level+1} orphansAtTheTop={true} hideOrphansSwimlane={nestedSwimlane?.hideOrphansSwimlane} trimmedSwimlanes={trimmedSwimlanes}/>)
   }
   return (<>
     { (swimlaneTitle || level === 0) && <Swimlane title={swimlaneTitle} cardsNumber={issuesCount} isOrphan={isOrphan}

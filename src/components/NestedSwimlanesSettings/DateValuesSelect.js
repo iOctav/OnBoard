@@ -1,15 +1,10 @@
 import PropTypes from 'prop-types';
-import {
-  DateSwimlaneFuturePeriods,
-  DateSwimlanePastPeriods,
-  DateSwimlanePeriods, getDatasetByDatePeriodType
-} from '../../features/customFields/dateFieldUtils';
+import { getDatasetByDatePeriodType } from '../../features/customFields/dateFieldUtils';
 import { updateNestedSwimlane } from '../../features/nestedSwimlanes/nestedSwimlanesSlice';
 import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import Select from '@jetbrains/ring-ui/dist/select/select';
-import { DatePeriodType } from '../../features/customFields/date-period-type';
 
 
 function DateValuesSelect({swimlane}) {

@@ -2,10 +2,6 @@ import { DatePeriodType } from './date-period-type';
 import {
   addDays,
   differenceInCalendarDays,
-  isToday,
-  isTomorrow,
-  isWithinInterval,
-  isYesterday,
   subDays
 } from 'date-fns';
 import formatDate from 'date-fns/format';
@@ -67,7 +63,6 @@ export const getDateSwimlanePeriod = (date) => {
 }
 
 export const getSwimlanePeriodLabel = (period, fieldPresentation) => {
-  const dueDateString = 'Due Date '
   const today = new Date();
   switch (period) {
     case 'today': return fieldPresentation + ' today';

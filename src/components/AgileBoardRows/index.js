@@ -8,7 +8,6 @@ function AgileBoardRows({orphanRow, trimmedSwimlanes, hideOrphansSwimlane, orpha
   let issuesDict;
   const { t } = useTranslation();
 
-
   // TODO: refactor this calculation
   const issueIds = [orphanRow, ...trimmedSwimlanes]
     .reduce((acc1, row) =>
