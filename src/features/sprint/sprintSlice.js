@@ -1,4 +1,5 @@
 import { youtrackApi } from '../../app/services/youtrackApi';
+import { createEntityAdapter, createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 export const extendedYoutrackApi = youtrackApi.injectEndpoints({
   endpoints: builder => ({
@@ -16,8 +17,36 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
 
 export const { useGetSpecificSprintForSpecificAgileQuery } = extendedYoutrackApi
 
+const columnsAdapter = createEntityAdapter();
 
-// export const selectSprintResult = (state, agileId, sprintId) => {
-//   return extendedYoutrackApi.endpoints.getSpecificSprintForSpecificAgile.select({agileId: agileId, sprintId: sprintId});
-// }
+const matchAgileUpdated = isAnyOf(
+  youtrackApi.endpoints.getAgilesById.matchFulfilled
+)
 
+const matchASprintUpdated = isAnyOf(
+  extendedYoutrackApi.endpoints.getSpecificSprintForSpecificAgile.matchFulfilled
+)
+
+const columnsSlice = createSlice({
+  name: 'columns',
+  initialState: columnsAdapter.getInitialState(),
+  reducers: {
+    updateColumn: columnsAdapter.updateOne,
+  },
+  extraReducers(builder) {
+    builder.addMatcher(matchASprintUpdated, (state, action) => {
+      columnsAdapter.removeAll(state);
+      if (action.payload.board?.columns) {
+        columnsAdapter.upsertMany(state, action.payload.board.columns.map((col, index) => ({...col, id: index})));
+      }
+    });
+  },
+});
+
+export const { updateColumn } = columnsSlice.actions
+
+export default columnsSlice.reducer;
+
+export const {
+  selectAll: selectColumnsMetadata,
+} = columnsAdapter.getSelectors((state) => state.columns);

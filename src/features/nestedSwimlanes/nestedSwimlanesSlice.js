@@ -52,6 +52,7 @@ const nestedSwimlanesSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addMatcher(matchAgileUpdated, (state, action) => {
+      swimlanesAdapter.removeAll(state);
       if (action.payload.swimlaneSettings?.enabled) {
         const generalSwimlane = action.payload.swimlaneSettings;
         const dateType = getDateFieldType(generalSwimlane?.field?.customField?.fieldType?.id, generalSwimlane?.field?.id);
