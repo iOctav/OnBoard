@@ -34,6 +34,7 @@ function AgileBoard() {
                        sprint={{id: sprint.id, name: sprint.name, from: sprint.start, to: sprint.finish}}
                        onSettingsButtonClick={() => setSettingsVisible((state) => !state)}/>
       <AgileBoardSettings visible={settingsVisible}
+                          disabled={process.env.REACT_APP_YOUTRACK_SETTINGS_DISABLED}
                           selectedTab={new URLSearchParams(search).get('tab')}
                           agileId={agile.id}
                           agileName={agile.name}

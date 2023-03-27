@@ -19,15 +19,15 @@ const AttributeListContainer = styled.div`
   max-width: calc(30 * var(--ring-unit));
 `;
 
-function SwimlaneAttributesList({agileId, fieldValues}) {
+function SwimlaneAttributesList({disabled, agileId, fieldValues}) {
   const { t } = useTranslation();
   const [selectedAttributes] = useState(fieldValues);
   const tableColumns = [
     {key: 'name', id: 'name', getValue: (item, column) => (<div>
         <span>{item.name}</span>
-        <Button icon={pencilIcon} title={t('Edit')}/>
+        <Button disabled={disabled} icon={pencilIcon} title={t('Edit')}/>
       </div>) },
-    {key: 'remove', id: 'remove', getValue: (item, column) => (<Button icon={closeIcon} title={t('Remove')}/>)},
+    {key: 'remove', id: 'remove', getValue: (item, column) => (<Button disabled={disabled} icon={closeIcon} title={t('Remove')}/>)},
   ]
   const data = [...selectedAttributes].map(col => ({...col, key: col.id}));
   const selection = new Selection({data: data});
@@ -40,6 +40,7 @@ function SwimlaneAttributesList({agileId, fieldValues}) {
       <div>
         {/*TODO: Tags have their own api...*/}
         <LazySelectBox
+          disabled={disabled}
           type="INLINE"
           label={t('Add value')}
           lazyDataLoaderHook={useLazyGetAvailableSwimlaneFieldsQuery}
@@ -47,13 +48,14 @@ function SwimlaneAttributesList({agileId, fieldValues}) {
           makeDataset={(data) => data
             .filter(attr => selectedAttributes.findIndex(sattr => sattr.id === attr.id) > 0)
             .map(attr => ({value: attr.id, label: attr.presentation}))}/>
-        {selectedAttributes.length > 0 && <FloatRightButton text>{t('Clear values')}</FloatRightButton>}
+        {selectedAttributes.length > 0 && <FloatRightButton disabled={disabled} text>{t('Clear values')}</FloatRightButton>}
       </div>
     </AttributeListContainer>
   );
 }
 
 SwimlaneAttributesList.propTypes = {
+  disabled: PropTypes.bool,
   agileId: PropTypes.string.isRequired,
   fieldValues: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

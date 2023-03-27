@@ -23,7 +23,7 @@ const CustomizeFieldsBlock = styled.div`
   color: var(--ring-secondary-color);
 `;
 
-function CardSettings({cardSettings, colorCoding, estimationField, originalEstimationField, colorizeCustomFields,
+function CardSettings({disabled, cardSettings, colorCoding, estimationField, originalEstimationField, colorizeCustomFields,
                         cardOnSeveralSprints, projects, sprintsEnabled}) {
   const { t } = useTranslation();
   const [colorizeCustomFieldsValue, setColorizeCustomFieldsValue] = useState(colorizeCustomFields);
@@ -42,7 +42,8 @@ function CardSettings({cardSettings, colorCoding, estimationField, originalEstim
   // const []
   return (<div>
     <SettingsControl label={t('Current estimation field')}>
-      <LazySelectBox selected={estimationFieldItem}
+      <LazySelectBox disabled={disabled}
+                     selected={estimationFieldItem}
                      lazyDataLoaderHook={useLazyGetEstimationFilterFieldsQuery}
                      lazyDataLoaderHookParams={projectShortNames}
                      makeDataset={data => [noEstimationField, ...(data.map(field => ({key: field.id, label: field.name, description: field.customField?.fieldType?.presentation, aggregateable: field.aggregateable})))]}
@@ -56,7 +57,8 @@ function CardSettings({cardSettings, colorCoding, estimationField, originalEstim
     </SettingsControl>
     {estimationFieldItem?.key !== noEstimationField.key &&
       <SettingsControl label={t('Original estimation field')}>
-        <LazySelectBox selected={originalEstimationFieldItem}
+        <LazySelectBox disabled={disabled}
+                       selected={originalEstimationFieldItem}
                        lazyDataLoaderHook={useLazyGetEstimationFilterFieldsQuery}
                        lazyDataLoaderHookParams={projectShortNames}
                        makeDataset={data => [noEstimationField, ...(data.filter(field => field.id !== estimationFieldItem.key).map(field => ({key: field.id, label: field.name, description: field.customField?.fieldType?.presentation, aggregateable: field.aggregateable})))]}
@@ -66,7 +68,8 @@ function CardSettings({cardSettings, colorCoding, estimationField, originalEstim
                        add={{label: t('New custom field'), alwaysVisible: true}}/>
       </SettingsControl>}
     <SettingsControl label={t('Color scheme')}>
-      <LazySelectBox selected={colorScheme}
+      <LazySelectBox disabled={disabled}
+                     selected={colorScheme}
                      lazyDataLoaderHook={useLazyGetColorSchemeFilterFieldsQuery}
                      lazyDataLoaderHookParams={projectShortNames}
                      makeDataset={data => [noColorItem, projectColorItem, ...(data.map(field => ({key: field.id, label: field.name, description: field.customField?.fieldType?.presentation, aggregateable: field.aggregateable})))]}
@@ -75,16 +78,16 @@ function CardSettings({cardSettings, colorCoding, estimationField, originalEstim
                      onSelect={setColorScheme}/>
     </SettingsControl>
     <SettingsControl label={t('Custom fields')}/>
-      { cardSettings?.fields && <CustomFieldsTable fields={cardSettings.fields} projects={projects}/> }
+      { cardSettings?.fields && <CustomFieldsTable disabled={disabled} fields={cardSettings.fields} projects={projects}/> }
       { !cardSettings?.fields && (<CustomizeFieldsBlock><div>{t('The default presentation shows the first three fields from the project that the issue belongs to')}</div>
-        <Button primary>{t('Customize fields')}</Button></CustomizeFieldsBlock>) }
+        <Button primary disabled={disabled}>{t('Customize fields')}</Button></CustomizeFieldsBlock>) }
     <CheckBoxContainer>
-      <Checkbox label={t('Show colors for other custom fields')}
+      <Checkbox disabled={disabled} label={t('Show colors for other custom fields')}
                 checked={colorizeCustomFieldsValue}
                 onChange={(event) => setColorizeCustomFieldsValue(!event.target.checked)}/>
     </CheckBoxContainer>
     {sprintsEnabled && <CheckBoxContainer>
-      <Checkbox label={t('Allow cards to be assigned to multiple sprints')}
+      <Checkbox disabled={disabled} label={t('Allow cards to be assigned to multiple sprints')}
                 checked={cardOnSeveralSprintsValue}
                 onChange={(event) => setCardOnSeveralSprintsValue(!event.target.checked)}/>
     </CheckBoxContainer>}
@@ -95,6 +98,7 @@ function CardSettings({cardSettings, colorCoding, estimationField, originalEstim
 }
 
 CardSettings.propTypes = {
+  disabled: PropTypes.bool,
   cardSettings: PropTypes.object,
   colorizeCustomFields: PropTypes.bool.isRequired,
   cardOnSeveralSprints: PropTypes.bool.isRequired,
