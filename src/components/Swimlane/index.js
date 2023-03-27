@@ -30,11 +30,15 @@ const CardsCounterSpan = styled.span`
   color: var(--ring-secondary-color);
 `;
 
-const SwimlaneTitle = styled.span`
+const SwimlaneButton = styled(Button)`
   font-weight: bold;
   font-size: var(--ring-font-size-larger);
   font-family: var(--ring-font-family);
   color: var(--ring-text-color);
+  &:hover {
+    color: var(--ring-link-hover-color);
+    text-decoration: none;
+  };
 `;
 
 const SwimlaneContainer = styled.div`
@@ -72,11 +76,11 @@ function Swimlane({title, isOrphan, cardsNumber, columnsNumber, level, rollUp, o
               <div>
                 { !isOrphan && <DraggableIcon glyph={drag} /> }
                 { level > 0 && <LevelMarker className={bgId && `ring-palette_tone-${COLORS[bgId].tone}-${COLORS[bgId].brightness}`}>L{level}</LevelMarker> }
-                <Button iconClassName="ob-main-text-color" icon={rollUp ? caretDown10px : caretRight10px} onClick={() => {
+                <SwimlaneButton icon={rollUp ? caretDown10px : caretRight10px} onClick={() => {
                   onRollUp(!rollUp);
                 }}>
-                  <SwimlaneTitle className="ob-main-text-color">{title}</SwimlaneTitle>
-                </Button>
+                  {title}
+                </SwimlaneButton>
               </div>
             </FloatLeftDiv>
             <FloatRightDiv>
@@ -85,11 +89,6 @@ function Swimlane({title, isOrphan, cardsNumber, columnsNumber, level, rollUp, o
           </SwimlaneContainer>
         )}
       </td>
-      {/*<td>*/}
-      {/*    <FloatRightDiv>*/}
-      {/*        { !!cardsNumber && (<CardsCounterSpan>{cardsNumber} {t(cardsNumber > 1 ? 'cards' : 'card')}</CardsCounterSpan>)}*/}
-      {/*    </FloatRightDiv>*/}
-      {/*</td>*/}
     </tr>
   );
 }
