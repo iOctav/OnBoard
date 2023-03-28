@@ -19,10 +19,6 @@ export const { useGetSpecificSprintForSpecificAgileQuery } = extendedYoutrackApi
 
 const columnsAdapter = createEntityAdapter();
 
-const matchAgileUpdated = isAnyOf(
-  youtrackApi.endpoints.getAgilesById.matchFulfilled
-)
-
 const matchASprintUpdated = isAnyOf(
   extendedYoutrackApi.endpoints.getSpecificSprintForSpecificAgile.matchFulfilled
 )
