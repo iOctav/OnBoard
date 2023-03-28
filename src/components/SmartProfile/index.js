@@ -1,7 +1,7 @@
 import DropdownMenu from '@jetbrains/ring-ui/dist/dropdown-menu/dropdown-menu';
 import Avatar from '@jetbrains/ring-ui/dist/avatar/avatar';
 import { Size } from '@jetbrains/ring-ui/dist/avatar/avatar';
-import { profilePageUri } from '../../services/linkService';
+import { myProfilePageUri } from '../../services/linkService';
 import { useGetCurrentUserInfoQuery } from '../../app/services/youtrackApi';
 
 function SmartProfile() {
@@ -13,7 +13,7 @@ function SmartProfile() {
   const profileAnchor = (<div><Avatar size={Size.Size32} username={data.name} /></div>);
 
   const dropdownMenuData = [
-    { label: 'Profile', href: profilePageUri() },
+    { label: 'Profile', href: myProfilePageUri() },
     { label: 'Appearance', href: '#' },
     { label: 'Switch user', href: '#' },
     { label: 'Log out', href: '#' },

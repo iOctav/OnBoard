@@ -8,7 +8,7 @@ import { ASSIGNEE_FIELDNAME } from '../../utils/cardFieldConstants';
 
 const AgileCardDiv = styled.div`
   box-sizing: border-box;
-  width: 458.88px;
+  max-width: 458.88px;
   height: 105px;
   background: #FFFFFF;
   border: 1px solid #DFE5EB;

@@ -14,6 +14,10 @@ const TableContainer = styled.table`
   box-sizing: border-box;
   overflow: auto;
   table-layout: fixed;
+  clear: right;
+  background-color: var(--ring-sidebar-background-color);
+  position: relative;
+  margin-bottom: 36px;
 `;
 
 function AgileBoardTable({agileId, sprintId, columns, hideOrphansSwimlane, orphansAtTheTop}) {
