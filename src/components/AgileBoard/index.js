@@ -6,6 +6,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import AgileBoardSettings from '../AgileBoardSettings';
 import { useState } from 'react';
 import AgileBoardTable from '../AgileBoardTable';
+import AgileBoardFooter from './AgileBoardFooter';
 
 function AgileBoard() {
   const { agileId, sprintId } = useParams();
@@ -58,6 +59,7 @@ function AgileBoard() {
                       columns={columns}
                       hideOrphansSwimlane={agile.hideOrphansSwimlane}
                       orphansAtTheTop={agile.orphansAtTheTop}/>
+      <AgileBoardFooter owner={agile.owner}/>
     </div>
   } else if (isError) {
     content = <div>{error.toString()}</div>
