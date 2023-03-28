@@ -7,12 +7,13 @@ import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
 function AuthOutlet() {
   const auth = useAuth();
   const location = useLocation()
+  const currentPath = location.pathname;
 
   useEffect(() => {
     if (!auth.user) {
-      window.open(getAuthorizeHref(location.pathname), '_self')
+      window.open(getAuthorizeHref(currentPath), '_self')
     }
-  }, [auth, location.pathname]);
+  }, [auth, currentPath]);
 
   if (!auth.user) {
     return (<LoaderScreen/>)
