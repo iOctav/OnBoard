@@ -1,6 +1,7 @@
 {
   "name": "dashboard-youtrack",
   "version": "0.1.0",
+  "proxy": "https://polyproject.youtrack.cloud",
   "private": true,
   "dependencies": {
     "@jetbrains/icons": "^3.21.0",
