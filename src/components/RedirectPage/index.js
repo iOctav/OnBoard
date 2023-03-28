@@ -8,7 +8,7 @@ import { homePageUri } from '../../services/linkService';
 function RedirectPage() {
   const location = useLocation();
   const [seconds, setSeconds] = useState(3);
-  const redirectUrl = process.env.REACT_APP_YOUTRACK_BASE_URL + location.pathname;
+  const redirectUrl = process.env.REACT_APP_YOUTRACK_BASE_URL + location.pathname + location.search;
   useEffect(() => {
     const interval = setInterval(
       () => {

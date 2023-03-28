@@ -24,7 +24,6 @@ function AgileBoard() {
   if (isLoading) {
     content = <LoaderScreen/>
   } else if (isSuccess) {
-    const columns = agile.columnSettings.columns;
     const realSprintId = sprintId.toLowerCase() === 'current'
       ? agile.currentSprint.id : sprintId;
     const sprint = agile.sprints.find(sprint => sprint.id === realSprintId);
@@ -56,9 +55,11 @@ function AgileBoard() {
                           updateSharingSettings={agile.updateSharingSettings}/>
 
       <AgileBoardTable agileId={agile.id} sprintId={realSprintId}
-                      columns={columns}
-                      hideOrphansSwimlane={agile.hideOrphansSwimlane}
-                      orphansAtTheTop={agile.orphansAtTheTop}/>
+                       agileName={agile.name} sprintName={sprint.name}
+                       columnFieldName={agile.columnSettings?.field?.name}
+                       explicitQuery={agile.sprintsSettings.explicitQuery}
+                       hideOrphansSwimlane={agile.hideOrphansSwimlane}
+                       orphansAtTheTop={agile.orphansAtTheTop}/>
       <AgileBoardFooter owner={agile.owner}/>
     </div>
   } else if (isError) {
