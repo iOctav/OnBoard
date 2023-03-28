@@ -1,10 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { trimLastSlash } from '../../utils/uriUtils';
 
 export const youtrackApi = createApi({
   reducerPath: 'youtrackApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: trimLastSlash(process.env.REACT_APP_YOUTRACK_BASE_URL)  + '/api',
+    baseUrl: '/api',
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
       if (token) {
