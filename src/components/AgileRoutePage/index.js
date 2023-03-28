@@ -20,7 +20,7 @@ function AgileRoutePage() {
       </Route>
       <Route path="/oauth" element={<OAuth/>}/>
       { Object.keys(YT_PAGES).map((key) => (
-        <Route key={key} path={YT_PAGES[key]}>
+        <Route key={key} path={YT_PAGES[key]} element={<RedirectPage/>}>
           <Route path="*" element={<RedirectPage/>} />
         </Route>))
       }

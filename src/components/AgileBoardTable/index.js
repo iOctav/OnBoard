@@ -20,7 +20,8 @@ const TableContainer = styled.table`
   margin-bottom: 36px;
 `;
 
-function AgileBoardTable({agileId, sprintId, columns, hideOrphansSwimlane, orphansAtTheTop}) {
+function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldName,
+                           explicitQuery, hideOrphansSwimlane, orphansAtTheTop}) {
   const { data: sprint,
     isLoading,
     isSuccess,
@@ -32,7 +33,10 @@ function AgileBoardTable({agileId, sprintId, columns, hideOrphansSwimlane, orpha
   } else if (isSuccess) {
     return (<TableContainer>
       <AgileBoardColGroup/>
-      <AgileBoardHeader/>
+      <AgileBoardHeader agileName={agileName}
+                        sprintName={sprintName}
+                        fieldName={columnFieldName}
+                        explicitQuery={explicitQuery}/>
       <AgileBoardData sprint={sprint}
                       hideOrphansSwimlane={hideOrphansSwimlane}
                       orphansAtTheTop={orphansAtTheTop}/>
@@ -45,7 +49,10 @@ function AgileBoardTable({agileId, sprintId, columns, hideOrphansSwimlane, orpha
 AgileBoardTable.propTypes = {
   agileId: PropTypes.string.isRequired,
   sprintId: PropTypes.string.isRequired,
-  columns: PropTypes.array,
+  agileName: PropTypes.string.isRequired,
+  sprintName: PropTypes.string,
+  columnFieldName: PropTypes.string.isRequired,
+  explicitQuery: PropTypes.string,
   hideOrphansSwimlane: PropTypes.bool,
   orphansAtTheTop: PropTypes.bool,
 }
