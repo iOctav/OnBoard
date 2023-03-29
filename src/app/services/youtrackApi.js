@@ -36,7 +36,7 @@ export const youtrackApi = createApi({
         method: 'POST',
         body: ids.map(id => ({ id: id })),
         params: {
-          fields: 'attachments(id),fields($type,hasStateMachine,id,isUpdatable,name,projectCustomField($type,bundle(id),canBeEmpty,emptyFieldText,field(fieldType(isMultiValue,valueType),id,localizedName,name,ordinal),id,isEstimation,isPublic,isSpentTime,ordinal,size),value($type,archived,avatarUrl,buildIntegration,buildLink,color(background,id),description,fullName,id,isResolved,localizedName,login,markdownText,minutes,name,presentation,ringId,text)),id,idReadable,summary,isDraft,numberInProject,project($type,archived,id,name,plugins(timeTrackingSettings(enabled,estimate(field(id,name),id),timeSpent(field(id,name),id))),ringId,shortName),reporter($type,id,login,ringId),created,updated,resolved,subtasks(id,issuesSize,unresolvedIssuesSize)',
+          fields: 'attachments(id),fields($type,hasStateMachine,id,isUpdatable,name,projectCustomField($type,bundle(id),canBeEmpty,emptyFieldText,field(fieldType(isMultiValue,valueType),id,localizedName,name,ordinal),id,isEstimation,isPublic,isSpentTime,ordinal,size),value($type,archived,avatarUrl,buildIntegration,buildLink,color(background,id),description,fullName,id,isResolved,localizedName,login,markdownText,minutes,name,presentation,ringId,text)),id,idReadable,summary,isDraft,numberInProject,project($type,archived,id,name,plugins(timeTrackingSettings(enabled,estimate(field(id,name),id),timeSpent(field(id,name),id))),ringId,shortName),reporter($type,id,login,ringId),created,updated,resolved,subtasks(id,issuesSize,unresolvedIssuesSize),tags(id,name,color(id))',
           top: -1,
           topLinks: 3,
         },
@@ -216,6 +216,14 @@ export const youtrackApi = createApi({
         },
       })
     }),
+    getIssueTags: builder.query({
+      query: () => ({
+        url: `issueTags`,
+        params: {
+          fields: '$type,color(id),id,isDeletable,isShareable,isUpdatable,isUsable,issuesUrl,name,owner($type,id,isLocked,login,name,ringId),pinned,pinnedByDefault,query,readSharingSettings(permissionBasedTagAccess,permittedGroups($type,id,name,ringId),permittedUsers($type,id,isLocked,login,name,ringId)),shortName,tagSharingSettings(permissionBasedTagAccess,permittedGroups($type,id,name,ringId),permittedUsers($type,id,isLocked,login,name,ringId)),untagOnResolve,updateSharingSettings(permissionBasedTagAccess,permittedGroups($type,id,name,ringId),permittedUsers($type,id,isLocked,login,name,ringId))',
+        },
+      })
+    }),
   }),
 });
 
@@ -227,4 +235,4 @@ export const { useGetCustomFieldValuesQuery,
   useLazyGetAvailableColumnFieldsQuery, useLazyGetColorSchemeFilterFieldsQuery, useLazyGetEstimationFilterFieldsQuery,
   useLazyGetColumnSettingsAvailableColumnFieldsQuery, useLazyGetCustomFilterFieldsQuery,
   useLazyGetValuesFilterFieldsQuery, useLazyGetIssuesFilterFieldsQuery, useLazyGetAvailableSwimlaneFieldsQuery,
-  useLazyGetUsersQuery, useLazyGetProjectsQuery, useLazyGetVisibilityGroupsQuery } = youtrackApi;
+  useLazyGetUsersQuery, useLazyGetProjectsQuery, useLazyGetVisibilityGroupsQuery, useLazyGetIssueTagsQuery } = youtrackApi;

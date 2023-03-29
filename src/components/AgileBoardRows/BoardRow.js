@@ -123,10 +123,11 @@ function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan}) {
           .findIndex(field => field.name.toLowerCase() === nestedSwimlane?.field?.name?.toLowerCase()));
         const swimlaneFieldValue = issueData?.fields[swimlaneFieldIndex]?.value ||
           getPredefinedDateValue(issueData, nestedSwimlane?.field?.name);
-        if (swimlaneFieldValue) {
+        const issueTags = issueData?.tags.map(tag => tag.name);
+        if (swimlaneFieldValue || issueTags) {
           const trimmedSwimlane = trimmedSwimlanes.find(smln => {
             return !smln.dateType
-              ? smln.name === swimlaneFieldValue?.name
+              ? smln.name === swimlaneFieldValue?.name || issueTags.includes(smln.name)
               : smln.name === getDateSwimlanePeriod(swimlaneFieldValue);
           });
           if (trimmedSwimlane) {

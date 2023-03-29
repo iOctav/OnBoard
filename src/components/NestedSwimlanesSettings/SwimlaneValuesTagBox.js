@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import {
   useLazyGetBuildBundleValuesQuery,
-  useLazyGetEnumBundleValuesQuery,
+  useLazyGetEnumBundleValuesQuery, useLazyGetIssueTagsQuery,
   useLazyGetOwnedBundleValuesQuery,
   useLazyGetStateBundleValuesQuery,
   useLazyGetUserBundleValuesQuery,
@@ -27,12 +27,20 @@ const mapTypeDataRequest = (fieldType) => {
   }
 }
 
+const mapIdDataRequest = (fieldId) => {
+  switch (fieldId.toLowerCase()) {
+    case 'tag': return useLazyGetIssueTagsQuery;
+    default: return null;
+  }
+}
+
+
 function SwimlaneValuesTagBox({swimlane}) {
   const { t } = useTranslation();
   const customField = useSelector(state => selectCustomFieldMetadataById(state, swimlane.field.id));
   const dispatch = useDispatch();
 
-  const lazyDataBundleHook = mapTypeDataRequest(customField?.bundle?.type);
+  const lazyDataBundleHook = mapTypeDataRequest(customField?.bundle?.type) || mapIdDataRequest(swimlane.field.id);
   if (lazyDataBundleHook) {
     return (<LazyTagBox placeholder={t('Add value')} size={Size.L}
               tags={swimlane.values} disabled={swimlane.order === 0}
