@@ -60,6 +60,7 @@ const makeEmptyTrimmedSwimlanes = (swimlane, emptyCells) => {
     value: {
       presentation: swimlane.field?.dateType ? getSwimlanePeriodLabel(value.key, swimlane.field.presentation) : value.label,
     },
+    isTag: swimlane.field?.id === 'tag',
     dateType: swimlane.field?.dateType,
     backgroundId: swimlane.enableColor ? value.colorId : null,
   }));
@@ -157,7 +158,7 @@ function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan}) {
   return (<>
     { (swimlaneTitle || level === 0) && <Swimlane title={swimlaneTitle} issueId={row.issue?.idReadable}
                                                   striked={row.issue?.resolved > 0} cardsNumber={issuesCount}
-                                                  isOrphan={isOrphan} columnsNumber={row.cells.length}
+                                                  isOrphan={isOrphan} columnsNumber={row.cells.length} isTag={row.isTag}
                                                   level={level} backgroundId={row.backgroundId}
                                                   rollUp={rollUp} onRollUp={setRollUp} /> }
     { rollUp && swimlaneContent }
