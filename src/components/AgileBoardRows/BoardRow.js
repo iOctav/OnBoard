@@ -16,6 +16,7 @@ import {
   getSwimlanePeriodLabel
 } from '../../features/customFields/dateFieldUtils';
 import { selectColumnsMetadata } from '../../features/sprint/sprintSlice';
+import { SwimlaneType } from '../../features/nestedSwimlanes/swimlane-type';
 
 const BorderedTd = styled.td`
   border-bottom: 1px solid var(--ring-line-color);
@@ -36,10 +37,10 @@ const CollapsedIssue = styled.div`
   outline: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
-const makeEmptyOrphanRow = () => {
+const makeEmptyOrphanRow = (emptyCells) => {
   return {
     $type: 'OrphanRow',
-    cells: [],
+    cells: [...emptyCells],
     collapsed: false,
     id: 'orphans',
     matchesQuery: true,
@@ -48,9 +49,9 @@ const makeEmptyOrphanRow = () => {
   };
 };
 
-const makeEmptyTrimmedSwimlanes = (swimlane) => {
+const makeEmptyTrimmedSwimlanes = (swimlane, emptyCells) => {
   return swimlane.values.map((value, index) => ({
-    cells: [],
+    cells: emptyCells.map(cell => ({...cell, issues: [], issuesCount: 0})),
     collapsed: false,
     id: `${swimlane.id}-${index}`,
     matchesQuery: true,
@@ -64,8 +65,25 @@ const makeEmptyTrimmedSwimlanes = (swimlane) => {
   }));
 };
 
+const makeIssueTrimmedSwimlane = (issue, value, swimlane, emptyCells) => ({
+  cells: [...emptyCells],
+  collapsed: false,
+  id: `${swimlane.id}-${issue.id}`,
+  matchesQuery: true,
+  name: issue.key,
+  timeTrackingData: null,
+  issue: {
+    summary: issue.summary,
+    id: issue.id,
+    idReadable: issue.idReadable,
+    resolved: issue.resolved,
+  },
+  dateType: swimlane.field?.dateType,
+  backgroundId: swimlane.enableColor ? value.color?.id : null,
+});
+
 function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan}) {
-  // TODO: Optimizer gettings swimlane by level
+  // TODO: Optimize gettings swimlane by level
   const swimlanes = useSelector(selectSwimlanesMetadata);
   const nestedSwimlane = swimlanes.find(sl => sl.order === level + 1);
   const swimlanesDepth = useSelector(selectSwimlanesDepth);
@@ -93,12 +111,11 @@ function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan}) {
       }
     </tr>);
   } else {
-    const orphanRow = makeEmptyOrphanRow();
-    const trimmedSwimlanes = nestedSwimlane?.field && nestedSwimlane.values.length > 0 ? makeEmptyTrimmedSwimlanes(nestedSwimlane) : [];
+    const orphanRow = makeEmptyOrphanRow(row.cells.map(cell => ({...cell, issues: [], issuesCount: 0})));
+    const trimmedSwimlanes = nestedSwimlane?.field && nestedSwimlane.values.length > 0 && nestedSwimlane.type === SwimlaneType.Values
+      ? makeEmptyTrimmedSwimlanes(nestedSwimlane, row.cells) : [];
     let swimlaneFieldIndex = -1;
-    row.cells.forEach(cell => {
-      orphanRow.cells.push({...cell, issues: [], issuesCount: 0});
-      trimmedSwimlanes.forEach(swimlane => swimlane.cells.push({...cell, issues: [], issuesCount: 0}));
+    row.cells.forEach((cell, index) => {
       if (!issuesDict) return;
       cell.issues?.forEach(issue => {
         const issueData = issuesDict[issue.id];
@@ -113,24 +130,34 @@ function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan}) {
               : smln.name === getDateSwimlanePeriod(swimlaneFieldValue);
           });
           if (trimmedSwimlane) {
-            const trimmedSwimlaneCell = trimmedSwimlane.cells.slice(-1)[0];
+            const trimmedSwimlaneCell = trimmedSwimlane.cells[index];
             trimmedSwimlaneCell.issues.push(issue);
             trimmedSwimlaneCell.issuesCount++;
             return;
+          } else {
+            if (nestedSwimlane.values.findIndex(value => value.key === swimlaneFieldValue?.name) >= 0) {
+              trimmedSwimlanes.push(makeIssueTrimmedSwimlane(issueData, swimlaneFieldValue, nestedSwimlane,
+                row.cells.map(cell => ({...cell, issues: [], issuesCount: 0}))));
+              return;
+            }
           }
         }
-        const orphanCell = orphanRow.cells.slice(-1)[0];
+        const orphanCell = orphanRow.cells[index];
         orphanCell.issues.push(issue);
         orphanCell.issuesCount++;
       })
     });
 
     swimlaneContent =
-      (<AgileBoardRows orphanRow={orphanRow} level={level+1} orphansAtTheTop={true} hideOrphansSwimlane={nestedSwimlane?.hideOrphansSwimlane} trimmedSwimlanes={trimmedSwimlanes}/>)
+      (<AgileBoardRows orphanRow={orphanRow} level={level+1}
+                       orphansAtTheTop={true} hideOrphansSwimlane={nestedSwimlane?.hideOrphansSwimlane}
+                       trimmedSwimlanes={trimmedSwimlanes}/>)
   }
   return (<>
-    { (swimlaneTitle || level === 0) && <Swimlane title={swimlaneTitle} cardsNumber={issuesCount} isOrphan={isOrphan}
-                                                  columnsNumber={row.cells.length} level={level} backgroundId={row.backgroundId}
+    { (swimlaneTitle || level === 0) && <Swimlane title={swimlaneTitle} issueId={row.issue?.idReadable}
+                                                  striked={row.issue?.resolved > 0} cardsNumber={issuesCount}
+                                                  isOrphan={isOrphan} columnsNumber={row.cells.length}
+                                                  level={level} backgroundId={row.backgroundId}
                                                   rollUp={rollUp} onRollUp={setRollUp} /> }
     { rollUp && swimlaneContent }
   </>);
