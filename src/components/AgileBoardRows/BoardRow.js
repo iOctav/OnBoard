@@ -35,6 +35,7 @@ const CollapsedIssue = styled.div`
   height: calc(var(--ring-unit));
   margin: 2px;
   outline: 1px solid rgba(0, 0, 0, 0.1);
+  ${props => props.bgColor ? `background-color: ${props.bgColor};` : ''}
 `;
 
 const makeEmptyOrphanRow = (emptyCells) => {
@@ -83,7 +84,7 @@ const makeIssueTrimmedSwimlane = (issue, value, swimlane, emptyCells) => ({
   backgroundId: swimlane.enableColor ? value.color?.id : null,
 });
 
-function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan}) {
+function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan, colorField}) {
   // TODO: Optimize gettings swimlane by level
   const swimlanes = useSelector(selectSwimlanesMetadata);
   const nestedSwimlane = swimlanes.find(sl => sl.order === level + 1);
@@ -102,11 +103,15 @@ function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan}) {
             { !columns[index].collapsed
               ? (<div>
                   { cell.issues.map((c) => issuesDict && issuesDict[c.id]
-                      ? <AgileCard issueData={issuesDict[c.id]} key={'agile-card-' + c.id}/>
+                      ? <AgileCard issueData={issuesDict[c.id]} colorField={colorField} key={'agile-card-' + c.id}/>
                       : <AgileCardPreview issueData={c} key={'agile-card-' + c.id}/> )}
                   <NewCardButton/>
                 </div>)
-              : cell.issues.map((c) => <CollapsedIssue key={'agile-card-' + c.id}/>)}
+              : cell.issues.map((c) => {
+                const issueData = issuesDict && issuesDict[c.id];
+                const issueColor = colorField && issueData?.fields?.find(field => field.name === colorField)?.value?.color?.background;
+                return (<CollapsedIssue bgColor={issueColor} key={'agile-card-' + c.id}/>);
+              })}
           </BorderedTd>)
         )
       }
@@ -171,6 +176,7 @@ BoardRow.propTypes = {
   swimlaneTitle: PropTypes.string,
   level: PropTypes.number,
   isOrphan: PropTypes.bool,
+  colorField: PropTypes.string,
 }
 
 export default BoardRow;
