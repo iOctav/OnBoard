@@ -59,7 +59,8 @@ function AgileBoard() {
                        columnFieldName={agile.columnSettings?.field?.name}
                        explicitQuery={agile.sprintsSettings.explicitQuery}
                        hideOrphansSwimlane={agile.hideOrphansSwimlane}
-                       orphansAtTheTop={agile.orphansAtTheTop}/>
+                       orphansAtTheTop={agile.orphansAtTheTop}
+                       colorField={agile.colorCoding?.prototype?.name}/>
       <AgileBoardFooter owner={agile.owner}/>
     </div>
   } else if (isError) {

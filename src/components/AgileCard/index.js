@@ -5,8 +5,6 @@ import AgileCardAssignee from '../AgileCardAssignee';
 import AgileCardField from '../AgileCardField';
 import { issueDetails } from '../../services/linkService';
 import { ASSIGNEE_FIELDNAME } from '../../utils/cardFieldConstants';
-import { useDrag } from 'react-dnd';
-import { ItemTypes } from '../../utils/item-types';
 
 const AgileCardDiv = styled.div`
   box-sizing: border-box;
@@ -16,6 +14,20 @@ const AgileCardDiv = styled.div`
   border: 1px solid #DFE5EB;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
+
+  &::before {
+    display: block;
+    content: "";
+    width: 4px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    ${props => props.bgColor ? `background-color: ${props.bgColor};` : ''}
+    border-right: solid 1px transparent;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
 `;
 
 const AgileCardSummaryDiv = styled.div`
@@ -39,6 +51,7 @@ const IdLink = styled.a`
   color: var(--ring-secondary-color);
   font-variant: tabular-nums;
   text-decoration: none;
+  ${props => props.resolved ? 'text-decoration: line-through' : ''};
 
   &:hover {
     text-decoration: underline;
@@ -55,26 +68,17 @@ function compareCardField(a, b) {
     return a.projectCustomField.ordinal - b.projectCustomField.ordinal;
 }
 
-function AgileCard({ issueData }) {
-    const [{ isDragging }, drag] = useDrag(() => ({
-        type: ItemTypes.AgileCard,
-        item: { id: issueData.id },
-        collect: (monitor) => ({
-            isDragging: !!monitor.isDragging()
-        })
-    }));
+function AgileCard({ issueData, colorField }) {
     const cardFooterFields = [...issueData.fields].sort(compareCardField).map(field => {
         return (<AgileCardField field={field} key={field?.id}/>);
     });
     const issueDetailsLink = issueDetails(issueData.idReadable, issueData.summary);
     const assigneeField = issueData.fields.find(field => field.name === ASSIGNEE_FIELDNAME);
+    const bgColor = colorField && issueData.fields.find(field => field.name === colorField)?.value?.color?.background;
 
-    return <AgileCardDiv ref={drag}
-              style={{
-                  opacity: isDragging ? 0.5 : 1,
-              }} className="ob-agile-card">
+    return <AgileCardDiv bgColor={bgColor} className="ob-agile-card">
         <AgileCardSummaryDiv>
-            <IdLink href={issueDetailsLink} target="_blank">{issueData.idReadable}</IdLink>
+            <IdLink href={issueDetailsLink} target="_blank" resolved={issueData.resolved ? 1 : 0}>{issueData.idReadable}</IdLink>
             <SummarySpan>{issueData.summary}</SummarySpan>
         </AgileCardSummaryDiv>
 
@@ -88,7 +92,8 @@ function AgileCard({ issueData }) {
 }
 
 AgileCard.propTypes = {
-    issueData: PropTypes.object
+  issueData: PropTypes.object,
+  colorField: PropTypes.string,
 }
 
 export default AgileCard
