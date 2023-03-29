@@ -14,15 +14,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import ButtonGroup from '@jetbrains/ring-ui/dist/button-group/button-group';
 import { SwimlaneType } from '../../features/nestedSwimlanes/swimlane-type';
 import { ControlsHeight } from '@jetbrains/ring-ui/dist/global/controls-height';
-import { useLazyGetIssuesFilterFieldsQuery, useLazyGetValuesFilterFieldsQuery } from '../../app/services/youtrackApi';
-import LazySelectBox from '../LazySelectBox';
-import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import SwimlaneValuesTagBox from './SwimlaneValuesTagBox';
-import { selectCustomFieldIds } from '../../features/customFields/customFieldsSlice';
 import Checkbox from '@jetbrains/ring-ui/dist/checkbox/checkbox';
-import { getDatasetByDatePeriodType,
-  getDateFieldType
-} from '../../features/customFields/dateFieldUtils';
+import SwimlaneFieldSelect from './SwimlaneFieldSelect';
 
 const BorderedSpan = styled.span`
   display: inline-block;
@@ -66,7 +60,6 @@ function NestedSwimlanesList({agileId, projectShortNames}) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const swimlanes = useSelector(selectSwimlanesMetadataEntities);
-  const availableFields = useSelector(selectCustomFieldIds);
   const [updateGeneralSwimlane] = useUpdateGeneralSwimlaneSettingsMutation();
 
   const swapSwimlanes = (id1, id2) => {
@@ -74,7 +67,6 @@ function NestedSwimlanesList({agileId, projectShortNames}) {
     if (order1 === 0 || swimlanes[id2].order === 0) {
       return;
     }
-
     dispatch(updateNestedSwimlane({id: id1, changes: { order: swimlanes[id2].order }}));
     dispatch(updateNestedSwimlane({id: id2, changes: { order: order1 }}));
   };
@@ -96,40 +88,17 @@ function NestedSwimlanesList({agileId, projectShortNames}) {
 
        </>
       )},
-    {key: 'field', id: 'field', title: t('Field'), getValue: (item) => (item.type === SwimlaneType.Values || item.type === SwimlaneType.Issues) &&
-        (<LazySelectBox
-          selected={{label: item.field?.presentation, key: item.field?.id}}
-          disabled={item.order === 0}
-          makeDataset={data => data.filter(field => availableFields.includes(field.id) || field.instant || field.id === 'tag')
-            .map(field => ({value: field.id,
-              label: field.name, description: field.customField?.fieldType?.presentation,
-              fieldTypeId: field?.customField?.fieldType?.id,
-              aggregateable: field.aggregateable}))}
-          lazyDataLoaderHook={item.type === SwimlaneType.Values ? useLazyGetValuesFilterFieldsQuery : useLazyGetIssuesFilterFieldsQuery}
-          lazyDataLoaderHookParams={projectShortNames}
-          size={Size.M}
-          height={ControlsHeight.S}
-          onSelect={field => {
-            if (field.value !== item.field?.id) {
-              const dateType = getDateFieldType(field.fieldTypeId, field.value);
-              dispatch(updateNestedSwimlane({id: item.id, changes:
-                  { field:
-                      { id: field.value, presentation: field.label, aggregateable: field.aggregateable, name: field.label, dateType: dateType },
-                    values: !dateType ? [] :  getDatasetByDatePeriodType(dateType)
-                  }}
-              ))
-            }}}
-        />)
-      },
-    {key: 'values', id: 'values', title: t('Values'), getValue: (item) => (item.field?.id && <SwimlaneValuesTagBox swimlane={item}/>)},
-    {key: 'enableColor', id: 'enableColor', title: t('Enable background color'),
-      getValue: (item) => (<Checkbox disabled={item.order === 0} checked={item.enableColor}
-                                     onChange={(event) => dispatch(updateNestedSwimlane({id: item.id,
-                                       changes: { enableColor: event.target.checked}}))} />)},
-    {key: 'hideOrphan', id: 'hideOrphan', title: t('Show swimlane for uncategorized cards'),
-      getValue: (item) => (<Checkbox disabled={item.order === 0} checked={!item.hideOrphansSwimlane}
-                                     onChange={(event) => dispatch(updateNestedSwimlane({id: item.id,
-                                       changes: { hideOrphansSwimlane: !event.target.checked}}))} />)},
+    {key: 'field', id: 'field', title: t('Field'), getValue: (item) =>
+        (item.type === SwimlaneType.Values || item.type === SwimlaneType.Issues) &&
+        (<SwimlaneFieldSelect projectShortNames={projectShortNames} swimlaneId={item.key}/>)},
+    {key: 'values', id: 'values', title: t('Values'), getValue: (item) =>
+        (item.field?.id && <SwimlaneValuesTagBox swimlane={item}/>)},
+    {key: 'enableColor', id: 'enableColor', title: t('Enable background color'), getValue: (item) =>
+        (<Checkbox disabled={item.order === 0} checked={item.enableColor}
+          onChange={(event) => dispatch(updateNestedSwimlane({id: item.id, changes: { enableColor: event.target.checked}}))} />)},
+    {key: 'hideOrphan', id: 'hideOrphan', title: t('Show swimlane for uncategorized cards'), getValue: (item) =>
+        (<Checkbox disabled={item.order === 0} checked={!item.hideOrphansSwimlane}
+          onChange={(event) => dispatch(updateNestedSwimlane({id: item.id, changes: { hideOrphansSwimlane: !event.target.checked}}))} />)},
   ];
   const data = Object.keys(swimlanes).map(key => ({...swimlanes[key], key: key}))
     .sort((a, b) => a.order - b.order);

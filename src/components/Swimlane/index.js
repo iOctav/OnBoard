@@ -73,7 +73,8 @@ const Span14px = styled.span`
   display: inline-block;
 `;
 
-function Swimlane({title, issueId, isOrphan, striked, cardsNumber, columnsNumber, level, rollUp, onRollUp, backgroundId}) {
+function Swimlane({title, issueId, isOrphan, striked, cardsNumber, columnsNumber,
+                    level, rollUp, onRollUp, backgroundId, isTag}) {
   const swimlanesDepth = useSelector(selectSwimlanesDepth);
   const { t } = useTranslation();
   const extraSpans = swimlanesDepth > 1 ? swimlanesDepth - 1 : 0;
@@ -118,6 +119,7 @@ Swimlane.propTypes = {
   rollUp: PropTypes.bool,
   onRollUp: PropTypes.func,
   backgroundId: PropTypes.string,
+  isTag: PropTypes.bool,
 }
 
 export default Swimlane
