@@ -83,13 +83,13 @@ function NestedSwimlanesList({agileId, projectShortNames}) {
     {key: 'type', id: 'type', title: t('Identifier'), getValue: (item) => (
       <>
         <ButtonGroup>
-          <Button active={item.type === SwimlaneType.Values} height={ControlsHeight.S}
+          <Button active={item.type === SwimlaneType.Values} height={ControlsHeight.S} disabled={item.order === 0}
                   onClick={() => item.type !== SwimlaneType.Values &&
-                    dispatch(updateNestedSwimlane({id: item.id, changes: { type: SwimlaneType.Values, values: [] }}))}>{t('Values')}
+                    dispatch(updateNestedSwimlane({id: item.id, changes: { type: SwimlaneType.Values, field: {}, values: [] }}))}>{t('Values')}
           </Button>
-          <Button active={item.type === SwimlaneType.Issues} height={ControlsHeight.S} disabled
+          <Button active={item.type === SwimlaneType.Issues} height={ControlsHeight.S} disabled={item.order === 0}
                   onClick={() => item.type !== SwimlaneType.Issues &&
-                    dispatch(updateNestedSwimlane({id: item.id, changes: { type: SwimlaneType.Issues, values: [] }}))}>{t('Issues')}
+                    dispatch(updateNestedSwimlane({id: item.id, changes: { type: SwimlaneType.Issues, field: {}, values: [] }}))}>{t('Issues')}
           </Button>
         </ButtonGroup>
         {item.order > 0 ? (<LevelMarker>L{item.order}</LevelMarker>) : (<BorderedSpan><span>{t('General')}</span></BorderedSpan>)}

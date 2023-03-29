@@ -4,12 +4,10 @@ import PropTypes from 'prop-types';
 import Button from '@jetbrains/ring-ui/dist/button/button';
 import chevronLeft from '@jetbrains/icons/chevron-left';
 import chevronRight from '@jetbrains/icons/chevron-right';
+import newWindowsIcon from '@jetbrains/icons/new-window';
 import { useDispatch } from 'react-redux';
 import { updateColumn } from '../../features/sprint/sprintSlice';
-import newWindowsIcon from '@jetbrains/icons/new-window';
 import { issuesQueryUri } from '../../services/linkService';
-import Link from '@jetbrains/ring-ui/dist/link/link';
-import Icon from '@jetbrains/ring-ui/dist/icon/icon';
 
 const FloatRightCounterDiv = styled.span`
     float: right;

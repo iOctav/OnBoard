@@ -11,6 +11,8 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { selectSwimlanesDepth } from '../../features/nestedSwimlanes/nestedSwimlanesSlice';
 import { COLORS } from '../ColorPalette/colors';
+import Link from '@jetbrains/ring-ui/dist/link/link';
+import { issueDetails } from '../../services/linkService';
 
 const DraggableIcon = styled(Icon)`
   cursor: move;
@@ -35,6 +37,7 @@ const SwimlaneButton = styled(Button)`
   font-size: var(--ring-font-size-larger);
   font-family: var(--ring-font-family);
   color: var(--ring-text-color);
+  ${props => props.resolved ? 'text-decoration: line-through' : ''};
   &:hover {
     color: var(--ring-link-hover-color);
     text-decoration: none;
@@ -43,6 +46,10 @@ const SwimlaneButton = styled(Button)`
 
 const SwimlaneContainer = styled.div`
   padding: var(--ring-unit);
+`;
+
+const IssueLink = styled(Link)`
+  ${props => props.resolved ? 'text-decoration: line-through' : ''};  
 `;
 
 const LevelMarker = styled.span`
@@ -61,11 +68,17 @@ const LevelMarker = styled.span`
   line-height: 17px;
 `;
 
-function Swimlane({title, isOrphan, cardsNumber, columnsNumber, level, rollUp, onRollUp, backgroundId}) {
+const Span14px = styled.span`
+  width: 14px;
+  display: inline-block;
+`;
+
+function Swimlane({title, issueId, isOrphan, striked, cardsNumber, columnsNumber, level, rollUp, onRollUp, backgroundId}) {
   const swimlanesDepth = useSelector(selectSwimlanesDepth);
   const { t } = useTranslation();
   const extraSpans = swimlanesDepth > 1 ? swimlanesDepth - 1 : 0;
   const bgId = parseInt(backgroundId);
+  const issueDetailsLink = issueDetails(issueId, title);
 
   return (
     <tr>
@@ -74,13 +87,14 @@ function Swimlane({title, isOrphan, cardsNumber, columnsNumber, level, rollUp, o
           <SwimlaneContainer>
             <FloatLeftDiv level={level}>
               <div>
-                { !isOrphan && <DraggableIcon glyph={drag} /> }
+                { !isOrphan ? <DraggableIcon glyph={drag} /> : <Span14px></Span14px>}
                 { level > 0 && <LevelMarker className={bgId && `ring-palette_tone-${COLORS[bgId].tone}-${COLORS[bgId].brightness}`}>L{level}</LevelMarker> }
-                <SwimlaneButton icon={rollUp ? caretDown10px : caretRight10px} onClick={() => {
+                <SwimlaneButton icon={rollUp ? caretDown10px : caretRight10px} resolved={striked ? 1 : 0} onClick={() => {
                   onRollUp(!rollUp);
                 }}>
                   {title}
                 </SwimlaneButton>
+                <IssueLink href={issueDetailsLink} resolved={striked ? 1 : 0} target="_blank">{issueId}</IssueLink>
               </div>
             </FloatLeftDiv>
             <FloatRightDiv>
@@ -95,6 +109,8 @@ function Swimlane({title, isOrphan, cardsNumber, columnsNumber, level, rollUp, o
 
 Swimlane.propTypes = {
   title: PropTypes.string,
+  issueId: PropTypes.string,
+  striked: PropTypes.bool,
   isOrphan: PropTypes.bool,
   cardsNumber: PropTypes.number,
   columnsNumber: PropTypes.number,
