@@ -15,9 +15,8 @@ function SwimlaneFieldSelect({projectShortNames, swimlaneId}) {
   const availableFields = useSelector(selectCustomFieldIds);
   const swimlane = useSelector(state => selectSwimlaneMetadataById(state, swimlaneId));
 
-  return (<LazySelectBox
+  return (<LazySelectBox disabled={swimlane.system}
     selected={{label: capitalizeFirstLetter(swimlane.field?.presentation), key: swimlane.field?.id}}
-    disabled={swimlane.order === 0}
     makeDataset={data => data.filter(field => availableFields.includes(field.id) || field.instant || field.id === 'tag')
       .map(field => ({value: field.id,
         label: capitalizeFirstLetter(field.name), description: field.customField?.fieldType?.presentation,

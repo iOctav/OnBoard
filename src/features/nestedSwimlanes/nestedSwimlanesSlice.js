@@ -40,6 +40,7 @@ const nestedSwimlanesSlice = createSlice({
         id: uuidv4(),
         order: action.payload.order,
         type: SwimlaneType.None,
+        system: false,
         field: {},
         values: [],
         hideOrphansSwimlane: false,
@@ -60,6 +61,7 @@ const nestedSwimlanesSlice = createSlice({
           id: uuidv4(),
           order: 0,
           type: calculateSwimlaneType(true, generalSwimlane?.$type),
+          system: true,
           field: {
             id: generalSwimlane.field.id,
             name: generalSwimlane.field.name,

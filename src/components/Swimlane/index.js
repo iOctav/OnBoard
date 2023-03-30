@@ -89,7 +89,7 @@ function Swimlane({title, issueId, isOrphan, striked, cardsNumber, columnsNumber
             <FloatLeftDiv level={level}>
               <div>
                 { !isOrphan ? <DraggableIcon glyph={drag} /> : <Span14px></Span14px>}
-                { level > 0 && <LevelMarker className={bgId && `ring-palette_tone-${COLORS[bgId].tone}-${COLORS[bgId].brightness}`}>L{level}</LevelMarker> }
+                { level >= 0 && <LevelMarker className={bgId && `ring-palette_tone-${COLORS[bgId].tone}-${COLORS[bgId].brightness}`}>L{level}</LevelMarker> }
                 <SwimlaneButton icon={rollUp ? caretDown10px : caretRight10px} resolved={striked ? 1 : 0} onClick={() => {
                   onRollUp(!rollUp);
                 }}>

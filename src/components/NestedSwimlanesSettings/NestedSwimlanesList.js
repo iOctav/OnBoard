@@ -64,7 +64,7 @@ function NestedSwimlanesList({agileId, projectShortNames}) {
 
   const swapSwimlanes = (id1, id2) => {
     const order1 = swimlanes[id1].order;
-    if (order1 === 0 || swimlanes[id2].order === 0) {
+    if ((order1 === 0 && swimlanes[id1].system) || (swimlanes[id2].order === 0 && swimlanes[id2].system)) {
       return;
     }
     dispatch(updateNestedSwimlane({id: id1, changes: { order: swimlanes[id2].order }}));
@@ -75,16 +75,16 @@ function NestedSwimlanesList({agileId, projectShortNames}) {
     {key: 'type', id: 'type', title: t('Identifier'), getValue: (item) => (
       <>
         <ButtonGroup>
-          <Button active={item.type === SwimlaneType.Values} height={ControlsHeight.S} disabled={item.order === 0}
+          <Button active={item.type === SwimlaneType.Values} height={ControlsHeight.S} disabled={item.system}
                   onClick={() => item.type !== SwimlaneType.Values &&
                     dispatch(updateNestedSwimlane({id: item.id, changes: { type: SwimlaneType.Values, field: {}, values: [] }}))}>{t('Values')}
           </Button>
-          <Button active={item.type === SwimlaneType.Issues} height={ControlsHeight.S} disabled={item.order === 0}
+          <Button active={item.type === SwimlaneType.Issues} height={ControlsHeight.S} disabled={item.system}
                   onClick={() => item.type !== SwimlaneType.Issues &&
                     dispatch(updateNestedSwimlane({id: item.id, changes: { type: SwimlaneType.Issues, field: {}, values: [] }}))}>{t('Issues')}
           </Button>
         </ButtonGroup>
-        {item.order > 0 ? (<LevelMarker>L{item.order}</LevelMarker>) : (<BorderedSpan><span>{t('General')}</span></BorderedSpan>)}
+        {!item.system ? (<LevelMarker>L{item.order}</LevelMarker>) : (<BorderedSpan><span>{t('System')}</span></BorderedSpan>)}
 
        </>
       )},
@@ -94,10 +94,10 @@ function NestedSwimlanesList({agileId, projectShortNames}) {
     {key: 'values', id: 'values', title: t('Values'), getValue: (item) =>
         (item.field?.id && <SwimlaneValuesTagBox swimlane={item}/>)},
     {key: 'enableColor', id: 'enableColor', title: t('Enable background color'), getValue: (item) =>
-        (<Checkbox disabled={item.order === 0} checked={item.enableColor}
+        (<Checkbox checked={item.enableColor} disabled={item.system}
           onChange={(event) => dispatch(updateNestedSwimlane({id: item.id, changes: { enableColor: event.target.checked}}))} />)},
     {key: 'hideOrphan', id: 'hideOrphan', title: t('Show swimlane for uncategorized cards'), getValue: (item) =>
-        (<Checkbox disabled={item.order === 0} checked={!item.hideOrphansSwimlane}
+        (<Checkbox checked={!item.hideOrphansSwimlane} disabled={item.system}
           onChange={(event) => dispatch(updateNestedSwimlane({id: item.id, changes: { hideOrphansSwimlane: !event.target.checked}}))} />)},
   ];
   const data = Object.keys(swimlanes).map(key => ({...swimlanes[key], key: key}))
@@ -111,8 +111,8 @@ function NestedSwimlanesList({agileId, projectShortNames}) {
            selectable={false}
            selection={selection} onSelect={() => {}}
            columns={tableColumns} />
-    <Button text onClick={() => dispatch(createNestedSwimlane({order: data[data.length - 1].order + 1}))}>Add swimlane</Button>
-    <Button disabled={data.length < 2} text onClick={() => dispatch(removeNestedSwimlane(data[data.length-1].id))}>Remove last</Button>
+    <Button text onClick={() => dispatch(createNestedSwimlane({order: data.length > 0 ? data[data.length - 1].order + 1 : 0}))}>Add swimlane</Button>
+    <Button disabled={data.length < 1 || data[0].system} text onClick={() => dispatch(removeNestedSwimlane(data[data.length-1].id))}>Remove last</Button>
   </div>);
 }
 
