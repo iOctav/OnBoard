@@ -20,8 +20,8 @@ const TableContainer = styled.table`
   margin-bottom: 36px;
 `;
 
-function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldName,
-                           explicitQuery, hideOrphansSwimlane, orphansAtTheTop, colorField}) {
+function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldName, explicitQuery,
+                           hideOrphansSwimlane, orphansAtTheTop, colorField, systemSwimlaneExist}) {
   const { data: sprint,
     isLoading,
     isSuccess,
@@ -40,7 +40,8 @@ function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldN
       <AgileBoardData sprint={sprint}
                       hideOrphansSwimlane={hideOrphansSwimlane}
                       orphansAtTheTop={orphansAtTheTop}
-                      colorField={colorField}/>
+                      colorField={colorField}
+                      systemSwimlaneExist={systemSwimlaneExist}/>
     </TableContainer>);
   } else if (isError) {
     return null;
@@ -57,6 +58,7 @@ AgileBoardTable.propTypes = {
   hideOrphansSwimlane: PropTypes.bool,
   orphansAtTheTop: PropTypes.bool,
   colorField: PropTypes.string,
+  systemSwimlaneExist: PropTypes.bool,
 }
 
 export default AgileBoardTable;

@@ -43,7 +43,7 @@ function SwimlaneValuesTagBox({swimlane}) {
   const lazyDataBundleHook = mapTypeDataRequest(customField?.bundle?.type) || mapIdDataRequest(swimlane.field.id);
   if (lazyDataBundleHook) {
     return (<LazyTagBox placeholder={t('Add value')} size={Size.L}
-              tags={swimlane.values} disabled={swimlane.order === 0}
+              tags={swimlane.values} disabled={swimlane.system}
               onAddTag={(tag) => dispatch(updateNestedSwimlane({id: swimlane.id, changes: { values: [...swimlane.values, tag.tag]}}))}
               onRemoveTag={(tag) => dispatch(updateNestedSwimlane({id: swimlane.id, changes: { values: swimlane.values.filter(value => value !== tag.tag)}}))}
               lazyDataLoaderHook={lazyDataBundleHook}
