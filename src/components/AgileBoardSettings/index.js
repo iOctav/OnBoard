@@ -41,7 +41,7 @@ function AgileBoardSettings({visible, disabled, selectedTab, agileId, agileName,
     reportSettings, owner, sprintsSettings, projects, cardSettings, estimationField,
     originalEstimationField, readSharingSettings, updateSharingSettings}) {
   const { t } = useTranslation();
-  const [selected, setSelected] = useState(selectedTab || 'general');
+  const [selected, setSelected] = useState(selectedTab || 'nested-swimlanes');
   const selectHandler = useCallback((key) => {
     setSelected(key);
   }, []);
