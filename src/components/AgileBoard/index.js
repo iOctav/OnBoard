@@ -38,6 +38,7 @@ function AgileBoard() {
                           selectedTab={new URLSearchParams(search).get('tab')}
                           agileId={agile.id}
                           agileName={agile.name}
+                          sprintId={realSprintId}
                           projects={agile.projects}
                           columnSettings={agile.columnSettings}
                           swimlaneSettings={agile.swimlaneSettings}
