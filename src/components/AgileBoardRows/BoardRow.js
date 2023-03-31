@@ -84,7 +84,7 @@ const makeIssueTrimmedSwimlane = (issue, value, swimlane, emptyCells) => ({
   backgroundId: swimlane.enableColor ? value.color?.id : null,
 });
 
-function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan, colorField, system}) {
+function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan, colorField, system, visibleCardFields}) {
   // TODO: Optimize gettings swimlane by level
   const swimlanes = useSelector(selectSwimlanesMetadata);
   const nestedSwimlane = swimlanes.find(sl => sl.order === level + 1);
@@ -103,7 +103,7 @@ function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan, colorField, 
             { !columns[index].collapsed
               ? (<div>
                   { cell.issues.map((c) => issuesDict && issuesDict[c.id]
-                      ? <AgileCard issueData={issuesDict[c.id]} colorField={colorField} key={'agile-card-' + c.id}/>
+                      ? <AgileCard issueData={issuesDict[c.id]} colorField={colorField} visibleFields={visibleCardFields} key={'agile-card-' + c.id}/>
                       : <AgileCardPreview issueData={c} key={'agile-card-' + c.id}/> )}
                   <NewCardButton/>
                 </div>)
@@ -178,6 +178,7 @@ BoardRow.propTypes = {
   isOrphan: PropTypes.bool,
   colorField: PropTypes.string,
   system: PropTypes.bool,
+  visibleCardFields: PropTypes.arrayOf(PropTypes.string),
 }
 
 export default BoardRow;

@@ -1,7 +1,7 @@
 import AgileBoardRows from '../AgileBoardRows';
 import PropTypes from 'prop-types';
 
-function AgileBoardData({sprint, hideOrphansSwimlane, orphansAtTheTop, colorField, systemSwimlaneExist}) {
+function AgileBoardData({sprint, hideOrphansSwimlane, orphansAtTheTop, colorField, systemSwimlaneExist, visibleCardFields}) {
   return(<tbody>
     <AgileBoardRows
       orphanRow={sprint.board.orphanRow}
@@ -10,7 +10,8 @@ function AgileBoardData({sprint, hideOrphansSwimlane, orphansAtTheTop, colorFiel
       orphansAtTheTop={orphansAtTheTop}
       level={systemSwimlaneExist ? 0 : -1}
       system={systemSwimlaneExist}
-      colorField={colorField}/>
+      colorField={colorField}
+      visibleCardFields={visibleCardFields}/>
   </tbody>);
 }
 
@@ -20,6 +21,7 @@ AgileBoardData.propTypes = {
   orphansAtTheTop: PropTypes.bool,
   colorField: PropTypes.string,
   systemSwimlaneExist: PropTypes.bool,
+  visibleCardFields: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default AgileBoardData;

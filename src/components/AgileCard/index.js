@@ -8,12 +8,16 @@ import { ASSIGNEE_FIELDNAME } from '../../utils/cardFieldConstants';
 
 const AgileCardDiv = styled.div`
   box-sizing: border-box;
-  max-width: 458.88px;
-  height: 105px;
+  width: 97% !important;
+  min-width: 97% !important;
+  width: calc(100% - calc(var(--ring-unit) + 1px)) !important;
+  min-width: calc(100% - calc(var(--ring-unit) + 1px)) !important;
+  height: 84px;
   background: #FFFFFF;
   border: 1px solid #DFE5EB;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
+  margin: 0 calc(var(--ring-unit)/2) 6px;
 
   &::before {
     display: block;
@@ -64,14 +68,25 @@ const SummarySpan = styled.span`
   font-family: "Inter", system-ui, Arial, sans-serif;
 `;
 
+const AgileCardFooter = styled.div`
+  display: flex;
+  position: static;
+  height: auto;
+  line-height: 20px;
+  max-height: 24px;
+  transition: max-height 0.3s ease-out;
+  transition-delay: 0.5s;
+`;
+
 function compareCardField(a, b) {
     return a.projectCustomField.ordinal - b.projectCustomField.ordinal;
 }
 
-function AgileCard({ issueData, colorField }) {
-    const cardFooterFields = [...issueData.fields].sort(compareCardField).map(field => {
-        return (<AgileCardField field={field} key={field?.id}/>);
-    });
+function AgileCard({ issueData, colorField, visibleFields }) {
+    const cardFooterFields = [...issueData.fields].filter(issue => !visibleFields || visibleFields.includes(issue.name))
+      .sort(compareCardField).map(field => {
+            return (<AgileCardField field={field} key={field?.id}/>);
+        });
     const issueDetailsLink = issueDetails(issueData.idReadable, issueData.summary);
     const assigneeField = issueData.fields.find(field => field.name === ASSIGNEE_FIELDNAME);
     const bgColor = colorField && issueData.fields.find(field => field.name === colorField)?.value?.color?.background;
@@ -82,18 +97,19 @@ function AgileCard({ issueData, colorField }) {
             <SummarySpan>{issueData.summary}</SummarySpan>
         </AgileCardSummaryDiv>
 
-        <div className="agile-card-footer">
+        <AgileCardFooter className="agile-card-footer">
             <span className="agile-card-enumeration">
                 <AgileCardAssignee field={assigneeField}/>
                 {cardFooterFields}
             </span>
-        </div>
+        </AgileCardFooter>
     </AgileCardDiv>
 }
 
 AgileCard.propTypes = {
   issueData: PropTypes.object,
   colorField: PropTypes.string,
+  visibleFields: PropTypes.arrayOf(PropTypes.string),
 }
 
 export default AgileCard
