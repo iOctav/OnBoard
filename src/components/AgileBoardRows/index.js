@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { useGetIssuesQuery } from '../../app/services/youtrackApi';
 import BoardRow from './BoardRow';
 
-function AgileBoardRows({orphanRow, trimmedSwimlanes, hideOrphansSwimlane, orphansAtTheTop, level, colorField, system}) {
+function AgileBoardRows({orphanRow, trimmedSwimlanes, hideOrphansSwimlane, orphansAtTheTop,
+                          level, colorField, system, visibleCardFields}) {
   let content;
   let issuesDict;
   const { t } = useTranslation();
@@ -29,13 +30,13 @@ function AgileBoardRows({orphanRow, trimmedSwimlanes, hideOrphansSwimlane, orpha
   }
 
   const swimlanesAgileRow = trimmedSwimlanes.map(row =>
-    (<BoardRow key={`${row.id}-${level}`} level={level} row={row} issuesDict={issuesDict}
+    (<BoardRow key={`${row.id}-${level}`} level={level} row={row} issuesDict={issuesDict} visibleCardFields={visibleCardFields}
                swimlaneTitle={row.value?.presentation || row.issue?.summary} colorField={colorField} system={system}/>));
   if (hideOrphansSwimlane) {
     content = swimlanesAgileRow
   } else {
     const orphanAgileRow =
-      (<BoardRow isOrphan key={`${orphanRow.id}-${level}`} row={orphanRow} issuesDict={issuesDict} level={level}
+      (<BoardRow isOrphan key={`${orphanRow.id}-${level}`} row={orphanRow} issuesDict={issuesDict} level={level} visibleCardFields={visibleCardFields}
                  swimlaneTitle={trimmedSwimlanes.length > 0 ? t('Uncategorized Cards') : undefined} colorField={colorField} system={system}/>);
     if (orphansAtTheTop) {
       content = [orphanAgileRow, ...swimlanesAgileRow];
@@ -53,7 +54,8 @@ AgileBoardRows.propTypes = {
   orphansAtTheTop: PropTypes.bool,
   level: PropTypes.number,
   colorField: PropTypes.string,
-  system: PropTypes.bool
+  system: PropTypes.bool,
+  visibleCardFields: PropTypes.arrayOf(PropTypes.string),
 }
 
 export default AgileBoardRows
