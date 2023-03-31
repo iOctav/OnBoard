@@ -156,7 +156,7 @@ function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan, colorField, 
     });
 
     swimlaneContent =
-      (<AgileBoardRows orphanRow={orphanRow} level={level+1} colorField={colorField}
+      (<AgileBoardRows orphanRow={orphanRow} level={level+1} colorField={colorField} visibleCardFields={visibleCardFields}
                        orphansAtTheTop={true} hideOrphansSwimlane={nestedSwimlane?.hideOrphansSwimlane}
                        trimmedSwimlanes={trimmedSwimlanes}/>)
   }
