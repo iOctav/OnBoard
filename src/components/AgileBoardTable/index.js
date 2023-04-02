@@ -6,6 +6,7 @@ import AgileBoardData from '../AgileBoardData';
 import AgileBoardColGroup from './AgileBoardColGroup';
 import { useGetSpecificSprintForSpecificAgileQuery } from '../../features/sprint/sprintSlice';
 import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
+import { useStateParams } from '../../hooks/useStateParams';
 
 const TableContainer = styled.table`
   min-width: 720px;
@@ -28,15 +29,19 @@ function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldN
     isError
   } = useGetSpecificSprintForSpecificAgileQuery({agileId, sprintId: (sprintId || 'current')});
 
+  const [swimlanes] = useStateParams({}, 'nested-swimlanes', (s) => JSON.stringify(s), (s) => JSON.parse(s));
+  const swimlanesDepth = Object.keys(swimlanes).length;
+
   if (isLoading) {
     return <LoaderScreen/>;
   } else if (isSuccess) {
     return (<TableContainer>
-      <AgileBoardColGroup/>
+      <AgileBoardColGroup swimlanesDepth={swimlanesDepth}/>
       <AgileBoardHeader agileName={agileName}
                         sprintName={sprintName}
                         fieldName={columnFieldName}
-                        explicitQuery={explicitQuery}/>
+                        explicitQuery={explicitQuery}
+                        swimlanesDepth={swimlanesDepth}/>
       <AgileBoardData sprint={sprint}
                       hideOrphansSwimlane={hideOrphansSwimlane}
                       orphansAtTheTop={orphansAtTheTop}

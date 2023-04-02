@@ -1,16 +1,16 @@
+import PropTypes from 'prop-types';
 import HeaderCell from '../HeaderCell';
 import FakeTableCells from '../FakeTableCells';
 import { useSelector } from 'react-redux';
 import { selectColumnsMetadata } from '../../features/sprint/sprintSlice';
-import PropTypes from 'prop-types';
 
-function AgileBoardHeader({agileName, sprintName, fieldName, explicitQuery}) {
+function AgileBoardHeader({agileName, sprintName, fieldName, explicitQuery, swimlanesDepth}) {
   const columns = useSelector(selectColumnsMetadata);
 
   return (
     <thead>
       <tr>
-        <FakeTableCells/>
+        <FakeTableCells swimlanesDepth={swimlanesDepth}/>
         {
           columns.map(column => (
             <HeaderCell key={'cell-head-' + column.id}
@@ -31,6 +31,7 @@ AgileBoardHeader.propTypes = {
   sprintName: PropTypes.string,
   fieldName: PropTypes.string.isRequired,
   explicitQuery: PropTypes.string,
+  swimlanesDepth: PropTypes.number,
 }
 
 export default AgileBoardHeader

@@ -6,7 +6,6 @@ import AgileCard from '../AgileCard';
 import AgileCardPreview from '../AgileCardPreview';
 import NewCardButton from '../NewCardButton';
 import { useSelector } from 'react-redux';
-import { selectSwimlanesDepth, selectSwimlanesMetadata } from '../../features/nestedSwimlanes/nestedSwimlanesSlice';
 import AgileBoardRows from './index';
 import FakeTableCells from '../FakeTableCells';
 import { useState } from 'react';
@@ -17,6 +16,7 @@ import {
 } from '../../features/customFields/dateFieldUtils';
 import { selectColumnsMetadata } from '../../features/sprint/sprintSlice';
 import { SwimlaneType } from '../../features/nestedSwimlanes/swimlane-type';
+import { useStateParams } from '../../hooks/useStateParams';
 
 const BorderedTd = styled.td`
   border-bottom: 1px solid var(--ring-line-color);
@@ -85,18 +85,17 @@ const makeIssueTrimmedSwimlane = (issue, value, swimlane, emptyCells) => ({
 });
 
 function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan, colorField, system, visibleCardFields}) {
-  // TODO: Optimize gettings swimlane by level
-  const swimlanes = useSelector(selectSwimlanesMetadata);
-  const nestedSwimlane = swimlanes.find(sl => sl.order === level + 1);
-  const swimlanesDepth = useSelector(selectSwimlanesDepth);
+  const [swimlanes] = useStateParams({}, 'nested-swimlanes', (s) => JSON.stringify(s), (s) => JSON.parse(s));
+  const nestedSwimlane = swimlanes[Object.keys(swimlanes).find(key => swimlanes[key].order === level + 1)];
+  const swimlanesDepth = Object.keys(swimlanes).length;
   const columns = useSelector(selectColumnsMetadata);
   const [rollUp, setRollUp] = useState(!row.collapsed);
 
   const issuesCount = row.cells.reduce((acc, cell) => acc + cell.issues.length, 0);
   let swimlaneContent;
-  if (!swimlanesDepth || swimlanesDepth === level + 1) {
+  if (!swimlanesDepth || swimlanesDepth === level) {
     swimlaneContent = (<tr>
-      <FakeTableCells/>
+      <FakeTableCells swimlanesDepth={swimlanesDepth}/>
       {
         row.cells.map((cell, index) =>
           (<BorderedTd key={'cell-' + cell.id}>
@@ -142,7 +141,7 @@ function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan, colorField, 
             trimmedSwimlaneCell.issuesCount++;
             return;
           } else {
-            if (nestedSwimlane.values.findIndex(value => value.key === swimlaneFieldValue?.name) >= 0) {
+            if (nestedSwimlane?.values.findIndex(value => value.key === swimlaneFieldValue?.name) >= 0) {
               trimmedSwimlanes.push(makeIssueTrimmedSwimlane(issueData, swimlaneFieldValue, nestedSwimlane,
                 row.cells.map(cell => ({...cell, issues: [], issuesCount: 0}))));
               return;
@@ -165,7 +164,7 @@ function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan, colorField, 
                                                   striked={row.issue?.resolved > 0} cardsNumber={issuesCount}
                                                   isOrphan={isOrphan} columnsNumber={row.cells.length} isTag={row.isTag}
                                                   level={system ? -1 : level} backgroundId={row.backgroundId}
-                                                  rollUp={rollUp} onRollUp={setRollUp} /> }
+                                                  rollUp={rollUp} onRollUp={setRollUp} swimlanesDepth={swimlanesDepth} /> }
     { rollUp && swimlaneContent }
   </>);
 }
