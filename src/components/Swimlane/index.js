@@ -9,7 +9,6 @@ import Button from '@jetbrains/ring-ui/dist/button/button';
 import Icon from '@jetbrains/ring-ui/dist/icon/icon';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { selectSwimlanesDepth } from '../../features/nestedSwimlanes/nestedSwimlanesSlice';
 import { COLORS } from '../ColorPalette/colors';
 import Link from '@jetbrains/ring-ui/dist/link/link';
 import { issueDetails } from '../../services/linkService';
@@ -74,8 +73,7 @@ const Span14px = styled.span`
 `;
 
 function Swimlane({title, issueId, isOrphan, striked, cardsNumber, columnsNumber,
-                    level, rollUp, onRollUp, backgroundId, isTag}) {
-  const swimlanesDepth = useSelector(selectSwimlanesDepth);
+                    level, rollUp, onRollUp, backgroundId, isTag, swimlanesDepth}) {
   const { t } = useTranslation();
   const extraSpans = swimlanesDepth > 1 ? swimlanesDepth - 1 : 0;
   const bgId = parseInt(backgroundId);
@@ -120,6 +118,7 @@ Swimlane.propTypes = {
   onRollUp: PropTypes.func,
   backgroundId: PropTypes.string,
   isTag: PropTypes.bool,
+  swimlanesDepth: PropTypes.number,
 }
 
 export default Swimlane

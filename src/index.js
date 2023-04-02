@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
-import { store } from './app/store';
+import { store, history } from './app/store';
 import { Provider } from 'react-redux';
+import { HistoryRouter as Router } from "redux-first-history/rr6";
 import { BrowserRouter } from 'react-router-dom'
 
 import './i18n';
@@ -13,9 +14,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <Router history={history}>
+          <App />
+      </Router>
     </Provider>
   </React.StrictMode>
 );

@@ -8,11 +8,10 @@ import {
   useLazyGetVersionBundleValuesQuery
 } from '../../app/services/youtrackApi';
 import LazyTagBox from '../LazyTagBox';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import { selectCustomFieldMetadataById } from '../../features/customFields/customFieldsSlice';
-import { updateNestedSwimlane } from '../../features/nestedSwimlanes/nestedSwimlanesSlice';
 import DateValuesSelect from './DateValuesSelect';
 
 const mapTypeDataRequest = (fieldType) => {
@@ -35,29 +34,29 @@ const mapIdDataRequest = (fieldId) => {
 }
 
 
-function SwimlaneValuesTagBox({swimlane}) {
+function SwimlaneValuesTagBox({swimlane, onChange}) {
   const { t } = useTranslation();
   const customField = useSelector(state => selectCustomFieldMetadataById(state, swimlane.field.id));
-  const dispatch = useDispatch();
 
   const lazyDataBundleHook = mapTypeDataRequest(customField?.bundle?.type) || mapIdDataRequest(swimlane.field.id);
   if (lazyDataBundleHook) {
     return (<LazyTagBox placeholder={t('Add value')} size={Size.L}
               tags={swimlane.values} disabled={swimlane.system}
-              onAddTag={(tag) => dispatch(updateNestedSwimlane({id: swimlane.id, changes: { values: [...swimlane.values, tag.tag]}}))}
-              onRemoveTag={(tag) => dispatch(updateNestedSwimlane({id: swimlane.id, changes: { values: swimlane.values.filter(value => value !== tag.tag)}}))}
+              onAddTag={(tag) => onChange({ values: [...swimlane.values, tag.tag]})}
+              onRemoveTag={(tag) => onChange({ values: swimlane.values.filter(value => value !== tag.tag)})}
               lazyDataLoaderHook={lazyDataBundleHook}
               lazyDataLoaderHookParams={customField?.bundle?.id}
               makeDataSource={(data) => data.map(item => ({label: item.name, key: item.name, id: item.id,
                 colorId: item.color?.id !== '0' ? item.color?.id : null}))}/>)
   } else {
-    return (<DateValuesSelect swimlane={swimlane}/>);
+    return (<DateValuesSelect swimlane={swimlane} onChange={onChange}/>);
   }
 
 }
 
 SwimlaneValuesTagBox.propTypes = {
   swimlane: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired
 };
 
 export default SwimlaneValuesTagBox;

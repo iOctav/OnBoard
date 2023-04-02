@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { selectSwimlanesDepth } from '../../features/nestedSwimlanes/nestedSwimlanesSlice';
 import { selectColumnsMetadata } from '../../features/sprint/sprintSlice';
 
 const FakeCol = styled.col`
@@ -13,8 +13,7 @@ const CollapsedCol = styled.col`
   padding: calc(var(--ring-unit)/2) 0 calc(var(--ring-unit)/2) calc(var(--ring-unit));
 `;
 
-function AgileBoardColGroup() {
-  const swimlanesDepth = useSelector(selectSwimlanesDepth);
+function AgileBoardColGroup({swimlanesDepth}) {
   const columns = useSelector(selectColumnsMetadata);
 
   return (
@@ -28,6 +27,7 @@ function AgileBoardColGroup() {
 }
 
 AgileBoardColGroup.propTypes = {
+  swimlanesDepth: PropTypes.number,
 }
 
 export default AgileBoardColGroup;
