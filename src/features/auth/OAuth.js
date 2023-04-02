@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { setCredentials } from './authSlice';
 import { useDispatch } from 'react-redux';
 import { getHashParams, removeHashParamsFromUrl } from '../../utils/hashUtils';
+import { getLocalLocation } from './oauthConfig';
 
 const hashParams = getHashParams();
 removeHashParamsFromUrl();
@@ -22,7 +23,7 @@ export function OAuth() {
     }
   }, [dispatch]);
 
-  const initialRoute = hashParams.state;
+  const initialRoute = getLocalLocation(hashParams.state);
   return (<Navigate to={(initialRoute && initialRoute !== 'undefined') ? initialRoute : '/'}/>);
 }
 
