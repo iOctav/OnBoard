@@ -75,7 +75,7 @@ const Span14px = styled.span`
 function Swimlane({title, issueId, isOrphan, striked, cardsNumber, columnsNumber,
                     level, rollUp, onRollUp, backgroundId, isTag, swimlanesDepth}) {
   const { t } = useTranslation();
-  const extraSpans = swimlanesDepth > 1 ? swimlanesDepth - 1 : 0;
+  const extraSpans = swimlanesDepth;
   const bgId = parseInt(backgroundId);
   const issueDetailsLink = issueDetails(issueId, title);
 

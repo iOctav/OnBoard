@@ -10,11 +10,11 @@ import {
 } from '../../features/customFields/dateFieldUtils';
 
 function NestedSwimlanesSettings({projectShortNames, swimlaneSettings, hideOrphansSwimlane}) {
-  let systemSwimlane = {};
+  let systemSwimlane;
   if (swimlaneSettings && swimlaneSettings.enabled) {
     const id = uuidv4();
     const dateType = getDateFieldType(swimlaneSettings?.field?.customField?.fieldType?.id, swimlaneSettings?.field?.id);
-    systemSwimlane[id] = {
+    systemSwimlane = {
       id: id,
       order: 0,
       type: calculateSwimlaneType(true, swimlaneSettings?.$type),

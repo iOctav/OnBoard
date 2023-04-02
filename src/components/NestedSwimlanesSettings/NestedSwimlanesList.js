@@ -55,11 +55,11 @@ const LevelMarker = styled.span`
 
 function NestedSwimlanesList({projectShortNames, systemSwimlane}) {
   const { t } = useTranslation();
-  const [swimlanes, setSwimlanes] = useStateParams(systemSwimlane, 'ns', (s) => JSON.stringify(s), (s) => JSON.parse(s));
+  const [swimlanes, setSwimlanes] = useStateParams({}, 'nested-swimlanes', (s) => JSON.stringify(s), (s) => JSON.parse(s));
 
   const swapSwimlanes = (id1, id2) => {
     const order1 = swimlanes[id1].order;
-    if ((order1 === 0 && swimlanes[id1].system) || (swimlanes[id2].order === 0 && swimlanes[id2].system)) {
+    if ((order1 === 0 && id1 === systemSwimlane?.id) || (swimlanes[id2].order === 0 && id2 === systemSwimlane?.id)) {
       return;
     }
     setSwimlanes(update(swimlanes, { [id1]: { $merge: { order: swimlanes[id2].order }}, [id2]: { $merge: { order: order1 }}}));
@@ -122,6 +122,7 @@ function NestedSwimlanesList({projectShortNames, systemSwimlane}) {
   ];
   const data = Object.keys(swimlanes).map(key => ({...swimlanes[key], key: key}))
     .sort((a, b) => a.order - b.order);
+  (systemSwimlane?.id && data.unshift(systemSwimlane));
   const selection = new Selection({data: data});
   return (<div>
     <Table draggable alwaysShowDragHandle sortOrder sortKey="order"
@@ -131,8 +132,8 @@ function NestedSwimlanesList({projectShortNames, systemSwimlane}) {
            selectable={false}
            selection={selection} onSelect={() => {}}
            columns={tableColumns} />
-    <Button text onClick={() => createSwimlane(data.length > 0 ? data[data.length - 1].order + 1 : 0)}>Add swimlane</Button>
-    <Button disabled={data.length < 1 || data[0].system} text onClick={() => removeSwimlane(data[data.length-1].id)}>Remove last</Button>
+    <Button text onClick={() => createSwimlane(data.length > 0 ? data[data.length - 1].order + 1 : 1)}>Add swimlane</Button>
+    <Button disabled={data.length < 1 || (data.length === 1 && systemSwimlane?.id)} text onClick={() => removeSwimlane(data[data.length-1].id)}>Remove last</Button>
   </div>);
 }
 

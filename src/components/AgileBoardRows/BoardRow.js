@@ -85,7 +85,7 @@ const makeIssueTrimmedSwimlane = (issue, value, swimlane, emptyCells) => ({
 });
 
 function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan, colorField, system, visibleCardFields}) {
-  const [swimlanes] = useStateParams({}, 'ns', (s) => JSON.stringify(s), (s) => JSON.parse(s));
+  const [swimlanes] = useStateParams({}, 'nested-swimlanes', (s) => JSON.stringify(s), (s) => JSON.parse(s));
   const nestedSwimlane = swimlanes[Object.keys(swimlanes).find(key => swimlanes[key].order === level + 1)];
   const swimlanesDepth = Object.keys(swimlanes).length;
   const columns = useSelector(selectColumnsMetadata);
@@ -93,7 +93,7 @@ function BoardRow({row, issuesDict, swimlaneTitle, level, isOrphan, colorField, 
 
   const issuesCount = row.cells.reduce((acc, cell) => acc + cell.issues.length, 0);
   let swimlaneContent;
-  if (!swimlanesDepth || swimlanesDepth === level + 1) {
+  if (!swimlanesDepth || swimlanesDepth === level) {
     swimlaneContent = (<tr>
       <FakeTableCells swimlanesDepth={swimlanesDepth}/>
       {

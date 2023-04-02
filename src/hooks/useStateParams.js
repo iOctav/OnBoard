@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { push } from 'redux-first-history';
+import { replace } from 'redux-first-history';
 
 export const useStateParams = (initialState, paramsName, serialize, deserialize) => {
   const location = useLocation();
@@ -25,7 +25,7 @@ export const useStateParams = (initialState, paramsName, serialize, deserialize)
     const searchParams = new URLSearchParams(location.search);
     searchParams.set(paramsName, serialize(s));
     const pathname = location.pathname;
-    dispatch(push({ pathname, search: searchParams.toString() }));
+    dispatch(replace({ pathname, search: searchParams.toString() }));
   };
 
   return [state, onChange];
