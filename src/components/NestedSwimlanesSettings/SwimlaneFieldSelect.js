@@ -4,16 +4,13 @@ import { capitalizeFirstLetter } from '../../utils/stringUtils';
 import { SwimlaneType } from '../../features/nestedSwimlanes/swimlane-type';
 import { useLazyGetIssuesFilterFieldsQuery, useLazyGetValuesFilterFieldsQuery } from '../../app/services/youtrackApi';
 import { getDatasetByDatePeriodType, getDateFieldType } from '../../features/customFields/dateFieldUtils';
-import { selectSwimlaneMetadataById, updateNestedSwimlane } from '../../features/nestedSwimlanes/nestedSwimlanesSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectCustomFieldIds } from '../../features/customFields/customFieldsSlice';
 import { ControlsHeight } from '@jetbrains/ring-ui/dist/global/controls-height';
 import { Size } from '@jetbrains/ring-ui/dist/input/input';
 
-function SwimlaneFieldSelect({projectShortNames, swimlaneId}) {
-  const dispatch = useDispatch();
+function SwimlaneFieldSelect({projectShortNames, swimlane, onChange}) {
   const availableFields = useSelector(selectCustomFieldIds);
-  const swimlane = useSelector(state => selectSwimlaneMetadataById(state, swimlaneId));
 
   return (<LazySelectBox disabled={swimlane.system}
     selected={{label: capitalizeFirstLetter(swimlane.field?.presentation), key: swimlane.field?.id}}
@@ -29,19 +26,18 @@ function SwimlaneFieldSelect({projectShortNames, swimlaneId}) {
     onSelect={field => {
       if (field.value !== swimlane.field?.id) {
         const dateType = getDateFieldType(field.fieldTypeId, field.value);
-        dispatch(updateNestedSwimlane({id: swimlane.id, changes:
-            { field:
+        onChange({ field:
                 { id: field.value, presentation: field.label, aggregateable: field.aggregateable, name: field.label, dateType: dateType },
               values: !dateType ? [] :  getDatasetByDatePeriodType(dateType)
-            }}
-        ))
+            });
       }}}
   />);
 }
 
 SwimlaneFieldSelect.propTypes = {
   projectShortNames: PropTypes.array,
-  swimlaneId: PropTypes.string.isRequired,
+  swimlane: PropTypes.object.isRequired,
+  onChange: PropTypes.func,
 }
 
 export default SwimlaneFieldSelect;
