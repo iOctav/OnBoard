@@ -18,7 +18,7 @@ function AgileBoardColGroup({swimlanesDepth}) {
 
   return (
     <colgroup>
-      { swimlanesDepth > 1 && Array.from({length: swimlanesDepth - 1}, (_, i) => (
+      { swimlanesDepth >= 1 && Array.from({length: swimlanesDepth}, (_, i) => (
         <FakeCol key={`fake-col-${i}`} />
       )) }
       { columns.map(col => col.collapsed ? (<CollapsedCol key={`col-${col.id}-collapsed`}/>) : (<col key={`col-${col.id}`}/>)) }

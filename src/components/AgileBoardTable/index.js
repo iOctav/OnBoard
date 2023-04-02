@@ -29,7 +29,7 @@ function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldN
     isError
   } = useGetSpecificSprintForSpecificAgileQuery({agileId, sprintId: (sprintId || 'current')});
 
-  const [swimlanes] = useStateParams({}, 'ns', (s) => JSON.stringify(s), (s) => JSON.parse(s));
+  const [swimlanes] = useStateParams({}, 'nested-swimlanes', (s) => JSON.stringify(s), (s) => JSON.parse(s));
   const swimlanesDepth = Object.keys(swimlanes).length;
 
   if (isLoading) {
