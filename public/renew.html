@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>OAuth - Redirect</title>
+</head>
+
+<body>
+<p>Renewing...</p>
+<script type="module">
+  const state = window.location.hash
+    .substring(1)
+    .split("&")
+    .find(item => {
+      let parts = item.split("=");
+      if (parts[0] === 'state') {
+        return true;
+      }
+    })
+    .split("=")[1];
+  const redirectUriStorageKey = `${state}_redirect_url`;
+  console.log(redirectUriStorageKey);
+  window.localStorage.setItem(redirectUriStorageKey, window.location.href);
+  console.log(window.location.href);
+  window.close();
+</script>
+</body>
+
+</html>

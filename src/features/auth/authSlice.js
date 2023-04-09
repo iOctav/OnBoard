@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { youtrackApi } from '../../app/services/youtrackApi';
-import { getLocalTokenInfo } from './oauthUtils';
+import { getLocalTokenInfo, isTokenExpired } from './oauthUtils';
 
 export const extendedYoutrackApi = youtrackApi.injectEndpoints({
   endpoints: builder => ({
@@ -18,7 +18,7 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
 export const { useLazyGetCurrentUserInfoQuery, useGetCurrentUserInfoQuery } = extendedYoutrackApi
 
 const tokenInfo = getLocalTokenInfo();
-const initialState = { isGuest: false, authorized: tokenInfo.expires_at > Date.now(), expires_at: tokenInfo.expires_at };
+const initialState = { isGuest: false, authorized: !isTokenExpired(tokenInfo), expires_at: tokenInfo.expires_at };
 
 const slice = createSlice({
   name: 'auth',

@@ -1,5 +1,14 @@
 export const getHashParams = () => {
-  return window.location.hash
+  return extractHashParamsFromHash(window.location.hash);
+}
+
+export const extractHashParamsFromRedirectUrl = (redirectUrl) => {
+  const url = new URL(redirectUrl);
+  return extractHashParamsFromHash(url.hash);
+}
+
+const extractHashParamsFromHash = (urlHash) => {
+  return urlHash
     .substring(1)
     .split("&")
     .reduce(function(initial, item) {

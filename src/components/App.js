@@ -3,6 +3,7 @@ import './App.css';
 
 import AgileRoutePage from './AgileRoutePage';
 import Theme, { ThemeProvider } from '@jetbrains/ring-ui/dist/global/theme';
+import SilentTokenRenew from '../features/auth/SilentTokenRenew';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <div data-testid="app-container" className="App">
         <AgileRoutePage/>
       </div>
+      <SilentTokenRenew/>
     </ThemeProvider>
   );
 }

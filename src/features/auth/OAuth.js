@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
 import { getHashParams, removeHashParamsFromUrl } from '../../utils/hashUtils';
-import { popLocalLocation, setLocalTokenInfo } from './oauthUtils';
+import { isTokenExpired, popLocalLocation, setLocalTokenInfo } from './oauthUtils';
 import { useDispatch } from 'react-redux';
 import { setCredentials } from './authSlice';
 
@@ -14,7 +14,7 @@ export function OAuth() {
     const tokenInfo = setLocalTokenInfo(hashParams);
     dispatch(setCredentials({
       isGuest: false,
-      authorized: tokenInfo.expires_at > Date.now(),
+      authorized: !isTokenExpired(tokenInfo),
       expires_at: tokenInfo.expires_at
     }));
     const initialRoute = popLocalLocation(hashParams.state);
