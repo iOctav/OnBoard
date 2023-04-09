@@ -5,6 +5,7 @@ import DropdownMenu from '@jetbrains/ring-ui/dist/dropdown-menu/dropdown-menu';
 import Header from '@jetbrains/ring-ui/dist/header/header';
 import Icon from '@jetbrains/ring-ui/dist/icon';
 import Link from '@jetbrains/ring-ui/dist/link/link';
+import { Link as RouterLink } from 'react-router-dom';
 import Theme, { useTheme } from '@jetbrains/ring-ui/dist/global/theme';
 import careDown10pxIcon from '@jetbrains/icons/caret-down-10px';
 import bellIcon from '@jetbrains/icons/bell';
@@ -42,12 +43,12 @@ function PageYTHeader({isCompact}) {
   const issuesDataset = [];
   return (
     <StyledObHeader theme={theme} className={'compactHeader'}>
-      <a target="_blank" rel="noreferrer" href={homePageUri()}>
+      <RouterLink rel="noreferrer" to={homePageUri()} >
         {isCompact
           ? <Logo className="compactLogo" glyph={smallObLogo} size={Logo.Size.Size40}/>
           : <Logo glyph={theme === Theme.LIGHT ? largeObLogoLight : largeObLogoDark} size={Logo.Size.Size128}/>
         }
-      </a>
+      </RouterLink>
       <span>
         <Link target="_blank" href={YT_PAGES.issues}>Issues</Link>
         <Select type="INLINE" filter={true} data={issuesDataset} label={''} />

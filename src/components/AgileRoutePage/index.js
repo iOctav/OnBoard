@@ -6,6 +6,7 @@ import RedirectPage from '../RedirectPage';
 import OAuth from '../../features/auth/OAuth';
 import DefaultAgileBoard from '../AgileBoard/DefaultAgileBoard';
 import { YT_PAGES } from '../../services/linkService';
+import ErrorPage from '../ErrorPage';
 
 function AgileRoutePage() {
   return (<div className="agile-page">
@@ -24,6 +25,7 @@ function AgileRoutePage() {
           <Route path="*" element={<RedirectPage/>} />
         </Route>))
       }
+      <Route path="/error" element={<ErrorPage/>}/>
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   </div>);
