@@ -1,11 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { getLocalTokenInfo } from '../../features/auth/oauthUtils';
 
 export const youtrackApi = createApi({
   reducerPath: 'youtrackApi',
   baseQuery: fetchBaseQuery({
     baseUrl: '/api',
-    prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.token;
+    prepareHeaders: (headers) => {
+      const token = getLocalTokenInfo()?.access_token;
       if (token) {
         headers.set('authorization', `Bearer ${token}`)
       }
@@ -47,14 +48,6 @@ export const youtrackApi = createApi({
         url: `admin/customFieldSettings/bundles/ownedField/${id}/values`,
         params: {
           fields: 'archived,assembleDate,avatarUrl,color(id,background),description,fullName,hasRunningJob,id,isResolved,issueRelatedGroup(icon),localizedName,login,name,ordinal,owner(id,login,ringId),releaseDate,released,ringId,showLocalizedNameInAdmin,teamForProject(ringId),usersCount',
-        },
-      })
-    }),
-    getCurrentUserInfo: builder.query({
-      query: () => ({
-        url: `users/me`,
-        params: {
-          fields: 'id,login,name,email,savedQueries(name,id),tags(name,id)',
         },
       })
     }),

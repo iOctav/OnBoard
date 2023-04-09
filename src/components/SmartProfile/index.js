@@ -2,15 +2,17 @@ import DropdownMenu from '@jetbrains/ring-ui/dist/dropdown-menu/dropdown-menu';
 import Avatar from '@jetbrains/ring-ui/dist/avatar/avatar';
 import { Size } from '@jetbrains/ring-ui/dist/avatar/avatar';
 import { myProfilePageUri } from '../../services/linkService';
-import { useGetCurrentUserInfoQuery } from '../../app/services/youtrackApi';
+import { useGetCurrentUserInfoQuery } from '../../features/auth/authSlice';
+import { useAuth } from '../../hooks/useAuth';
 
 function SmartProfile() {
-  const { data, error, isLoading } = useGetCurrentUserInfoQuery();
+  const { authInfo } = useAuth();
+  const { data, error, isLoading } = useGetCurrentUserInfoQuery(undefined, { skip: !authInfo.authorized });
 
   if (error)  return (<div><Avatar size={Size.Size32}/></div>);
   if (isLoading) return (<div><Avatar size={Size.Size32}/></div>);
 
-  const profileAnchor = (<div><Avatar size={Size.Size32} username={data.name} /></div>);
+  const profileAnchor = (<div><Avatar size={Size.Size32} username={data?.name ?? 'guest'} /></div>);
 
   const dropdownMenuData = [
     { label: 'Profile', href: myProfilePageUri() },
