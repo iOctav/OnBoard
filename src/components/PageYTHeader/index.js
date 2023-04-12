@@ -5,6 +5,7 @@ import DropdownMenu from '@jetbrains/ring-ui/dist/dropdown-menu/dropdown-menu';
 import Header from '@jetbrains/ring-ui/dist/header/header';
 import Icon from '@jetbrains/ring-ui/dist/icon';
 import Link from '@jetbrains/ring-ui/dist/link/link';
+import { Link as RouterLink } from 'react-router-dom';
 import Theme, { useTheme } from '@jetbrains/ring-ui/dist/global/theme';
 import careDown10pxIcon from '@jetbrains/icons/caret-down-10px';
 import bellIcon from '@jetbrains/icons/bell';
@@ -18,11 +19,9 @@ import TrayIcon from '@jetbrains/ring-ui/dist/header/tray-icon';
 import Select from '@jetbrains/ring-ui/dist/select/select';
 import SmartProfile from '../SmartProfile';
 import {
-  agilesPageUri,
-  dashboardsPageUri, ganttChartsPageUri,
-  issuesPageUri, knowledgeBasePageUri,
-  projectsPageUri, createAgileBoardPageUri,
-  reportsPageUri, timesheetsPageUri
+  createAgileBoardPageUri,
+  homePageUri,
+  YT_PAGES
 } from '../../services/linkService';
 import Logo from '@jetbrains/ring-ui/dist/header/logo';
 import PropTypes from 'prop-types';
@@ -44,23 +43,23 @@ function PageYTHeader({isCompact}) {
   const issuesDataset = [];
   return (
     <StyledObHeader theme={theme} className={'compactHeader'}>
-      <a href="/">
+      <RouterLink rel="noreferrer" to={homePageUri()} >
         {isCompact
           ? <Logo className="compactLogo" glyph={smallObLogo} size={Logo.Size.Size40}/>
           : <Logo glyph={theme === Theme.LIGHT ? largeObLogoLight : largeObLogoDark} size={Logo.Size.Size128}/>
         }
-      </a>
+      </RouterLink>
       <span>
-        <Link href={issuesPageUri()}>Issues</Link>
+        <Link target="_blank" href={YT_PAGES.issues}>Issues</Link>
         <Select type="INLINE" filter={true} data={issuesDataset} label={''} />
       </span>
-      <Link href={dashboardsPageUri()}>Dashboards</Link>
-      <Link active href={agilesPageUri()}>Agile Boards</Link>
-      <Link href={reportsPageUri()}>Reports</Link>
-      <Link href={projectsPageUri()}>Projects</Link>
-      <Link href={knowledgeBasePageUri()}>Knowledge Base</Link>
-      <Link href={timesheetsPageUri()}>Timesheets</Link>
-      <Link href={ganttChartsPageUri()}>Gantt Charts</Link>
+      <Link target="_blank" href={YT_PAGES.dashboard}>Dashboards</Link>
+      <Link target="_blank" href={YT_PAGES.agiles}>Agile Boards</Link>
+      <Link target="_blank" href={YT_PAGES.reports}>Reports</Link>
+      <Link target="_blank" href={YT_PAGES.projects}>Projects</Link>
+      <Link target="_blank" href={YT_PAGES.knowledgeBase}>Knowledge Base</Link>
+      <Link target="_blank" href={YT_PAGES.timesheets}>Timesheets</Link>
+      <Link target="_blank" href={YT_PAGES.ganttCharts}>Gantt Charts</Link>
       <DropdownMenu data={dropdownMenuData} anchor={dropdownAnchor}></DropdownMenu>
       <Tray>
         <TrayIcon title="Notifications" icon={bellIcon}/>

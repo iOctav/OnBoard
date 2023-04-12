@@ -9,6 +9,9 @@ import { useTranslation } from 'react-i18next';
 import ChartSettings from '../ChartSettings';
 import GeneralSettings from '../GeneralSettings';
 import CardSettings from '../CardSettings';
+import NestedSwimlanesSettings from '../NestedSwimlanesSettings';
+import { YT_PAGES } from '../../services/linkService';
+import YouTrackAgileSettingsLink from './YouTrackAgileSettingsLink';
 
 const HeaderSpan = styled.span`
   font-size: 24px;
@@ -33,12 +36,12 @@ const TabsContainer = styled(Tabs)`
   margin-top: calc(var(--ring-unit) * 2);
 `;
 
-function AgileBoardSettings({visible, selectedTab, agileId, agileName, columnSettings, colorCoding,
+function AgileBoardSettings({visible, disabled, selectedTab, agileId, agileName, sprintId, columnSettings, colorCoding,
     swimlaneSettings, hideOrphansSwimlane, orphansAtTheTop, colorizeCustomFields,
     reportSettings, owner, sprintsSettings, projects, cardSettings, estimationField,
     originalEstimationField, readSharingSettings, updateSharingSettings}) {
   const { t } = useTranslation();
-  const [selected, setSelected] = useState(selectedTab || 'general');
+  const [selected, setSelected] = useState(selectedTab || 'nested-swimlanes');
   const selectHandler = useCallback((key) => {
     setSelected(key);
   }, []);
@@ -53,14 +56,17 @@ function AgileBoardSettings({visible, selectedTab, agileId, agileName, columnSet
         selected={selected}
         onSelect={selectHandler}>
       <Tab id="general" key="general" title={t('General')}>
-        <GeneralSettings agileName={agileName} agileId={agileId}
+        <YouTrackAgileSettingsLink agileId={agileId} sprintId={sprintId} title="YouTrack General" linkId="general"/>
+        <GeneralSettings disabled={disabled} agileName={agileName} agileId={agileId}
                          initialOwner={owner} sprintsSettings={sprintsSettings}
                          projects={projects} readSharingSettings={readSharingSettings}
                          updateSharingSettings={updateSharingSettings}/>
       </Tab>
       <Tab id="columns-and swimlanes" key="columns-and swimlanes" title={t('Columns and Swimlanes')}>
-        <ColumnsSettings agileId={agileId} columnSettings={columnSettings}/>
+        <YouTrackAgileSettingsLink agileId={agileId} sprintId={sprintId} title="YouTrack Columns and Swimlanes" linkId="columns-and swimlanes"/>
+        <ColumnsSettings disabled={disabled} agileId={agileId} columnSettings={columnSettings}/>
         <SwimlanesSettings
+          disabled={disabled}
           agileId={agileId}
           swimlaneSettings={swimlaneSettings}
           projectShortNames={projectShortNames}
@@ -68,7 +74,9 @@ function AgileBoardSettings({visible, selectedTab, agileId, agileName, columnSet
           hideOrphansSwimlane={hideOrphansSwimlane}/>
       </Tab>
       <Tab id="card" key="card" title={t('Card')}>
-        <CardSettings cardSettings={cardSettings}
+        <YouTrackAgileSettingsLink agileId={agileId} sprintId={sprintId} title="YouTrack Card" linkId="card"/>
+        <CardSettings disabled={disabled}
+                      cardSettings={cardSettings}
                       cardOnSeveralSprints={sprintsSettings.cardOnSeveralSprints}
                       colorizeCustomFields={colorizeCustomFields}
                       projects={projects}
@@ -78,7 +86,13 @@ function AgileBoardSettings({visible, selectedTab, agileId, agileName, columnSet
                       sprintsEnabled={!sprintsSettings.disableSprints}/>
       </Tab>
       <Tab id="chart" key="chart" title={t('Chart')}>
-        <ChartSettings reportSettings={reportSettings}/>
+        <YouTrackAgileSettingsLink agileId={agileId} sprintId={sprintId} title="YouTrack Chart" linkId="chart"/>
+        <ChartSettings disabled={disabled} reportSettings={reportSettings}/>
+      </Tab>
+      <Tab id="nested-swimlanes" key="nested-swimlanes" title={t('Nested Swimlanes')}>
+        <NestedSwimlanesSettings swimlaneSettings={swimlaneSettings}
+                                 projectShortNames={projectShortNames}
+                                 hideOrphansSwimlane={hideOrphansSwimlane}/>
       </Tab>
     </TabsContainer>
   </AgileBoardSettingsContainer>);
@@ -86,9 +100,11 @@ function AgileBoardSettings({visible, selectedTab, agileId, agileName, columnSet
 
 AgileBoardSettings.propTypes = {
   visible: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool,
   selectedTab: PropTypes.string,
   agileId: PropTypes.string.isRequired,
   agileName: PropTypes.string.isRequired,
+  sprintId: PropTypes.string.isRequired,
   columnSettings: PropTypes.object,
   swimlaneSettings: PropTypes.object,
   reportSettings: PropTypes.object,

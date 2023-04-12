@@ -1,23 +1,12 @@
-import styled from 'styled-components';
-
-import AgileBoardHeader from '../AgileBoardHeader';
 import AgileSearchQueryPanel from '../AgileSearchQueryPanel';
 import AgileTopToolbar from '../AgileTopToolbar';
-import { useGetAgilesByIdQuery } from '../../store/youtrackApi';
+import { useGetAgilesByIdQuery } from '../../features/agile/agileSlice';
 import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
 import { useLocation, useParams } from 'react-router-dom';
-import AgileBoardData from '../AgileBoardData';
 import AgileBoardSettings from '../AgileBoardSettings';
 import { useState } from 'react';
-
-const AgileBoardTable = styled.table`
-  min-width: 720px;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  overflow: auto;
-  table-layout: fixed;
-`;
+import AgileBoardTable from '../AgileBoardTable';
+import AgileBoardFooter from './AgileBoardFooter';
 
 function AgileBoard() {
   const { agileId, sprintId } = useParams();
@@ -35,7 +24,6 @@ function AgileBoard() {
   if (isLoading) {
     content = <LoaderScreen/>
   } else if (isSuccess) {
-    const columns = agile.columnSettings.columns;
     const realSprintId = sprintId.toLowerCase() === 'current'
       ? agile.currentSprint.id : sprintId;
     const sprint = agile.sprints.find(sprint => sprint.id === realSprintId);
@@ -46,9 +34,11 @@ function AgileBoard() {
                        sprint={{id: sprint.id, name: sprint.name, from: sprint.start, to: sprint.finish}}
                        onSettingsButtonClick={() => setSettingsVisible((state) => !state)}/>
       <AgileBoardSettings visible={settingsVisible}
+                          disabled={process.env.REACT_APP_YOUTRACK_SETTINGS_DISABLED === 'true'}
                           selectedTab={new URLSearchParams(search).get('tab')}
                           agileId={agile.id}
                           agileName={agile.name}
+                          sprintId={realSprintId}
                           projects={agile.projects}
                           columnSettings={agile.columnSettings}
                           swimlaneSettings={agile.swimlaneSettings}
@@ -64,16 +54,17 @@ function AgileBoard() {
                           originalEstimationField={agile.originalEstimationField}
                           readSharingSettings={agile.readSharingSettings}
                           updateSharingSettings={agile.updateSharingSettings}/>
-      <AgileBoardTable>
-        <colgroup>
-          { columns.map(column => <col key={'col-' + column.id} />) }
-        </colgroup>
-        <AgileBoardHeader columns={columns}></AgileBoardHeader>
-        <AgileBoardData columnSettings={agile.columnSettings} swimlane={agile.swimlaneSettings} 
-		agileId={agile.id} sprintId={realSprintId}
-                hideOrphansSwimlane={agile.hideOrphansSwimlane}
-                orphansAtTheTop={agile.orphansAtTheTop}/>
-      </AgileBoardTable>
+
+      <AgileBoardTable agileId={agile.id} sprintId={realSprintId}
+                       agileName={agile.name} sprintName={sprint.name}
+                       columnFieldName={agile.columnSettings?.field?.name}
+                       explicitQuery={agile.sprintsSettings.explicitQuery}
+                       hideOrphansSwimlane={agile.hideOrphansSwimlane}
+                       orphansAtTheTop={agile.orphansAtTheTop}
+                       colorField={agile.colorCoding?.prototype?.name}
+                       systemSwimlaneExist={agile.swimlaneSettings?.enabled}
+                       visibleCardFields={agile.cardSettings?.fields?.map(field => field.field?.name)}/>
+      <AgileBoardFooter owner={agile.owner}/>
     </div>
   } else if (isError) {
     content = <div>{error.toString()}</div>

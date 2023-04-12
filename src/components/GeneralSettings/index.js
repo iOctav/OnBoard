@@ -8,7 +8,7 @@ import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import { useState } from 'react';
 import { ControlsHeight } from '@jetbrains/ring-ui/dist/global/controls-height';
 import LazySelectBox from '../LazySelectBox';
-import { useLazyGetProjectsQuery, useLazyGetUsersQuery } from '../../store/youtrackApi';
+import { useLazyGetProjectsQuery, useLazyGetUsersQuery } from '../../app/services/youtrackApi';
 import Button from '@jetbrains/ring-ui/dist/button/button';
 import ButtonGroup from '@jetbrains/ring-ui/dist/button-group/button-group';
 import BoardBehaviorControl from './BoardBehaviorControl';
@@ -27,7 +27,8 @@ const FloatRightButtonGroup = styled.div`
   z-index: 1;
 `;
 
-function GeneralSettings({agileName, agileId, initialOwner, sprintsSettings, projects, readSharingSettings, updateSharingSettings}) {
+function GeneralSettings({disabled, agileName, agileId, initialOwner, sprintsSettings,
+                           projects, readSharingSettings, updateSharingSettings}) {
   const { t } = useTranslation();
   const [ name, setName ] = useState(agileName);
   const [ owner, setOwner ] = useState({key: initialOwner.id, label: initialOwner.fullName})
@@ -47,14 +48,15 @@ function GeneralSettings({agileName, agileId, initialOwner, sprintsSettings, pro
   const [ canEdit, setCanEdit ] = useState(canEditGroupsAndUsers);
   return (<div>
     <FloatRightButtonGroup className="general-settings-action-buttons">
-      <Button onClick={() => {}} height={ControlsHeight.S}>{t('Clone board')}</Button>
-      <Button danger onClick={() => {}} height={ControlsHeight.S}>{t('Delete board')}</Button>
+      <Button disabled={disabled} onClick={() => {}} height={ControlsHeight.S}>{t('Clone board')}</Button>
+      <Button disabled={disabled} danger onClick={() => {}} height={ControlsHeight.S}>{t('Delete board')}</Button>
     </FloatRightButtonGroup>
     <SettingsControl label={t('Name')}>
-      <InlineInput height={ControlsHeight.S} size={Size.M} value={name} onChange={(event) => setName(event.target.value)}/>
+      <InlineInput disabled={disabled} height={ControlsHeight.S} size={Size.M} value={name} onChange={(event) => setName(event.target.value)}/>
       <span>
         {t('owned by ')}
         <LazySelectBox
+          disabled={disabled}
           type="INLINE"
           filter={true}
           selected={owner}
@@ -65,14 +67,14 @@ function GeneralSettings({agileName, agileId, initialOwner, sprintsSettings, pro
       </span>
     </SettingsControl>
     <SettingsControl label={t('Projects')}>
-      <LazyTagBox placeholder={t('Add project')} size={Size.L}
+      <LazyTagBox disabled={disabled} placeholder={t('Add project')} size={Size.L}
         onAddTag={(tag) => setProjectTags([...projectTags, tag.tag])}
         tags={projectTags}
         lazyDataLoaderHook={useLazyGetProjectsQuery}
         makeDataSource={data => data.map(project => ({key: project.id, label: project.name}))}/>
     </SettingsControl>
     <SettingsControl label={t('Can view and use the board')}>
-      <UsersGroupsSelect type="INLINE"
+      <UsersGroupsSelect disabled={disabled} type="INLINE"
                          projectBasedLabel="issue readers"
                          deselectAllUsersAndGroups={() => setCanView([])}
                          selected={canView}
@@ -80,7 +82,7 @@ function GeneralSettings({agileName, agileId, initialOwner, sprintsSettings, pro
       <UnderControlDescription>{t('Members can view this board including fields and values that are used in the board settings')}</UnderControlDescription>
     </SettingsControl>
     <SettingsControl label={t('Can edit board settings')}>
-      <UsersGroupsSelect type="INLINE"
+      <UsersGroupsSelect disabled={disabled} type="INLINE"
                          projectBasedLabel="project updaters"
                          deselectAllUsersAndGroups={() => setCanEdit([])}
                          selected={canEdit}
@@ -90,16 +92,17 @@ function GeneralSettings({agileName, agileId, initialOwner, sprintsSettings, pro
     </SettingsControl>
     <SettingsControl label={t('Sprints')}>
       <ButtonGroup>
-        <Button active={enableSprints} height={ControlsHeight.S} onClick={() => setEnableSprints(true)}>
+        <Button disabled={disabled} active={enableSprints} height={ControlsHeight.S} onClick={() => setEnableSprints(true)}>
           {t('Enabled')}
         </Button>
-        <Button active={!enableSprints} height={ControlsHeight.S} onClick={() => setEnableSprints(false)}>
+        <Button disabled={disabled} active={!enableSprints} height={ControlsHeight.S} onClick={() => setEnableSprints(false)}>
           {t('Disabled')}
         </Button>
       </ButtonGroup>
     </SettingsControl>
     <SettingsControl label={t('Board behavior')}>
-      <BoardBehaviorControl sprintsEnabled={enableSprints}
+      <BoardBehaviorControl disabled={disabled}
+                            sprintsEnabled={enableSprints}
                             agileId={agileId}
                             addNewIssueToKanban={sprintsSettings.addNewIssueToKanban}
                             isExplicit={sprintsSettings.isExplicit}
@@ -113,6 +116,7 @@ function GeneralSettings({agileName, agileId, initialOwner, sprintsSettings, pro
 }
 
 GeneralSettings.propTypes = {
+  disabled: PropTypes.bool,
   agileName: PropTypes.string.isRequired,
   agileId: PropTypes.string.isRequired,
   initialOwner: PropTypes.object.isRequired,

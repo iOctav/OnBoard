@@ -1,3 +1,4 @@
+import '../ColorPalette/palette.css';
 import styled from 'styled-components';
 
 import PropTypes from 'prop-types';
@@ -9,8 +10,10 @@ import {
     useLazyGetStateBundleValuesQuery,
     useLazyGetUserBundleValuesQuery,
     useLazyGetVersionBundleValuesQuery
-} from '../../store/youtrackApi';
+} from '../../app/services/youtrackApi';
 import {useState} from 'react';
+import Marker from './Marker';
+import { COLORS } from '../ColorPalette/colors';
 
 const CardFieldAnchor = styled.span`
     cursor: pointer;
@@ -52,8 +55,10 @@ function AgileCardField({field}) {
     if (!field.projectCustomField.bundle) return null;
     const mapBundleDataItem = item => ({label: item.name, key: item.id});
     const lazyDataBundleHook = mapTypeDataRequest(field.projectCustomField.$type);
+    const markerColor = parseInt(field.value?.color?.id);
+
     return (
-        <LazySelectBox
+      <LazySelectBox
                 selected={selected}
                 lazyDataLoaderHook={lazyDataBundleHook}
                 label={label}
@@ -64,6 +69,7 @@ function AgileCardField({field}) {
                 onSelect={(item) => setSelectedItem(item)}
                 customAnchor={({wrapperProps, buttonProps, popup}) => (
                 <LeftMarginSpan className="agile-card-enumeration-item" {...wrapperProps}>
+                    {!!markerColor && <Marker className={`ring-palette_tone-${COLORS[markerColor].tone}-${COLORS[markerColor].brightness}`}/>}
                     <CardFieldAnchor title={field.projectCustomField.field.name + ': ' + (selectedItem?.label ?? label)} {...buttonProps}></CardFieldAnchor>
                     {popup}
                 </LeftMarginSpan>)}>

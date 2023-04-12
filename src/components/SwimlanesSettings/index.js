@@ -6,13 +6,14 @@ import ButtonGroup from '@jetbrains/ring-ui/dist/button-group/button-group';
 import Button from '@jetbrains/ring-ui/dist/button/button';
 import { ControlsHeight } from '@jetbrains/ring-ui/dist/global/controls-height';
 import { useState } from 'react';
-import { SwimlaneType } from './swimlane-type';
-import { useLazyGetValuesFilterFieldsQuery, useLazyGetIssuesFilterFieldsQuery } from '../../store/youtrackApi';
+import { SwimlaneType } from '../../features/nestedSwimlanes/swimlane-type';
+import { useLazyGetValuesFilterFieldsQuery, useLazyGetIssuesFilterFieldsQuery } from '../../app/services/youtrackApi';
 import LazySelectBox from '../LazySelectBox';
 import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import Checkbox from '@jetbrains/ring-ui/dist/checkbox/checkbox';
 import Select from '@jetbrains/ring-ui/dist/select/select';
 import SwimlaneAttributesList from './SwimlaneAttributesList';
+import { calculateSwimlaneType } from '../../utils/swimlanesUtils';
 
 const SettingsLabel = styled.span`
   padding-right: 0;
@@ -30,35 +31,23 @@ const MarginedCheckboxContainer = styled.div`
   margin-top: calc(var(--ring-unit) * 3);
 `;
 
-function calculateSwimlaneType(swimlaneSettings) {
-  if (swimlaneSettings.enabled) {
-    if (swimlaneSettings.$type === 'AttributeBasedSwimlaneSettings') {
-      return SwimlaneType.Values;
-    }
-    if (swimlaneSettings.$type === 'IssueBasedSwimlaneSettings') {
-      return SwimlaneType.Issues;
-    }
-  }
-  return SwimlaneType.None;
-}
-
-function SwimlanesSettings({agileId, swimlaneSettings, projectShortNames, hideOrphansSwimlane, orphansAtTheTop}) {
+function SwimlanesSettings({disabled, agileId, swimlaneSettings, projectShortNames, hideOrphansSwimlane, orphansAtTheTop}) {
   const { t } = useTranslation();
   const [selectedField, setSelectedField] = useState({label: swimlaneSettings.field?.presentation, key: swimlaneSettings.field?.id});
-  const [swimlaneType, setSwimlaneType] = useState(calculateSwimlaneType(swimlaneSettings));
+  const [swimlaneType, setSwimlaneType] = useState(calculateSwimlaneType(swimlaneSettings.enabled, swimlaneSettings.$type));
   const [showOrphan, setShowOrphan] = useState(!hideOrphansSwimlane);
   const swimlanePositionValue = { label: t('at the top of the board'), key: 'at-top' }
   return (<div className="columns-settings">
     <span>
       <SettingsLabel><b>{t('Swimlanes')}</b>{t(' are identified by')}</SettingsLabel>
       <ButtonGroup>
-        <Button active={swimlaneType === SwimlaneType.None} height={ControlsHeight.S}
+        <Button disabled={disabled} active={swimlaneType === SwimlaneType.None} height={ControlsHeight.S}
                 onClick={() => setSwimlaneType(SwimlaneType.None)}>{t('No swimlanes')}
         </Button>
-        <Button active={swimlaneType === SwimlaneType.Values} height={ControlsHeight.S}
+        <Button disabled={disabled} active={swimlaneType === SwimlaneType.Values} height={ControlsHeight.S}
                 onClick={() => setSwimlaneType(SwimlaneType.Values)}>{t('Values')}
         </Button>
-        <Button active={swimlaneType === SwimlaneType.Issues} height={ControlsHeight.S}
+        <Button disabled={disabled} active={swimlaneType === SwimlaneType.Issues} height={ControlsHeight.S}
                 onClick={() => setSwimlaneType(SwimlaneType.Issues)}>{t('Issues')}
         </Button>
       </ButtonGroup>
@@ -67,23 +56,11 @@ function SwimlanesSettings({agileId, swimlaneSettings, projectShortNames, hideOr
         (<span>
           <span>{t(' from field ')}</span>
           {
-            swimlaneType === SwimlaneType.Values &&
-            <MarginedSelectBox
+            (swimlaneType === SwimlaneType.Values || swimlaneType === SwimlaneType.Issues) &&
+            <MarginedSelectBox disabled={disabled}
               selected={selectedField}
               makeDataset={data => data.map(field => ({value: field.id, label: field.name, description: field.customField?.fieldType?.presentation, aggregateable: field.aggregateable}))}
-              lazyDataLoaderHook={useLazyGetValuesFilterFieldsQuery}
-              lazyDataLoaderHookParams={projectShortNames}
-              size={Size.M}
-              height={ControlsHeight.S}
-              onSelect={setSelectedField}/>
-          }
-
-          {
-            swimlaneType === SwimlaneType.Issues &&
-            <MarginedSelectBox
-              selected={selectedField}
-              makeDataset={data => data.map(field => ({value: field.id, label: field.name, description: field.customField?.fieldType?.presentation, aggregateable: field.aggregateable}))}
-              lazyDataLoaderHook={useLazyGetIssuesFilterFieldsQuery}
+              lazyDataLoaderHook={swimlaneType === SwimlaneType.Values ? useLazyGetValuesFilterFieldsQuery : useLazyGetIssuesFilterFieldsQuery}
               lazyDataLoaderHookParams={projectShortNames}
               size={Size.M}
               height={ControlsHeight.S}
@@ -92,11 +69,11 @@ function SwimlanesSettings({agileId, swimlaneSettings, projectShortNames, hideOr
         </span>)
       }
     </span>
-    { !selectedField.aggregateable && (swimlaneType !== SwimlaneType.None) && (<SwimlaneAttributesList agileId={agileId} fieldValues={swimlaneSettings.values}/>)}
+    { !selectedField.aggregateable && (swimlaneType !== SwimlaneType.None) && (<SwimlaneAttributesList disabled={disabled} agileId={agileId} fieldValues={swimlaneSettings.values}/>)}
     <MarginedCheckboxContainer>
-      <Checkbox checked={showOrphan} label={t('Show swimlane for uncategorized cards')} onChange={(event) => setShowOrphan(event.target.checked)}/>
+      <Checkbox disabled={disabled} checked={showOrphan} label={t('Show swimlane for uncategorized cards')} onChange={(event) => setShowOrphan(event.target.checked)}/>
       { showOrphan
-        ? (<Select type="INLINE" data={[swimlanePositionValue]} selected={orphansAtTheTop && swimlanePositionValue}></Select>)
+        ? (<Select disabled={disabled} type="INLINE" data={[swimlanePositionValue]} selected={orphansAtTheTop && swimlanePositionValue}></Select>)
         : <span>{t('at the top of the board ')}</span>
       }
     </MarginedCheckboxContainer>
@@ -104,6 +81,7 @@ function SwimlanesSettings({agileId, swimlaneSettings, projectShortNames, hideOr
 }
 
 SwimlanesSettings.propTypes = {
+  disabled: PropTypes.bool,
   agileId: PropTypes.string.isRequired,
   swimlaneSettings: PropTypes.object.isRequired,
   projectShortNames: PropTypes.arrayOf(PropTypes.string).isRequired,

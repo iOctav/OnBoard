@@ -6,12 +6,12 @@ import starEmpty from '@jetbrains/icons/star-empty.svg';
 import Button from '@jetbrains/ring-ui/dist/button/button';
 import { useTranslation } from 'react-i18next';
 import { Size, Input } from '@jetbrains/ring-ui/dist/input/input';
-import { useLazyGetAgilesQuery } from '../../store/youtrackApi';
 import LazySelectBox from '../LazySelectBox';
 import { useNavigate } from 'react-router-dom';
 import { currentAgileBoardUri } from '../../services/linkService';
 import List from '@jetbrains/ring-ui/dist/list/list';
 import PropTypes from 'prop-types';
+import { useLazyGetAgilesQuery } from '../../app/services/youtrackApi';
 
 const AgileSearchPanelDiv = styled.div`
   margin: 0 calc(var(--ring-unit) * 4);

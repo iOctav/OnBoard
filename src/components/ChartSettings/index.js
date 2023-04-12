@@ -9,7 +9,7 @@ import Input from '@jetbrains/ring-ui/dist/input/input';
 import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import SettingsControl from '../SettingsControl';
 
-function ChartSettings({reportSettings}) {
+function ChartSettings({disabled, reportSettings}) {
   const { t } = useTranslation();
   const [ doNotUseBurndown, setDoNotUseBurndown ] = useState(reportSettings.doNotUseBurndown);
   const [ filterType, setFilterType ] = useState(reportSettings.filterType.id);
@@ -17,22 +17,24 @@ function ChartSettings({reportSettings}) {
   return (<div>
     <SettingsControl label={t('Type')}>
       <ButtonGroup>
-        <Button active={!doNotUseBurndown} height={ControlsHeight.S} onClick={() => setDoNotUseBurndown(false)}>
+        <Button disabled={disabled} active={!doNotUseBurndown} height={ControlsHeight.S} onClick={() => setDoNotUseBurndown(false)}>
           {t('Burndown')}
         </Button>
-        <Button active={doNotUseBurndown} height={ControlsHeight.S} onClick={() => setDoNotUseBurndown(true)}>
+        <Button disabled={disabled} active={doNotUseBurndown} height={ControlsHeight.S} onClick={() => setDoNotUseBurndown(true)}>
           {t('Cumulative flow')}
         </Button>
       </ButtonGroup>
     </SettingsControl>
     <SettingsControl label={t('Issue filter')}>
       <ButtonGroup>
-        <Button active={filterType === FilterType.ALL_TASKS}
+        <Button disabled={disabled}
+                active={filterType === FilterType.ALL_TASKS}
                 height={ControlsHeight.S}
                 onClick={() => setFilterType(FilterType.ALL_TASKS)}>
           {t('All cards')}
         </Button>
-        <Button active={filterType === FilterType.QUERY}
+        <Button disabled={disabled}
+                active={filterType === FilterType.QUERY}
                 height={ControlsHeight.S}
                 onClick={() => setFilterType(FilterType.QUERY)}>
           {t('Custom')}
@@ -41,13 +43,14 @@ function ChartSettings({reportSettings}) {
     </SettingsControl>
     {filterType === FilterType.QUERY &&
       <SettingsControl label={t('Query')}>
-        <Input height={ControlsHeight.S} size={Size.L} value={subQuery} onChange={(event) => setSubQuery(event.target.value)}/>
+        <Input disabled={disabled} height={ControlsHeight.S} size={Size.L} value={subQuery} onChange={(event) => setSubQuery(event.target.value)}/>
       </SettingsControl>
     }
   </div>)
 }
 
 ChartSettings.propTypes = {
+  disabled: PropTypes.bool,
   reportSettings: PropTypes.object.isRequired,
 }
 

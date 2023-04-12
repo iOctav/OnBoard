@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useDrop } from 'react-dnd';
 import { ItemTypes } from '../../utils/item-types';
-import { useUpdateIssueFieldMutation } from '../../store/youtrackApi';
+import { useUpdateIssueFieldMutation } from '../../app/services/youtrackApi';
 
 const AgileBoardCellContainer = styled.div`
   height: 100%;

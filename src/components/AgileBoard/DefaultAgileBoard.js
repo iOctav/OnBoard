@@ -1,4 +1,4 @@
-import { useGetAgileUserProfileQuery } from '../../store/youtrackApi';
+import { useGetAgileUserProfileQuery } from '../../app/services/youtrackApi';
 import { Navigate } from 'react-router-dom';
 import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
 import { agileBoardUri } from '../../services/linkService';

@@ -3,13 +3,22 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const AgileCardDiv = styled.div`
+  height: auto;
+  min-height: auto;
+  width: 97% !important;
+  min-width: 97% !important;
+  width: calc(100% - calc(var(--ring-unit) + 1px)) !important;
+  min-width: calc(100% - calc(var(--ring-unit) + 1px)) !important;
+  display: inline-block;
+  vertical-align: top;
+  cursor: default;
+  padding: calc(var(--ring-unit));
   box-sizing: border-box;
-  width: 458.88px;
-  height: 82px;
-  background: #FFFFFF;
-  border: 1px solid #DFE5EB;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
+  margin: 0 calc(var(--ring-unit)/2) 6px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
+  border-radius: var(--ring-border-radius);
+  border: 1px solid var(--ring-line-color);
+  transition: 0.3s linear height;
 `;
 
 const AgileCardSummaryDiv = styled.div`
@@ -30,9 +39,14 @@ const SummarySpan = styled.span`
   font-family: "Inter", system-ui, Arial, sans-serif;
 `;
 
+const EmptyLink = styled.a`
+  margin-right: 6px;
+`;
+
 function AgileCardPreview({ issueData }) {
   return <AgileCardDiv>
     <AgileCardSummaryDiv>
+      <EmptyLink/>
       <SummarySpan>{issueData.summary}</SummarySpan>
     </AgileCardSummaryDiv>
   </AgileCardDiv>

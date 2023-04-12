@@ -11,6 +11,10 @@ function LazySelectBox({lazyDataLoaderHook, lazyDataLoaderHookParams, makeDatase
       setLoading(false);
       setDataset(makeDataset(results.data));
     }
+    return () => {
+      setDataset([]);
+      setLoading(true);
+    }
   },[results, makeDataset])
   return (<Select
     filter={true}

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
-import { useLazyGetUsersQuery, useLazyGetVisibilityGroupsQuery } from '../../store/youtrackApi';
+import { useLazyGetUsersQuery, useLazyGetVisibilityGroupsQuery } from '../../app/services/youtrackApi';
 import Select from '@jetbrains/ring-ui/dist/select/select';
 import List from '@jetbrains/ring-ui/dist/list/list';
 import { useTranslation } from 'react-i18next';

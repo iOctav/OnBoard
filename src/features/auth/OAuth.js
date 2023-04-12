@@ -1,8 +1,8 @@
-import { Navigate } from 'react-router-dom'
-import { useEffect } from 'react';
-import { setCredentials } from './authSlice';
-import { useDispatch } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 import { getHashParams, removeHashParamsFromUrl } from '../../utils/hashUtils';
+import { isTokenExpired, popLocalLocation, setLocalTokenInfo } from './oauthUtils';
+import { useDispatch } from 'react-redux';
+import { setCredentials } from './authSlice';
 
 const hashParams = getHashParams();
 removeHashParamsFromUrl();
@@ -10,20 +10,18 @@ removeHashParamsFromUrl();
 export function OAuth() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (hashParams.access_token) {
-      const expires_in = hashParams.expires_in;
-      const now = new Date();
-      let expirationTime = now.getTime() + (1000 * expires_in);
-      dispatch(setCredentials({
-        user: { login: 'root' },
-        token: hashParams.access_token,
-        expires_at: expires_in ? expirationTime : null}));
-    }
-  }, [dispatch]);
+  if (hashParams && hashParams.access_token) {
+    const tokenInfo = setLocalTokenInfo(hashParams);
+    dispatch(setCredentials({
+      isGuest: false,
+      authorized: !isTokenExpired(tokenInfo),
+      expires_at: tokenInfo.expires_at
+    }));
+    const initialRoute = popLocalLocation(hashParams.state);
+    return (<Navigate to={ (initialRoute && initialRoute !== 'undefined') ? initialRoute : '/' }/>);
+  }
 
-  const initialRoute = hashParams.state;
-  return (<Navigate to={(initialRoute && initialRoute !== 'undefined') ? initialRoute : '/'}/>);
+  return (<Navigate to="/error"/>);
 }
 
 export default OAuth;

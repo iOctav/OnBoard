@@ -9,7 +9,7 @@ import Selection from '@jetbrains/ring-ui/dist/table/selection';
 import Button from '@jetbrains/ring-ui/dist/button/button';
 import Input from '@jetbrains/ring-ui/dist/input/input';
 import Select from '@jetbrains/ring-ui/dist/select/select';
-import { ControlsHeight } from '@jetbrains/ring-ui/components/global/controls-height';
+import { ControlsHeight } from '@jetbrains/ring-ui/dist/global/controls-height';
 import NameColumnTemplate from './NameColumnTemplate';
 
 const VerticalAlignTable = styled(Table)`
@@ -19,30 +19,30 @@ const VerticalAlignTable = styled(Table)`
   }
 `;
 
-function makeWIPInput(value) {
+function makeWIPInput(value, disabled) {
   if (value) {
-    return (<Input height={ ControlsHeight.S } value={value.toString()} size={ Size.AUTO } placeholder="No"/>);
+    return (<Input disabled={disabled} height={ ControlsHeight.S } value={value.toString()} size={ Size.AUTO } placeholder="No"/>);
   } else {
-    return (<Input height={ ControlsHeight.S } size={ Size.AUTO } placeholder="No"/>);
+    return (<Input disabled={disabled} height={ ControlsHeight.S } size={ Size.AUTO } placeholder="No"/>);
   }
 }
 
-function ColumnsSettingsTable({columns}) {
+function ColumnsSettingsTable({disabled, columns}) {
   const { t } = useTranslation();
   const tableColumns = [
-    {key: 'name', id: 'name', getValue: (item, column) => (<NameColumnTemplate fieldValues={item.fieldValues}/>) },
-    {key: 'min', id: 'min', title: t('Min'), getValue: (item, column) => makeWIPInput(item.wipLimit?.min)},
-    {key: 'max', id: 'max', title: t('Max WIP'), getValue: (item, column) => makeWIPInput(item.wipLimit?.max)},
-    {key: 'merge', id: 'merge', getValue: (item, column) => (<Select type="INLINE" filter label="Merge with"/>)},
+    {key: 'name', id: 'name', getValue: (item, column) => (<NameColumnTemplate disabled={disabled} fieldValues={item.fieldValues}/>) },
+    {key: 'min', id: 'min', title: t('Min'), getValue: (item, column) => makeWIPInput(item.wipLimit?.min, disabled)},
+    {key: 'max', id: 'max', title: t('Max WIP'), getValue: (item, column) => makeWIPInput(item.wipLimit?.max, disabled)},
+    {key: 'merge', id: 'merge', getValue: (item, column) => (<Select disabled={disabled} type="INLINE" filter label="Merge with"/>)},
     {key: 'remove', id: 'remove', getValue: (item, column) => (item.fieldValues.map(
       field =>
-        (<div key={field.id}><Button icon={closeIcon} title={t('Remove')}/></div>)
+        (<div key={field.id}><Button disabled={disabled} icon={closeIcon} title={t('Remove')}/></div>)
       ))},
   ]
   const data = [...columns].sort((a, b) => a.ordinal - b.ordinal).map(col => ({...col, key: col.id}));
   const selection = new Selection({data: data});
   return (<VerticalAlignTable
-    draggable alwaysShowDragHandle dragHandleTitle={t('Drag to reorder')}
+    draggable={!disabled} alwaysShowDragHandle dragHandleTitle={t('Drag to reorder')}
     data={data}
     selectable={false}
     sortKey="ordinal"
@@ -52,6 +52,7 @@ function ColumnsSettingsTable({columns}) {
 }
 
 ColumnsSettingsTable.propTypes = {
+  disabled: PropTypes.bool,
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
