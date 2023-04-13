@@ -63,7 +63,8 @@ function AgileBoard() {
                        orphansAtTheTop={agile.orphansAtTheTop}
                        colorField={agile.colorCoding?.prototype?.name}
                        systemSwimlaneExist={agile.swimlaneSettings?.enabled}
-                       visibleCardFields={agile.cardSettings?.fields?.map(field => field.field?.name)}/>
+                       visibleCardFields={agile.cardSettings?.fields?.map(field => field.field?.name)}
+                       swimlaneFieldName={agile.swimlaneSettings?.field.name}/>
       <AgileBoardFooter owner={agile.owner}/>
     </div>
   } else if (isError) {

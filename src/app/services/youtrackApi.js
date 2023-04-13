@@ -13,7 +13,7 @@ export const youtrackApi = createApi({
       return headers
     }
   }),
-  tagTypes: ['Board'],
+  tagTypes: ['Sprint', 'Board'],
   endpoints: (builder) => ({
     getAgiles: builder.query({
       query: () => ({
@@ -217,19 +217,6 @@ export const youtrackApi = createApi({
         },
       })
     }),
-    // MUTATIONS
-    updateIssueField: builder.mutation({
-      query: ({ issueId, fieldId, ...patch }) => ({
-        url: `issues/${issueId}/fields/${fieldId}`,
-        method: 'POST',
-        body: patch,
-        params: {
-          fields: '$type, id',
-          muteUpdateNotifications: true,
-        }
-      }),
-      invalidatesTags: ['Board'],
-    }),
   }),
 });
 
@@ -241,4 +228,4 @@ export const { useGetCustomFieldValuesQuery,
   useLazyGetAvailableColumnFieldsQuery, useLazyGetColorSchemeFilterFieldsQuery, useLazyGetEstimationFilterFieldsQuery,
   useLazyGetColumnSettingsAvailableColumnFieldsQuery, useLazyGetCustomFilterFieldsQuery,
   useLazyGetValuesFilterFieldsQuery, useLazyGetIssuesFilterFieldsQuery, useLazyGetAvailableSwimlaneFieldsQuery,
-  useLazyGetUsersQuery, useLazyGetProjectsQuery, useLazyGetVisibilityGroupsQuery, useLazyGetIssueTagsQuery, useUpdateIssueFieldMutation } = youtrackApi;
+  useLazyGetUsersQuery, useLazyGetProjectsQuery, useLazyGetVisibilityGroupsQuery, useLazyGetIssueTagsQuery } = youtrackApi;
