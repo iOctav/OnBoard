@@ -21,13 +21,13 @@ const TableContainer = styled.table`
   margin-bottom: 36px;
 `;
 
-function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldName, explicitQuery,
-                           hideOrphansSwimlane, orphansAtTheTop, colorField, systemSwimlaneExist, visibleCardFields}) {
+function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldName, explicitQuery, hideOrphansSwimlane,
+                           orphansAtTheTop, colorField, systemSwimlaneExist, visibleCardFields, swimlaneFieldName}) {
   const { data: sprint,
     isLoading,
     isSuccess,
     isError
-  } = useGetSpecificSprintForSpecificAgileQuery({agileId, sprintId: (sprintId || 'current')});
+  } = useGetSpecificSprintForSpecificAgileQuery({agileId, sprintId: sprintId || 'current'});
 
   const [swimlanes] = useStateParams({}, 'nested-swimlanes', (s) => JSON.stringify(s), (s) => JSON.parse(s));
   const swimlanesDepth = Object.keys(swimlanes).length;
@@ -42,12 +42,15 @@ function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldN
                         fieldName={columnFieldName}
                         explicitQuery={explicitQuery}
                         swimlanesDepth={swimlanesDepth}/>
-      <AgileBoardData sprint={sprint}
+      <AgileBoardData agileId={agileId}
+                      sprintId={sprintId || 'current'}
+                      sprint={sprint}
                       hideOrphansSwimlane={hideOrphansSwimlane}
                       orphansAtTheTop={orphansAtTheTop}
                       colorField={colorField}
                       systemSwimlaneExist={systemSwimlaneExist}
-                      visibleCardFields={visibleCardFields}/>
+                      visibleCardFields={visibleCardFields}
+                      swimlaneFieldName={swimlaneFieldName}/>
     </TableContainer>);
   } else if (isError) {
     return null;
@@ -66,6 +69,7 @@ AgileBoardTable.propTypes = {
   colorField: PropTypes.string,
   systemSwimlaneExist: PropTypes.bool,
   visibleCardFields: PropTypes.arrayOf(PropTypes.string),
+  swimlaneFieldName: PropTypes.string,
 }
 
 export default AgileBoardTable;
