@@ -107,7 +107,8 @@ function BoardRow({agileId, sprintId, row, issuesDict, swimlaneTitle, level, isO
                                  columnFieldId={columns[index].agileColumn.parent.field.name}
                                  swimlaneFieldlId={swimlaneFieldName}
                                  columnName={ columns[index].agileColumn.fieldValues[0].name }
-                                 swimlaneName={ row.name }>
+                                 swimlaneName={ !isOrphan ? row.name : undefined }
+                                 issuesDict={issuesDict}>
                   { cell.issues.map((c) => issuesDict && issuesDict[c.id]
                       ? <AgileCard issueData={issuesDict[c.id]} colorField={colorField} visibleFields={visibleCardFields} key={'agile-card-' + c.id}/>
                       : <AgileCardPreview issueData={c} key={'agile-card-' + c.id}/> )}

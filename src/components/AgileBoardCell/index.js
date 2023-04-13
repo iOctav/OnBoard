@@ -13,37 +13,42 @@ const AgileBoardCellContainer = styled.div`
   box-sizing: border-box;
 `;
 
-function AgileBoardCell({agileId, sprintId, columnFieldId, swimlaneFieldlId, columnName, swimlaneName, children}) {
+function AgileBoardCell({agileId, sprintId, columnFieldId, swimlaneFieldlId, columnName, swimlaneName, issuesDict, children}) {
   const [updateIssueField, result] = useUpdateIssueFieldMutation();
-  const [{ isOver }, drop] = useDrop(() => ({
-    accept: ItemTypes.AgileCard,
-    drop: (item) => {
-      updateIssueField({
-        agileId,
-        sprintId,
-        issueId: item.id,
-        propertiesUpdates: [
-          {
-            fieldId: columnFieldId,
-            type: PropertyUpdateType.Column,
-            value: {
-              name: columnName
-            },
+  const [{ isOver }, drop] = useDrop(() => {
+    return {
+      accept: ItemTypes.AgileCard,
+      drop: (item) => {
+        const issueData = issuesDict[item.id];
+        const columnChanged = issueData.fields.some(field => field.name.toLowerCase() === columnFieldId.toLowerCase()
+          && field.value.name.toLowerCase() !== columnName.toLowerCase());
+        const prevSwimlane = issueData.fields.find(field => field.name.toLowerCase() === swimlaneFieldlId.toLowerCase()).value?.name;
+        const swimlaneChanged = prevSwimlane?.toLowerCase() !== swimlaneName?.toLowerCase() || (prevSwimlane && !swimlaneName) || (!prevSwimlane && swimlaneName);
+        let propertiesUpdates = [];
+        columnChanged && propertiesUpdates.push({
+          fieldId: columnFieldId,
+          type: PropertyUpdateType.Column,
+          value: {
+            name: columnName
           },
-          {
-            fieldId: swimlaneFieldlId,
-            type: PropertyUpdateType.Swimlane,
-            value: {
-              name: swimlaneName
-            },
-          },
-        ]
-      });
-    },
-    collect: monitor => ({
-      isOver: !!monitor.isOver(),
-    }),
-  }), [columnName, swimlaneName])
+        });
+        swimlaneChanged && propertiesUpdates.push({
+          fieldId: swimlaneFieldlId,
+          type: PropertyUpdateType.Swimlane,
+          value: swimlaneName ? { name: swimlaneName } : null,
+        });
+        updateIssueField({
+          agileId,
+          sprintId,
+          issueId: item.id,
+          propertiesUpdates,
+        });
+      },
+      collect: monitor => ({
+        isOver: !!monitor.isOver(),
+      }),
+    };
+  }, [columnName, swimlaneName, issuesDict])
   return <AgileBoardCellContainer
     ref={drop}>
     {children}
@@ -58,7 +63,7 @@ AgileBoardCell.propTypes = {
   columnName: PropTypes.string,
   swimlaneName: PropTypes.string,
   columnIndex: PropTypes.number,
-  isOrphan: PropTypes.bool,
+  issuesDict: PropTypes.object,
 }
 
 export default AgileBoardCell;

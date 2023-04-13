@@ -42,6 +42,7 @@ export const youtrackApi = createApi({
           topLinks: 3,
         },
       }),
+      providesTags: ['Sprint'],
     }),
     getCustomFieldValues: builder.query({
       query: (id) => ({

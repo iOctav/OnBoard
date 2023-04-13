@@ -12,7 +12,6 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
         },
       }),
       providesTags: ['Sprint'],
-
     }),
     // MUTATIONS
     updateIssueField: builder.mutation({
@@ -35,8 +34,10 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
           extendedYoutrackApi.util.updateQueryData('getSpecificSprintForSpecificAgile', { agileId, sprintId }, (draft) => {
             let columnIndex = 0;
             let swimlaneIndex = -1;
-            const issueSwimlaneName = propertiesUpdates.find(update => update.type === PropertyUpdateType.Swimlane)?.value.name;
-            const issueColumnName = propertiesUpdates.find(update => update.type === PropertyUpdateType.Column)?.value.name;
+            const isColumnChanged = propertiesUpdates.some(update => update.type === PropertyUpdateType.Column);
+            const isSwimlaneChanged = propertiesUpdates.some(update => update.type === PropertyUpdateType.Swimlane);
+            const issueSwimlaneName = propertiesUpdates.find(update => update.type === PropertyUpdateType.Swimlane)?.value?.name;
+            const issueColumnName = propertiesUpdates.find(update => update.type === PropertyUpdateType.Column)?.value?.name;
             for (let swmIndex = 0; swmIndex < (draft.board.trimmedSwimlanes.length || 1); swmIndex++) {
               let prevIndex = -1;
               for (let i = 0; i < draft.board.orphanRow.cells.length; i++) {
@@ -60,9 +61,9 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
                 break;
               }
             }
-            if (issueColumnName) {
+            if (isColumnChanged) {
               columnIndex = draft.board.columns.findIndex(column => column.agileColumn.fieldValues[0].name.toLowerCase() === issueColumnName.toLowerCase());
-              if (!issueSwimlaneName) {
+              if (!isSwimlaneChanged) {
                 if (swimlaneIndex === -1) {
                   draft.board.orphanRow.cells[columnIndex].issues.push({ id: issueId });
                 } else {
@@ -71,10 +72,15 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
                 return;
               }
             }
-            if (issueSwimlaneName && draft.board.trimmedSwimlanes.length) {
+            if (isSwimlaneChanged && draft.board.trimmedSwimlanes.length) {
+              if (!issueSwimlaneName) {
+                draft.board.orphanRow.cells[columnIndex].issues.push({ id: issueId });
+                return;
+              }
               for (const swimlane of draft.board.trimmedSwimlanes) {
                 if (swimlane.name === issueSwimlaneName) {
                   swimlane.cells[columnIndex].issues.push({ id: issueId });
+                  return;
                 }
               }
             }
