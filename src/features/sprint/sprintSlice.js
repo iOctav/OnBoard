@@ -1,6 +1,7 @@
 import { youtrackApi } from '../../app/services/youtrackApi';
 import { createEntityAdapter, createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { PropertyUpdateType } from './propertyUpdateType';
+import { getChangedProperty, insertIssueToTheSprintBoard, removeIssueFromTheSprintBoard } from './boardUpdatesUtils';
 
 export const extendedYoutrackApi = youtrackApi.injectEndpoints({
   endpoints: builder => ({
@@ -27,63 +28,18 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
             }
           });
         }
-        return { data: cardMove.issueId };
+        return { data: cardMove.propertiesUpdates.length > 0 ? cardMove.issueId : null };
       },
       async onQueryStarted({ agileId, sprintId, issueId, propertiesUpdates }, { dispatch, queryFulfilled }) {
         dispatch(
           extendedYoutrackApi.util.updateQueryData('getSpecificSprintForSpecificAgile', { agileId, sprintId }, (draft) => {
-            let columnIndex = 0;
-            let swimlaneIndex = -1;
-            const isColumnChanged = propertiesUpdates.some(update => update.type === PropertyUpdateType.Column);
-            const isSwimlaneChanged = propertiesUpdates.some(update => update.type === PropertyUpdateType.Swimlane);
-            const issueSwimlaneName = propertiesUpdates.find(update => update.type === PropertyUpdateType.Swimlane)?.value?.name;
-            const issueColumnName = propertiesUpdates.find(update => update.type === PropertyUpdateType.Column)?.value?.name;
-            for (let swmIndex = 0; swmIndex < (draft.board.trimmedSwimlanes.length || 1); swmIndex++) {
-              let prevIndex = -1;
-              for (let i = 0; i < draft.board.orphanRow.cells.length; i++) {
-                prevIndex = draft.board.orphanRow.cells[i].issues.findIndex(issue => issue.id === issueId);
-                if (prevIndex !== -1) {
-                  columnIndex = i;
-                  draft.board.orphanRow.cells[i].issues.splice(prevIndex, 1);
-                  break;
-                }
-                if (draft.board.trimmedSwimlanes.length > 0) {
-                  prevIndex = draft.board.trimmedSwimlanes[swmIndex].cells[i].issues.findIndex(issue => issue.id === issueId);
-                  if (prevIndex !== -1) {
-                    columnIndex = i;
-                    swimlaneIndex = swmIndex;
-                    draft.board.trimmedSwimlanes[swmIndex].cells[i].issues.splice(prevIndex, 1);
-                    break;
-                  }
-                }
-              }
-              if (prevIndex !== -1) {
-                break;
-              }
+            const { isChanged: isColumnChanged, value: issueColumnName } = getChangedProperty(propertiesUpdates, PropertyUpdateType.Column);
+            const { isChanged: isSwimlaneChanged, value: issueSwimlaneName } = getChangedProperty(propertiesUpdates, PropertyUpdateType.Swimlane);
+            if (!isColumnChanged && !isSwimlaneChanged) {
+              return;
             }
-            if (isColumnChanged) {
-              columnIndex = draft.board.columns.findIndex(column => column.agileColumn.fieldValues[0].name.toLowerCase() === issueColumnName.toLowerCase());
-              if (!isSwimlaneChanged) {
-                if (swimlaneIndex === -1) {
-                  draft.board.orphanRow.cells[columnIndex].issues.push({ id: issueId });
-                } else {
-                  draft.board.trimmedSwimlanes[swimlaneIndex].cells[columnIndex].issues.push({ id: issueId });
-                }
-                return;
-              }
-            }
-            if (isSwimlaneChanged && draft.board.trimmedSwimlanes.length) {
-              if (!issueSwimlaneName) {
-                draft.board.orphanRow.cells[columnIndex].issues.push({ id: issueId });
-                return;
-              }
-              for (const swimlane of draft.board.trimmedSwimlanes) {
-                if (swimlane.name === issueSwimlaneName) {
-                  swimlane.cells[columnIndex].issues.push({ id: issueId });
-                  return;
-                }
-              }
-            }
+            let { columnIndex, swimlaneIndex } = removeIssueFromTheSprintBoard(draft.board, issueId);
+            insertIssueToTheSprintBoard(draft.board, issueId, isColumnChanged, isSwimlaneChanged, columnIndex, swimlaneIndex, issueColumnName, issueSwimlaneName);
           })
         )
         try {
@@ -92,7 +48,8 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
           dispatch(extendedYoutrackApi.util.invalidateTags(['Sprint']))
         }
       },
-      invalidatesTags: ['Sprint'],
+      // invalidatesTags: ['Sprint']
+      invalidatesTags: (result, error, arg) => result ? ['Sprint'] : [],
     }),
   })
 })

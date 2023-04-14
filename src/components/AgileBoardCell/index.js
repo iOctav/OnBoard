@@ -11,6 +11,7 @@ const AgileBoardCellContainer = styled.div`
   padding: 0 calc(var(--ring-unit)/2);
   padding-bottom: 7px;
   box-sizing: border-box;
+  ${props => props.isOver ? `background-color: var(--ring-hover-background-color);` : ''}
 `;
 
 function AgileBoardCell({agileId, sprintId, columnFieldId, swimlaneFieldlId, columnName, swimlaneName, issuesDict, children}) {
@@ -50,7 +51,7 @@ function AgileBoardCell({agileId, sprintId, columnFieldId, swimlaneFieldlId, col
     };
   }, [columnName, swimlaneName, issuesDict])
   return <AgileBoardCellContainer
-    ref={drop}>
+    ref={drop} isOver={isOver ? 1 : 0}>
     {children}
   </AgileBoardCellContainer>
 }

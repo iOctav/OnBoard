@@ -16,7 +16,8 @@ function AgileBoardRows({agileId, sprintId, orphanRow, trimmedSwimlanes, hideOrp
       [...acc1, ...(row.cells.reduce((acc1, cell) =>
         [...acc1, ...cell.issues.reduce((acc2, issue) => [...acc2, issue.id], [])], [])),[]],
       [])
-    .filter(id => !(id instanceof Array));
+    .filter(id => !(id instanceof Array))
+    .sort();
 
   const { data: issues,
     isLoading,
