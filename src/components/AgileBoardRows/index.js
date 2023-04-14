@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { useGetIssuesQuery } from '../../app/services/youtrackApi';
 import BoardRow from './BoardRow';
+import { useGetIssuesQuery } from '../../features/sprint/sprintSlice';
 
 function AgileBoardRows({agileId, sprintId, orphanRow, trimmedSwimlanes, hideOrphansSwimlane, orphansAtTheTop,
                           level, colorField, system, visibleCardFields, swimlaneFieldName}) {
@@ -26,7 +26,7 @@ function AgileBoardRows({agileId, sprintId, orphanRow, trimmedSwimlanes, hideOrp
 
   if (isLoading) {
   } else if (isSuccess) {
-    issuesDict = Object.fromEntries(issues.map(issue => [issue.id, issue]));
+    issuesDict = issues.entities;
   } else if (isError) {
   }
 

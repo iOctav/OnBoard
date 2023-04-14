@@ -3,6 +3,10 @@ import { createEntityAdapter, createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { PropertyUpdateType } from './propertyUpdateType';
 import { getChangedProperty, insertIssueToTheSprintBoard, removeIssueFromTheSprintBoard } from './boardUpdatesUtils';
 
+const issuesAdapter = createEntityAdapter({
+  sortComparer: (a, b) => a.idReadable.localeCompare(b.idReadable),
+})
+
 export const extendedYoutrackApi = youtrackApi.injectEndpoints({
   endpoints: builder => ({
     getSpecificSprintForSpecificAgile: builder.query({
@@ -13,6 +17,25 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
         },
       }),
       providesTags: ['Sprint'],
+    }),
+    getIssues: builder.query({
+      query: (ids) => ({
+        url: `issuesGetter`,
+        method: 'POST',
+        body: ids.map(id => ({ id: id })),
+        params: {
+          fields: 'attachments(id),fields($type,hasStateMachine,id,isUpdatable,name,projectCustomField($type,bundle(id),canBeEmpty,emptyFieldText,field(fieldType(isMultiValue,valueType),id,localizedName,name,ordinal),id,isEstimation,isPublic,isSpentTime,ordinal,size),value($type,archived,avatarUrl,buildIntegration,buildLink,color(background,id),description,fullName,id,isResolved,localizedName,login,markdownText,minutes,name,presentation,ringId,text)),id,idReadable,summary,isDraft,numberInProject,project($type,archived,id,name,plugins(timeTrackingSettings(enabled,estimate(field(id,name),id),timeSpent(field(id,name),id))),ringId,shortName),reporter($type,id,login,ringId),created,updated,resolved,subtasks(id,issuesSize,issues(id,summary),unresolvedIssuesSize),tags(id,name,color(id))',
+          top: -1,
+          topLinks: 3,
+        },
+      }),
+      transformResponse(response) {
+        return issuesAdapter.addMany(issuesAdapter.getInitialState(), response)
+      },
+      providesTags: (result, error, arg) =>
+        result
+          ? [...result.ids.map((id) => ({ type: 'Sprint', id: id })), 'Sprint']
+          : ['Sprint'],
     }),
     // MUTATIONS
     updateIssueField: builder.mutation({
@@ -48,13 +71,12 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
           dispatch(extendedYoutrackApi.util.invalidateTags(['Sprint']))
         }
       },
-      // invalidatesTags: ['Sprint']
-      invalidatesTags: (result, error, arg) => result ? ['Sprint'] : [],
+      invalidatesTags: (result, error, arg) => result ? [{ type: 'Sprint', id: result }] : [],
     }),
   })
 })
 
-export const { useGetSpecificSprintForSpecificAgileQuery, useUpdateIssueFieldMutation } = extendedYoutrackApi;
+export const { useGetSpecificSprintForSpecificAgileQuery, useGetIssuesQuery, useUpdateIssueFieldMutation } = extendedYoutrackApi;
 
 const columnsAdapter = createEntityAdapter();
 
