@@ -31,19 +31,6 @@ export const youtrackApi = createApi({
         },
       })
     }),
-    getIssues: builder.query({
-      query: (ids) => ({
-        url: `issuesGetter`,
-        method: 'POST',
-        body: ids.map(id => ({ id: id })),
-        params: {
-          fields: 'attachments(id),fields($type,hasStateMachine,id,isUpdatable,name,projectCustomField($type,bundle(id),canBeEmpty,emptyFieldText,field(fieldType(isMultiValue,valueType),id,localizedName,name,ordinal),id,isEstimation,isPublic,isSpentTime,ordinal,size),value($type,archived,avatarUrl,buildIntegration,buildLink,color(background,id),description,fullName,id,isResolved,localizedName,login,markdownText,minutes,name,presentation,ringId,text)),id,idReadable,summary,isDraft,numberInProject,project($type,archived,id,name,plugins(timeTrackingSettings(enabled,estimate(field(id,name),id),timeSpent(field(id,name),id))),ringId,shortName),reporter($type,id,login,ringId),created,updated,resolved,subtasks(id,issuesSize,issues(id,summary),unresolvedIssuesSize),tags(id,name,color(id))',
-          top: -1,
-          topLinks: 3,
-        },
-      }),
-      providesTags: ['Sprint'],
-    }),
     getCustomFieldValues: builder.query({
       query: (id) => ({
         url: `admin/customFieldSettings/bundles/ownedField/${id}/values`,
@@ -222,7 +209,7 @@ export const youtrackApi = createApi({
 });
 
 export const { useGetCustomFieldValuesQuery,
-  useLazyGetSprintsForAgileQuery, useGetIssuesQuery,
+  useLazyGetSprintsForAgileQuery,
   useGetCurrentUserInfoQuery, useLazyGetAgilesQuery, useGetAgileUserProfileQuery,
   useLazyGetEnumBundleValuesQuery, useLazyGetOwnedBundleValuesQuery, useLazyGetStateBundleValuesQuery,
   useLazyGetVersionBundleValuesQuery, useLazyGetUserBundleValuesQuery, useLazyGetBuildBundleValuesQuery,
