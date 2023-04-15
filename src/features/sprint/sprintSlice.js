@@ -32,10 +32,31 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
       transformResponse(response) {
         return issuesAdapter.addMany(issuesAdapter.getInitialState(), response)
       },
-      providesTags: (result, error, arg) =>
-        result
-          ? [...result.ids.map((id) => ({ type: 'Sprint', id: id })), 'Sprint']
-          : ['Sprint'],
+      providesTags: ['Sprint']
+    }),
+    getIssuesByAgileSprint: builder.query({
+      async queryFn({agileId, sprintId}, _queryApi, _extraOptions, baseQuery) {
+        const sprint = selectCurrentSprint(_queryApi.getState(), {agileId, sprintId});
+        const issueIds = [sprint.data.board.orphanRow, ...sprint.data.board.trimmedSwimlanes]
+          .reduce((acc1, row) =>
+              [...acc1, ...(row.cells.reduce((acc1, cell) =>
+                [...acc1, ...cell.issues.reduce((acc2, issue) => [...acc2, issue.id], [])], [])),[]],
+            [])
+          .filter(id => !(id instanceof Array))
+          .sort();
+        const result = await baseQuery({
+          url: `issuesGetter`,
+          method: 'POST',
+          body: issueIds.map(id => ({ id: id })),
+          params: {
+            fields: 'attachments(id),fields($type,hasStateMachine,id,isUpdatable,name,projectCustomField($type,bundle(id),canBeEmpty,emptyFieldText,field(fieldType(isMultiValue,valueType),id,localizedName,name,ordinal),id,isEstimation,isPublic,isSpentTime,ordinal,size),value($type,archived,avatarUrl,buildIntegration,buildLink,color(background,id),description,fullName,id,isResolved,localizedName,login,markdownText,minutes,name,presentation,ringId,text)),id,idReadable,summary,isDraft,numberInProject,project($type,archived,id,name,plugins(timeTrackingSettings(enabled,estimate(field(id,name),id),timeSpent(field(id,name),id))),ringId,shortName),reporter($type,id,login,ringId),created,updated,resolved,subtasks(id,issuesSize,issues(id,summary),unresolvedIssuesSize),tags(id,name,color(id))',
+            top: -1,
+            topLinks: 3,
+          },
+        });
+        return { ...result, data: issuesAdapter.addMany(issuesAdapter.getInitialState(), result.data) };
+      },
+      providesTags: ['Sprint'],
     }),
     // MUTATIONS
     updateIssueField: builder.mutation({
@@ -65,18 +86,42 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
             insertIssueToTheSprintBoard(draft.board, issueId, isColumnChanged, isSwimlaneChanged, columnIndex, swimlaneIndex, issueColumnName, issueSwimlaneName);
           })
         )
+        dispatch(
+          extendedYoutrackApi.util.updateQueryData('getIssuesByAgileSprint', { agileId, sprintId }, (draft) => {
+            for (const propertyUpdate of propertiesUpdates) {
+              const issue = draft.entities[issueId];
+              const issueProperty = issue.fields.find(field => field.name.toLowerCase() === propertyUpdate.fieldId.toLowerCase());
+              if (issueProperty) {
+                if (propertyUpdate.value === null) {
+                  issueProperty.value = null;
+                } else {
+                  issueProperty.value = {...issueProperty.value, name: propertyUpdate.value?.name, color: undefined};
+                }
+              }
+            }
+          })
+        )
+
         try {
           await queryFulfilled
         } catch {
           dispatch(extendedYoutrackApi.util.invalidateTags(['Sprint']))
         }
       },
-      invalidatesTags: (result, error, arg) => result ? [{ type: 'Sprint', id: result }] : [],
+      invalidatesTags: ['Sprint'],
     }),
   })
 })
 
-export const { useGetSpecificSprintForSpecificAgileQuery, useGetIssuesQuery, useUpdateIssueFieldMutation } = extendedYoutrackApi;
+export const { useGetSpecificSprintForSpecificAgileQuery, useGetIssuesQuery, useUpdateIssueFieldMutation, useGetIssuesByAgileSprintQuery } = extendedYoutrackApi;
+
+export const selectCurrentSprint = (state, args) => extendedYoutrackApi.endpoints.getSpecificSprintForSpecificAgile.select(args)(state);
+
+
+export const {
+  selectAll: selectAllIssues,
+  selectById: selectIssueById,
+} = issuesAdapter.getSelectors()
 
 const columnsAdapter = createEntityAdapter();
 
