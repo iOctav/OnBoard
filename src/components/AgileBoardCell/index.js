@@ -14,7 +14,7 @@ const AgileBoardCellContainer = styled.div`
   ${props => props.isOver ? `background-color: var(--ring-hover-background-color);` : ''}
 `;
 
-function AgileBoardCell({agileId, sprintId, columnFieldId, swimlaneFieldlId, columnName, swimlaneName, issuesDict, children}) {
+function AgileBoardCell({agileId, sprintId, columnFieldId, swimlanes, columnName, issuesDict, children}) {
   const [updateIssueField, result] = useUpdateIssueFieldMutation();
   const [{ isOver }, drop] = useDrop(() => {
     return {
@@ -23,9 +23,17 @@ function AgileBoardCell({agileId, sprintId, columnFieldId, swimlaneFieldlId, col
         const issueData = issuesDict[item.id];
         const columnChanged = issueData.fields.some(field => field.name.toLowerCase() === columnFieldId.toLowerCase()
           && field.value.name.toLowerCase() !== columnName.toLowerCase());
-        const prevSwimlane = issueData.fields.find(field => field.name.toLowerCase() === swimlaneFieldlId.toLowerCase()).value?.name;
-        const swimlaneChanged = prevSwimlane?.toLowerCase() !== swimlaneName?.toLowerCase() || (prevSwimlane && !swimlaneName) || (!prevSwimlane && swimlaneName);
         let propertiesUpdates = [];
+        swimlanes.forEach(({ swimlaneFieldlId, swimlaneValue }) => {
+          const prevSwimlane = issueData.fields.find(field => field.name.toLowerCase() === swimlaneFieldlId.toLowerCase()).value?.name;
+          const swimlaneChanged = prevSwimlane?.toLowerCase() !== swimlaneValue?.toLowerCase() || (prevSwimlane && !swimlaneValue) || (!prevSwimlane && swimlaneValue)
+          swimlaneChanged && propertiesUpdates.push({
+            fieldId: swimlaneFieldlId,
+            type: PropertyUpdateType.Swimlane,
+            value: swimlaneValue ? { name: swimlaneValue } : null,
+          });
+        });
+
         columnChanged && propertiesUpdates.push({
           fieldId: columnFieldId,
           type: PropertyUpdateType.Column,
@@ -33,11 +41,7 @@ function AgileBoardCell({agileId, sprintId, columnFieldId, swimlaneFieldlId, col
             name: columnName
           },
         });
-        swimlaneChanged && propertiesUpdates.push({
-          fieldId: swimlaneFieldlId,
-          type: PropertyUpdateType.Swimlane,
-          value: swimlaneName ? { name: swimlaneName } : null,
-        });
+
         updateIssueField({
           agileId,
           sprintId,
@@ -49,20 +53,22 @@ function AgileBoardCell({agileId, sprintId, columnFieldId, swimlaneFieldlId, col
         isOver: !!monitor.isOver(),
       }),
     };
-  }, [columnName, swimlaneName, issuesDict])
-  return <AgileBoardCellContainer
+  }, [columnName, swimlanes, issuesDict])
+  return (<AgileBoardCellContainer
     ref={drop} isOver={isOver ? 1 : 0}>
     {children}
-  </AgileBoardCellContainer>
+  </AgileBoardCellContainer>)
 }
 
 AgileBoardCell.propTypes = {
   agileId: PropTypes.string.isRequired,
   sprintId: PropTypes.string.isRequired,
   columnFieldId: PropTypes.string,
-  swimlaneFieldlId: PropTypes.string,
+  swimlanes: PropTypes.arrayOf(PropTypes.shape({
+    swimlaneFieldlId: PropTypes.string,
+    swimlaneValue: PropTypes.string,
+  })),
   columnName: PropTypes.string,
-  swimlaneName: PropTypes.string,
   columnIndex: PropTypes.number,
   issuesDict: PropTypes.object,
 }

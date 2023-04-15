@@ -85,7 +85,7 @@ const makeIssueTrimmedSwimlane = (issue, value, swimlane, emptyCells) => ({
   backgroundId: swimlane.enableColor ? value.color?.id : null,
 });
 
-function BoardRow({agileId, sprintId, row, issuesDict, swimlaneTitle, level, isOrphan, colorField, system, visibleCardFields, swimlaneFieldName}) {
+function BoardRow({agileId, sprintId, row, issuesDict, swimlaneTitle, level, isOrphan, colorField, system, visibleCardFields, currentSwimlanes}) {
   const [swimlanes] = useStateParams({}, 'nested-swimlanes', (s) => JSON.stringify(s), (s) => JSON.parse(s));
   const nestedSwimlane = swimlanes[Object.keys(swimlanes).find(key => swimlanes[key].order === level + 1)];
   const swimlanesDepth = Object.keys(swimlanes).length;
@@ -105,9 +105,8 @@ function BoardRow({agileId, sprintId, row, issuesDict, swimlaneTitle, level, isO
                                  agileId={agileId}
                                  sprintId={sprintId}
                                  columnFieldId={columns[index].agileColumn.parent.field.name}
-                                 swimlaneFieldlId={swimlaneFieldName}
+                                 swimlanes={currentSwimlanes}
                                  columnName={ columns[index].agileColumn.fieldValues[0].name }
-                                 swimlaneName={ !isOrphan ? row.name : undefined }
                                  issuesDict={issuesDict}>
                   { cell.issues.map((c) => issuesDict && issuesDict[c.id]
                       ? <AgileCard issueData={issuesDict[c.id]} colorField={colorField} visibleFields={visibleCardFields} key={'agile-card-' + c.id}/>
@@ -165,8 +164,8 @@ function BoardRow({agileId, sprintId, row, issuesDict, swimlaneTitle, level, isO
     swimlaneContent =
       (<AgileBoardRows agileId={agileId} sprintId={sprintId} orphanRow={orphanRow} level={level+1}
                        colorField={colorField} visibleCardFields={visibleCardFields} swimlaneFieldName={nestedSwimlane.field.name}
-                       orphansAtTheTop={true} hideOrphansSwimlane={nestedSwimlane?.hideOrphansSwimlane}
-                       trimmedSwimlanes={trimmedSwimlanes}/>)
+                       orphansAtTheTop={true} hideOrphansSwimlane={nestedSwimlane?.hideOrphansSwimlane} currentSwimlanes={currentSwimlanes}
+                       trimmedSwimlanes={trimmedSwimlanes} issuesDict={issuesDict}/>)
   }
   return (<>
     { (swimlaneTitle || level === 0) && <Swimlane title={swimlaneTitle} issueId={row.issue?.idReadable}
@@ -189,7 +188,11 @@ BoardRow.propTypes = {
   colorField: PropTypes.string,
   system: PropTypes.bool,
   visibleCardFields: PropTypes.arrayOf(PropTypes.string),
-  customFieldName: PropTypes.string
+  customFieldName: PropTypes.string,
+  currentSwimlanes: PropTypes.arrayOf(PropTypes.shape({
+    swimlaneFieldlId: PropTypes.string,
+    swimlaneName: PropTypes.string,
+  })),
 }
 
 export default BoardRow;

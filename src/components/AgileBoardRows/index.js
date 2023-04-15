@@ -1,45 +1,26 @@
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import BoardRow from './BoardRow';
-import { useGetIssuesQuery } from '../../features/sprint/sprintSlice';
 
 function AgileBoardRows({agileId, sprintId, orphanRow, trimmedSwimlanes, hideOrphansSwimlane, orphansAtTheTop,
-                          level, colorField, system, visibleCardFields, swimlaneFieldName}) {
+                          level, colorField, system, visibleCardFields, swimlaneFieldName, currentSwimlanes, issuesDict}) {
   let content;
-  let issuesDict;
   const { t } = useTranslation();
 
-  // TODO: refactor this calculation
-  const issueIds = [orphanRow, ...trimmedSwimlanes]
-    .reduce((acc1, row) =>
-      [...acc1, ...(row.cells.reduce((acc1, cell) =>
-        [...acc1, ...cell.issues.reduce((acc2, issue) => [...acc2, issue.id], [])], [])),[]],
-      [])
-    .filter(id => !(id instanceof Array))
-    .sort();
-
-  const { data: issues,
-    isLoading,
-    isSuccess,
-    isError
-  } = useGetIssuesQuery(issueIds);
-
-  if (isLoading) {
-  } else if (isSuccess) {
-    issuesDict = issues.entities;
-  } else if (isError) {
-  }
-
-  const swimlanesAgileRow = trimmedSwimlanes.map(row =>
-    (<BoardRow key={`${row.id}-${level}`} agileId={agileId} sprintId={sprintId} level={level} row={row}
-               issuesDict={issuesDict} visibleCardFields={visibleCardFields} swimlaneFieldName={swimlaneFieldName}
-               swimlaneTitle={row.value?.presentation || row.issue?.summary} colorField={colorField} system={system}/>));
+  const swimlanesAgileRow = trimmedSwimlanes.map(row => {
+    return (<BoardRow key={ `${ row.id }-${ level }` } agileId={ agileId } sprintId={ sprintId } level={ level } row={ row }
+               issuesDict={ issuesDict } visibleCardFields={ visibleCardFields }
+               currentSwimlanes={[...currentSwimlanes, {swimlaneFieldlId: swimlaneFieldName, swimlaneValue: row.name}]}
+               swimlaneTitle={ row.value?.presentation || row.issue?.summary } colorField={ colorField }
+               system={ system }/>);
+  });
   if (hideOrphansSwimlane) {
     content = swimlanesAgileRow
   } else {
     const orphanAgileRow =
       (<BoardRow isOrphan key={`${orphanRow.id}-${level}`} agileId={agileId} sprintId={sprintId} row={orphanRow}
-                 issuesDict={issuesDict} level={level} visibleCardFields={visibleCardFields} swimlaneFieldName={swimlaneFieldName}
+                 issuesDict={issuesDict} level={level} visibleCardFields={visibleCardFields}
+                 currentSwimlanes={[...currentSwimlanes, {swimlaneFieldlId: swimlaneFieldName, swimlaneValue: undefined}]}
                  swimlaneTitle={trimmedSwimlanes.length > 0 ? t('Uncategorized Cards') : undefined} colorField={colorField} system={system}/>);
     if (orphansAtTheTop) {
       content = [orphanAgileRow, ...swimlanesAgileRow];
@@ -62,6 +43,11 @@ AgileBoardRows.propTypes = {
   system: PropTypes.bool,
   visibleCardFields: PropTypes.arrayOf(PropTypes.string),
   swimlaneFieldName: PropTypes.string,
+  currentSwimlanes: PropTypes.arrayOf(PropTypes.shape({
+    swimlaneFieldlId: PropTypes.string,
+    swimlaneName: PropTypes.string,
+  })),
+  issuesDict: PropTypes.object,
 }
 
 export default AgileBoardRows

@@ -1,14 +1,22 @@
+import styled from 'styled-components';
+
 import PropTypes from 'prop-types';
 import HeaderCell from '../HeaderCell';
 import FakeTableCells from '../FakeTableCells';
 import { useSelector } from 'react-redux';
 import { selectColumnsMetadata } from '../../features/sprint/sprintSlice';
 
+const StickyTHead = styled.thead`
+  position: sticky;
+  top: 0;
+  z-index: 2;
+`;
+
 function AgileBoardHeader({agileName, sprintName, fieldName, explicitQuery, swimlanesDepth}) {
   const columns = useSelector(selectColumnsMetadata);
 
   return (
-    <thead>
+    <StickyTHead>
       <tr>
         <FakeTableCells swimlanesDepth={swimlanesDepth}/>
         {
@@ -22,7 +30,7 @@ function AgileBoardHeader({agileName, sprintName, fieldName, explicitQuery, swim
           )
         }
       </tr>
-    </thead>
+    </StickyTHead>
   );
 }
 

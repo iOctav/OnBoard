@@ -1,9 +1,23 @@
 import AgileBoardRows from '../AgileBoardRows';
 import PropTypes from 'prop-types';
+import { useGetIssuesByAgileSprintQuery } from '../../features/sprint/sprintSlice';
+import withScrolling from 'react-dnd-scrolling';
 
 function AgileBoardData({agileId, sprintId, sprint, hideOrphansSwimlane, orphansAtTheTop,
                           colorField, systemSwimlaneExist, visibleCardFields, swimlaneFieldName}) {
-  return(<tbody>
+  const ScrollingComponent = withScrolling('tbody');
+
+  const { data: issues,
+    isLoading,
+    isSuccess,
+    isError
+  } = useGetIssuesByAgileSprintQuery({agileId, sprintId});
+  let issuesDict = undefined;
+  if (isSuccess) {
+    issuesDict = issues.entities;
+  }
+
+  return(<ScrollingComponent>
     <AgileBoardRows
       agileId={agileId}
       sprintId={sprintId}
@@ -15,8 +29,10 @@ function AgileBoardData({agileId, sprintId, sprint, hideOrphansSwimlane, orphans
       system={systemSwimlaneExist}
       colorField={colorField}
       visibleCardFields={visibleCardFields}
-      swimlaneFieldName={swimlaneFieldName}/>
-  </tbody>);
+      swimlaneFieldName={swimlaneFieldName}
+      currentSwimlanes={[]}
+      issuesDict={issuesDict}/>
+  </ScrollingComponent>);
 }
 
 AgileBoardData.propTypes = {
