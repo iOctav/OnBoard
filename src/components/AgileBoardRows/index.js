@@ -17,10 +17,13 @@ function AgileBoardRows({agileId, sprintId, orphanRow, trimmedSwimlanes, hideOrp
   if (hideOrphansSwimlane) {
     content = swimlanesAgileRow
   } else {
+    const swimlaneWithOrphanValue = swimlaneFieldName
+      ? [...currentSwimlanes, {swimlaneFieldlId: swimlaneFieldName, swimlaneValue: undefined}]
+      : [...currentSwimlanes];
     const orphanAgileRow =
       (<BoardRow isOrphan key={`${orphanRow.id}-${level}`} agileId={agileId} sprintId={sprintId} row={orphanRow}
                  issuesDict={issuesDict} level={level} visibleCardFields={visibleCardFields}
-                 currentSwimlanes={[...currentSwimlanes, {swimlaneFieldlId: swimlaneFieldName, swimlaneValue: undefined}]}
+                 currentSwimlanes={swimlaneWithOrphanValue}
                  swimlaneTitle={trimmedSwimlanes.length > 0 ? t('Uncategorized Cards') : undefined} colorField={colorField} system={system}/>);
     if (orphansAtTheTop) {
       content = [orphanAgileRow, ...swimlanesAgileRow];
