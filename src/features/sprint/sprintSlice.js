@@ -3,6 +3,8 @@ import { createEntityAdapter, createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { PropertyUpdateType } from './propertyUpdateType';
 import { getChangedProperty, insertIssueToTheSprintBoard, removeIssueFromTheSprintBoard } from './boardUpdatesUtils';
 
+import alertService from '@jetbrains/ring-ui/dist/alert-service/alert-service';
+
 const issuesAdapter = createEntityAdapter({
   sortComparer: (a, b) => a.idReadable.localeCompare(b.idReadable),
 })
@@ -62,7 +64,7 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
     updateIssueField: builder.mutation({
       async queryFn(cardMove, _queryApi, _extraOptions, baseQuery) {
         for (const propertyUpdate of cardMove.propertiesUpdates) {
-          await baseQuery({
+          const result = await baseQuery({
             url: `issues/${cardMove.issueId}/fields/${propertyUpdate.fieldId}`,
             method: 'POST',
             body: { value: propertyUpdate.value },
@@ -71,6 +73,17 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
               muteUpdateNotifications: true,
             }
           });
+          if (result.error) {
+            let errorMessage;
+            if (!propertyUpdate.value) {
+              errorMessage = `The board settings do not let you add issues to the swimlane for uncategorized cards. 
+              All of the available values that are stored in the State field are used as swimlanes on the board.
+               Add the card to a swimlane or modify the swimlane settings for the board.`;
+            } else {
+              errorMessage = `Failed to update ${propertyUpdate.fieldId} field to ${propertyUpdate.value.name} for issue ${cardMove.issueId}`;
+            }
+            alertService.error(errorMessage, 5000);
+          }
         }
         return { data: cardMove.propertiesUpdates.length > 0 ? cardMove.issueId : null };
       },
