@@ -47,8 +47,8 @@ export const insertIssueToTheSprintBoard = (board, issueId, isColumnChanged, isS
       return;
     }
   }
-  if (isSwimlaneChanged && board.trimmedSwimlanes.length) {
-    if (!issueSwimlaneName) {
+  if (isSwimlaneChanged) {
+    if (!issueSwimlaneName || board.trimmedSwimlanes.length === 0) {
       board.orphanRow.cells[columnIndex].issues.push({ id: issueId });
       return;
     }

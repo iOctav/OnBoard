@@ -8,7 +8,7 @@ import NewCardButton from '../NewCardButton';
 import { useSelector } from 'react-redux';
 import AgileBoardRows from './index';
 import FakeTableCells from '../FakeTableCells';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import {
   getDateSwimlanePeriod,
   getPredefinedDateValue,
@@ -87,14 +87,17 @@ const makeIssueTrimmedSwimlane = (issue, value, swimlane, emptyCells) => ({
 
 function BoardRow({agileId, sprintId, row, issuesDict, swimlaneTitle, level, isOrphan, colorField, system, visibleCardFields, currentSwimlanes}) {
   const [swimlanes] = useStateParams({}, 'nested-swimlanes', (s) => JSON.stringify(s), (s) => JSON.parse(s));
-  const nestedSwimlane = swimlanes[Object.keys(swimlanes).find(key => swimlanes[key].order === level + 1)];
+  const sortedSwimlanes = useMemo(() => {
+    return Object.keys(swimlanes).map(key => swimlanes[key]).sort((a, b) => a.order - b.order);
+  }, [swimlanes]);
+  const nestedSwimlane = sortedSwimlanes[level+1];
   const swimlanesDepth = Object.keys(swimlanes).length;
   const columns = useSelector(selectColumnsMetadata);
   const [rollUp, setRollUp] = useState(!row.collapsed);
 
   const issuesCount = row.cells.reduce((acc, cell) => acc + cell.issues.length, 0);
   let swimlaneContent;
-  if (!swimlanesDepth || swimlanesDepth === level) {
+  if (!swimlanesDepth || swimlanesDepth === (level + 1)) {
     swimlaneContent = (<tr>
       <FakeTableCells swimlanesDepth={swimlanesDepth}/>
       {
@@ -171,7 +174,7 @@ function BoardRow({agileId, sprintId, row, issuesDict, swimlaneTitle, level, isO
     { (swimlaneTitle || level === 0) && <Swimlane title={swimlaneTitle} issueId={row.issue?.idReadable}
                                                   striked={row.issue?.resolved > 0} cardsNumber={issuesCount}
                                                   isOrphan={isOrphan} columnsNumber={row.cells.length} isTag={row.isTag}
-                                                  level={system ? -1 : level} backgroundId={row.backgroundId}
+                                                  level={system ? -1 : (currentSwimlanes.length - 1)} backgroundId={row.backgroundId}
                                                   rollUp={rollUp} onRollUp={setRollUp} swimlanesDepth={swimlanesDepth} /> }
     { rollUp && swimlaneContent }
   </>);

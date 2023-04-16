@@ -15,10 +15,10 @@ DndProvider.propTypes = {
 
 function App() {
   return (
-    <ThemeProvider theme={Theme.AUTO}>
-      <DndProvider backend={HTML5Backend}>
-        <div data-testid="app-container" className="App">
-	  <AgileRoutePage/>
+    <ThemeProvider className="main-container" theme={Theme.AUTO}>
+      <DndProvider className="main-container" backend={HTML5Backend}>
+        <div data-testid="app-container" className="App main-container">
+	        <AgileRoutePage/>
         </div>
       </DndProvider>
       <SilentTokenRenew/>

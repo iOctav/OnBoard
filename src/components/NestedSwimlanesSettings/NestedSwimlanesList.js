@@ -104,7 +104,7 @@ function NestedSwimlanesList({projectShortNames, systemSwimlane}) {
                   onClick={() => item.type !== SwimlaneType.Issues && changeSwimlaneType(item.id, SwimlaneType.Issues)}>{t('Issues')}
           </Button>
         </ButtonGroup>
-        {!item.system ? (<LevelMarker>L{item.order}</LevelMarker>) : (<BorderedSpan><span>{t('System')}</span></BorderedSpan>)}
+        {!item.system ? (<LevelMarker>L{item.index}</LevelMarker>) : (<BorderedSpan><span>{t('System')}</span></BorderedSpan>)}
 
        </>
       )},
@@ -120,9 +120,11 @@ function NestedSwimlanesList({projectShortNames, systemSwimlane}) {
         (<Checkbox checked={!item.hideOrphansSwimlane} disabled={item.system}
           onChange={(event) => updateSwimlane(item.id, {hideOrphansSwimlane: !event.target.checked})} />)},
   ];
-  const data = Object.keys(swimlanes).map(key => ({...swimlanes[key], key: key}))
+  let data = Object.keys(swimlanes).map(key => ({...swimlanes[key], key: key}))
     .sort((a, b) => a.order - b.order);
   (systemSwimlane?.id && data.unshift(systemSwimlane));
+  data.forEach((swimlane, index) => swimlane.index = index);
+
   const selection = new Selection({data: data});
   return (<div>
     <Table draggable alwaysShowDragHandle sortOrder sortKey="order"

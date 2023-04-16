@@ -7,9 +7,12 @@ import OAuth from '../../features/auth/OAuth';
 import DefaultAgileBoard from '../AgileBoard/DefaultAgileBoard';
 import { YT_PAGES } from '../../services/linkService';
 import ErrorPage from '../ErrorPage';
+import withScrolling from 'react-dnd-scrolling';
 
 function AgileRoutePage() {
-  return (<div className="agile-page">
+  const ScrollingComponent = withScrolling('div');
+
+  return (<ScrollingComponent className="agile-page">
     <PageYTHeader/>
     <Routes>
       <Route path="/" element={<AuthOutlet />}>
@@ -28,6 +31,6 @@ function AgileRoutePage() {
       <Route path="/error" element={<ErrorPage/>}/>
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
-  </div>);
+  </ScrollingComponent>);
 }
 export default AgileRoutePage
