@@ -4,14 +4,30 @@ import { useGetAgilesByIdQuery } from '../../features/agile/agileSlice';
 import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
 import { useLocation, useParams } from 'react-router-dom';
 import AgileBoardSettings from '../AgileBoardSettings';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AgileBoardTable from '../AgileBoardTable';
 import AgileBoardFooter from './AgileBoardFooter';
+import { useTranslation } from 'react-i18next';
+import { SUPPORTED_LANGUAGES } from '../../features/auth/localeUtils';
 
 function AgileBoard() {
   const { agileId, sprintId } = useParams();
   const { search } = useLocation();
-  const [settingsVisible, setSettingsVisible] = useState(search.startsWith('?settings'));
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    if (i18n.language === SUPPORTED_LANGUAGES.Russian) {
+      let link = document.querySelector("link[rel~='icon']");
+      if (!link) {
+        link = document.createElement('link');
+        link.rel = 'icon';
+        document.getElementsByTagName('head')[0].appendChild(link);
+      }
+      link.href = '/favicon_ru.ico';
+    }
+  }, [i18n.language]);
+
+  const [settingsVisible, setSettingsVisible] = useState(search.startsWith('settings'));
   const { data: agile,
     isLoading,
     isSuccess,
