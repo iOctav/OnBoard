@@ -27,7 +27,9 @@ function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldN
     isLoading,
     isSuccess,
     isError
-  } = useGetSpecificSprintForSpecificAgileQuery({agileId, sprintId: sprintId || 'current'});
+  } = useGetSpecificSprintForSpecificAgileQuery({agileId, sprintId: sprintId || 'current'}, {
+    pollingInterval: 20000,
+  });
 
   const [swimlanes] = useStateParams({}, 'nested-swimlanes', (s) => JSON.stringify(s), (s) => JSON.parse(s));
   const swimlanesDepth = Object.keys(swimlanes).length;

@@ -17,7 +17,9 @@ function AgileBoard() {
     isSuccess,
     isError,
     error
-  } = useGetAgilesByIdQuery(agileId)
+  } = useGetAgilesByIdQuery(agileId, {
+    pollingInterval: 60000,
+  });
 
   let content
 
