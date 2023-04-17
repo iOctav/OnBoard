@@ -8,6 +8,7 @@ import newWindowsIcon from '@jetbrains/icons/new-window';
 import { useDispatch } from 'react-redux';
 import { updateColumn } from '../../features/sprint/sprintSlice';
 import { issuesQueryUri } from '../../services/linkService';
+import { useTranslation } from 'react-i18next';
 
 const FloatRightCounterDiv = styled.span`
     float: right;
@@ -70,6 +71,7 @@ const makeQuery = (agileName, sprintName, fieldName, values, explicitQuery) => {
 }
 
 function HeaderCell({column, agileName, sprintName, fieldName, cardsCount, explicitQuery}) {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const issuesQuery = makeQuery(agileName, sprintName, fieldName, column.agileColumn?.fieldValues.map(x => x.presentation), explicitQuery);
 
@@ -80,7 +82,8 @@ function HeaderCell({column, agileName, sprintName, fieldName, cardsCount, expli
                          onClick={() => dispatch(updateColumn({id: column.id, changes: { collapsed: !column.collapsed}}))}>
           {column.agileColumn?.presentation}
         </FloatLeftButton>
-        <IssuesLinkButton className="column-issues-link" icon={newWindowsIcon} href={issuesQueryUri(issuesQuery)} target="_blank"/>
+        <IssuesLinkButton className="column-issues-link" icon={newWindowsIcon} href={issuesQueryUri(issuesQuery)} target="_blank"
+                          title={t('View all {{columnPresentation}} issues on the Issues list', {columnPresentation: column.agileColumn?.presentation})}/>
       </HeaderTitle>
     </HeaderCellTd>
   );

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Footer from '@jetbrains/ring-ui/dist/footer/footer';
 import { profilePageUri } from '../../services/linkService';
+import { useTranslation } from 'react-i18next';
 
 const FooterContainer = styled(Footer)`
   background-color: var(--ring-content-background-color);
@@ -20,10 +21,11 @@ const FooterContainer = styled(Footer)`
 `;
 
 function AgileBoardFooter({owner}) {
+  const { t } = useTranslation();
   return (<FooterContainer floating={true}
     left={[
       [
-        'Board owner: ',
+        t('Board owner:') + ' ',
         {
           url: profilePageUri(owner.login),
           target: '_blank',

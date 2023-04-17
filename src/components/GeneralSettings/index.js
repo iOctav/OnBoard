@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import SettingsControl from '../SettingsControl';
 import Input from '@jetbrains/ring-ui/dist/input/input';
 import { Size } from '@jetbrains/ring-ui/dist/input/input';
@@ -37,13 +37,13 @@ function GeneralSettings({disabled, agileName, agileId, initialOwner, sprintsSet
   let canViewGroupsAndUsers = [...readSharingSettings.permittedGroups.map(group => ({key: group.id, label: group.name})),
     ...readSharingSettings.permittedUsers.map(user => ({key: user.id, label: user.name}))];
   if (readSharingSettings.projectBased) {
-    canViewGroupsAndUsers.push({key: 'project-base', label: 'issue readers'});
+    canViewGroupsAndUsers.push({key: 'project-base', label: t('issue readers')});
   }
   const [ canView, setCanView ] = useState(canViewGroupsAndUsers);
   let canEditGroupsAndUsers = [...updateSharingSettings.permittedGroups.map(group => ({key: group.id, label: group.name})),
     ...updateSharingSettings.permittedUsers.map(user => ({key: user.id, label: user.name}))];
   if (updateSharingSettings.projectBased) {
-    canEditGroupsAndUsers.push({key: 'project-base', label: 'project updaters'});
+    canEditGroupsAndUsers.push({key: 'project-base', label: t('project updaters')});
   }
   const [ canEdit, setCanEdit ] = useState(canEditGroupsAndUsers);
   return (<div>
@@ -54,7 +54,7 @@ function GeneralSettings({disabled, agileName, agileId, initialOwner, sprintsSet
     <SettingsControl label={t('Name')}>
       <InlineInput disabled={disabled} height={ControlsHeight.S} size={Size.M} value={name} onChange={(event) => setName(event.target.value)}/>
       <span>
-        {t('owned by ')}
+        {t('owned by') + ' '}
         <LazySelectBox
           disabled={disabled}
           type="INLINE"
@@ -87,8 +87,9 @@ function GeneralSettings({disabled, agileName, agileId, initialOwner, sprintsSet
                          deselectAllUsersAndGroups={() => setCanEdit([])}
                          selected={canEdit}
                          onChange={setCanEdit}/>
-      <UnderControlDescription>{t('Users with ')}<b>{t('Low-level administration')}</b>
-        {t(' permission can edit the settings of any board that they can view and use')}</UnderControlDescription>
+      <UnderControlDescription>
+        <Trans t={t}>Users with <strong>Low-level administration</strong> permission can edit the settings of any board that they can view and use</Trans>
+      </UnderControlDescription>
     </SettingsControl>
     <SettingsControl label={t('Sprints')}>
       <ButtonGroup>
@@ -96,7 +97,7 @@ function GeneralSettings({disabled, agileName, agileId, initialOwner, sprintsSet
           {t('Enabled')}
         </Button>
         <Button disabled={disabled} active={!enableSprints} height={ControlsHeight.S} onClick={() => setEnableSprints(false)}>
-          {t('Disabled')}
+          {t('Disabled.$$noContext')}
         </Button>
       </ButtonGroup>
     </SettingsControl>

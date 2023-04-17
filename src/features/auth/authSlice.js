@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { youtrackApi } from '../../app/services/youtrackApi';
 import { getLocalTokenInfo, isTokenExpired } from './oauthUtils';
+import i18n from 'i18next';
+import { setUserLocaleLang } from './localeUtils';
 
 export const extendedYoutrackApi = youtrackApi.injectEndpoints({
   endpoints: builder => ({
@@ -8,9 +10,15 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
       query: () => ({
         url: `users/me`,
         params: {
-          fields: 'id,login,name,email,savedQueries(name,id),tags(name,id)',
+          fields: 'id,login,name,email,savedQueries(name,id),tags(name,id),profiles(general(locale(id,locale,language)))',
         },
-      })
+      }),
+      transformResponse: (response) => {
+        const userLocaleLang = response?.profiles?.general?.locale?.language;
+        i18n.changeLanguage(userLocaleLang ?? 'en');
+        setUserLocaleLang(userLocaleLang);
+        return response;
+      },
     }),
   })
 })

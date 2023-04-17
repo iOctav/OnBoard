@@ -38,7 +38,7 @@ function NameColumnTemplate({disabled, fieldValues}) {
               title="Drag to reorder"
               icon={dragIcon}></Button>
             <span>{field.name}</span>
-            {field.isResolved && (<BorderedSpan><span>{t('Resolved')}</span></BorderedSpan>)}
+            {field.isResolved && (<BorderedSpan><span>{t('Resolved.$$noContext')}</span></BorderedSpan>)}
             <Button disabled={disabled} icon={pencilIcon} title={t('Edit')}/>
           </div>)
       )
@@ -47,8 +47,8 @@ function NameColumnTemplate({disabled, fieldValues}) {
   }
   const field = fieldValues[0];
   return (<div key={field.id}>
-    <span>{field.name}</span>
-    {field.isResolved && (<BorderedSpan><span>{t('Resolved')}</span></BorderedSpan>)}
+    <span>{field.name} </span>
+    {field.isResolved && (<BorderedSpan><span>{t('Resolved.$$noContext')}</span></BorderedSpan>)}
     <Button disabled={disabled} icon={pencilIcon} title={t('Edit')}/>
   </div>);
 }

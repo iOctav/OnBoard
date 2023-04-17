@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ReactComponent as smallObLogo } from '../PageYTHeader/ob-logo-small.svg';
+import { ReactComponent as smallObLogo } from '../PageYTHeader/logos/ob-logo-small.svg';
 import ErrorMessage from '@jetbrains/ring-ui/dist/error-message/error-message';
 import { homePageUri } from '../../services/linkService';
 

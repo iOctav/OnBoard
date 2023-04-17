@@ -49,7 +49,7 @@ function AgileBoardSettings({visible, disabled, selectedTab, agileId, agileName,
 
   return visible && (<AgileBoardSettingsContainer className="agile-board-settings">
     <HeaderSettingsDiv className="agile-board-settings-title">
-      <HeaderSpan>Board Settings</HeaderSpan>
+      <HeaderSpan>{t('Board Settings')}</HeaderSpan>
       <TitleSpan>{agileName}</TitleSpan>
     </HeaderSettingsDiv>
     <TabsContainer autoCollapse

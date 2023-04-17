@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import ButtonGroup from '@jetbrains/ring-ui/dist/button-group/button-group';
 import Button from '@jetbrains/ring-ui/dist/button/button';
 import { ControlsHeight } from '@jetbrains/ring-ui/dist/global/controls-height';
@@ -39,22 +39,24 @@ function SwimlanesSettings({disabled, agileId, swimlaneSettings, projectShortNam
   const swimlanePositionValue = { label: t('at the top of the board'), key: 'at-top' }
   return (<div className="columns-settings">
     <span>
-      <SettingsLabel><b>{t('Swimlanes')}</b>{t(' are identified by')}</SettingsLabel>
+      <SettingsLabel>
+        <Trans t={t}><b>Swimlanes</b> are identified by</Trans>
+      </SettingsLabel>
       <ButtonGroup>
         <Button disabled={disabled} active={swimlaneType === SwimlaneType.None} height={ControlsHeight.S}
                 onClick={() => setSwimlaneType(SwimlaneType.None)}>{t('No swimlanes')}
         </Button>
         <Button disabled={disabled} active={swimlaneType === SwimlaneType.Values} height={ControlsHeight.S}
-                onClick={() => setSwimlaneType(SwimlaneType.Values)}>{t('Values')}
+                onClick={() => setSwimlaneType(SwimlaneType.Values)}>{t('Values.Agile Row Settings')}
         </Button>
         <Button disabled={disabled} active={swimlaneType === SwimlaneType.Issues} height={ControlsHeight.S}
-                onClick={() => setSwimlaneType(SwimlaneType.Issues)}>{t('Issues')}
+                onClick={() => setSwimlaneType(SwimlaneType.Issues)}>{t('Issues.Agile Row Settings')}
         </Button>
       </ButtonGroup>
       {
         swimlaneType !== SwimlaneType.None &&
         (<span>
-          <span>{t(' from field ')}</span>
+          <span> {t('from field')} </span>
           {
             (swimlaneType === SwimlaneType.Values || swimlaneType === SwimlaneType.Issues) &&
             <MarginedSelectBox disabled={disabled}
@@ -74,7 +76,7 @@ function SwimlanesSettings({disabled, agileId, swimlaneSettings, projectShortNam
       <Checkbox disabled={disabled} checked={showOrphan} label={t('Show swimlane for uncategorized cards')} onChange={(event) => setShowOrphan(event.target.checked)}/>
       { showOrphan
         ? (<Select disabled={disabled} type="INLINE" data={[swimlanePositionValue]} selected={orphansAtTheTop && swimlanePositionValue}></Select>)
-        : <span>{t('at the top of the board ')}</span>
+        : <span> {t('at the top of the board')}</span>
       }
     </MarginedCheckboxContainer>
   </div>);

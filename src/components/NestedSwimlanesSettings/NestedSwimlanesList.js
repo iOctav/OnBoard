@@ -98,10 +98,10 @@ function NestedSwimlanesList({projectShortNames, systemSwimlane}) {
       <>
         <ButtonGroup>
           <Button active={item.type === SwimlaneType.Values} height={ControlsHeight.S} disabled={item.system}
-                  onClick={() => item.type !== SwimlaneType.Values && changeSwimlaneType(item.id, SwimlaneType.Values)}>{t('Values')}
+                  onClick={() => item.type !== SwimlaneType.Values && changeSwimlaneType(item.id, SwimlaneType.Values)}>{t('Values.Agile Row Settings')}
           </Button>
           <Button active={item.type === SwimlaneType.Issues} height={ControlsHeight.S} disabled={item.system}
-                  onClick={() => item.type !== SwimlaneType.Issues && changeSwimlaneType(item.id, SwimlaneType.Issues)}>{t('Issues')}
+                  onClick={() => item.type !== SwimlaneType.Issues && changeSwimlaneType(item.id, SwimlaneType.Issues)}>{t('Issues.Agile Row Settings')}
           </Button>
         </ButtonGroup>
         {!item.system ? (<LevelMarker>L{item.index}</LevelMarker>) : (<BorderedSpan><span>{t('System')}</span></BorderedSpan>)}

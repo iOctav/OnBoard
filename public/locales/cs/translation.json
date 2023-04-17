@@ -1,0 +1,2146 @@
+{
+  "Role": {
+    "Access tab 'by role' toggle": "Role",
+    "$$noContext": "Role"
+  },
+  "main": {
+    "Add VCS commits in the main project": "hlavní",
+    "$$noContext": "hlavní"
+  },
+  "Issues": {
+    "Agile Row Settings": "Případy",
+    "$$noContext": "Případy"
+  },
+  "Values": {
+    "Agile Row Settings": "Hodnoty",
+    "$$noContext": "Hodnoty"
+  },
+  "disabled": {
+    "Auth modules list": "zakázáno",
+    "Certificate list": "zakázáno",
+    "Custom widget list": "zakázáno",
+    "Zendesk Sidebar": "zakázáno",
+    "$$noContext": "zakázáno"
+  },
+  "enabled": {
+    "Auth modules list": "povoleno",
+    "Certificate list": "povoleno",
+    "Custom widget list": "povoleno",
+    "$$noContext": "povoleno"
+  },
+  "1 field": {
+    "Custom Fields_one": "1 políčko",
+    "Custom Fields_few": "{{count}} políčka",
+    "Custom Fields_many": "{{count}} políček",
+    "Custom Fields_other": "{{count}} políček",
+    "$$noContext_one": "1 políčko",
+    "$$noContext_few": "{{count}} políčka",
+    "$$noContext_many": "{{count}} políček",
+    "$$noContext_other": "{{count}} políček"
+  },
+  "1 project": {
+    "Custom Fields_one": "1 projektu",
+    "Custom Fields_few": "{{count}} projekty",
+    "Custom Fields_many": "{{count}} projektů",
+    "Custom Fields_other": "{{count}} projektech",
+    "values-usages-in-projects_one": "1 projektu",
+    "values-usages-in-projects_few": "{{count}} projekty",
+    "values-usages-in-projects_many": "{{count}} projektů",
+    "values-usages-in-projects_other": "{{count}} projektech",
+    "$$noContext_one": "1 projektu",
+    "$$noContext_few": "{{count}} projektech",
+    "$$noContext_many": "{{count}} projektech",
+    "$$noContext_other": "{{count}} projektech"
+  },
+  "\"{{dashboardName}}\" is shared with": {
+    "Dashboard": "\"{{dashboardName}}\": sdíleno s"
+  },
+  "## Welcome to Dashboard\n***\nClick Add Widget to place a widget on your Dashboard.": {
+    "Dashboard": "## Vítejte na nástěnce\n***\nKlikněte na Přidat widget pro přidání nového widgetu na vaši nástěnku."
+  },
+  "(already added)": {
+    "Dashboard": "(již přidáno)"
+  },
+  "* Keep an eye on your progress with YouTrack reports.\n* View your tasks, critical issues or any kind of issues list from YouTrack.": {
+    "Dashboard": "* Sledujte stav vašich projektů pomocí reportů.\n* Zobrazte si své úkoly, kritické případy nebo jakýkoli druh seznamu případů z YouTrack."
+  },
+  "* Latest commits and reviews in Upsource.": {
+    "Dashboard": "* Nejnovější závazky a revize v Upsource."
+  },
+  "<h3>Creating review...</h3>": {
+    "Dashboard": "<h3>Vytváření revize...</h3>"
+  },
+  "About": {
+    "Dashboard": "O programu",
+    "$$noContext": "O projektu"
+  },
+  "Accessible services": {
+    "Dashboard": "Přístupné služby",
+    "$$noContext": "Přístupné služby"
+  },
+  "Add to my dashboards": {
+    "Dashboard": "Přidat do mých nástěnek"
+  },
+  "Add user, group or team": {
+    "Dashboard": "Přidat uživatele, skupinu nebo tým",
+    "$$noContext": "Přidat uživatele, skupinu nebo tým"
+  },
+  "Add widget": {
+    "Dashboard": "Přidat widget"
+  },
+  "Add widget from existing report": {
+    "Dashboard": "Přidat widget z existujícího reportu"
+  },
+  "All": {
+    "Dashboard": "Vše",
+    "$$noContext": "Vše"
+  },
+  "Allow to edit dashboard": {
+    "Dashboard": "Umožnit úpravy nástěnky"
+  },
+  "Allows navigation away from the dashboard": {
+    "Dashboard": "Umožňuje odejít z nástěnky"
+  },
+  "Another dashboard with the name \"{{data.name}}\" already exists": {
+    "Dashboard": "Nástěnka \"{{data.name}}\" již existuje"
+  },
+  "Apply": {
+    "Dashboard": "Použít",
+    "$$noContext": "Použít"
+  },
+  "Author": {
+    "Dashboard": "Autor",
+    "$$noContext": "Autor"
+  },
+  "Authors": {
+    "Dashboard": "Autoři"
+  },
+  "Can't connect to dashboard backend": {
+    "Dashboard": "Nelze načíst data nástěnky"
+  },
+  "Can't load information from service.": {
+    "Dashboard": "Nelze načíst data ze služby."
+  },
+  "Cancel": {
+    "Dashboard": "Zrušit",
+    "$$noContext": "Zrušit"
+  },
+  "Cannot create review. Please try again later or contact Ring Dashboard support.": {
+    "Dashboard": "Nelze vytvořit přehled. Zkuste to znovu později nebo kontaktujte podporu Nástěnky."
+  },
+  "Cannot load projects list": {
+    "Dashboard": "Nelze načíst seznam projektů"
+  },
+  "Cannot process the provided code. Please try to export the desired dashboard again and use new generated code.": {
+    "Dashboard": "Kód nelze použít. Exportujte nástěnku znovu a použijte nově vytvořený kód."
+  },
+  "Capabilities": {
+    "Dashboard": "Možnosti",
+    "$$noContext": "Možnosti"
+  },
+  "Changed to one of the complement states": {
+    "Dashboard": "Převedeno do jednoho z vhodných stavů"
+  },
+  "Clone widget": {
+    "Dashboard": "Klonovat widget"
+  },
+  "Close": {
+    "Dashboard": "Zavřít",
+    "$$noContext": "Zavřít"
+  },
+  "Code was successfully copied to clipboard": {
+    "Dashboard": "Kód byl úspěšně zkopírován do schránky"
+  },
+  "Commits": {
+    "Dashboard": "Závazky"
+  },
+  "Commits:": {
+    "Dashboard": "Závazky:"
+  },
+  "Copy": {
+    "Dashboard": "Kopírovat",
+    "$$noContext": "Kopírovat"
+  },
+  "Copy Widget Code": {
+    "Dashboard": "Kopírovat kód widgetu"
+  },
+  "Copy this code to import your configuration into another dashboard": {
+    "Dashboard": "Zkopírujte tento kód pro přenos konfigurace na jinou nástěnku"
+  },
+  "Copy this link and send it to another user": {
+    "Dashboard": "Zkopírujte tento odkaz a pošlete jej jinému uživateli"
+  },
+  "Copy widget code": {
+    "Dashboard": "Kopírovat kód widgetu"
+  },
+  "Could not remove dashboard": {
+    "Dashboard": "Nástěnku nelze odstranit"
+  },
+  "Could not save changes": {
+    "Dashboard": "Změny nelze uložit"
+  },
+  "Create": {
+    "Dashboard": "Vytvořit",
+    "Hub Operations": "Vytvořit",
+    "$$noContext": "Vytvořit"
+  },
+  "Create again": {
+    "Dashboard": "Vytvořit znovu"
+  },
+  "Create new report": {
+    "Dashboard": "Vytvořit nový report"
+  },
+  "Create review": {
+    "Dashboard": "Vytvořit revizi"
+  },
+  "Create widget": {
+    "Dashboard": "Vytvořit widget"
+  },
+  "Dashboard": {
+    "Dashboard": "Nástěnka",
+    "$$noContext": "Nástěnka"
+  },
+  "Dashboard \"{{ dashboardName }}\" has been removed.": {
+    "Dashboard": "Nástěnka \"{{ dashboardName }}\" byla odstraněna."
+  },
+  "Dashboard not found": {
+    "Dashboard": "Nástěnka nebyla nalezena"
+  },
+  "Date:": {
+    "Dashboard": "Datum:",
+    "$$noContext": "Datum:"
+  },
+  "Days": {
+    "Dashboard": "Dnů",
+    "$$noContext": "Dnů"
+  },
+  "Delete": {
+    "Dashboard": "Smazat",
+    "Hub Operations": "Smazat",
+    "Remove action": "Smazat",
+    "$$noContext_one": "Smazat",
+    "$$noContext_few": "Smazat",
+    "$$noContext_many": "Smazat",
+    "$$noContext_other": "Smazat"
+  },
+  "Details...": {
+    "Dashboard": "Podrobnosti..."
+  },
+  "Dismiss": {
+    "Dashboard": "Odmítnout"
+  },
+  "Edit": {
+    "Dashboard": "Upravit",
+    "Hub Operations": "Upravit",
+    "$$noContext": "Upravit"
+  },
+  "Edit search query": {
+    "Dashboard": "Upravit vyhledávací dotaz"
+  },
+  "Enter widget hosting URL": {
+    "Dashboard": "Vložte URL adresu widgetu"
+  },
+  "Fixed": {
+    "Dashboard": "Opraveno",
+    "Fix Rate Report": "Opraveno",
+    "$$noContext": "Opraveno"
+  },
+  "For detailed instructions, <a target=\"_blank\" ng-href=\"{{playgroundCtrl.dshGetWidgetPlaygroundHelpLink()}}\" class=\"ring-link\"><span>read the documentation</span></a>": {
+    "Dashboard": "Podrobné instrukce <a target=\"_blank\" ng-href=\"{{playgroundCtrl.dshGetWidgetPlaygroundHelpLink()}}\" class=\"ring-link\"><span>naleznete v dokumentaci</span></a>"
+  },
+  "Get an overview of your projects at a glance. Add widgets to the dashboard as cards\n      and arrange them any way you like. Different widgets are available for each of the JetBrains team tools\n      that are integrated with your installation. Build a personal dashboard or share the dashboard with your project team.": {
+    "Dashboard": "Získejte přehled o svých projektech. Přidejte na nástěnku widgety a uspořádajte je, jak budete chtít. Pro jednotlivé týmové nástroje JetBrains jsou k dispozici různé typy widgetů. Vytvořte si osobní nástěnku nebo ji sdílejte se svým projektovým týmem."
+  },
+  "Groups": {
+    "Dashboard": "Skupiny",
+    "$$noContext": "Skupiny"
+  },
+  "Import from dashboard": {
+    "Dashboard": "Importovat z nástěnky"
+  },
+  "Insert the code of an exported dashboard configuration": {
+    "Dashboard": "Vložte kód exportované konfigurace nástěnky"
+  },
+  "Link was successfully copied to clipboard": {
+    "Dashboard": "Odkaz byl úspěšně zkopírován do schránky"
+  },
+  "List dashboards": {
+    "Dashboard": "Procházet nástěnky"
+  },
+  "Loading...": {
+    "Dashboard": "Načítání...",
+    "$$noContext": "Načítání..."
+  },
+  "Most likely, the widget has been removed from the system by its developers.": {
+    "Dashboard": "Widget byl pravděpodobně odstraněn ze systému některým z vývojařů."
+  },
+  "Move": {
+    "Dashboard": "Přesunout",
+    "$$noContext": "Přesunout"
+  },
+  "Move the widget to another dashboard": {
+    "Dashboard": "Přesunout widget na jinou nástěnku"
+  },
+  "Move to another dashboard": {
+    "Dashboard": "Přesunout na jinou nástěnku"
+  },
+  "Moving average": {
+    "Dashboard": "Klouzavý průměr"
+  },
+  "Moving maximum": {
+    "Dashboard": "Klouzavé maximum"
+  },
+  "My Dashboard": {
+    "Dashboard": "Moje nástěnka"
+  },
+  "Network error. Please check your connection.": {
+    "Dashboard": "Chyba sítě. Prosím zkontrolujte připojení."
+  },
+  "New Dashboard": {
+    "Dashboard": "Nová nástěnka"
+  },
+  "New dashboard... ({{shortcut}})": {
+    "Dashboard": "Nová nástěnka... ({{shortcut}})"
+  },
+  "New/Reopened": {
+    "Dashboard": "Nové/znovu otevřené",
+    "$$noContext": "Nové/znovu otevřené"
+  },
+  "Next dashboard": {
+    "Dashboard": "Další nástěnka"
+  },
+  "No commits found": {
+    "Dashboard": "Nebyly nalezeny žádné závazky"
+  },
+  "No connection to service": {
+    "Dashboard": "Nejste připojeni ke službě"
+  },
+  "No groups": {
+    "Dashboard": "Žádné skupiny",
+    "$$noContext": "Žádné skupiny"
+  },
+  "No project teams": {
+    "Dashboard": "Žádné projektové týmy"
+  },
+  "No reports available.": {
+    "Dashboard": "Žádné reporty k dispozici."
+  },
+  "No reviews found": {
+    "Dashboard": "Nebyla nalezena žádná revize"
+  },
+  "No users": {
+    "Dashboard": "Žádní uživatelé",
+    "$$noContext": "Žádní uživatelé"
+  },
+  "Nothing found": {
+    "Dashboard": "Nic nebylo nalezeno",
+    "$$noContext": "Nic nebylo nalezeno"
+  },
+  "Per Issue": {
+    "Dashboard": "Dle úkolu"
+  },
+  "Per User": {
+    "Dashboard": "Dle uživatele"
+  },
+  "Please contact your system administrator to check if the service is connected to Hub or delete the widget.": {
+    "Dashboard": "Kontaktujte prosím správce systému, aby zkontrolovali, zda je služba připojena k Hub, nebo widget smažte."
+  },
+  "Preview and test the functionality of custom widgets. Reload the widget to apply updates to widget code.": {
+    "Dashboard": "Otestuje funkcionalitu svých widgetů. Načtěte widget znovu pro použití změn v jeho kódu."
+  },
+  "Previous dashboard": {
+    "Dashboard": "Předchozí nástěnka"
+  },
+  "Project teams": {
+    "Dashboard": "Projektové týmy"
+  },
+  "Remains in one of the selected states": {
+    "Dashboard": "Zůstane v jednom ze zvolených stavů"
+  },
+  "Remove": {
+    "Dashboard": "Odebrat",
+    "$$noContext": "Odstranit"
+  },
+  "Rename": {
+    "Dashboard": "Přejmenovat"
+  },
+  "Rename Dashboard": {
+    "Dashboard": "Přejmenovat nástěnku"
+  },
+  "Reopened": {
+    "Dashboard": "Znovu otevřeno",
+    "$$noContext": "Znovu otevřeno"
+  },
+  "Reorder Favorite Dashboards": {
+    "Dashboard": "Změnit pořadí oblíbených nástěnek"
+  },
+  "Reorder favorite dashboards...": {
+    "Dashboard": "Změna pořadí oblíbených nástěnek..."
+  },
+  "Report": {
+    "Dashboard": "Report"
+  },
+  "Reported": {
+    "Dashboard": "Nahlášeno",
+    "$$noContext": "Nahlášeno"
+  },
+  "Resolved": {
+    "Dashboard": "Vyřešeno",
+    "Resolve Rate Report": "Vyřešeno",
+    "$$noContext": "Vyřešeno"
+  },
+  "Resolved that day": {
+    "Dashboard": "Vyřešeno tohoto dne",
+    "$$noContext": "Vyřešeno tohoto dne"
+  },
+  "Restore": {
+    "Dashboard": "Obnovit",
+    "$$noContext": "Obnovit"
+  },
+  "Review is closed": {
+    "Dashboard": "Revize je uzavřena"
+  },
+  "Review is opened": {
+    "Dashboard": "Revize je otevřena"
+  },
+  "Reviewer accepted the changes": {
+    "Dashboard": "Recenzent přijal změny"
+  },
+  "Reviewer raised concern about the changes": {
+    "Dashboard": "Recenzent vyjádřil pochyby o změnách"
+  },
+  "Reviews": {
+    "Dashboard": "Recenze",
+    "$$noContext": "Recenze"
+  },
+  "Save": {
+    "Dashboard": "Uložit",
+    "$$noContext": "Uložit"
+  },
+  "Search query:": {
+    "Dashboard": "Vyhledávací dotaz:"
+  },
+  "Search reports": {
+    "Dashboard": "Hledat sestavy"
+  },
+  "Select dashboard": {
+    "Dashboard": "Vyberte nástěnku"
+  },
+  "Select existing report": {
+    "Dashboard": "Vybrat existující sestavu"
+  },
+  "Select project": {
+    "Dashboard": "Vyberte projekt",
+    "$$noContext": "Vyberte projekt"
+  },
+  "Select projects": {
+    "Dashboard": "Vyberte projekty",
+    "$$noContext": "Vyberte projekty"
+  },
+  "Select service": {
+    "Dashboard": "Vyberte službu"
+  },
+  "Select the target dashboard": {
+    "Dashboard": "Vyberte cílovou nástěnku"
+  },
+  "Share": {
+    "Dashboard": "Sdílet",
+    "Hub Operations": "Sdílet"
+  },
+  "Share \"{{dashboardName}}\"": {
+    "Dashboard": "Sdílet \"{{dashboardName}}\""
+  },
+  "Share Link": {
+    "Dashboard": "Sdílet odkaz"
+  },
+  "Share dashboard": {
+    "Dashboard": "Sdílet nástěnku"
+  },
+  "Share link": {
+    "Dashboard": "Sdílet odkaz"
+  },
+  "Show alerts and open links in new browser tabs or windows": {
+    "Dashboard": "Zobrazit upozornění a otevřít odkazy v nových kartách nebo oknech prohlížeče"
+  },
+  "Show widget configuration": {
+    "Dashboard": "Zobrazit konfiguraci widgetu"
+  },
+  "Still unresolved": {
+    "Dashboard": "Stále nevyřešené",
+    "$$noContext": "Stále nevyřešené"
+  },
+  "Submit and copy": {
+    "Dashboard": "Odeslat a zkopírovat"
+  },
+  "The report could not be displayed.": {
+    "Dashboard": "Report nelze zobrazit."
+  },
+  "The widget \"{{ widgetName }}\" has been moved to the": {
+    "Dashboard": "Widget \"{{ widgetName }}\" byl přesunut do"
+  },
+  "The widget was not found in the system": {
+    "Dashboard": "Widget nebyl v systému nalezen"
+  },
+  "This widget can’t connect to the {{serviceName}} service.": {
+    "Dashboard": "Tento widget se nemůže připojit ke službě {{serviceName}}."
+  },
+  "Time spent": {
+    "Dashboard": "Strávený čas",
+    "$$noContext": "Strávený čas"
+  },
+  "Too many cells": {
+    "Dashboard": "Příliš mnoho buněk"
+  },
+  "Total": {
+    "Dashboard": "Celkem",
+    "$$noContext": "Celkem"
+  },
+  "Use ⇧ ← → to switch between dashboards": {
+    "Dashboard": "Přepínejte mezi nástěnkami pomocí kláves ⇧ ← →"
+  },
+  "Users": {
+    "Dashboard": "Uživatelé",
+    "$$noContext": "Uživatelé"
+  },
+  "Verified": {
+    "Dashboard": "Ověřeno",
+    "Email verification state": "Ověřeno",
+    "Jabber verification state": "Ověřeno",
+    "Verify Rate Report": "Ověřeno"
+  },
+  "Widget \"{{ widgetName }}\" has been removed.": {
+    "Dashboard": "Projekt {{ widgetName }} byl odstraněn."
+  },
+  "You": {
+    "Dashboard": "Vy",
+    "Dashboard: you are the owner of dashboard": "Vy"
+  },
+  "You might want to remove the current widget and replace it with an alternative one.": {
+    "Dashboard": "Doporučujeme odstranit aktuální widget a nahradit jej alternativním."
+  },
+  "d": {
+    "Dashboard": "d",
+    "$$noContext": "d"
+  },
+  "days": {
+    "Dashboard": "dnů",
+    "$$noContext": "dnů"
+  },
+  "h": {
+    "Dashboard": "h",
+    "$$noContext": "h"
+  },
+  "m": {
+    "Dashboard": "m",
+    "$$noContext": "m"
+  },
+  "{{ usersCount }} user": {
+    "Dashboard_one": "{{ usersCount }} uživatel",
+    "Dashboard_few": "{{ usersCount }} uživatelů",
+    "Dashboard_many": "{{ usersCount }} uživatelů",
+    "Dashboard_other": "{{ usersCount }} uživatelů"
+  },
+  "1 Draft": {
+    "Drafts dropdown_one": "Návrh",
+    "Drafts dropdown_few": "{{count}} návrhy",
+    "Drafts dropdown_many": "{{count}} návrhů",
+    "Drafts dropdown_other": "{{count}} návrhů"
+  },
+  "Unverified": {
+    "Email verification state": "Neověřené",
+    "Jabber verification state": "Neověřené"
+  },
+  "Confirm": {
+    "Form field label": "Potvrdit",
+    "$$noContext": "Potvrdit"
+  },
+  "Add": {
+    "Gantt chart add issues": "Přidat",
+    "$$noContext": "Přidat"
+  },
+  "issues": {
+    "Gantt chart add issues": "případy"
+  },
+  "Admin": {
+    "Hub Operations": "Správce"
+  },
+  "Delete Not Own": {
+    "Hub Operations": "Smazat cizí"
+  },
+  "Delete Own": {
+    "Hub Operations": "Smazat vlastní"
+  },
+  "Link": {
+    "Hub Operations": "Odkaz",
+    "WYSIWYG": "Odkaz"
+  },
+  "Private Read": {
+    "Hub Operations": "Číst soukromé"
+  },
+  "Private Update": {
+    "Hub Operations": "Upravit soukromé"
+  },
+  "Project Admin": {
+    "Hub Operations": "Projektový administrátor"
+  },
+  "Read": {
+    "Hub Operations": "Číst"
+  },
+  "Read Basic": {
+    "Hub Operations": "Omezené čtení"
+  },
+  "Read Not Own": {
+    "Hub Operations": "Čtení (cizí)"
+  },
+  "Read Own": {
+    "Hub Operations": "Čtení (vlastní)"
+  },
+  "Update": {
+    "Hub Operations": "Aktualizovat",
+    "$$noContext": "Aktualizovat"
+  },
+  "Update Not Own": {
+    "Hub Operations": "Úpravy (cizí)"
+  },
+  "Update Own": {
+    "Hub Operations": "Úpravy (vlastní)"
+  },
+  "Update Watchers": {
+    "Hub Operations": "Aktualizovat sledující"
+  },
+  "View Voters": {
+    "Hub Operations": "Zobrazit hlasující"
+  },
+  "View Watchers": {
+    "Hub Operations": "Zobrazit sledující"
+  },
+  "{{count}} issue": {
+    "IssueLinkDialog_one": "{{count}} případ",
+    "IssueLinkDialog_few": "{{count}} případy",
+    "IssueLinkDialog_many": "{{count}} případů",
+    "IssueLinkDialog_other": "{{count}} případu"
+  },
+  "Standard": {
+    "Keyboard Layout Name": "Standardní"
+  },
+  "List": {
+    "List Mode": "Seznam"
+  },
+  "Tree": {
+    "List Mode": "Strom"
+  },
+  "Fair": {
+    "Password strength policy": "Dostatečné"
+  },
+  "Good": {
+    "Password strength policy": "Dobré"
+  },
+  "Very Strong": {
+    "Password strength policy": "Velmi silné"
+  },
+  "Create Group": {
+    "Permission name": "Vytvořit skupinu"
+  },
+  "Create Organization": {
+    "Permission name": "Vytvořit organizaci"
+  },
+  "Create Project": {
+    "Permission name": "Vytvořit projekt",
+    "$$noContext": "Vytvořit projekt"
+  },
+  "Create User": {
+    "Permission name": "Vytvořit uživatele"
+  },
+  "Delete Group": {
+    "Permission name": "Smazat skupinu"
+  },
+  "Delete Organization": {
+    "Permission name": "Smazat organizaci"
+  },
+  "Delete Project": {
+    "Permission name": "Smazat projekt"
+  },
+  "Delete User": {
+    "Permission name": "Smazat uživatele"
+  },
+  "Manage Role": {
+    "Permission name": "Správa rolí"
+  },
+  "Read Group": {
+    "Permission name": "Čtení (skupiny)"
+  },
+  "Read Organization": {
+    "Permission name": "Čtení (organizace)"
+  },
+  "Read Project Basic": {
+    "Permission name": "Čtení projektu (omezené)"
+  },
+  "Read Project Full": {
+    "Permission name": "Čtení projektu (plné)"
+  },
+  "Read Role": {
+    "Permission name": "Role pro čtení"
+  },
+  "Read User Basic": {
+    "Permission name": "Čtení uživatele (omezené)"
+  },
+  "Read User Full": {
+    "Permission name": "Čtení uživatele (plné)"
+  },
+  "Update Group": {
+    "Permission name": "Úpravy (skupiny)"
+  },
+  "Update Organization": {
+    "Permission name": "Úpravy (organizace)"
+  },
+  "Update Project": {
+    "Permission name": "Aktualizovat projekt"
+  },
+  "Update Self": {
+    "Permission name": "Úpravy (sebe sama)"
+  },
+  "Update User": {
+    "Permission name": "Aktualizovat uživatele"
+  },
+  "created": {
+    "Predefined fields": "vytvořeno",
+    "$$noContext": "vytvořeno"
+  },
+  "resolved date": {
+    "Predefined fields": "datum vyřešení"
+  },
+  "updated": {
+    "Predefined fields": "aktualizováno",
+    "$$noContext": "aktualizováno"
+  },
+  "Comments": {
+    "Profile Notifications": "Komentáře",
+    "$$noContext": "Komentáře"
+  },
+  "I am made responsible for an issue": {
+    "Profile Notifications": "Nesu odpovědnost za případ"
+  },
+  "I create an issue or article": {
+    "Profile Notifications": "Vytvořím případ nebo článek"
+  },
+  "I post a comment to an issue or article": {
+    "Profile Notifications": "Přidám komentář pod případ nebo článek"
+  },
+  "I update an issue or article": {
+    "Profile Notifications": "Aktualizuji úkol nebo článek"
+  },
+  "I vote for an issue": {
+    "Profile Notifications": "Hlasuji pro případ"
+  },
+  "Issue and article comments": {
+    "Profile Notifications": "Komentáře k případům a článkům"
+  },
+  "Issue and article updates": {
+    "Profile Notifications": "Aktualizace případů a článků"
+  },
+  "Issue created": {
+    "Profile Notifications": "Případ byl vytvořen"
+  },
+  "Issue or article creation": {
+    "Profile Notifications": "Vytvoření článku nebo případu"
+  },
+  "Issue resolved": {
+    "Profile Notifications": "Vyřešení případu"
+  },
+  "Spent time": {
+    "Profile Notifications": "Aktualizace stráveného času",
+    "$$noContext": "Aktualizace stráveného času"
+  },
+  "Tag added": {
+    "Profile Notifications": "Štítek byl přidán"
+  },
+  "Tag removed": {
+    "Profile Notifications": "Štítek byl odstraněn"
+  },
+  "Updates": {
+    "Profile Notifications": "Aktualizace",
+    "$$noContext": "Aktualizace"
+  },
+  "Votes": {
+    "Profile Notifications": "Hlasování",
+    "$$noContext": "Hlasování"
+  },
+  "Unassigned": {
+    "Project Create": "Nepřiřazeno",
+    "$$noContext": "Nepřiřazeno"
+  },
+  "import from another tracker": {
+    "Project Create": "importovat z jiného nástroje",
+    "Project List": "importovat z jiného nástroje"
+  },
+  "Remove \"{{data.names}}\"?": {
+    "Remove Custom Field": "Odstranit „{{data.names}}“?"
+  },
+  "Group by": {
+    "Report Axis": "Seskupit podle",
+    "$$noContext": "Seskupit podle"
+  },
+  "Project or organization": {
+    "Roles tab of Users/Groups page, 'view by' toggle": "Projekt nebo organizace"
+  },
+  "From": {
+    "State Transition": "Od"
+  },
+  "To": {
+    "State Transition": "Komu"
+  },
+  "Attach": {
+    "Teamcity Integration": "Přiložit",
+    "$$noContext": "Přiložit"
+  },
+  "Disabled": {
+    "User merge, Two-factor authentication setting": "Zakázáno",
+    "$$noContext": "Zakázáno"
+  },
+  "M": {
+    "WYSIWYG": "M"
+  },
+  "Markdown": {
+    "WYSIWYG": "Markdown",
+    "$$noContext": "Markdown"
+  },
+  "Visual": {
+    "WYSIWYG": "Zobrazení"
+  },
+  "Custom refresh rate, seconds": {
+    "dashboard": "Vlastní interval obnovení, v sekundách"
+  },
+  "Optional title": {
+    "dashboard": "Volitelný název"
+  },
+  "![](attachment.png)": "![](příloha.png)",
+  "!attachment.png!": "!příloha.png!",
+  "# Title": "# Název",
+  "(Paused)": "(Pozastaveno)",
+  "(expired {{$ctrl.expirationDateLimit.limit | ytUserDateUTC}})": "(vypršela platnost {{$ctrl.expirationDateLimit.limit | ytUserDateUTC}})",
+  "(expires {{$ctrl.expirationDateLimit.limit | ytUserDateUTC}})": "(vyprší {{$ctrl.expirationDateLimit.limit | ytUserDateUTC}})",
+  "(multi)": "(více možností)",
+  "(payment stopped, usage limited to {{prepaid}} prepaid user)": "(platba zastavena, využití omezeno na uživatele předplacené služby {{prepaid}})",
+  "(single)": "(jedna možnost)",
+  "({{count}} unresolved)": "(nevyřešeno: {{count}})",
+  "**Strong**": "**Tučně**",
+  "+ 1 card_one": "+ 1 karta",
+  "+ 1 card_few": "+ {{count}} karet",
+  "+ 1 card_many": "+ {{count}} karet",
+  "+ 1 card_other": "+ {{count}} karet",
+  "0 cards": "0 karet",
+  "1 Project_one": "1 projekt",
+  "1 Project_few": "{{count}} projekty",
+  "1 Project_many": "{{count}} projektů",
+  "1 Project_other": "{{count}} projektů",
+  "1 Rule_one": "1 pravidlo",
+  "1 Rule_few": "{{count}} pravidla",
+  "1 Rule_many": "{{count}} pravidel",
+  "1 Rule_other": "{{count}} pravidel",
+  "1 Value_one": "1 hodnota",
+  "1 Value_few": "{{count}} hodnoty",
+  "1 Value_many": "{{count}} hodnot",
+  "1 Value_other": "{{count}} hodnot",
+  "1 card_one": "1 karta",
+  "1 card_few": "{{count}} karty",
+  "1 card_many": "{{count}} karet",
+  "1 card_other": "{{count}} karet",
+  "1 card selected_one": "vybrána {{count}} karta",
+  "1 card selected_few": "vybrány {{count}} karty",
+  "1 card selected_many": "vybráno {{count}} karet",
+  "1 card selected_other": "vybráno {{count}} karet",
+  "1 file": "1 soubor",
+  "1 hour": "1 hodina",
+  "1 issue_one": "1 případ",
+  "1 issue_few": "{{count}} případy",
+  "1 issue_many": "{{count}} případů",
+  "1 issue_other": "{{count}} případu",
+  "1 issue found": "Byl nalezen 1 případ",
+  "1 minute": "1 minuta",
+  "1 week = {{daysAWeek}} days, 1 day = {{minutesADayPresentation}}": "1 týden = {{daysAWeek}} dní, 1 den = {{minutesADayPresentation}}",
+  "<a class=\"ring-link\" target=\"_blank\" href=\"{{ login.detail.changePasswordUrl }}\">Change password</a>\n  in JetBrains Account": "<a class=\"ring-link\" target=\"_blank\" href=\"{{ login.detail.changePasswordUrl }}\">Změna hesla</a> \nv účtu JetBrains",
+  "<b>Columns</b> are identified by": "<b>Sloupce</b> jsou identifikovány políčkem",
+  "<b>Important!</b> If the connection to the email service is deactivated or misconfigured,\n                  users won’t receive invitations to register new accounts, verify email addresses, or reset forgotten\n                  passwords.": "<b>Důležité!</b> Pokud je připojení k e-mailové službě deaktivované nebo nesprávně nakonfigurované, uživatelé\n                  nebudou dostávat pozvánky k registraci nových účtů, ověření e-mailových adres nebo resetování zapomenutých\n                  hesel.",
+  "<b>Swimlanes</b> are identified by": "<b>Dráhy</b> jsou identifikovány dle",
+  "<span ng-if=\"!item.data.canBeEmpty\" ng-include=\"'pages/admin/template/custom-fields/required-field-warning.html'\"></span>\n          No value": "<span ng-if=\"!item.data.canBeEmpty\" ng-include=\"'pages/admin/template/custom-fields/required-field-warning.html'\"></span>\n          Žádná hodnota",
+  "@mentions that reference my username": "@mentions, které odkazují na mé uživatelské jméno",
+  "A message that appears at the top of every page in YouTrack": "Zpráva, která se zobrazí v horní části každé stránky v systému YouTrack",
+  "A new sprint is created for every value in the set for the {{fieldName}} field.": "Pro každou hodnotu políčka {{fieldName}} se vytvoří nový sprint.",
+  "A panel that lets you navigate to recently viewed content is shown below the header": "Panel, který umožňuje přejít na nedávno zobrazený obsah, se zobrazí pod záhlavím",
+  "Accept": "Přijmout",
+  "Accepted <a class=\"ring-link\" ng-click=\"userGeneralCtrl.shared.showEndUserAgreement()\" translate>version {{:: user.endUserAgreementConsent.majorVersion\n              }}.{{:: user.endUserAgreementConsent.minorVersion}}</a> on {{:: user.endUserAgreementConsent.time | date:'medium'\n              }}": "Přijatá <a class=\"ring-link\" ng-click=\"userGeneralCtrl.shared.showEndUserAgreement()\" translate>verze {{:: user.endUserAgreementConsent.majorVersion\n              }}.{{:: user.endUserAgreementConsent.minorVersion}}</a> dne {{:: user.endUserAgreementConsent.time | date:'medium'\n              }}",
+  "Access": "Přístup",
+  "Access Management": "Správa přístupu",
+  "Account Security": "Zabezpečení účtu",
+  "Account disabled": "Účet deaktivován",
+  "Account expired": "Platnost účtu vypršela",
+  "Account status": "Stav účtu",
+  "Action": "Akce",
+  "Actions": "Akce",
+  "Active": "Aktivní",
+  "Activity Types": "Druhy činností",
+  "Activity settings": "Nastavení aktivit",
+  "Add 1000 issues": "Přidat 1000 případů",
+  "Add Credentials": "Přidat pověření",
+  "Add Image": "Přidat obrázek",
+  "Add Issues": "Přidat případy",
+  "Add Mapping": "Přidat mapování",
+  "Add SSH Public Key": "Přidat veřejný klíč SSH",
+  "Add Team Members": "Přidat členy týmu",
+  "Add and open": "Přidat a otevřít",
+  "Add card": "Přidat kartu",
+  "Add card to board": "Přidat kartu na tabuli",
+  "Add column": "Přidat sloupec",
+  "Add comment": "Přidat komentář",
+  "Add credentials": "Přidat přihlašovací údaje",
+  "Add field": "Přidat políčko",
+  "Add field to": "Přidat políčko do",
+  "Add field to project": "Přidat políčko do projektu",
+  "Add issues": "Přidat případy",
+  "Add key": "Přidat klíč",
+  "Add link": "Přidat odkaz",
+  "Add members": "Přidat členy",
+  "Add module": "Přidat modul",
+  "Add new issues to sprint": "Přidávat nové případy do tohoto sprintu",
+  "Add new value": "Přidat novou hodnotu",
+  "Add project": "Přidat projekt",
+  "Add reaction": "Přidat reakci",
+  "Add row": "Přidat řádek",
+  "Add spent time": "Přidat strávený čas",
+  "Add tag": "Přidat štítek",
+  "Add to board": "Přidat na tabuli",
+  "Add to favorites": "Přidat k oblíbeným",
+  "Add value": "Přidat hodnotu",
+  "Add watcher": "Přidat sledujícího",
+  "Adjust start dates to reflect changes in task duration and set start dates for unscheduled tasks. The end date for the project plan is updated accordingly": "Upravte data zahájení tak, aby odrážela změny v délce trvání úkolu, a nastavte data zahájení neplánovaných úkolů. Datum ukončení plánu projektu se odpovídajícím způsobem aktualizuje",
+  "Administration": "Administrace",
+  "Administrator email": "E-mail správce",
+  "Advanced Settings": "Pokročilá nastavení",
+  "Advanced issues per project": "Pokročilý report případů dle projektu",
+  "Aggregation": "Agregace",
+  "Aggregation link": "Agregační propojení",
+  "Agile Board Settings": "Nastavení agilní tabule",
+  "Agile Boards": "Agilní tabule",
+  "Agile boards are powerful tools that help you prioritize unfinished work and deliver results, whether working on your own or as a member of a project team.": "Agilní tabule jsou efektivní nástroj, který vám pomůže prioritizovat nedokončenou práci a mít výsledky, ať už pracujete sami, nebo jako členové projektového týmu.",
+  "Agile name is required": "Agilní název je povinný",
+  "Aliases": "Aliasy",
+  "Align text in input fields and lists from right to left.": "Zarovnat text ve vstupních polích a seznamech zprava doleva.",
+  "All Projects": "Všechny projekty",
+  "All Users": "Všichni uživatelé",
+  "All authors": "Všichni autoři",
+  "All cards": "Všechny karty",
+  "All of the issues that are currently visible on the board are linked directly to the board.": "Všechny případy viditelné na tabuli budou na ni přímo připojeny odkazem.",
+  "All projects": "Všechny projekty",
+  "All sessions will be logged out and subsequent login attempts will be denied. Any current session will be terminated when its access token expires.": "Všechny relace budou odhlášeny a následné pokusy o přihlášení budou odepřeny. Každá aktuální relace bude ukončena, jakmile vyprší platnost přístupového tokenu.",
+  "All work types": "Všechny typy práce",
+  "Allow all origins": "Povolit všechny původy",
+  "Allow cards to be assigned to multiple sprints": "Povolit přiřazení karet k více sprintům",
+  "Allowed origins": "Povolené původy",
+  "An indicator lets other users know your current status ⏤ green when online, grey when offline": "Indikátor, který umožňuje ostatním uživatelům znát váš aktuální stav –⁠ zelená znamená online, šedá znamená offline",
+  "Anonymize user": "Anonymizovat uživatele",
+  "Appearance": "Vzhled",
+  "Application Passwords": "Hesla aplikace",
+  "Application logo": "Logo aplikace",
+  "Apply Command": "Použít příkaz",
+  "Apply a command": "Aplikovat příkaz",
+  "Apply changes": "Uložit změny",
+  "Apply command": "Použít příkaz",
+  "Apply without notice": "Použít bez oznámení",
+  "Apply without notification": "Použít bez oznámení",
+  "Archive": "Archivovat",
+  "Archive project": "Archivovat projekt",
+  "Archive project?": "Archivovat projekt?",
+  "Archived": "Archivováno",
+  "Are you sure you want to delete \"{{name}}\"?": "Opravdu chcete smazat {{name}}\"?",
+  "Are you sure you want to {{state}} \"{{name}}\"": "Opravdu chcete {{state}} \"{{name}}\"",
+  "Assemble date": "Datum sestavení",
+  "Assign issue": "Přiřadit případ",
+  "Assign issues to sprints automatically by linking sprints to the set of values in a custom field.": "Přiřazujte případy ke sprintům automaticky pomocí jejich propojení se sadou hodnot ve vlastním políčku případu.",
+  "Assign to me": "Přiřadit sobě",
+  "Assign to...": "Přiřadit...",
+  "At least one of certificates must be signed with provided private key": "Nejméně jeden z certifikátů musí být podepsán privátním klíčem",
+  "Attach Files Privately": "Přiložit soubory soukromě",
+  "Attach files privately...": "Přiložit soubory soukromě...",
+  "Attach files...": "Přiložit soubory...",
+  "Attach workflows": "Připojit pracovní postupy",
+  "Attached Files": "Přiložené soubory",
+  "Attachment": "Příloha",
+  "Attachments": "Přílohy",
+  "Audit": "Audit",
+  "Audit Events": "Provést audit událostí",
+  "Auth Modules": "Autentizační moduly",
+  "Authentication failed": "Ověření se nezdařilo",
+  "Authorization required": "Je vyžadována autorizace",
+  "Auto-detected": "Automaticky rozpoznáno",
+  "Automatically add new issues": "Automaticky přidávat nové případy",
+  "Automatically add new issues to": "Automaticky přidávat nové případy do",
+  "Available Variables": "Dostupné proměnné",
+  "Avatar": "Avatar",
+  "Average issue age": "Průměrné stáří případu",
+  "Back": "Zpět",
+  "Backlog": "Nevyřízené položky",
+  "Backup": "Záloha",
+  "Ban user": "Zakázat uživatele",
+  "Base URL": "Základní URL",
+  "Below the description": "Pod popisem",
+  "Below the summary": "Pod souhrnem",
+  "Board Settings": "Nastavení tabule",
+  "Board behavior": "Chování tabule",
+  "Board owner:": "Vlastník tabule:",
+  "Board settings": "Nastavení tabule",
+  "Board should have at least one project": "Na tabuli by měl být alespoň jeden projekt",
+  "Board...": "Tabuli...",
+  "Boards": "Tabule",
+  "Bold ({{shortcut}})": "Tučné ({{shortcut}})",
+  "Browser: {{:: login.agent.browser}},": "Prohlížeč: {{:: login.agent.browser}},",
+  "Build": "Sestavení",
+  "Build Server Integration": "Integrace build serveru",
+  "Build a board from scratch to support a hybrid agile approach.": "Sestavte si agilní tabuli podle svých požadavků.",
+  "Built-in Authorization": "Integrované ověření",
+  "Bulleted list": "Bodový seznam",
+  "Burndown": "Burndown",
+  "Burndown calculated by": "Burndown se počítá dle",
+  "By group": "Podle skupiny",
+  "CSV": "CSV",
+  "Can be empty": "Může být prázdné",
+  "Can edit": "Právo upravovat",
+  "Can edit board settings": "Právo měnit nastavení",
+  "Can specify multiple values": "Lze vybrat více hodnot",
+  "Can update": "Může upravovat",
+  "Can use": "Může používat",
+  "Can view and use": "Právo zobrazit a používat",
+  "Can view and use the board": "Právo zobrazit a používat tabuli",
+  "Cancel uploading": "Zrušit nahrávání",
+  "Cannot be empty": "Nemůže být prázdné",
+  "Cannot be exported or replaced": "Nelze exportovat ani nahradit",
+  "Cannot change subdomains on default domain": "Nelze změnit subdomény na výchozí doméně",
+  "Cannot load certificates": "Certifikáty nelze nahrát",
+  "Cannot load private key": "Nelze načíst privátní klíč",
+  "Cannot load private key with password": "Nelze načíst privátní klíč s heslem",
+  "Cannot use HTTPS-only mode with custom domain without certificates": "Nemůžete použít režim jen-HTTPS se svou vlastní doménou bez certifikátů",
+  "Cannot verify Jabber account. Jabber notifications are disabled. An administrator needs to configure and enable this feature.": "Nelze ověřit účet Jabber. Oznámení Jabber jsou zakázána. Tuto funkci musí nakonfigurovat a povolit správce.",
+  "Cannot verify Jabber account. The Jabber notification cannot be sent: \"{{cause}}\". An administrator needs to check the status of the Jabber service and verify the Jabber settings.": "Nelze ověřit účet Jabber. Oznámení Jabber nelze odeslat: „{{cause}}“. Správce musí zkontrolovat stav služby Jabber a ověřit nastavení Jabber.",
+  "Cannot verify provided email address. Cannot connect to SMTP server. An administrator needs to check the status of the mail server and verify the hostname and port on the SMTP Settings.": "Nelze ověřit zadanou e-mailovou adresu. Nelze se připojit k serveru SMTP. Správce musí zkontrolovat stav poštovního serveru a ověřit název hostitele a port v nastavení protokolu SMTP.",
+  "Cannot verify provided email address. The email message cannot be sent: \"{{cause}}\". An administrator needs to check the status of the mail server and verify the SMTP settings.": "Nelze ověřit zadanou e-mailovou adresu. E-mailovou zprávu nelze odeslat: „{{cause}}“. Správce musí zkontrolovat stav poštovního serveru a ověřit nastavení protokolu SMTP.",
+  "Card": "Karta",
+  "Card...": "Kartu...",
+  "Cards are no longer filtered to match the query.": "Karty již nebudou filtrovány podle daného dotazu.",
+  "Certificate": "Certifikát",
+  "Certificates are required": "Certifikáty jsou povinné",
+  "Change Password": "Změnit heslo",
+  "Change behavior": "Změnit chování",
+  "Change board behavior?": "Změnit chování tabule?",
+  "Change estimation": "Změnit odhad",
+  "Change option": "Potvrdit změnu",
+  "Change password": "Změnit heslo",
+  "Changes applied by me": "Změny provedené mnou",
+  "Changes applied to {{ $ctrl.getName() }}": "Změny provedené u uživatele {{ $ctrl.getName() }}",
+  "Changes in a duplicate cluster": "Změny v duplicitním clusteru",
+  "Changes made by {{ $ctrl.getName() }}": "Změny provedené uživatelem {{ $ctrl.getName() }}",
+  "Changes saved": "Změny uloženy",
+  "Chart": "Graf",
+  "Chart Settings": "Nastavení grafu",
+  "Check your spelling": "Zkontrolovat zápis dotazu",
+  "Checklist": "Odškrtávací seznam",
+  "Choose from available fields in": "Vyberte si z dostupných políček v",
+  "Choose how you want to display and enter dates in issue fields": "Zvolte způsob zobrazení a zadání kalendářních dat v polích případů",
+  "Choose how you want to display period values in issue fields and on some reports": "Zvolte, jak chcete zobrazit hodnoty období v polích případů a v některých sestavách",
+  "Choose which day starts each week in calendar controls": "Volba dne, kterým začíná každý týden v ovládacích prvcích kalendáře",
+  "Clear": "Vymazat",
+  "Clear all": "Vymazat vše",
+  "Clear cell": "Vymazat buňku",
+  "Clear projects": "Odebrat projekty",
+  "Clear search input": "Vymazat vstup vyhledávání",
+  "Clear selection": "Zrušit výběr",
+  "Clear the current search context": "Zrušit omezení kontextu hledání",
+  "Clear values": "Vymazat hodnoty",
+  "Click to attach, drag files, or press Ctrl+V to paste an image": "Nahrajte soubory přetáhnutím nebo vložte obrázek stisknutím kombinace Ctrl+V",
+  "Click to attach, drag files, or press ⌘V to paste an image": "Klikněte nebo přetáhněte soubory pro jejich nahrání nebo stiskněte ⌘V pro vložení obrázku",
+  "Client Service": "Klientská služba",
+  "Clone": "Klonovat",
+  "Clone board": "Klonovat tabuli",
+  "Clone project": "Klonovat projekt",
+  "Code ({{shortcut}})": "Kód ({{shortcut}})",
+  "Code block": "Blok kódu",
+  "Collapse": "Sbalit",
+  "Color scheme": "Barevné schéma",
+  "Columns": "Sloupce",
+  "Columns and Swimlanes": "Sloupce a dráhy",
+  "Comma-separated list of aliases to use in queries and commands": "Čárkami oddělený seznam aliasů pro použití v dotazech a příkazech",
+  "Comma-separated list of aliases to use in search queries and commands": "Seznam aliasů oddělených čárkami, který se má použít ve vyhledávacích dotazech a příkazech",
+  "Command": "Příkaz",
+  "Command was successfully applied.": "Příkaz byl použit.",
+  "Commands": "Příkazy",
+  "Comment": "Komentář",
+  "Comment text (optional)": "Komentář (nepovinný)",
+  "Comment was deleted": "Komentář by smazán",
+  "Comment was deleted.": "Komentář by smazán.",
+  "Comments are disabled in issue drafts": "Ke konceptům případů nelze přidávat komentáře",
+  "Configuration": "Konfigurace",
+  "Configure": "Konfigurovat",
+  "Connected Profiles": "Propojené profily",
+  "Connection timeout": "Spojení vypršelo",
+  "Constraints": "Omezení",
+  "Copied": "Zkopírováno",
+  "Copy Controls": "Kopírovat ovládací prvky",
+  "Copy ID and summary to clipboard": "Zkopírování ID a souhrnu do schránky",
+  "Copy description to clipboard": "Zkopírovat popis do schránky",
+  "Copy values from": "Zkopírovat hodnoty z",
+  "Could not apply specified command.": "Zadaný příkaz nelze použít.",
+  "Create Board": "Vytvořit tabuli",
+  "Create Kanban board": "Vytvořit tabuli Kanban",
+  "Create Personal board": "Vytvořit osobní tabuli",
+  "Create Report": "Vytvořit report",
+  "Create Scrum board": "Vytvořit tabuli Scrum",
+  "Create a new saved search": "Vytvořit nové uložené hledání",
+  "Create a new subtask": "Vytvořit nový podúkol",
+  "Create an Agile Board": "Vytvořte agilní tabuli",
+  "Create board": "Vytvořit tabuli",
+  "Create custom board": "Vytvořit vlastní tabuli",
+  "Create export file": "Vytvořit soubor exportu",
+  "Create issue link type": "Vytvořit typ odkazu na případ",
+  "Create new": "Vytvořit nové",
+  "Create project": "Vytvořit projekt",
+  "Create sprint": "Vytvořit sprint",
+  "Create subtask": "Vytvořit podúkol",
+  "Create tag": "Vytvořit štítek",
+  "Create user": "Vytvořit uživatele",
+  "Create version-based board": "Vytvořte tabuli založenou na verzích",
+  "Create without notification": "Vytvořit bez oznámení",
+  "Created": "Vytvořeno",
+  "Created By": "Autor",
+  "Created by": "Autor",
+  "Created by me": "Vytvořeno mnou",
+  "Created by {{user}} on {{date}}": "Vytvořeno uživatelem {{user}} dne {{date}}",
+  "Created on": "Vytvořeno",
+  "Credentials": "Pověření",
+  "Cumulative flow": "Kumulativní tok",
+  "Current estimation field": "Políčko aktuálního odhadu",
+  "Custom": "Vlastní",
+  "Custom Fields": "Vlastní políčka",
+  "Custom Widgets": "Vlastní Widgety",
+  "Custom board": "Vlastní tabule",
+  "Custom fields": "Vlastní políčka",
+  "Custom fields store additional information that helps you locate, categorize, and resolve issues more effectively.": "Ve vlastních políčkách jsou uloženy další informace, které vám umožní efektivněji vyhledávat, kategorizovat a řešit případy.",
+  "Custom project template": "Vlastní šablona projektu",
+  "Customize fields": "Upravit políčka",
+  "Customize messages and delivery options to match the communication style that fits your project.\n        Project-level customizations overwrite global delivery settings and message content.": "Přizpůsobte zprávy a možnosti doručování tak, aby odpovídaly stylu komunikace, který vyhovuje vašemu projektu.\n        Vlastní nastavení na úrovni projektu přepíší globální nastavení doručování a obsah zpráv.",
+  "Dark": "Tmavá",
+  "Dashboards": "Nástěnky",
+  "Data Export": "Export dat",
+  "Data center location": "Umístění datového centra",
+  "Database Backup": "Záloha databáze",
+  "Database Export": "Export databáze",
+  "Date": "Datum",
+  "Date format": "Formát data",
+  "Date values are shown in full according to your personal preference for date format": "Hodnoty kalendářních dat jsou zobrazeny v plném rozsahu podle vašich osobních preferencí pro formát data",
+  "Dates are shown as values relative to the current date and time": "Kalendářní data jsou zobrazena jako hodnoty relativně vůči aktuálnímu datu a času",
+  "Day": "Den",
+  "Default": "Výchozí",
+  "Default Value": "Výchozí hodnota",
+  "Default Value(s)": "Výchozí hodnota(y)",
+  "Default Visibility in Issues List": "Výchozí viditelnost v seznamu případů",
+  "Default language for the application interface, search queries, commands, issue fields and their values, tags, and notifications.": "Výchozí jazyk pro rozhraní aplikace, vyhledávací dotazy, příkazy, políčka případů a jejich hodnoty, štítky a oznámení.",
+  "Default sorting for text search": "Výchozí řazení pro hledání textu",
+  "Default visibility setting": "Výchozí nastavení viditelnosti",
+  "Delete Image": "Smazat obrázek",
+  "Delete all": "Smazat vše",
+  "Delete board": "Smazat tabuli",
+  "Delete column": "Odstranit sloupec",
+  "Delete comment": "Smazat komentář",
+  "Delete credentials": "Smazat přihlašovací údaje",
+  "Delete issue": "Smazat případ",
+  "Delete issue {{issueId}}?": "Odstranit případ {{issueId}}?",
+  "Delete me": "Smazat mě",
+  "Delete project": "Smazat projekt",
+  "Delete project?": "Smazat projekt?",
+  "Delete row": "Odstranit řádek",
+  "Delete selected items": "Smazat vybrané položky",
+  "Delete selected shortcuts": "Smazat vybrané klávesové zkratky",
+  "Delete selected workflows": "Smazat vybrané pracovní postupy",
+  "Delete user": "Smazat uživatele",
+  "Dependency link": "Propojení závislosti",
+  "Description": "Popis",
+  "Description changed": "Změna popisu",
+  "Detach": "Odpojit",
+  "Detach workflows from project": "Odpojit pracovní postupy od projektu",
+  "Details": "Podrobnosti",
+  "Direct roles": "Přímé role",
+  "Directed": "Se směrováním",
+  "Direction": "Typ směrování",
+  "Disable": "Zakázat",
+  "Disable auto-attach": "Zakázat automatické připojení",
+  "Disconnected": "Odpojeno",
+  "Disk Space": "Místo na disku",
+  "Display": "Zobrazit",
+  "Do not Attach Workflow to New Projects Automatically": "Nepřipojovat automaticky pracovní postup k novým projektům",
+  "Documentation": "Dokumentace",
+  "Doesn't match the pattern": "Neodpovídá požadovanému tvaru",
+  "Domain Settings": "Nastavení domény",
+  "Download": "Stáhnout",
+  "Download in CSV format": "Stáhnout ve formátu CSV",
+  "Drag a field to configure order": "Přetáhnutím změníte pořadí políček",
+  "Drag to change the order": "Přetažením změníte pořadí",
+  "Drag to reorder": "Přesuňte tažením",
+  "Duration": "Trvání",
+  "EU (Ireland)": "EU (Irsko)",
+  "Edit Attachment": "Editovat přílohu",
+  "Edit Project": "Upravit projekt",
+  "Edit VCS integration": "Upravit integraci VCS",
+  "Edit comment": "Upravit komentář",
+  "Edit field": "Upravit políčko",
+  "Edit for all affected projects": "Upravit pro všechny dotčené projekty",
+  "Edit issue": "Upravit případ",
+  "Edit link": "Upravit odkaz",
+  "Edit organization attributes, manage project assignments and access rights.": "Upravujte atributy organizace, spravujte přiřazení projektů a přístupová práva.",
+  "Edit project": "Upravit projekt",
+  "Edit rule": "Upravit pravidlo",
+  "Edit subscription": "Upravit odběry",
+  "Edit workflow": "Upravit pracovní postup",
+  "Edit...": "Upravit...",
+  "Email": "E-mail",
+  "Email address that is registered in the instance as the primary contact for the YouTrack support team": "E-mailová adresa, která je v instanci registrována jako primární kontakt pro tým podpory YouTrack",
+  "Email verification is currently unavailable. Email notifications are disabled system-wide. An administrator needs to configure and enable this feature.": "Ověření e-mailu není momentálně k dispozici. E-mailová oznámení jsou v celém systému zakázána. Tuto funkci musí nakonfigurovat a povolit správce.",
+  "Email verification is currently unavailable. The connection to the email server that sends email verification messages is either offline or misconfigured. An administrator needs to check the email server settings and verify that the SSL certificate is valid, if used.": "Ověření e-mailu není momentálně k dispozici. Připojení k e-mailovému serveru, který odesílá ověřovací zprávy e-mailu, je offline nebo nesprávně nakonfigurované. Správce musí zkontrolovat nastavení e-mailového serveru a případně ověřit platnost certifikát SSL, pokud se používá.",
+  "Email:": "E-mail:",
+  "Email: {{ login.email }}": "E-mail: {{ login.email }}",
+  "Emails": "E-maily",
+  "Embed Link": "Vložit odkaz",
+  "Embed a file": "Vložit soubor",
+  "Embed {{num}} file_one": "Vložit {{num}} soubor",
+  "Embed {{num}} file_few": "Vložit {{num}} soubory",
+  "Embed {{num}} file_many": "Vložit {{num}} souborů",
+  "Embed {{num}} file_other": "Vložit {{num}} souboru",
+  "Embedded content": "Vložený obsah",
+  "Embedding a file...": "Vkládání souboru...",
+  "Empty Value": "Prázdná hodnota",
+  "Enable": "Povolit",
+  "Enable cross-origin resource sharing (CORS) from any domain. Not recommended for general use due to significant security risk.": "Povolte sdílení prostředků mezi zdroji (CORS) z libovolné domény. Nedoporučuje se pro všeobecné použití kvůli významnému bezpečnostnímu riziku.",
+  "Enable morphological analysis of the words that are commonly used for reporting issues in your YouTrack installation. YouTrack analyzes and identifies stem words and related forms for selected languages in any issue attribute, including custom fields.": "Povolte morfologickou analýzu slov, která se běžně používají pro hlášení případů ve Vaší instalaci YouTrack. YouTrack analyzuje a identifikuje kmenová slova a související formuláře pro vybrané jazyky v libovolném atributu případů, včetně vlastních políček.",
+  "Enable time tracking": "Povolit sledování času",
+  "Enabled": "Povoleno",
+  "End date": "Datum ukončení",
+  "Enter a search query to filter the cards on the board": "Zadejte vyhledávací dotaz pro výběr karet na tabuli",
+  "Enter a summary": "Vložte shrnutí",
+  "Enter search criteria": "Zadejte kritéria vyhledávání",
+  "Enter search request": "Zadat vyhledávací dotaz",
+  "Estimation": "Odhadu",
+  "Estimation Tracking": "Sledování odhadů",
+  "Estimation field": "Políčko s odhadem",
+  "Estimation report": "Report odhadu",
+  "Everything": "Všechno",
+  "Exception stack traces in issue descriptions are expanded by default": "Trasování zásobníku výjimek v popisech problémů jsou rozbalovány ve výchozím nastavení",
+  "Existing": "Existující",
+  "Existing sprints that do not match a value in this set are archived.": "Existující sprinty, které neodpovídají hodnotě v této sadě, jsou archivovány.",
+  "Expand": "Rozbalit",
+  "Expand issue history items": "Rozbalit historii případu",
+  "Expand stack traces": "Rozbalit trasování zásobníku",
+  "Expand/collapse exception stack traces in UI by default": "Rozbalit/sbalit záznamy o výjimkách v uživatelském rozhraní jako výchozí",
+  "Experience a slimmed-down version of the interfaces you use to create, browse, and update issues. We've specifically designed YouTrack Lite to be simple to use and easy on the eyes.": "Vyzkoušejte zjednodušenou verzi rozhraní pro vytváření, procházení a aktualizaci případů. YouTrack Lite jsme navrhli s ohledem na snadné používání a nenáročnost pro oči.",
+  "Export": "Exportovat",
+  "Export issue data": "Exportovat data případu",
+  "Export selected shortcuts": "Exportovat vybrané klávesové zkratky",
+  "FAQ": "FAQ",
+  "Failed commands in commits processed by VCS and build server integrations": "Neúspěšné příkazy v potvrzeních zpracovaných systémem VCS a integracemi build serveru",
+  "Failed to invite {{ $count }} user_one": "Nepodařilo se pozvat {{ $count }} uživatele",
+  "Failed to invite {{ $count }} user_few": "Nepodařilo se pozvat {{ $count }} uživatele",
+  "Failed to invite {{ $count }} user_many": "Nepodařilo se pozvat {{ $count }} uživatelů",
+  "Failed to invite {{ $count }} user_other": "Nepodařilo se pozvat {{ $count }} uživatelů",
+  "Feature \"{{name}}\" updated": "Funkce „{{name}}“ upravena",
+  "Feedback": "Zpětná vazba",
+  "Field": "Políčko",
+  "Field Name": "Název políčka",
+  "Field in Projects": "Políčko v projektech",
+  "Field name shouldn't contain any of following characters: &lt;, /, &gt;, :": "Název políčka by neměl obsahovat žádný z následujících znaků: &lt;, /, &gt;, :",
+  "Field panel position": "Umístění panelu s políčky",
+  "Field value constraint": "Omezení hodnoty políčka",
+  "Field values are being updated throughout the project(s)": "Hodnoty políček jsou aktualizovány v celém projektu (projektech)",
+  "Fields": "Políčka",
+  "Fields List": "Seznam políček",
+  "Fields in Projects": "Políčka v projektech",
+  "Files, images, or documents": "Soubory, obrázky nebo dokumenty",
+  "Filter backlog issues": "Filtrovat případy v backlogu",
+  "Filter by name": "Filtrovat podle názvu",
+  "Filter cards on the board": "Filtrovat karty na tabuli",
+  "Filter cards to match a query": "Zobrazovat karty odpovídající dotazu",
+  "Filter items": "Filtrovat položky",
+  "Filter list by name": "Filtrovat seznam dle názvu",
+  "Filter users": "Filtrovat uživatele",
+  "Filter users, groups, and teams": "Filtrujte uživatele, skupiny a týmy",
+  "Find duplicate user accounts": "Najít duplicitní uživatelské účty",
+  "Find duplicates": "Najít duplicity",
+  "Find existing": "Najít existující",
+  "Find similar issues": "Najít podobné případy",
+  "Fine-tune your setup with settings that affect your corporate identity, availability, bandwidth, system status, and more.": "Vylaďte svou instalaci pomocí nastavení, která ovlivňují vaši firemní identitu, dostupnost, šířku pásma, stav systému a další.",
+  "First day of week": "První den v týdnu",
+  "First letter": "První písmeno",
+  "First page": "První stránka",
+  "Fixed vs Reported rate": "Poměr vyřešených a nahlášených",
+  "Force changing password": "Vynutit změnu hesla",
+  "Friday": "pátek",
+  "Full Name": "Celé jméno",
+  "Full name": "Celé jméno",
+  "Gantt Charts": "Ganttovy diagramy",
+  "Gantt chart": "Ganttův diagram",
+  "General": "Obecné",
+  "Generate issue template URL": "Generovat URL šablony případu",
+  "Get more widgets": "Získejte další widgety",
+  "Global Settings": "Globální nastavení",
+  "Goal": "Cíl",
+  "Got it": "Rozumím",
+  "Grant": "Udělit",
+  "Grant Role": "Udělit roli",
+  "Grant role": "Udělit roli",
+  "Group": "Skupina",
+  "Group-specific Features": "Funkce pro skupiny uživatelů",
+  "Groups and teams": "Skupiny a týmy",
+  "Guess URL": "Odhadnout URL",
+  "Guess time zone": "Odhadnout časové pásmo",
+  "HTML": "HTML",
+  "HTTPS is not available in your license plan": "HTTPS není ve vaší licenční verzi k dispozici",
+  "Heading 1": "Nadpis 1",
+  "Heading 2": "Nadpis 2",
+  "Heading 3": "Nadpis 3",
+  "Help": "Nápověda",
+  "Hide": "Skrýt",
+  "Hide description": "Skrýt popis",
+  "Hide details": "Skrýt podrobnosti",
+  "Hide filters": "Skrýt filtry",
+  "Hide formatting toolbar": "Skrýt panel nástrojů formátování",
+  "Hide from Issues list": "Nezobrazovat v seznamu případů",
+  "Hide linked issues": "Skrýt propojené případy",
+  "Hide resolved issues": "Skrýt vyřešené případy",
+  "Hide script": "Skrýt skript",
+  "Hide tips": "Skrýt tipy",
+  "Host": "Hostitel",
+  "Hub Integration": "Integrace služby Hub",
+  "Hub account": "Hub účet",
+  "ID": "ID",
+  "IP {{:: ctrl.sidebarElement.lastAccessAddress }}": "IP {{:: ctrl.sidebarElement.lastAccessAddress }}",
+  "IP: {{:: login.detail.lastAccessAddress }},": "IP {{:: login.detail.lastAccessAddress }},",
+  "If this isn't what you expected, you might try one of these solutions:": "Pokud to není požadovaný výsledek, můžete zkusit jedno z těchto řešení:",
+  "If you want to review these tips later, there's an option to show them again in this menu": "Pokud si budete chtít tyto tipy projít později, pomocí této nabídky si je můžete znovu zobrazit",
+  "Ignore subtasks of existing cards": "Podúkoly karet nezobrazovat samostatně",
+  "Import": "Import",
+  "Import commits and open pull requests": "Importovat commity a otevřené pull requesty",
+  "Import shortcuts": "Importovat klávesové zkratky",
+  "Import workflow": "Importovat pracovní postup",
+  "Importing pull requests": "Importování pull requestů",
+  "Imports": "Importy",
+  "Insert column": "Vložit sloupec",
+  "Insert row": "Vložit řádek",
+  "Integrations": "Integrace",
+  "Interface": "Rozhraní",
+  "Internationalization": "Místní nastavení",
+  "Introducing YouTrack Lite!": "Představujeme YouTrack Lite!",
+  "Invalid URL": "Neplatná URL",
+  "Invite": "Pozvat",
+  "Invite users": "Pozvat uživatele",
+  "Inviting user {{ dialog.data.invite.progress.done }} of {{ dialog.data.invite.progress.total }}": "Pozváno {{ dialog.data.invite.progress.done }} uživatelů z celkového počtu {{ dialog.data.invite.progress.total }}",
+  "Inward Name": "Interní název",
+  "Is not the same": "Hesla nejsou stejná",
+  "Is out of range": "Je mimo rozsah",
+  "Is too long": "Je příliš dlouhé",
+  "Is too short": "Je příliš krátké",
+  "Issue Distribution Reports": "Reporty s rozložením případů",
+  "Issue ID": "ID případu",
+  "Issue Link Types": "Typy propojení případů",
+  "Issue count": "Počtu případů",
+  "Issue filter": "Filtr případů",
+  "Issue filter:": "Filtr případů:",
+  "Issue has no image attachments": "Případ nemá žádné obrazové přílohy",
+  "Issue history": "Historie případu",
+  "Issue selected for preview:": "Případ vybraný pro náhled:",
+  "Issue summary": "Souhrn případu",
+  "Issue updated.": "Případ aktualizován.",
+  "Issues and comments created from my emails": "Případy a komentáře vytvořené z mých e-mailů",
+  "Issues per arbitrary field": "Případy dle vybraného políčka",
+  "Issues per assignee": "Případy dle řešitele",
+  "Issues per project": "Případy dle projektu",
+  "Issues per two fields": "Případy dle dvou políček",
+  "It could mean that the URL points to a page that doesn't exist or the URL is correct and you don't have permission to view this content.": "Může to znamenat, že adresa URL odkazuje na stránku, která neexistuje, nebo že je adresa URL správná, ale k zobrazení obsahu nemáte oprávnění.",
+  "Italic ({{shortcut}})": "Kurzíva ({{shortcut}})",
+  "Jabber": "Jabber",
+  "Jabber notifications are currently disabled system-wide.": "Jabber notifikace jsou aktuálně zakázány v celém systému.",
+  "January|February|March|April|May|June|July|August|September|October|November|December": "Leden|Únor|Březen|Duben|Květen|Červen|Červenec|Srpen|Září|Říjen|Listopad|Prosinec",
+  "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec": "Led|Úno|Bře|Dub|Kvě|Čer|Čvc|Srp|Zář|Říj|Lis|Pro",
+  "JavaScript Editor": "Editor JavaScriptu",
+  "Kanban board": "Tabule Kanban",
+  "Key": "Klíč",
+  "Key Features": "Klíčové vlastnosti",
+  "Keyboard Shortcuts": "Klávesové zkratky",
+  "Keyboard-centric navigation": "Navigace zaměřená na klávesnici",
+  "Knowledge Base": "Znalostní báze",
+  "LDAP Group DN": "DN skupiny LDAP",
+  "LOCAL VARIABLE": "LOKÁLNÍ PROMĚNNÁ",
+  "Language": "Jazyk",
+  "Last Modified": "Poslední změna",
+  "Last Used": "Naposledy použito",
+  "Last modified on <span>{{ tableActiveItem.data.updated | ytUserDateTime }}</span> <span ng-if=\"tableActiveItem.data.updatedBy.fullName || tableActiveItem.data.updatedBy.login\">by {{tableActiveItem.data.updatedBy.fullName || tableActiveItem.data.updatedBy.login}}</span>": "Poslední změna <span>{{ tableActiveItem.data.updated | ytUserDateTime }}</span> <span ng-if=\"tableActiveItem.data.updatedBy.fullName || tableActiveItem.data.updatedBy.login\">uživatelem {{tableActiveItem.data.updatedBy.fullName || tableActiveItem.data.updatedBy.login}}</span>",
+  "Last month": "minulý měsíc",
+  "Last page": "Poslední stránka",
+  "Last week": "minulý týden",
+  "Last working day": "Poslední pracovní den",
+  "Learn more": "Další informace",
+  "Learn more →": "Zjistit více →",
+  "Left": "Vlevo",
+  "License Details": "Podrobnosti o licenci",
+  "Light": "Světlá",
+  "Limits the number of issues that are scheduled simultaneously": "Omezuje počet případů, které jsou naplánovány současně",
+  "Limits the number of issues that are scheduled simultaneously to one for each value in the selected custom field": "Omezuje počet případů, které jsou naplánovány současně, na jeden pro každou hodnotu ve vybraném vlastním políčku",
+  "Link Direction": "Směr propojení",
+  "Link Issue_one": "Propojit případ",
+  "Link Issue_few": "Propojit {{count}} případy",
+  "Link Issue_many": "Propojit {{count}} případů",
+  "Link Issue_other": "Propojit {{count}} případu",
+  "Link issue": "Propojit případ",
+  "Link sprints to values for": "Propojit sprinty s hodnotami políčka",
+  "Link types represent different relationships between individual issues. To extend the default scheme to show other types of connections, add your own link types.": "Typy odkazů představují různé vztahy mezi jednotlivými případy. Pokud chcete výchozí schéma rozšířit, aby zobrazovalo další typy propojení, přidejte vlastní typy odkazů.",
+  "Links": "Odkazy",
+  "Links panel position": "Umístění panelu odkazů",
+  "Links successor tasks to predecessor tasks.": "Propojuje následné úkoly s předchozími úkoly.",
+  "Links tasks to subtasks.": "Propojuje úkoly s jejich podúkoly.",
+  "List Settings": "Nastavení seznamu",
+  "List of voters": "Seznam hlasujících",
+  "Lists": "Seznamy",
+  "Live Dashboard allows you to get an overview of the current status of your tasks and your team progress. Use the search box at the top of the dashboard to search for issues — you will be navigated to YouTrack's Issues List with the results of your query.": "Živá nástěnka poskytuje přehled o aktuálním stavu vašich úkolů a práce v týmu. Případy můžete vyhledávat pomocí vyhledávacího pole v horní části nástěnky – budete přesměrováni na seznam případů YouTrack s výsledky pro váš dotaz.",
+  "Load more": "Nahrát víc",
+  "Load more notifications": "Načíst další oznámení",
+  "Loading": "Načítání",
+  "Loading sprint...": "Načítání sprintu...",
+  "Local time zone": "Místní časové pásmo",
+  "Localization for this language is supported by the Hub user community. Untranslated interface text appears in English. You may encounter other errors and inconsistencies. If you'd like to help the community with this translation, you're more than welcome to join.": "Lokalizace pro tento jazyk je podporována komunitou uživatelů Hubu. Nepřeložený text rozhraní se zobrazuje v angličtině. Můžete se setkat s dalšími chybami a nesrovnalostmi. Pokud byste chtěli komunitě s tímto překladem pomoci, jste vítáni.",
+  "Localization for this language is supported by the YouTrack user community. The base terms for search queries, commands, and issue fields are translated into the selected language. Untranslated interface text appears in English. You may encounter other errors and inconsistencies. If you'd like to help the community with this translation, you're more than welcome to join.": "Lokalizace pro tento jazyk zajišťuje komunita uživatelů YouTrack. Základní výrazy pro vyhledávací dotazy, příkazy a pole vydání jsou přeloženy do vybraného jazyka. Nepřeložený text rozhraní se zobrazí v angličtině. Můžou se objevit chyby a nekonzistentnosti. Pokud byste chtěli komunitě s tímto překladem pomoct, vaše pomoc bude velmi vítána.",
+  "Localization for this language is supported by the YouTrack user community. Untranslated interface text appears in English. You may encounter other errors and inconsistencies. If you'd like to help the community with this translation, you're more than welcome to join.": "Lokalizace pro tento jazyk je podporována komunitou uživatelů YouTrack. Nepřeložený text rozhraní se zobrazí v angličtině. Může dojít k dalším chybám a nekonzistencím. Pokud byste chtěli pomoci komunitě s tímto překladem, jste více než vítáni, abyste se připojili.",
+  "Localized Inward Name": "Interní název (překlad)",
+  "Localized Name": "Lokalizované jméno",
+  "Localized Outward Name": "Externí název (překlad)",
+  "Log out": "Odhlásit se",
+  "Login": "Přihlašovací jméno",
+  "Logo": "Logo",
+  "MB": "MB",
+  "Mailbox Integration": "Integrace e-mailové schránky",
+  "Maintenance Calendar": "Kalendář údržby",
+  "Make independent copy": "Vytvořit nezávislou kopii",
+  "Make private": "Nastavit jako soukromé",
+  "Make public": "Zveřejnit",
+  "Manage all of the issues that are assigned to you.": "Spravujte všechny případy, které jsou vám přiřazeny.",
+  "Manage which groups and users are granted specific access to your project and view the actions that they have permission to perform.": "Správa skupin a uživatelů, kterým bude udělen konkrétní přístup k projektu, a zobrazení akcí, ke kterým mají oprávnění.",
+  "Manually assign issues": "Přidávat případy ručně",
+  "Mark all as read": "Označit vše jako přečtené",
+  "Mark as read": "Označit jako přečtené",
+  "Matches {{count}} issue_one": "Odpovídá {{count}} případu",
+  "Matches {{count}} issue_few": "Odpovídá {{count}} případům",
+  "Matches {{count}} issue_many": "Odpovídá {{count}} případům",
+  "Matches {{count}} issue_other": "Odpovídá {{count}} případům",
+  "Matrix": "Maticová zpráva",
+  "Matrix report": "Maticový report",
+  "Max Issues to export": "Max. počet případů k exportování",
+  "Max WIP": "Max. nedokončených",
+  "Max upload file size": "Max. velikost souboru pro nahrání",
+  "Maximum file size for issue attachments, in bytes": "Max. velikost příloh případů v bajtech",
+  "Maximum number of issues that can be printed or exported in CSV, Excel, or HTML format": "Max. počet případů, které lze vytisknout nebo exportovat ve formátu CSV, Excel nebo HTML",
+  "Maybe one of these links will get you back on track:": "Možná vás některý z těchto odkazů vrátí na správnou cestu:",
+  "Me": "Já",
+  "Members can view this board including fields and values that are used in the board settings": "Členové mohou zobrazit tuto tabuli včetně políček a hodnot použitých v nastavení tabule",
+  "Membership": "Členství",
+  "Mentions & Reactions": "Zmínky a reakce",
+  "Merge": "Sloučit",
+  "Merge with": "Sloučit s",
+  "Microsoft Account": "Účet Microsoft",
+  "Min": "Min.",
+  "Monday": "pondělí",
+  "Month": "Měsíc",
+  "More actions": "Další akce",
+  "More filters": "Další filtry",
+  "More settings…": "Další nastavení…",
+  "Most recent index built:": "Naposledy vytvořený index:",
+  "Most recent login: {{:: login.detail.lastAccessTime | date:'medium' }},": "Poslední přihlášení: {{:: login.detail.lastAccessTime | date:'medium' }},",
+  "Move to next sprint": "Přesunout do dalšího sprintu",
+  "Mute thread": "Ztlumit vlákno",
+  "Muted threads": "Ztlumené konverzace",
+  "Name": "Název",
+  "Name is required": "Název je povinný",
+  "Name: {{ login.name }}": "Název: {{ login.name }}",
+  "New": "Nový",
+  "New Article": "Nový článek",
+  "New Chart": "Nový diagram",
+  "New Custom Field": "Nové vlastní políčko",
+  "New Gantt Chart": "Nový Ganttův diagram",
+  "New Issue": "Nový případ",
+  "New Issue Link Type": "Nový typ odkazu na případ",
+  "New Issue in": "Nový případ v",
+  "New Name": "Nový název",
+  "New OpenLDAP Auth Module": "Nový modul OpenLDAP Auth Module",
+  "New Password": "Nové heslo",
+  "New Personal Board": "Nová osobní tabule",
+  "New Sprint": "Nový sprint",
+  "New Subscription": "Nový odběr",
+  "New Tag": "Nový štítek",
+  "New User": "Nový uživatel",
+  "New VCS integration": "Nová integrace VCS",
+  "New Work Item Type": "Nový typ výkazu práce",
+  "New card": "Nová karta",
+  "New custom field": "Nové vlastní políčko",
+  "New issue": "Nový případ",
+  "New item": "Nová položka",
+  "New password": "Nové heslo",
+  "New saved search": "Nové uložené hledání",
+  "New sprint": "Nový sprint",
+  "New subscription": "Nový odběr",
+  "New tag": "Nový štítek",
+  "New tag or saved search": "Nový štítek nebo uložené hledání",
+  "New token": "Nový token",
+  "New user": "Nový uživatel",
+  "New workflow": "Nový pracovní postup",
+  "News": "Novinky",
+  "Next": "Násl",
+  "Next issue": "Další případ",
+  "Next page": "Další stránka",
+  "No": "Ne",
+  "No 2nd factor": "Žádný 2. faktor",
+  "No aliases": "Žádné aliasy",
+  "No assignees available": "Není komu přiřadit",
+  "No color": "Žádná barva",
+  "No color scheme": "Žádné barevné schéma",
+  "No current estimation field": "Žádné políčko aktuálního odhadu",
+  "No estimation field": "Žádné políčko odhadu",
+  "No favorites": "Žádné oblíbené položky",
+  "No issue": "Žádný případ",
+  "No issues found": "Nebyly nalezeny žádné problémy",
+  "No items found": "Nenalezeny žádné položky",
+  "No notifications": "Žádná upozornění",
+  "No options found": "Nenalezeny žádné možnosti",
+  "No original estimation field": "Žádné políčko původního odhadu",
+  "No previous issue found": "Žádný předchozí případ nebyl nalezen",
+  "No subscriptions by tag": "Žádné odběry dle štítků",
+  "No suitable types to merge": "Žádné vhodné typy ke sloučení",
+  "No suitable types to replace": "Žádné vhodné typy k nahrazení",
+  "No swimlanes": "Nepoužívat dráhy",
+  "No tags and saved searches": "Žádné štítky nebo uložená hledání",
+  "No tags available": "Nejsou k dispozici žádné štítky",
+  "No threads": "Žádné konverzace",
+  "No type": "Žádný typ",
+  "No usages": "Nepoužito",
+  "No user information provided by Upsource.": "Upsource neposkytl žádné informace o uživateli.",
+  "No value": "Žádná hodnota",
+  "None": "Neuvedeno",
+  "Nope, can't find it!": "Ne, nemůžu to najít!",
+  "Normal text": "Normální text",
+  "Nothing selected": "Nic nevybráno",
+  "Nothing to show": "Nic k zobrazení",
+  "Notification Templates": "Šablony notifikací",
+  "Notification events": "Oznamovat události",
+  "Notification events:": "Oznamovat události:",
+  "Notification settings": "Nastavení oznámení",
+  "Notification templates": "Šablony oznámení",
+  "Notifications": "Oznámení",
+  "Notifications Language Reference": "Referenční příručka jazyka oznámení",
+  "Number of documents to index:": "Počet dokumentů k indexování:",
+  "Numbered list": "Číslovaný seznam",
+  "OK": "OK",
+  "OS: {{:: login.agent.os}}": "Operační systém: {{:: login.agent.os}}",
+  "Ok": "OK",
+  "Old Password": "Staré heslo",
+  "On-change": "Při změně",
+  "On-schedule": "Podle plánu",
+  "One or more projects require additional setup": "Jeden nebo více projektů vyžaduje další nastavení",
+  "One or more rules require additional setup in this project": "Jedno nebo více pravidel vyžaduje dodatečná nastavení v tomto projektu",
+  "Oops! Something went wrong with your search request": "Ouha! Něco se stalo špatně s tímto vyhledávacím požadavkem",
+  "Open My Saved Searches and My Tags list": "Otevřít Moje uložená vyhledávání a Seznam mých štítků",
+  "Open the Apply Command dialog": "Otevřít Příkazové okno",
+  "OpenLDAP": "OpenLDAP",
+  "Optimized for software development": "Optimalizováno s ohledem na vývoj softwaru",
+  "Optional Features": "Volitelné funkce",
+  "Optional extension grant name for the authorization service.\n  If specified, allows exchanging access tokens issued by the authorization service for Hub access tokens.": "Volitelný název rozšíření pro autorizační službu.\n  Pokud je specifikován, umožňuje výměnu přístupových tokenů vydaných autorizační službou pro přístupové tokeny Hubu.",
+  "Organizations": "Organizace",
+  "Original estimation field": "Políčko původního odhadu",
+  "Outward Name": "Externí název",
+  "Own reports": "Vlastní reporty",
+  "Owned by": "Vlastník:",
+  "Owner": "Vlastník",
+  "PREVIEW": "NÁHLED",
+  "Packed with robust features and rich customization": "Nabitý robustními funkcemi a možnostmi přizpůsobení",
+  "Pair with app": "Spárovat s aplikací",
+  "Pair with hardware token": "Spárovat s hardwarovým tokenem",
+  "Password": "Heslo",
+  "Pending acceptance of <a class=\"ring-link\" ng-click=\"userGeneralCtrl.shared.showEndUserAgreement()\" translate>version {{:: endUserAgreement.majorVersion\n              }}.{{:: endUserAgreement.minorVersion}}</a>": "Čeká se na přijetí <a class=\"ring-link\" ng-click=\"userGeneralCtrl.shared.showEndUserAgreement()\" translate>verze {{:: endUserAgreement.majorVersion\n              }}.{{:: endUserAgreement.minorVersion}}</a>",
+  "Pending acceptance of <a href=\"#\" class=\"ring-link\" ng-click=\"userProfileGeneralCtrl.hubCtrl.showEndUserAgreement()\" translate>version {{:: userProfileGeneralCtrl.endUserAgreement.majorVersion\n                }}.{{:: userProfileGeneralCtrl.endUserAgreement.minorVersion}}</a>": "Čeká se na přijetí <a href=\"#\" class=\"ring-link\" ng-click=\"userProfileGeneralCtrl.hubCtrl.showEndUserAgreement()\" translate>verze {{:: userProfileGeneralCtrl.endUserAgreement.majorVersion\n                }}.{{:: userProfileGeneralCtrl.endUserAgreement.minorVersion}}</a>",
+  "Period": "Období",
+  "Period format": "Formát období",
+  "Permalink": "Trvalý odkaz",
+  "Permanent Tokens": "Trvalé tokeny",
+  "Permissions": "Oprávnění",
+  "Personal board": "Osobní tabule",
+  "Personal data": "Osobní údaje",
+  "Plain text": "Prostý text",
+  "Plan and deliver incremental improvements in a series of sprints.": "Organizujte průběžný vývoj a vylepšování produktu s využitím série krátkých iterací – sprintů.",
+  "Port": "Port",
+  "Press ↩ to complete selected item": "Dokončete vybranou položku stisknutím ↩",
+  "Press ⇥ to complete first item": "Stiskněte ⇥ pro doplnění první položky",
+  "Preview": "Náhled",
+  "Previous": "Předchozí",
+  "Previous issue": "Předchozí případ",
+  "Print": "Vytisknout",
+  "Print issue": "Vytisknout případ",
+  "Print issues": "Vytisknout případy",
+  "Privacy": "Soukromí",
+  "Private key is required": "Privátní klíč je povinný",
+  "Profile": "Profil",
+  "Project": "Projekt",
+  "Project <a class=\"ring-link\" ng-href=\"admin/hub/projects/{{projectsCreateCtrl.hubProject.id}}\">{{projectsCreateCtrl.hubProject.name}}</a> has been created in Hub.": "V Hubu byl vytvořen projekt <a class=\"ring-link\" ng-href=\"admin/hub/projects/{{projectsCreateCtrl.hubProject.id}}\">{{projectsCreateCtrl.hubProject.name}}</a>.",
+  "Project Default": "Výchozí nastavení projektu",
+  "Project Templates": "Šablony projektu",
+  "Project Type": "Druh projektu",
+  "Project is archived": "Projekt je archivován",
+  "Project owner": "Vlastník projektu",
+  "Project with name {{projectName}} already exists": "Projekt s názvem {{projectName}} již existuje",
+  "Project {{projectName}} has been archived": "Projekt {{projectName}} byl archivován",
+  "Project {{projectName}} has been restored": "Projekt {{projectName}} byl obnoven",
+  "Projects": "Projekty",
+  "Prompt me to apply commands silently": "Zobrazovat výzvu k tichému aplikování příkazů",
+  "Puts the database in a state that allows read access, while blocking update operations": "Přepne databázi do stavu, který umožňuje pouze přístup pro čtení a blokuje operace aktualizace",
+  "Query": "Dotaz",
+  "Quick Notes": "Rychlé poznámky",
+  "Quote": "Citace",
+  "RTL support": "Podpora RTL",
+  "Read timeout": "Doba pro čtení vypršela",
+  "Read-only mode": "Režim jen pro čtení",
+  "Rebuild text index": "Znovu indexovat textové záznamy",
+  "Recalculate": "Přepočítat",
+  "Recently-viewed issues and articles": "Nedávno zobrazené případy a články",
+  "Recommended visibility options": "Doporučené nastavení viditelnosti",
+  "Reduces the available options for restricting visibility in issues and articles to selected groups and teams": "Snižuje dostupné možnosti pro omezení viditelnosti případů a článků na vybrané skupiny a týmy",
+  "Refresh": "Obnovit",
+  "Refresh Tokens": "Obnovovací tokeny",
+  "Refresh token will be revoked. Any current session will be terminated when its access token expires.": "Dočasný token bude odvolán. Každá aktuální relace bude ukončena, jakmile vyprší platnost jejího přístupového tokenu.",
+  "Refresh.": "Obnovit.",
+  "Registered": "S registrací",
+  "Registration date": "Datum registrace",
+  "Release": "Vydání",
+  "Release date": "Datum nasazení",
+  "Released": "Nasazeno",
+  "Remove direct assignment": "Odebrat přímé přiřazení",
+  "Remove field": "Odebrat políčko",
+  "Remove from favorites": "Odebrat z oblíbených",
+  "Remove from group": "Odebrat ze skupiny",
+  "Remove from team": "Odebrat z týmu",
+  "Remove issue from chart": "Odebrat případ z grafu",
+  "Remove link": "Smazat propojení",
+  "Remove project": "Odstranit projekt",
+  "Remove selected users from Group": "Odeberte vybrané uživatele ze skupiny",
+  "Remove selected users from team": "Odeberte vybrané uživatele z týmu",
+  "Remove table": "Odebrat tabulku",
+  "Remove tag": "Odebrat štítek",
+  "Remove tag when issue is resolved": "Odebrat štítek při vyřešení úkolu",
+  "Remove the resolved issue filter": "Hledat i mezi nevyřešenými případy",
+  "Reopened distribution": "Rozložení znovuotevřených případů",
+  "Repeat last command": "Opakovat poslední příkaz",
+  "Replace": "Nahradit",
+  "Reply": "Odpovědět",
+  "Reply-To address": "Adresa pro odpověď",
+  "Report name": "Název reportu",
+  "Reporter": "Ohlásil/a",
+  "Reports": "Reporty",
+  "Reports Examples": "Příklady reportů",
+  "Repository": "Repozitář",
+  "Requested": "Zažádáno",
+  "Required": "Vyžadováno",
+  "Reset": "Obnovit",
+  "Reset all to global": "Resetovat vše na globální hodnoty",
+  "Reset to default": "Obnovit výchozí nastavení",
+  "Resolution time (SLA management)": "Doba vyřešení (správa SLA)",
+  "Resolved vs New/Reopened rate": "Poměr vyřešených a nových/znovuotevřených",
+  "Resource Sharing": "Sdílení zdrojů",
+  "Restore All": "Obnovit vše",
+  "Restore Selected": "Obnovit vybrané",
+  "Restore default": "Obnovit výchozí",
+  "Restore default workflow's version": "Obnovit výchozí verzi pracovního postupu",
+  "Restricts visibility to users with \"Read Issue Private Fields\" and updates to users with \"Update Issue Private Fields\".\n          At the global level, this setting determines the initial default when the field is attached to a project.\n          Existing projects to which the field is already attached are not affected.": "Políčko bude viditelné pro uživatele s oprávněním „Čtení soukromých políček případů“ a editovatelné pro uživatele s oprávněním „Editace soukromých políček případů“.\n          Na globální úrovni toto nastavení určuje počáteční výchozí hodnotu po připojení políčka do projektu.\n          Existující projekty, ke kterým je políčko již připojeno, nejsou ovlivněny.",
+  "Revert": "Vrátit zpět",
+  "Review": "Zkontrolovat",
+  "Revoke refresh token": "Odvolat obnovovací token",
+  "Revoke role": "Odebrat roli",
+  "Revoked acceptance of version {{:: user.endUserAgreementConsent.majorVersion\n              }}.{{:: user.endUserAgreementConsent.minorVersion}} on {{:: user.endUserAgreementConsent.revocationTime | date:'medium'\n              }}": "Zrušený souhlas s verzí {{:: user.endUserAgreementConsent.majorVersion\n              }}.{{:: user.endUserAgreementConsent.minorVersion}} na {{:: user.endUserAgreementConsent.revocationTime | date:'medium'\n              }}",
+  "Revoked acceptance of version {{:: userProfileGeneralCtrl.hubUser.endUserAgreementConsent.majorVersion\n                }}.{{:: userProfileGeneralCtrl.hubUser.endUserAgreementConsent.minorVersion}} on {{:: userProfileGeneralCtrl.hubUser.endUserAgreementConsent.revocationTime | date:'medium'\n                }}": "Zrušený souhlas s verzí {{:: userProfileGeneralCtrl.hubUser.endUserAgreementConsent.majorVersion\n                }}.{{:: userProfileGeneralCtrl.hubUser.endUserAgreementConsent.minorVersion}} na {{:: userProfileGeneralCtrl.hubUser.endUserAgreementConsent.revocationTime | date:'medium'\n                }}",
+  "Right": "Vpravo",
+  "Roles": "Role",
+  "Roles assigned directly to users and groups": "Role přiřazené přímo uživatelům a skupinám",
+  "Roles assigned in organization \"{{name}}\"": "Role přiřazené v organizaci „{{name}}“",
+  "Roles assigned to All users": "Role přiřazené všem uživatelům",
+  "Roles assigned to groups": "Role přiřazené skupinám",
+  "Roles assigned to members of the project team": "Role přiřazené členům projektového týmu",
+  "Roles assigned to the global project": "Globálně přiřazené role",
+  "Roles assigned to {{group.name}}": "Role přiřazené skupině {{group.name}}",
+  "Rules": "Pravidla",
+  "Run": "Spustit",
+  "SAML 2.0": "SAML 2.0",
+  "SSH public keys": "Veřejné klíče SSH",
+  "SSL Certificates": "SSL certifikáty",
+  "SSL Keys": "SSL klíče",
+  "SUBTASKS": "Podúkoly",
+  "Same as issue": "Jako případ",
+  "Saturday": "sobota",
+  "Save link": "Uložit odkaz",
+  "Save search": "Uložit vyhledávání",
+  "Saved": "Uloženo",
+  "Saved Searches": "Uložená hledání",
+  "Saved search": "Uložené hledání",
+  "Saved search:": "Uložené hledání:",
+  "Saved searches": "Uložená hledání",
+  "Schedule": "Časový plán",
+  "Scroll to issue links": "Posunout na odkazy případů",
+  "Scrum board": "Tabule Scrum",
+  "Search": "Hledat",
+  "Search Context": "Kontext hledání",
+  "Search by name or project": "Hledat podle názvu nebo projektu",
+  "Search by role, project, group, team, permission": "Hledat podle role, projektu, skupiny, týmu, oprávnění",
+  "Search by user": "Hledat uživatele",
+  "Search for a different value": "Hledat jinou hodnotu",
+  "Search issues": "Hledat případy",
+  "Search projects by name": "Prohledat projekty podle názvu",
+  "Search tag": "Hledat štítek",
+  "Search tags and searches": "Hledat štítky a uložená hledání",
+  "Search user": "Hledat uživatele",
+  "Search user or group": "Hledat uživatele nebo skupinu",
+  "Search:": "Hledat:",
+  "Select a group or team": "Vyberte skupinu nebo tým",
+  "Select a role to see details": "Výběrem uživatele zobrazíte podrobnosti",
+  "Select a user or group": "Vyberte uživatele nebo skupinu",
+  "Select a user to see details": "Výběrem uživatele zobrazíte podrobnosti",
+  "Select an item to see details": "Vyberte položku pro zobrazení podrobností",
+  "Select an option": "Vyberte možnost",
+  "Select field": "Vybrat políčko",
+  "Select files to embed": "Vyberte soubory k vložení",
+  "Select role": "Vyberte roli",
+  "Select sprint": "Vyberte sprint",
+  "Select tag or search": "Vyberte štítek nebo hledání",
+  "Send notification when...": "Odeslat oznámení, když...",
+  "Send notifications to": "Odeslat oznámení na",
+  "Send test message": "Odeslat testovací zprávu",
+  "Send verification email": "Odeslat ověřovací e-mail",
+  "Send verification message": "Odeslat ověřovací e-mail",
+  "Sender name": "Jméno odesílatele",
+  "Server Configuration": "Nastavení serveru",
+  "Server Settings": "Nastavení serveru",
+  "Service": "Služba",
+  "Service Status": "Stav služby",
+  "Set": "Nastavit",
+  "Set assignee": "Přiradit",
+  "Set is used in": "Sada se používá v",
+  "Set the default preferences for users based on the primary location of your team. Users can\n                  override these settings by selecting their preferred language, date format, and local time zone in\n                    their YouTrack profile.": "Nastavte výchozí předvolby pro uživatele na základě primárního umístění vašeho týmu. Uživatelé mohou tato nastavení přepsat výběrem preferovaného jazyka, formátu data a místního časového pásma ve svém profilu YouTrack.",
+  "Set to default": "Nastavit výchozí hodnoty",
+  "Set value": "Nastavit hodnotu",
+  "Set your display language for Hub. The language for search queries is always English and is not affected.": "Nastavte jazyk zobrazení pro Hub. Jazykem vyhledávacích dotazů je vždy angličtina a není ovlivněn.",
+  "Set your display language for YouTrack. The language used for search queries, commands, and custom fields is\n            set at the global level.": "Nastavte jazyk zobrazení pro YouTrack. Jazyk používaný pro vyhledávací dotazy, příkazy a vlastní pole je nastaven globálně.",
+  "Sets the default visibility for new issues and articles in the project": "Nastaví výchozí viditelnost pro nové případy a články v projektu",
+  "Settings": "Nastavení",
+  "Share anonymous statistics with JetBrains": "Sdílet anonymní statistiky se společností JetBrains",
+  "Shared reports": "Sdílené reporty",
+  "Shared with {{ targetUsersOrGroups }}": "Sdíleno s {{ targetUsersOrGroups }}",
+  "Shortcuts": "Zkratky",
+  "Should be a number": "Musí být číslo",
+  "Should be a valid URL": "Musí být validní URL",
+  "Should be a valid email": "Musí být validní e-mail",
+  "Show": "Zobrazit",
+  "Show absolute dates": "Zobrazit absolutní data",
+  "Show colors for other custom fields": "Zobrazit barvy pro další vlastní políčka",
+  "Show description": "Ukázat popis",
+  "Show details": "Zobrazit podrobnosti",
+  "Show examples": "Zobrazit příklady",
+  "Show formatting toolbar": "Zobrazit panel nástrojů formátování",
+  "Show more": "Zobrazit další",
+  "Show my status": "Zobrazit můj stav",
+  "Show only when": "Zobrazit, pouze když",
+  "Show permalink": "Zobrazit trvalý odkaz",
+  "Show preview": "Ukázat náhled",
+  "Show recent issues and articles": "Zobrazit nedávné případy a články",
+  "Show script": "Zobrazit skript",
+  "Show swimlane for uncategorized cards": "Zobrazit dráhu pro nezařazené karty",
+  "Single value": "Jedna hodnota",
+  "Size": "Velikost",
+  "Size:": "Velikost:",
+  "Socket timeout": "Doba pro přístup ke kanálu vypršela",
+  "Sort manually": "Seřadit ručně",
+  "Sort: newest first": "Řadit: od nejnovějších",
+  "Sort: oldest first": "Řadit: od nejstarších",
+  "Sorted by": "Seřazeno dle",
+  "Space-separated list of email addresses": "Seznam e-mailových adres oddělených mezerou",
+  "Sprint Name": "Název sprintu",
+  "Sprint...": "Sprint...",
+  "Sprints": "Sprinty",
+  "Sprints are not created for other agile boards that also use this field.": "Sprinty nejsou vytvořeny pro jiné tabule, které také používají toto pole.",
+  "Star automatically when": "Přidat hvězdičku, když",
+  "Star issue": "Přidat hvězdičku",
+  "Start date": "Datum zahájení",
+  "Start date field": "Políčko pro datum zahájení",
+  "Start with creating one": "Začněte vytvořením nové",
+  "Starting Number": "Počáteční číslo",
+  "State Transition Reports": "Reporty změny stavů",
+  "State transition": "Změna stavu",
+  "Status": "Stav",
+  "Stemmed languages": "Jazyky se zapnutou analýzou",
+  "Stop watching": "Přestat sledovat",
+  "Streamlined to boost your productivity": "Zjednodušený pro zvýšení produktivity",
+  "Strikethrough ({{shortcut}})": "Přeškrtnutí ({{shortcut}})",
+  "Strong": "Silné",
+  "Subscribe now": "Koupit předplatné",
+  "Subscriptions": "Odběry",
+  "Successfully invited {{ $count }} user_one": "Úspěšně pozván {{ $count }} uživatel",
+  "Successfully invited {{ $count }} user_few": "Úspěšně pozváni {{ $count }} uživatelé",
+  "Successfully invited {{ $count }} user_many": "Úspěšně pozváno {{ $count }} uživatelů",
+  "Successfully invited {{ $count }} user_other": "Úspěšně pozváno {{ $count }} uživatelů",
+  "Suitable for every member of any team": "Vhodné pro každého člena jakéhokoli týmu",
+  "Summary": "Souhrn",
+  "Summary changed": "Souhrn byl změněn",
+  "Sunday": "neděle",
+  "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday": "Neděle|Pondělí|Úterý|Středa|Čtvrtek|Pátek|Sobota",
+  "Sun|Mon|Tue|Wed|Thu|Fri|Sat": "Ne|Po|Út|St|Čt|Pá|So",
+  "Support": "Podpora",
+  "Suspend text indexing": "Pozastavit indexování textu",
+  "Switch to Markdown mode ({{shortcut}})": "Přepnout do režimu Markdown ({{shortcut}})",
+  "Switch to trial": "Přepnout na zkušební verzi",
+  "Switch to visual editing mode ({{shortcut}})": "Přepnout do režimu vizuálních úprav ({{shortcut}})",
+  "Switch user": "Přepnout uživatele",
+  "Sync with OS": "Podle OS",
+  "System": "Systém",
+  "System Language": "Systémový jazyk",
+  "System-wide Features": "Funkce pro celý systém",
+  "System-wide banner": "Systémová lišta",
+  "System-wide default presentation for dates and times": "Výchozí formát zobrazení času a data pro celý systém",
+  "System-wide default time zone": "Výchozí časové pásmo pro celý systém",
+  "System-wide keyboard shortcut scheme. You can also add and use a custom scheme.": "Schéma klávesových zkratek pro celý systém. Můžete také přidat a použít vlastní schéma.",
+  "TYPE": "TYP",
+  "Table": "Tabulka",
+  "Tables": "Tabulky",
+  "Tabular layout": "Tabulkový vzhled",
+  "Tag": "Štítek",
+  "Tag or saved search": "Štítek nebo uložené hledání",
+  "Tag:": "Štítek:",
+  "Tags": "Štítky",
+  "Tags and Saved Searches": "Štítky a uložená hledání",
+  "Take your vote back": "Stáhnout svůj hlas",
+  "Team": "Tým",
+  "Team members are granted the team role: {{data.roles}}": "Členům týmu je udělena týmová role: {{data.roles}}",
+  "Team members are granted the team roles: {{data.roles}}": "Členům týmu jsou uděleny tyto týmové role: {{data.roles}}",
+  "Team roles in project": "Týmové role v projektu",
+  "Team roles:": "Týmové role:",
+  "Teams": "Týmy",
+  "Text Index": "Textový index",
+  "The Backlog": "Backlog",
+  "The Users list displays all of the user accounts that are registered in Hub. Filter the list of users by attributes, including name, login,\n      access permissions, group, and ban status. The search box provides query completion to help you choose from available search attributes.": "Seznam uživatelů zobrazuje všechny uživatelské účty registrované ve službě Hub. Uživatele můžete filtrovat dle atributů včetně jména, přihlašovacího jména, přístupových oprávnění, členství ve skupinách a stavu. Vyhledávací pole poskytuje našeptávání pro snadné vyhledání podle dostupných atributů.",
+  "The change has been detached from this issue. It is still displayed here because its comment mentions the issue.": "Změna byla odpojena od tohoto případu. Zde je stále zobrazována, protože některé z komentářů tento případ zmiňují.",
+  "The change has been manually attached to this issue.": "Změna byla ručně připojena k tomuto případu.",
+  "The default configuration processes any email message sent to {{mailboxFormCtrl.domain}}@youtrack.cloud.\n        To process messages sent to other email addresses, use a custom configuration.": "Výchozí konfigurace zpracovává všechny e-mailové zprávy odeslané {{mailboxFormCtrl.domain}}@youtrack.cloud.\n        Chcete-li zpracovat zprávy odeslané na jiné e-mailové adresy, použijte vlastní konfiguraci.",
+  "The default presentation shows the first three fields from the project that the issue belongs to": "Výchozí nastavení zobrazuje první tři políčka z projektu, do kterého případ patří",
+  "The field will be available for all users": "Toto políčko bude k dispozici všem uživatelům",
+  "The field will only be available for users with specific permissions": "Toto políčko bude k dispozici pouze oprávněným uživatelům",
+  "The list of variables that can be used in this template.": "Seznam proměnných, které lze použít v této šabloně.",
+  "The quick navigation panel is hidden": "Panel rychlé navigace je skrytý",
+  "The search query contains unknown values": "Vyhledávací dotaz obsahuje neznámé hodnoty",
+  "The server is overloaded or down for maintenance. Please try again later.": "Server je přetížený nebo nefunkční z důvodu údržby. Zkuste to prosím později.",
+  "Theme": "Motiv",
+  "There are no permanent tokens for your account.": "Pro váš účet neexistují žádné trvalé tokeny.",
+  "There are no projects to create an issue in": "Nejsou žádné projekty, ve kterých by případ šel vytvořit",
+  "There are no projects yet.": "Zatím zde nejsou žádné projekty.",
+  "This action deletes the issue permanently and cannot be undone._one": "Tato akce trvale odstraní případ a nelze ji vrátit zpět.",
+  "This action deletes the issue permanently and cannot be undone._few": "Tato akce trvale odstraní vybrané případy a nelze ji vrátit zpět.",
+  "This action deletes the issue permanently and cannot be undone._many": "Tato akce trvale odstraní vybrané případy a nelze ji vrátit zpět.",
+  "This action deletes the issue permanently and cannot be undone._other": "Tato akce trvale odstraní vybrané případy a nelze ji vrátit zpět.",
+  "This board doesn’t have a backlog": "Tato tabule nemá backlog",
+  "This list displays all of the issues that you have permission to view in YouTrack. Use filters and search queries\n      to find issues that are most important to you.\n      <br>\n      <br>\n      Here are a few helpful features you'll find on this page:": "Tento seznam zobrazuje všechny případy, ke kterým máte přístup. Pomocí filtrů a vyhledávacích dotazů\n      si vyhledejte případy, které jsou pro vás nejdůležitější.\n      <br>\n      <br>\n      Zde je několik užitečných funkcí, které najdete na této stránce:",
+  "This month": "tento měsíc",
+  "This operation can take some time and cannot be undone. During this operation, you cannot edit board settings and other users cannot access the board.": "Tato operace může nějakou dobu trvat a nelze ji vrátit zpět. Během této operace nelze upravit nastavení tabule a ostatní uživatelé nebudou mít k tabuli přístup.",
+  "This set of values is used in": "Tato sada hodnot se používá v",
+  "This week": "tento týden",
+  "This year": "Tento rok",
+  "Thursday": "čtvrtek",
+  "Time Management Reports": "Reporty s řízením času",
+  "Time Tracking": "Sledování času",
+  "Time and Date": "Čas a datum",
+  "Time report": "Report s časem",
+  "Time tracking lets your team record the amount of time they spend working on issues in this project. When this feature is enabled, you can estimate the amount of effort required for each task, track progress in each issue, and generate <a class=\"ring-link\" href=\"reports\">time reports</a>.": "Sledování času umožňuje vašemu týmu zaznamenávat čas, který stráví prací na případech v tomto projektu. Pokud je tato funkce povolena, můžete odhadnout náročnost každého úkolu, sledovat průběh každého případu a generovat <a class=\"ring-link\" href=\"reports\">časové výkazy</a>.",
+  "Time zone": "Časové pásmo",
+  "Timeline Reports": "Reporty s časovou osou",
+  "Timesheet report": "Report s pracovním výkazem",
+  "Timesheets": "Pracovní výkazy",
+  "Tips": "Tipy",
+  "Tips for New Users": "Tipy pro nové uživatele",
+  "Title": "Název",
+  "To enter a query, enable the <strong>Link sprints to values</strong> option": "Pro zadání dotazu povolte volbu <strong>Propojit sprinty s hodnotami</strong>",
+  "To reorder, add, or rename values, edit the set for all projects or make an independent copy for the projects on\n        this board": "Uspořádání, přidání nebo přejmenování hodnot vyžaduje úpravu této sady pro všechny projekty nebo vytvoření nezávislé kopie pro projekty na této tabuli",
+  "To restrict the visibility of attachments, select users, groups, and teams from the list": "Pro omezení viditelnosti příloh vyberte ze seznamu uživatele, skupiny nebo týmy",
+  "To see the preview, start typing": "Náhled se zobrazí, když začněte psát",
+  "To user or group": "Pro uživatele nebo skupinu",
+  "Today": "dnes",
+  "Toggle distraction-free mode (Ctrl+Alt+D)": "Přepnout na režim bez rušivých vlivů (Ctrl+Alt+D)",
+  "Tokens": "Tokeny",
+  "Track progress in your projects over a specified timeframe or get a snapshot that shows you where things stand right now. Share reports with other members of your team to keep stakeholders in the loop.": "Sledujte průběh projektů v zadaném časovém rámci nebo získejte snímek, na kterém uvidíte, jak se věci právě teď mají. Sdílejte sestavy s ostatními členy týmu, aby byly zúčastněné strany informované.",
+  "Transfer data to new field": "Přenést data do nového políčka",
+  "Tree view": "Stromový pohled",
+  "Tuesday": "úterý",
+  "Two-factor Authentication": "Dvoufaktorové ověření",
+  "Two-factor authentication": "Dvoufaktorové ověření",
+  "Type": "Typ",
+  "Type to see more": "Začněte psát a uvidíte více",
+  "URL": "ADRESA URL",
+  "Unban user": "Opět povolit uživatele",
+  "Uncategorized Cards": "Nezařazené karty",
+  "Undirected": "Bez směrování",
+  "Unknown": "Neznámé",
+  "Unlock feature": "Odemknout funkci",
+  "Unread only": "Pouze nepřečtené",
+  "Unscheduled": "Nenaplánováno",
+  "Unstar issue": "Odebrat hvězdičku",
+  "Untag on Resolve": "Odebrat štítek při vyřešení",
+  "Updatable by": "Může upravit",
+  "Update Info": "Informace o aktualizaci",
+  "Update personal information and manage logins": "Aktualizace osobních údajů a správa přihlášení",
+  "Updated": "Aktualizováno",
+  "Updated by": "Aktualizováno uživatelem",
+  "Updated by {{user}} on {{date}}": "Aktualizováno uživatelem {{user}} dne {{date}}",
+  "Updated {{date}}": "Aktualizováno {{date}}",
+  "Updates applied by VCS and build server integrations": "Aktualizace provedené pomocí integrací VSC a build serveru",
+  "Upload": "Nahrát",
+  "Upload a JPG, GIF, or PNG file. The image is resized to 48 x 48 pixels automatically": "Nahrajte soubor JPG, GIF nebo PNG. Obrázek se automaticky upraví na velikost 48×48 pixelů",
+  "Upload a file": "Nahrát soubor",
+  "Usages": "Počet použití",
+  "Use YouTrack Lite UI": "Použít uživatelské rozhraní YouTrack Lite",
+  "Use a simplified interface to create, browse, and update issues": "Zjednodušené rozhraní pro vytváření, procházení a aktualizaci případů",
+  "Use existing": "Použít stávající",
+  "Use fewer search parameters": "Použít méně parametrů vyhledávání",
+  "Use this control to exclude resolved issues from the search results with one click": "Tento ovládací prvek slouží k vyloučení vyřešených případů z výsledků hledání",
+  "Used in": "Používá se v",
+  "User": "Uživatel",
+  "User Agreement": "Uživatelská smlouva",
+  "User or group": "Uživatele nebo skupiny",
+  "Username": "Uživatelské jméno",
+  "Username attribute": "Atribut uživatelského jména",
+  "Username:": "Uživatelské jméno:",
+  "Username: {{ login.login }}": "Uživatelské jméno: {{ login.login }}",
+  "Users with <strong>Low-level administration</strong> permission can edit the settings of any board that they can view and use": "Uživatelé s oprávněním pro <strong>nízkoúrovňovou administraci</strong> mohou měnit nastavení jakékoli tabule, kterou mohou zobrazit a používat",
+  "Users:": "Uživatelé:",
+  "VCS": "VCS",
+  "VCS changes": "Změny VCS",
+  "VCS integration": "Integrace VCS",
+  "VCS username": "Uživatelské jméno VCS",
+  "VCS usernames": "Uživatelská jména VCS",
+  "Value": "Hodnota",
+  "Value is required": "Hodnota je povinná",
+  "Verified distribution": "Rozložení ověřených případů",
+  "Verified vs Reopened rate": "Poměr ověřených a znovuotevřených",
+  "Version": "Verze",
+  "Version-based board": "Tabule založená na verzích",
+  "Video Demos": "Video ukázky",
+  "View Mode": "Režim zobrazení",
+  "View all {{columnPresentation}} issues on the Issues list": "Zobrazit všechny {{columnPresentation}} případy v seznamu",
+  "View and update the list of users who are granted direct access as members of the project team.": "Zobrazení a aktualizace seznamu uživatelů, kteří mají přímý přístup jako členové projektového týmu.",
+  "View by": "Zobrazit podle",
+  "View change": "Zobrazit změnu",
+  "View comment": "Zobrazit komentář",
+  "View issue": "Zobrazit případ",
+  "View linked issues in Issues list": "Zobrazit propojené případy v seznamu",
+  "View markup reference": "Zobrazit odkaz na značku",
+  "View privacy policy": "Zobrazit zásady ochrany osobních údajů",
+  "View translations": "Zobrazit překlady",
+  "View work item": "Zobrazit pracovní položku",
+  "Visibility Restrictions": "Omezení viditelnosti",
+  "Visibility Settings": "Nastavení viditelnosti",
+  "Visible Fields": "Viditelná políčka",
+  "Visible to": "Viditelné pro",
+  "Visible to Group": "Viditelný pro skupinu",
+  "Visualize a workflow based on supply and demand that limits the work in progress for each team.": "Vizualizujte pracovní postup založený na nabídce a poptávce, který omezuje maximální počet rozpracovaných případů každého týmu.",
+  "Vote for issue": "Hlasovat pro případ",
+  "Watch issue": "Sledovat případ",
+  "Watchers": "Sledující",
+  "We didn't find any issues in the current search context that match your query": "V aktuálním kontextu vyhledávání jsme nenašli žádné případy, které by odpovídaly vašemu dotazu",
+  "We didn't find any issues that match your search query": "Nenašli jsme žádné případy, které by odpovídaly vašemu vyhledávacímu dotazu",
+  "Web address that is used to access YouTrack.": "Webová adresa, která se používá pro přístup k YouTrack.",
+  "Wednesday": "středa",
+  "Week": "Týden",
+  "Weeks, days, hours, and minutes": "Týdny, dny, hodiny a minuty",
+  "When integrating TeamCity and YouTrack, the users are matched by their email addresses. TeamCity has not provided any email address of the committer.": "Když chcete integraovat TeamCity a YouTrack, uživatelé jsou spojováni přes jejich emailové adresy. TeamCity neposkytnul emailovou adresu žádného z uživatelů (autor revize).",
+  "Whenever you have the option to apply a command without sending notifications, YouTrack shows a hint": "Kdykoli budete mít možnost aplikovat příkaz bez odesílání oznámení, YouTrack vám tuto možnost nabídne",
+  "Whenever your account is chosen as the value for a field that lists user accounts, you are added to the list of watchers": "Kdykoli je váš účet vybrán jako hodnota v poli se seznamem uživatelských účtů, přidáme vás do seznamu pozorovatelů",
+  "Will be attached automatically to any new project": "Bude automaticky připojeno k jakémukoli novému projektu",
+  "Will be linked to selected as:": "Propojí se s vybranou možností jako:",
+  "Will be used as issue ID prefix": "Použije se jako prefix ID případu",
+  "Work Item Type": "Typ výkazu práce",
+  "Work in progress": "Probíhající práce",
+  "Work items": "Výkazů práce",
+  "Workflow": "Pracovní postup",
+  "Workflow Constructor": "Návrhář pracovního postupu",
+  "Workflow is only compatible with YouTrack versions {{version}} and later": "Pracovní postup je kompatibilní pouze s verzemi YouTrack {{version}} a novějšími",
+  "Workflow will be attached automatically to any new project": "Pracovní postup bude automaticky připojen k jakémukoli novému projektu",
+  "Workflows": "Pracovní postupy",
+  "Workflows in YouTrack let you customize and automate the lifecycle of issues in your project. Configuration options on this page let you attach essential workflows to new projects automatically and control which rules apply to issues in each of your projects.": "Pracovní postupy umožňují přizpůsobit a automatizovat životní cyklus případů v projektu. Možnosti konfigurace na této stránce umožňují automaticky připojit základní pracovní postupy k novým projektům a mít kontrolu nad tím, která pravidla budou platit pro případy v jednotlivých projektech.",
+  "Workspace": "Pracovní prostor",
+  "Write a comment, @mention people": "Napsat komentář, @mention osoby",
+  "Year": "Rok",
+  "Yes": "Ano",
+  "Yesterday": "včera",
+  "You are notified when any of these events are applied to issues that match this saved search": "Budete upozorněni, když u některého z těchto případů, které odpovídají tomuto uloženému vyhledávání, dojde k některé z následujících událostí",
+  "You are notified when any of these events are applied to issues with this tag": "Budete upozorněni, když u některého z těchto případů s tímto štítkem dojde k některé z následujících událostí",
+  "You can now see whether your actual estimations are over or under the original budget on the burndown chart.\n                To set up this feature, add a field that stores original estimations in the\n                card settings for this board.": "Nyní můžete zjistit, zda jsou vaše skutečné odhady v burndownovém grafu nad nebo pod původním rozpočtem.\n                Tuto funkci nastavíte přidáním pole, které ukládá původní odhady do nastavení\n                karty pro tuto tabuli.",
+  "You can show issues that match an <yt-agile-backlog-select>existing saved search</yt-agile-backlog-select> or": "Můžete zobrazit případy odpovídající <yt-agile-backlog-select>stávajícímu uloženému hledání</yt-agile-backlog-select> nebo",
+  "You can switch YouTrack Lite on and off as often as you like from the Appearance menu under your avatar.": "YouTrack Lite můžete v nabídce Vzhled pod vaším avatarem zapínat a vypínat dle libosti.",
+  "You can update the property that identifies resolved states in the custom field settings": "Vlastnost, která identifikuje vyřešené stavy, můžete aktualizovat v nastavení vlastního políčka",
+  "You can't vote for an issue that you reported": "Nelze hlasovat pro případ, který jste sami nahlásili",
+  "YouTrack": "YouTrack",
+  "YouTrack Agile Board": "Agilní tabule YouTrack",
+  "YouTrack Classic": "YouTrack Classic",
+  "YouTrack Dashboard": "Hlavní nástěnka Youtrack",
+  "YouTrack Lite": "YouTrack Lite",
+  "YouTrack's built-in notification center": "Integrované oznamovací centrum YouTrack",
+  "Your reply": "Vaše odpověď",
+  "Zendesk Integration": "Integrace Zendesk",
+  "[Empty value]": "[Prázdná hodnota]",
+  "[Removed field]": "[Odstraněné políčko]",
+  "```code block```": "```blok kódu```",
+  "`code`": "`kód`",
+  "a minute ago": "před minutou",
+  "a week ago": "před týdnem",
+  "a year ago": "před rokem",
+  "actual estimation": "nynější odhad",
+  "and": "a",
+  "and is default for": "a je výchozí pro",
+  "and is the default for": "a je výchozí pro",
+  "and {{item.instances.length - 1}} more": "a dalších {{item.instances.length - 1}}",
+  "archived": "archivováno",
+  "asc": "vzestupně",
+  "at the bottom of the board": "pod ostatními řádky",
+  "at the top of the board": "nad ostatními řádky",
+  "attachment": "příloha",
+  "auto-attach": "automatické připojení",
+  "auto-join": "automaticky připojit",
+  "banned": "zakázán",
+  "collapse": "sbalit",
+  "commented": "komentováno",
+  "comments": "komentáře",
+  "community": "komunita",
+  "custom fields": "vlastní políčka",
+  "day": "den",
+  "desc": "sestupně",
+  "disable": "zakázat",
+  "enable": "povolit",
+  "estimation": "odhad",
+  "example": "příklad",
+  "expand": "rozbalit",
+  "field values are being updated throughout the project(s)": "hodnoty políček jsou aktualizovány v celém projektu (projektech)",
+  "first": "první",
+  "from \"{{ctrl.previousSprint.name}}\"": "z „{{ctrl.previousSprint.name}}“",
+  "from field": "z políčka",
+  "group by": "seskupit podle",
+  "imported from service": "importováno ze služby",
+  "inactive": "neaktivní",
+  "incompatible": "nekompatibilní",
+  "is not saved": "neuloženo",
+  "issue readers": "čtenáři případů",
+  "it's me": "to jsem já",
+  "just now": "právě teď",
+  "login": "přihlašovací jméno",
+  "me": "já",
+  "more": "více",
+  "multiple": "více",
+  "m|h|d|w": "m|h|d|t",
+  "name": "název",
+  "new": "nový",
+  "new issue": "nový případ",
+  "new issues": "nové případy",
+  "next": "násl",
+  "next page": "další stránka",
+  "not visible to you": "není pro vás viditelné",
+  "or": "nebo",
+  "original estimation": "původní odhad",
+  "owned by": "vlastníkem je",
+  "owner: {{userName}}": "vlastník: {{userName}}",
+  "password": "heslo",
+  "per page": "na stránku",
+  "previous": "předchozí",
+  "project owner": "vlastník projektu",
+  "project updaters": "editoři projektu",
+  "projects": "projekty",
+  "read only": "jen pro čtení",
+  "release date": "datum nasazení",
+  "remaining effort": "zbývající úsilí",
+  "required": "vyžadováno",
+  "requires setup": "vyžaduje nastavení",
+  "search": "vyhledat",
+  "second": "druhý",
+  "select custom field": "vyberte vlastní políčko",
+  "select sprint": "vyberte sprint",
+  "spent time": "strávený čas",
+  "tag": "tag",
+  "tags": "štítky",
+  "team": "tým",
+  "template": "šablona",
+  "third": "třetí",
+  "underestimation": "podceněný odhad",
+  "unknown error.": "neznámá chyba.",
+  "verified": "ověřeno",
+  "version {{:: endUserAgreement.majorVersion\n              }}.{{:: endUserAgreement.minorVersion}}": "verze {{:: endUserAgreement.majorVersion\n              }}.{{:: endUserAgreement.minorVersion}}",
+  "version {{:: user.endUserAgreementConsent.majorVersion\n              }}.{{:: user.endUserAgreementConsent.minorVersion}}": "verze {{:: user.endUserAgreementConsent.majorVersion\n              }}.{{:: user.endUserAgreementConsent.minorVersion}}",
+  "version {{:: userProfileGeneralCtrl.endUserAgreement.majorVersion\n                }}.{{:: userProfileGeneralCtrl.endUserAgreement.minorVersion}}": "verze {{:: userProfileGeneralCtrl.endUserAgreement.majorVersion\n                }}.{{:: userProfileGeneralCtrl.endUserAgreement.minorVersion}}",
+  "version {{:: userProfileGeneralCtrl.hubUser.endUserAgreementConsent.majorVersion\n                }}.{{:: userProfileGeneralCtrl.hubUser.endUserAgreementConsent.minorVersion}}": "verze {{:: userProfileGeneralCtrl.hubUser.endUserAgreementConsent.majorVersion\n                }}.{{:: userProfileGeneralCtrl.hubUser.endUserAgreementConsent.minorVersion}}",
+  "w": "t",
+  "week": "týden",
+  "work items": "výkazů práce",
+  "yesterday": "včera",
+  "{{ $count }} Service_one": "{{ $count }} služba",
+  "{{ $count }} Service_few": "{{ $count }} služby",
+  "{{ $count }} Service_many": "{{ $count }} služby",
+  "{{ $count }} Service_other": "{{ $count }} služeb",
+  "{{ count }} Service_one": "{{ count }} služba",
+  "{{ count }} Service_few": "{{ count }} služby",
+  "{{ count }} Service_many": "{{ count }} služeb",
+  "{{ count }} Service_other": "{{ count }} služeb",
+  "{{ count }} User_one": "{{ count }} uživatel",
+  "{{ count }} User_few": "{{ count }} uživatelé",
+  "{{ count }} User_many": "{{ count }} uživatelů",
+  "{{ count }} User_other": "{{ count }} uživatelů",
+  "{{ count }} user_one": "{{ count }} uživatel",
+  "{{ count }} user_few": "{{ count }} uživatelé",
+  "{{ count }} user_many": "{{ count }} uživatelé",
+  "{{ count }} user_other": "{{ count }} uživatelů",
+  "{{ permissionsGroup.service.applicationName }} application": "{{ permissionsGroup.service.applicationName }} aplikace",
+  "{{ title }}": "{{ title }}",
+  "{{ ytAgileCardCtrl.issue.subtasks.issuesSize - ytAgileCardCtrl.issue.subtasks.unresolvedIssuesSize }} resolved": "{{ ytAgileCardCtrl.issue.subtasks.issuesSize - ytAgileCardCtrl.issue.subtasks.unresolvedIssuesSize }} vyřešených",
+  "{{count}} user_one": "{{count}} uživatel",
+  "{{count}} user_few": "{{count}} uživatelé",
+  "{{count}} user_many": "{{count}} uživatelů",
+  "{{count}} user_other": "{{count}} uživatelů",
+  "{{$ctrl.searchResultModel.getCurrentIssueIndexPresentation()}} of {{$ctrl.searchResultModel.getTotalPresentation()}} found": "Nalezeno {{$ctrl.searchResultModel.getCurrentIssueIndexPresentation()}} z {{$ctrl.searchResultModel.getTotalPresentation()}}",
+  "{{:: $ctrl.text}}": "{{:: $ctrl.text}}",
+  "{{:: ytSidebarTableCtrl.noItemsMessage}}": "{{:: ytSidebarTableCtrl.noItemsMessage}}",
+  "{{amount}} card in state {{columnName}}": "{{amount}} karta ve stavu {{columnName}}",
+  "{{amount}} cards in state {{columnName}}": "{{amount}} karet ve stavu {{columnName}}",
+  "{{backlogCtrl.getEmptyBacklogTitle()}}": "{{backlogCtrl.getEmptyBacklogTitle()}}",
+  "{{columnCardsAmount}} cards": "{{columnCardsAmount}} karet",
+  "{{count}} hour ago_one": "před {{count}} h",
+  "{{count}} hour ago_few": "před {{count}} h",
+  "{{count}} hour ago_many": "před {{count}} h",
+  "{{count}} hour ago_other": "před {{count}} h",
+  "{{count}} month ago_one": "Před {{count}} měsícem",
+  "{{count}} month ago_few": "Před {{count}} měsíci",
+  "{{count}} month ago_many": "Před {{count}} měsíci",
+  "{{count}} month ago_other": "Před {{count}} měsíci",
+  "{{count}} week ago_one": "před {{count}} týdnem",
+  "{{count}} week ago_few": "před {{count}} týdny",
+  "{{count}} week ago_many": "před {{count}} týdny",
+  "{{count}} week ago_other": "před {{count}} týdne",
+  "{{customFieldsPerProjectCtrl.getCustomFieldTemplates(tableActiveItem.data.project.id).length}} fields": "{{customFieldsPerProjectCtrl.getCustomFieldTemplates(tableActiveItem.data.project.id).length}} políček",
+  "{{dshPageCtrl.getActiveDashboardNum()}} of {{dshPageCtrl.getDashboardShortList().length}}": "{{dshPageCtrl.getActiveDashboardNum()}} z {{dshPageCtrl.getDashboardShortList().length}}",
+  "{{hours}} hours": "{{hours}} hodin",
+  "{{issuesCount}} issue_one": "{{issuesCount}} případ",
+  "{{issuesCount}} issue_few": "{{issuesCount}} případy",
+  "{{issuesCount}} issue_many": "{{issuesCount}} případů",
+  "{{issuesCount}} issue_other": "{{issuesCount}} případů",
+  "{{item.usersCount}} users": "{{item.usersCount}} uživatelé",
+  "{{query}} - JetBrains YouTrack": "{{query}} – JetBrains YouTrack",
+  "{{resolved}} resolved out of {{total}}": "vyřešeno {{resolved}} z {{total}}",
+  "{{userProfileNotificationsCtrl.getOwnChangesLabel()}}": "{{userProfileNotificationsCtrl.getOwnChangesLabel()}}",
+  "{{ytAgileCardCtrl.issue.subtasks.issuesSize - 3}} more": "{{ytAgileCardCtrl.issue.subtasks.issuesSize - 3}} zbývá",
+  "{{ytAgileCardCtrl.issue.subtasks.unresolvedIssuesSize}} unresolved": "{{ytAgileCardCtrl.issue.subtasks.unresolvedIssuesSize}} nevyřešených",
+  "⛱ Free Plan": "⛱ varianta zdarma",
+  "＋Add field": "＋Přidat políčko"
+}

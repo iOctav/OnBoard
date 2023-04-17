@@ -97,7 +97,7 @@ function Swimlane({title, issueId, isOrphan, striked, cardsNumber, columnsNumber
               </div>
             </FloatLeftDiv>
             <FloatRightDiv>
-              { !!cardsNumber && (<CardsCounterSpan>{cardsNumber} {t(cardsNumber > 1 ? 'cards' : 'card')}</CardsCounterSpan>)}
+              { !!cardsNumber && (<CardsCounterSpan>{t('1 card', { count: cardsNumber })}</CardsCounterSpan>)}
             </FloatRightDiv>
           </SwimlaneContainer>
         )}

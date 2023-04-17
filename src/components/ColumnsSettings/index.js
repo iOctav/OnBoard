@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import LazySelectBox from '../LazySelectBox';
 import { useState } from 'react';
 import {
@@ -22,7 +22,7 @@ function ColumnsSettings({disabled, agileId, columnSettings}) {
   const usedColumns = columnSettings.columns.reduce((acc, column) => [...acc, ...column.fieldValues], []).map(field => field.name);
   return (<div className="columns-settings">
     <span>
-      <span><b>{t('Columns')}</b>{t(' are identified by')}</span>
+      <span><Trans t={t}><b>Columns</b> are identified by</Trans></span>
       <MarginedSelectBox
         disabled={disabled}
         selected={selected}

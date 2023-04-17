@@ -19,21 +19,22 @@ const VerticalAlignTable = styled(Table)`
   }
 `;
 
-function makeWIPInput(value, disabled) {
-  if (value) {
-    return (<Input disabled={disabled} height={ ControlsHeight.S } value={value.toString()} size={ Size.AUTO } placeholder="No"/>);
-  } else {
-    return (<Input disabled={disabled} height={ ControlsHeight.S } size={ Size.AUTO } placeholder="No"/>);
-  }
-}
-
 function ColumnsSettingsTable({disabled, columns}) {
   const { t } = useTranslation();
+
+  const makeWIPInput = (value, disabled) => {
+    if (value) {
+      return (<Input disabled={disabled} height={ ControlsHeight.S } value={value.toString()} size={ Size.AUTO } placeholder={t('No')}/>);
+    } else {
+      return (<Input disabled={disabled} height={ ControlsHeight.S } size={ Size.AUTO } placeholder={t('No')}/>);
+    }
+  }
+
   const tableColumns = [
     {key: 'name', id: 'name', getValue: (item, column) => (<NameColumnTemplate disabled={disabled} fieldValues={item.fieldValues}/>) },
     {key: 'min', id: 'min', title: t('Min'), getValue: (item, column) => makeWIPInput(item.wipLimit?.min, disabled)},
     {key: 'max', id: 'max', title: t('Max WIP'), getValue: (item, column) => makeWIPInput(item.wipLimit?.max, disabled)},
-    {key: 'merge', id: 'merge', getValue: (item, column) => (<Select disabled={disabled} type="INLINE" filter label="Merge with"/>)},
+    {key: 'merge', id: 'merge', getValue: (item, column) => (<Select disabled={disabled} type="INLINE" filter label={t('Merge with') + ' '}/>)},
     {key: 'remove', id: 'remove', getValue: (item, column) => (item.fieldValues.map(
       field =>
         (<div key={field.id}><Button disabled={disabled} icon={closeIcon} title={t('Remove')}/></div>)

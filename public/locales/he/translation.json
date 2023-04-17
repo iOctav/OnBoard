@@ -1,0 +1,723 @@
+{
+  "Role": {
+    "Access tab 'by role' toggle": "תפקיד",
+    "$$noContext": "תפקיד"
+  },
+  "Issues": {
+    "Agile Row Settings": "בעיות",
+    "$$noContext": "בעיות"
+  },
+  "Values": {
+    "Agile Row Settings": "ערכים",
+    "$$noContext": "ערכים"
+  },
+  "disabled": {
+    "Auth modules list": "מושבת",
+    "Certificate list": "מושבת",
+    "Custom widget list": "לא מאופשרות",
+    "Zendesk Sidebar": "לא מאופשרות",
+    "$$noContext": "לא מאופשרות"
+  },
+  "enabled": {
+    "Auth modules list": "פעיל",
+    "Certificate list": "פעיל",
+    "Custom widget list": "פעיל",
+    "$$noContext": "פעיל"
+  },
+  "1 field": {
+    "Custom Fields_one": "שדה אחד",
+    "Custom Fields_few": "{{count}} שדות",
+    "Custom Fields_many": "{{count}} שדות",
+    "Custom Fields_other": "{{count}} שדות",
+    "$$noContext_one": "שדה אחד",
+    "$$noContext_few": "{{count}} שדות",
+    "$$noContext_many": "{{count}} שדות",
+    "$$noContext_other": "{{count}} שדות"
+  },
+  "1 project": {
+    "Custom Fields_one": "פרויקט אחד",
+    "Custom Fields_few": "{{count}} פרויקטים",
+    "Custom Fields_many": "{{count}} פרויקטים",
+    "Custom Fields_other": "{{count}} פרויקטים",
+    "values-usages-in-projects_one": "פרויקט אחד",
+    "values-usages-in-projects_few": "{{count}} פרויקטים",
+    "values-usages-in-projects_many": "{{count}} פרויקטים",
+    "values-usages-in-projects_other": "{{count}} פרויקטים",
+    "$$noContext_one": "פרויקט אחד",
+    "$$noContext_few": "{{count}} פרויקטים",
+    "$$noContext_many": "{{count}} פרויקטים",
+    "$$noContext_other": "{{count}} פרויקטים"
+  },
+  "\"{{dashboardName}}\" is shared with": {
+    "Dashboard": "\"{{dashboardName}}\" משותף עם"
+  },
+  "## Welcome to Dashboard\n***\nClick Add Widget to place a widget on your Dashboard.": {
+    "Dashboard": "## ברוך הבא ללוח המכוונים\n***\nלחץ \"הוסף ווידג'ט\" כדי להוסיף ווידג'ט נוסף על לוח המכוונים שלך."
+  },
+  "(already added)": {
+    "Dashboard": "(כבר נוסף)"
+  },
+  "* Keep an eye on your progress with YouTrack reports.\n* View your tasks, critical issues or any kind of issues list from YouTrack.": {
+    "Dashboard": "* שים עין על ההתקדמות שלך בעזרת דוחות YouTrack.\n* צפה במשימות, בעיות קריטיות או בכל סוג של רשימת בעיות מתוך YouTrack."
+  },
+  "* Latest commits and reviews in Upsource.": {
+    "Dashboard": "* רשימת שינויים וסקרי קוד אחרונים מתוך UpSource."
+  },
+  "<h3>Creating review...</h3>": {
+    "Dashboard": "<h3>יוצר סִיקוּר...</h3>"
+  },
+  "Accessible services": {
+    "Dashboard": "שירותים נגישים",
+    "$$noContext": "שירותים נגישים"
+  },
+  "Add to my dashboards": {
+    "Dashboard": "הוסף ל\"לוחות מכוונים\" שלי"
+  },
+  "Add user, group or team": {
+    "Dashboard": "הוסף משתמש, קבוצה או צוות",
+    "$$noContext": "הוסף משתמש, קבוצה או צוות"
+  },
+  "Add widget": {
+    "Dashboard": "הוסף ווידג'ט"
+  },
+  "Add widget from existing report": {
+    "Dashboard": "הוסף ווידג'ט מדוח קיים"
+  },
+  "All": {
+    "Dashboard": "הכל",
+    "$$noContext": "הכל"
+  },
+  "Allow to edit dashboard": {
+    "Dashboard": "התר עריכה של לוח המחוונים"
+  },
+  "Allows navigation away from the dashboard": {
+    "Dashboard": "התר מעבר מחוץ ללוח המחוונים"
+  },
+  "Another dashboard with the name \"{{data.name}}\" already exists": {
+    "Dashboard": "לוח מחוונים אחר בשם \"{{data.name}}\" כבר קיים"
+  },
+  "Apply": {
+    "Dashboard": "החל",
+    "$$noContext": "החל"
+  },
+  "Author": {
+    "Dashboard": "יוצר",
+    "$$noContext": "יוצר"
+  },
+  "Authors": {
+    "Dashboard": "יוצרים"
+  },
+  "Can't connect to dashboard backend": {
+    "Dashboard": "לא ניתן להתחבר לשרת לוח המחוונים"
+  },
+  "Can't load information from service.": {
+    "Dashboard": "לא ניתן לטעון מידע מהשירות."
+  },
+  "Cancel": {
+    "Dashboard": "ביטול",
+    "$$noContext": "ביטול"
+  },
+  "Cannot create review. Please try again later or contact Ring Dashboard support.": {
+    "Dashboard": "לא ניתן ליצור סקר קוד. אנא נסה שוב מאוחר יותר או צור קשר עם התמיכה של לוח המחוונים של Ring."
+  },
+  "Cannot load projects list": {
+    "Dashboard": "לא ניתן לטעון את רשימת הפרוייקטים"
+  },
+  "Cannot process the provided code. Please try to export the desired dashboard again and use new generated code.": {
+    "Dashboard": "לא ניתן לעבד את הקוד. אנא נסה לייצא שוב את לוח המחוונים הרצוי והשתמש בקוד החדש שהופק."
+  },
+  "Capabilities": {
+    "Dashboard": "יכולות",
+    "$$noContext": "יכולות"
+  },
+  "Close": {
+    "Dashboard": "סגור",
+    "$$noContext": "סגור"
+  },
+  "Commits": {
+    "Dashboard": "שינויים"
+  },
+  "Commits:": {
+    "Dashboard": "שינויים:"
+  },
+  "Copy": {
+    "Dashboard": "העתק",
+    "$$noContext": "העתק"
+  },
+  "Copy this code to import your configuration into another dashboard": {
+    "Dashboard": "העתק קוד זה בכדי לייבא את הגדרת התצורה שלך ללוח מחוונים אחר"
+  },
+  "Copy this link and send it to another user": {
+    "Dashboard": "העתק לינק זה ושלח אותו למשתמש אחר"
+  },
+  "Could not remove dashboard": {
+    "Dashboard": "לא ניתן להסיר לוח מחוונים"
+  },
+  "Could not save changes": {
+    "Dashboard": "לא ניתן לשמור שינויים"
+  },
+  "Create": {
+    "Dashboard": "צור",
+    "Hub Operations": "צור",
+    "$$noContext": "צור"
+  },
+  "Create again": {
+    "Dashboard": "צור שוב"
+  },
+  "Create new report": {
+    "Dashboard": "צור דוח חדש"
+  },
+  "Create review": {
+    "Dashboard": "צור סיקור"
+  },
+  "Create widget": {
+    "Dashboard": "צור ווידג'ט"
+  },
+  "Dashboard": {
+    "Dashboard": "לוח מחוונים",
+    "$$noContext": "לוח מחוונים"
+  },
+  "Dashboard \"{{ dashboardName }}\" has been removed.": {
+    "Dashboard": "לוח המחוונים \"{{ dashboardName }}\" הוסר."
+  },
+  "Dashboard not found": {
+    "Dashboard": "לוח מחוונים לא נמצא"
+  },
+  "Date:": {
+    "Dashboard": "תאריך:",
+    "$$noContext": "תאריך:"
+  },
+  "Days": {
+    "Dashboard": "ימים",
+    "$$noContext": "ימים"
+  },
+  "Delete": {
+    "Dashboard": "מחק",
+    "Hub Operations": "מחק",
+    "Remove action": "מחק",
+    "$$noContext_one": "מחק",
+    "$$noContext_few": "מחק",
+    "$$noContext_many": "מחק",
+    "$$noContext_other": "מחק"
+  },
+  "Details...": {
+    "Dashboard": "פרטים..."
+  },
+  "Dismiss": {
+    "Dashboard": "התעלם"
+  },
+  "Edit": {
+    "Dashboard": "ערוך",
+    "Hub Operations": "ערוך",
+    "$$noContext": "ערוך"
+  },
+  "Edit search query": {
+    "Dashboard": "ערוך שאילתת חיפוש"
+  },
+  "Enter widget hosting URL": {
+    "Dashboard": "הזן כתובת URL של אירוח ווידג'טים"
+  },
+  "Fixed": {
+    "Dashboard": "תוקן",
+    "Fix Rate Report": "תוקן",
+    "$$noContext": "תוקן"
+  },
+  "For detailed instructions, <a target=\"_blank\" ng-href=\"{{playgroundCtrl.dshGetWidgetPlaygroundHelpLink()}}\" class=\"ring-link\"><span>read the documentation</span></a>": {
+    "Dashboard": "להוראות מפורטות, <a target=\"_blank\" ng-href=\"{{playgroundCtrl.dshGetWidgetPlaygroundHelpLink()}}\" class=\"ring-link\"><span>קרא את התיעוד</span></a>"
+  },
+  "Groups": {
+    "Dashboard": "קבוצות",
+    "$$noContext": "קבוצות"
+  },
+  "Insert the code of an exported dashboard configuration": {
+    "Dashboard": "הזן את הקוד של הגדרת תצורת לוח מחוונים שיוצאה"
+  },
+  "Link was successfully copied to clipboard": {
+    "Dashboard": "הלינק הועתק בהצלחה ללוח הגזירים"
+  },
+  "List dashboards": {
+    "Dashboard": "הצג רשימת לוחות מחוונים"
+  },
+  "Loading...": {
+    "Dashboard": "טוען...",
+    "$$noContext": "טוען..."
+  },
+  "Most likely, the widget has been removed from the system by its developers.": {
+    "Dashboard": "סביר להניח שהווידג'ט הוסר מהמהערכת על ידי המפתחים שלו."
+  },
+  "Move": {
+    "Dashboard": "העבר",
+    "$$noContext": "העבר"
+  },
+  "Move the widget to another dashboard": {
+    "Dashboard": "עבר ווידג'ט ללוח מכוונים אחר"
+  },
+  "Move to another dashboard": {
+    "Dashboard": "העבר ללוח מכוונים אחר"
+  },
+  "Moving average": {
+    "Dashboard": "ממוצע נע"
+  },
+  "Moving maximum": {
+    "Dashboard": "מקסימום נע"
+  },
+  "My Dashboard": {
+    "Dashboard": "לוח המחוונים שלי"
+  },
+  "Network error. Please check your connection.": {
+    "Dashboard": "שגיאת רשת. אנא בדוק את החיבור שלך."
+  },
+  "New Dashboard": {
+    "Dashboard": "לוח מכוונים חדש"
+  },
+  "New dashboard... ({{shortcut}})": {
+    "Dashboard": "לוח מחוונים חדש... ({{shortcut}})"
+  },
+  "New/Reopened": {
+    "Dashboard": "חדש\\נפתח-מחדש",
+    "$$noContext": "חדש\\נפתח-מחדש"
+  },
+  "Next dashboard": {
+    "Dashboard": "לוח מכוונים הבא"
+  },
+  "No commits found": {
+    "Dashboard": "לא נמצאו הערות\\תגובות"
+  },
+  "No connection to service": {
+    "Dashboard": "אין חיבור לשירות"
+  },
+  "No groups": {
+    "Dashboard": "אין קבוצות",
+    "$$noContext": "אין קבוצות"
+  },
+  "No project teams": {
+    "Dashboard": "אין קבוצות עבור הפרויקט"
+  },
+  "No reports available.": {
+    "Dashboard": "אין דוחות זמינים."
+  },
+  "No reviews found": {
+    "Dashboard": "לא נמצאו סִקוּרים"
+  },
+  "No users": {
+    "Dashboard": "אין משתמשים",
+    "$$noContext": "אין משתמשים"
+  },
+  "Nothing found": {
+    "Dashboard": "לא נמצא דבר",
+    "$$noContext": "לא נמצא דבר"
+  },
+  "Per Issue": {
+    "Dashboard": "פר משימה\\בקשה"
+  },
+  "Per User": {
+    "Dashboard": "פר משתמש"
+  },
+  "Please contact your system administrator to check if the service is connected to Hub or delete the widget.": {
+    "Dashboard": "אנא צור קשר עם מנהל המערכת כדי לבדוק אם השירות מחובר ל-Hub או מחק את הווידג'ט."
+  },
+  "Preview and test the functionality of custom widgets. Reload the widget to apply updates to widget code.": {
+    "Dashboard": "בצע תצוגה מקדימה ובדיקה של תפקוד ווידג'טים מותאמים אישית. טען מחדש את הווידג'ט להחיל את העדכונים שנעשו בקוד של הווידג'ט."
+  },
+  "Previous dashboard": {
+    "Dashboard": "לוח המחוונים הקודם"
+  },
+  "Project teams": {
+    "Dashboard": "צוותי הפרויקט"
+  },
+  "Remains in one of the selected states": {
+    "Dashboard": "נשאר באחד מהמצבים שנבחרו"
+  },
+  "Remove": {
+    "Dashboard": "הסר",
+    "$$noContext": "הסר"
+  },
+  "Rename": {
+    "Dashboard": "שנה שם"
+  },
+  "Rename Dashboard": {
+    "Dashboard": "שנה את שם לוח המכוונים"
+  },
+  "Reopened": {
+    "Dashboard": "נפתח מחדש",
+    "$$noContext": "נפתח מחדש"
+  },
+  "Reorder Favorite Dashboards": {
+    "Dashboard": "ארגן מועדפים בלוחות מכוונים"
+  },
+  "Reorder favorite dashboards...": {
+    "Dashboard": "סדר מחדש את רשימת לוחות המחוונים המועדפים..."
+  },
+  "Report": {
+    "Dashboard": "דווח"
+  },
+  "Reported": {
+    "Dashboard": "מדווח",
+    "$$noContext": "מדווח"
+  },
+  "Resolved": {
+    "Dashboard": "נפתר",
+    "Resolve Rate Report": "נפתר",
+    "$$noContext": "נפתר"
+  },
+  "Resolved that day": {
+    "Dashboard": "נפתר באותו יום",
+    "$$noContext": "נפתר באותו יום"
+  },
+  "Restore": {
+    "Dashboard": "שחזר",
+    "$$noContext": "שחזר"
+  },
+  "Review is closed": {
+    "Dashboard": "הסיקור נסגר"
+  },
+  "Review is opened": {
+    "Dashboard": "הסיקור נפתח"
+  },
+  "Reviewer accepted the changes": {
+    "Dashboard": "הסוקר אישר את השינויים"
+  },
+  "Reviewer raised concern about the changes": {
+    "Dashboard": "הסוקר העלה ספקות ביחס לשינויים"
+  },
+  "Reviews": {
+    "Dashboard": "סקרי קוד",
+    "$$noContext": "סקרי קוד"
+  },
+  "Save": {
+    "Dashboard": "שמור",
+    "$$noContext": "שמור"
+  },
+  "Search query:": {
+    "Dashboard": "שאילתת חיפוש:"
+  },
+  "Search reports": {
+    "Dashboard": "חפש דוחות"
+  },
+  "Select dashboard": {
+    "Dashboard": "בחר לוח מחוונים"
+  },
+  "Select existing report": {
+    "Dashboard": "בחר דוח קיים"
+  },
+  "Select project": {
+    "Dashboard": "בחר פרוייקט",
+    "$$noContext": "בחר פרוייקט"
+  },
+  "Select projects": {
+    "Dashboard": "בחר פרוייקטים",
+    "$$noContext": "בחר פרוייקטים"
+  },
+  "Select service": {
+    "Dashboard": "בחר שירות"
+  },
+  "Select the target dashboard": {
+    "Dashboard": "בחר את לוח-המחוונים המיועד"
+  },
+  "Share": {
+    "Dashboard": "שתף",
+    "Hub Operations": "שתף"
+  },
+  "Share \"{{dashboardName}}\"": {
+    "Dashboard": "שתף \"{{dashboardName}}\""
+  },
+  "Share dashboard": {
+    "Dashboard": "שתף לוח מחוונים"
+  },
+  "Show alerts and open links in new browser tabs or windows": {
+    "Dashboard": "הצג אזהרות ופתח קישורים בלשוניות או חלונות דפדפן חדשים"
+  },
+  "Show widget configuration": {
+    "Dashboard": "הצג את הגדרות הווידג'ט"
+  },
+  "Still unresolved": {
+    "Dashboard": "עדיין לא נפתר",
+    "$$noContext": "עדיין לא נפתר"
+  },
+  "The report could not be displayed.": {
+    "Dashboard": "לא ניתן להציג את הדוח."
+  },
+  "The widget \"{{ widgetName }}\" has been moved to the": {
+    "Dashboard": "הווידג'ט \"{{ widgetName }}\" הועבר ל"
+  },
+  "The widget was not found in the system": {
+    "Dashboard": "הווידג'ט לא נמצא במערכת"
+  },
+  "This widget can’t connect to the {{serviceName}} service.": {
+    "Dashboard": "הווידג'ט לא יכול להתחבר לשירות {{serviceName}}."
+  },
+  "Time spent": {
+    "Dashboard": "הזמן שהושקע",
+    "$$noContext": "הזמן שהושקע"
+  },
+  "To reorder your personal list, drag a dashboard by its handle": {
+    "Dashboard": "בכדי לסדר מחדש את הרשימה האישית, גרור את לוח-המחוונים בתופסן שלו"
+  },
+  "To view and test your widget, upload it to an HTTP server and point to its location in the input field": {
+    "Dashboard": "בכדי להציג ולבדוק את הווידג'ט שלך, העלה אותו לשרת HTTP והצבע למיקומו בשדה הקלט"
+  },
+  "Too many cells": {
+    "Dashboard": "יותר מדי תאים"
+  },
+  "Total": {
+    "Dashboard": "סה\"כ",
+    "$$noContext": "סה\"כ"
+  },
+  "Use ⇧ ← → to switch between dashboards": {
+    "Dashboard": "השתמש בחיצים ⇧ →← בכדי לעבור בין לוחות-המחוונים"
+  },
+  "Users": {
+    "Dashboard": "משתמשים",
+    "$$noContext": "משתמשים"
+  },
+  "Verified": {
+    "Dashboard": "מאומת",
+    "Email verification state": "מאומת",
+    "Jabber verification state": "מאומת",
+    "Verify Rate Report": "מאומת"
+  },
+  "Widget \"{{ widgetName }}\" has been removed.": {
+    "Dashboard": "הווידג'ט \"{{ widgetName }}\" הוסר."
+  },
+  "You": {
+    "Dashboard": "אתה",
+    "Dashboard: you are the owner of dashboard": "אתה"
+  },
+  "You might want to remove the current widget and replace it with an alternative one.": {
+    "Dashboard": "יתכן שתרצה להסיר את הווידג'ט הנוכחי ולהחליף אותו באחד אחר."
+  },
+  "d": {
+    "Dashboard": "י'",
+    "$$noContext": "י'"
+  },
+  "days": {
+    "Dashboard": "ימים",
+    "$$noContext": "ימים"
+  },
+  "h": {
+    "Dashboard": "ש'",
+    "$$noContext": "ש'"
+  },
+  "m": {
+    "Dashboard": "ד'",
+    "$$noContext": "ד'"
+  },
+  "{{ usersCountString }} and {{ groupsCountString }}": {
+    "Dashboard": "{{ usersCountString }} ו-{{ groupsCountString }}"
+  },
+  "{{ usersCountString }}, {{ groupsCountString }}, and {{ teamsCountString }}": {
+    "Dashboard": "{{ usersCountString }}, {{ groupsCountString }}, ו-{{ teamsCountString }}"
+  },
+  "Confirm": {
+    "Form field label": "אשר",
+    "$$noContext": "אשר"
+  },
+  "Update": {
+    "Hub Operations": "עדכון",
+    "$$noContext": "עדכון"
+  },
+  "Standard": {
+    "Keyboard Layout Name": "רגיל"
+  },
+  "Fair": {
+    "Password strength policy": "הוגן"
+  },
+  "Good": {
+    "Password strength policy": "טוב"
+  },
+  "created": {
+    "Predefined fields": "נוצר",
+    "$$noContext": "נוצר"
+  },
+  "resolved date": {
+    "Predefined fields": "תאריך פתירה"
+  },
+  "updated": {
+    "Predefined fields": "עודכן",
+    "$$noContext": "עודכן"
+  },
+  "Comments": {
+    "Profile Notifications": "הערות/ תגובות",
+    "$$noContext": "הערות/ תגובות"
+  },
+  "Issue created": {
+    "Profile Notifications": "הבעיה נוצרה"
+  },
+  "Issue resolved": {
+    "Profile Notifications": "הבעיה נפתרה"
+  },
+  "Spent time": {
+    "Profile Notifications": "זמן שהושקע",
+    "$$noContext": "זמן שהושקע"
+  },
+  "Tag added": {
+    "Profile Notifications": "תגית נוספה"
+  },
+  "Tag removed": {
+    "Profile Notifications": "התגית הוסרה"
+  },
+  "Updates": {
+    "Profile Notifications": "עדכונים",
+    "$$noContext": "עדכונים"
+  },
+  "Votes": {
+    "Profile Notifications": "הצבעות",
+    "$$noContext": "הצבעות"
+  },
+  "Unassigned": {
+    "Project Create": "לא מוקצה",
+    "$$noContext": "לא מוקצה"
+  },
+  "Group by": {
+    "Report Axis": "קבץ לפי",
+    "$$noContext": "קבץ לפי"
+  },
+  "From": {
+    "State Transition": "מ"
+  },
+  "To": {
+    "State Transition": "עד"
+  },
+  "Attach": {
+    "Teamcity Integration": "צרף",
+    "$$noContext": "צרף"
+  },
+  "M": {
+    "WYSIWYG": "חודש"
+  },
+  "guinness": {
+    "bear": "guinness",
+    "$$noContext": "guinness"
+  },
+  "Custom refresh rate, seconds": {
+    "dashboard": "קצב רענון מותאם אישית, בשניות"
+  },
+  "Optional title": {
+    "dashboard": "כותרת אופציונלית"
+  },
+  "and <a class=\"{{className}}\" href=>{{total - 1}} more</a>": {
+    "user-list, membership column: and X groups more": "ו<a class=\"{{className}}\" href=>{{total - 1}}עוד</a>"
+  },
+  "1 Project_one": "פרויקט אחד",
+  "1 Project_few": "{{count}} פרויקטים",
+  "1 Project_many": "{{count}} פרויקטים",
+  "1 Project_other": "{{count}} פרויקטים",
+  "Accept": "אשר",
+  "Add Image": "הוסף תמונה",
+  "All Users": "כל המשתמשים",
+  "Are you sure you want to delete \"{{name}}\"?": "האם אתה בטוח שברצונך למחוק את \"{{name}}\"?",
+  "Attachment": "קובץ מצורף",
+  "Authentication failed": "האימות נכשל",
+  "Authorization required": "נדרש אישור",
+  "Backlog": "מצבור",
+  "Certificate {{ presentation }} is not valid after .": "התעודה {{ presentation }} לא תקפה אחרי .",
+  "Certificate {{ presentation }} is not valid until .": "התעודה {{ presentation }} לא תקפה לפני .",
+  "Change Password": "שנה סיסמה",
+  "Comment": "הערה/תגובה",
+  "Create new": "צור חדש",
+  "Date": "תאריך",
+  "Default": "ברירת המחדל",
+  "Delete Image": "מחק תמונה",
+  "Description": "תיאור",
+  "Despite our best efforts, the server is not working properly.": "למרות מיטב מאמצינו, השרת לא עובד כראוי.",
+  "Despite our best efforts, there's nothing here to show you with the URL you requested. Most likely the URL is invalid or you don't have permissions to access the page.": "למרות מיטב מאמצינו, אין מה להציג בכתובת ה-URL שביקשת. קרוב לוודאי כי הכתובת ה-URL אינה חוקית, או שאין לך את ההרשאות לגשת לעמוד זה.",
+  "Disconnected": "מנותק",
+  "Doesn't match the pattern": "לא תואם לתבנית",
+  "Email": "אימייל",
+  "Email:": "אימייל:",
+  "Everything": "הכל",
+  "Failed to validate {{ presentation }} certificate.": "אימות התעודה {{ presentation }} נכשל.",
+  "First page": "עמוד ראשון",
+  "Friday": "יום שישי",
+  "Hide details": "הסתר פרטים",
+  "Is not the same": "לא תואם",
+  "Is not unique": "איננו ייחודי",
+  "Is out of range": "מחוץ לטווח",
+  "Is too long": "ארוך מדי",
+  "Is too short": "קצר מדי",
+  "January|February|March|April|May|June|July|August|September|October|November|December": "ינואר|פברואר|מרץ|אפריל|מאי|יוני|יולי|אוגוסט|ספטמבר|אוקטובר|נובמבר|דצמבר",
+  "Last month": "בחודש שעבר",
+  "Last page": "עמוד אחרון",
+  "Last week": "בשבוע שעבר",
+  "Last working day": "יום העבודה האחרון",
+  "Learn more": "למידע נוסף",
+  "Login from your IP address \"{{ ip }}\" requires verification that you are not a robot.": "כניסה מכתובת ה-IP שלך \"{{ ip }}\" דורשת אימות שאינך רובוט.",
+  "Monday": "יום שני",
+  "New": "חדש",
+  "New Password": "סיסמה חדשה",
+  "No image file was selected": "לא נבחר קובץ תמונה",
+  "No options found": "לא נמצאו אפשרויות",
+  "No, no one's there.": "לא, אין כאן אף אחד.",
+  "Nope, can't find it!": "לא, לא ניתן למצוא אותו!",
+  "Oh-oh... Something went seriously wrong": "אוי ואבוי... משהו השתבש לחלוטין",
+  "Oh-oh... Something went seriously wrong.": "אוי ואבוי... משהו השתבש לחלוטין.",
+  "Ok": "אישור",
+  "Password": "סיסמה",
+  "Project": "פרויקט",
+  "Projects": "פרויקטים",
+  "Quick Notes": "פתקים מהירים",
+  "Release": "הוצאה",
+  "Reply": "הגב",
+  "Resend verification email": "שלח שוב אימייל אימות",
+  "Review": "ביקורת",
+  "Saturday": "שבת",
+  "Saved": "נשמר",
+  "Saved searches": "חיפושים שמורים",
+  "Select an option": "בחר אפשרות",
+  "Send verification email": "שלח דואר אלקטרוני לאימות",
+  "Should be a number": "צריך להיות מספר",
+  "Should be a valid URL": "צריך להיות כתובת URL חוקית",
+  "Should be a valid email": "צריך להיות אימייל חוקי",
+  "Show details": "הצג פרטים",
+  "Show preview": "הצג תצוגה-מקדימה",
+  "Sorry, your browser doesn't support File API": "מצטערים, הדפדפן שלך לא תומך ב-API המטפל בקבצים",
+  "Strong": "חזק",
+  "Summary": "תקציר",
+  "Sunday": "יום ראשון",
+  "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday": "ראשון|שני|שלישי|רביעי|חמישי|שישי|שבת",
+  "Sun|Mon|Tue|Wed|Thu|Fri|Sat": "א'|ב'|ג'|ד'|ה'|ו'|ש'",
+  "Tags": "תגיות",
+  "This month": "החודש",
+  "This week": "השבוע",
+  "Thursday": "יום חמישי",
+  "Today": "היום",
+  "Tree view": "תצוגת עץ",
+  "Tuesday": "יום שלישי",
+  "Two-factor Authentication": "אימות דו-שלבי",
+  "Two-factor authentication": "אימות דו-שלבי",
+  "Type": "סוג",
+  "Unfortunately, you are not allowed to access the page you've requested. It seems you don't have sufficient permissions.": "למרבה הצער, אינך רשאי לגשת לדף שביקשת. אין לך הרשאה.",
+  "Unknown": "לא ידוע",
+  "Unscheduled": "ללא תאריך יעד",
+  "Use existing": "השתמש בקיים",
+  "Users:": "משתמשים:",
+  "Value is invalid": "הערך לא חוקי",
+  "Value is required": "חובה להזין ערך",
+  "Visible to Group": "גלוי לקבוצה",
+  "Wednesday": "יום רביעי",
+  "Woah, you can't touch this!": "לא ניתן לגעת בזה!",
+  "Yesterday": "אתמול",
+  "You have reached the user limit for your license": "הגעת למגבלת כמות המשתמשים עבור הרשיון שלך",
+  "and": "וגם",
+  "and {{item.instances.length - 1}} more": "ו{{item.instances.length - 1}}עוד",
+  "asc": "בסדר עולה",
+  "attachment": "קובץ מצורף",
+  "comments": "הערות/ תגובות",
+  "desc": "בסדר יורד",
+  "group by": "קבץ לפי",
+  "issue readers": "קוראי issue",
+  "me": "אני",
+  "new": "חדש",
+  "next page": "עמוד הבא",
+  "or": "או",
+  "password": "סיסמה",
+  "per page": "לכל עמוד",
+  "previous": "הקודם",
+  "projects": "פרויקטים",
+  "spent time": "זמן שהושקע",
+  "tags": "תגיות",
+  "verified": "מאומת",
+  "w": "ב",
+  "yesterday": "אתמול",
+  "{{item.usersCount}} users": "{{item.usersCount}} משתמשים"
+}

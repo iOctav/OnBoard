@@ -1,0 +1,1655 @@
+{
+  "Role": {
+    "Access tab 'by role' toggle": "Rola",
+    "$$noContext": "Rola"
+  },
+  "Issues": {
+    "Agile Row Settings": "Zgłoszenia",
+    "$$noContext": "Zgłoszenia"
+  },
+  "Values": {
+    "Agile Row Settings": "Wartości",
+    "$$noContext": "Wartości"
+  },
+  "disabled": {
+    "Auth modules list": "wyłączone",
+    "Certificate list": "wyłączone",
+    "Custom widget list": "wyłączone",
+    "Zendesk Sidebar": "wyłączone",
+    "$$noContext": "wyłączone"
+  },
+  "enabled": {
+    "Auth modules list": "włączone",
+    "Certificate list": "włączone",
+    "Custom widget list": "włączone",
+    "$$noContext": "włączone"
+  },
+  "1 field": {
+    "Custom Fields_one": "1 pole",
+    "Custom Fields_few": "{{count}} pola",
+    "Custom Fields_many": "{{count}} pól",
+    "Custom Fields_other": "{{count}} pól",
+    "$$noContext_one": "1 pole",
+    "$$noContext_few": "{{count}} pola",
+    "$$noContext_many": "{{count}} pól",
+    "$$noContext_other": "{{count}} pól"
+  },
+  "1 project": {
+    "Custom Fields_one": "1 projekt",
+    "Custom Fields_few": "{{count}} projekty",
+    "Custom Fields_many": "{{count}} projektów",
+    "Custom Fields_other": "{{count}} projektów",
+    "values-usages-in-projects_one": "1 projekt",
+    "values-usages-in-projects_few": "{{count}} projekty",
+    "values-usages-in-projects_many": "{{count}} projektów",
+    "values-usages-in-projects_other": "{{count}} projektów",
+    "$$noContext_one": "1 projekt",
+    "$$noContext_few": "{{count}} projekty",
+    "$$noContext_many": "{{count}} projektów",
+    "$$noContext_other": "{{count}} projektów"
+  },
+  "\"{{dashboardName}}\" is shared with": {
+    "Dashboard": "„{{dashboardName}}” jest współdzielony z"
+  },
+  "## Welcome to Dashboard\n***\nClick Add Widget to place a widget on your Dashboard.": {
+    "Dashboard": "## Witaj w pulpicie nawigacyjnym\n***\nKliknij przycisk Dodaj widżet, aby dodać widżet do pulpitu nawigacyjnego."
+  },
+  "(already added)": {
+    "Dashboard": "(już dodano)"
+  },
+  "* Keep an eye on your progress with YouTrack reports.\n* View your tasks, critical issues or any kind of issues list from YouTrack.": {
+    "Dashboard": "* Miej oko na swoje postępy dzięki raportom YouTrack.\n* Przeglądaj swoje zadania, zgłoszenia krytyczne lub listę zgłoszeń dowolnego rodzaju na YouTrack."
+  },
+  "* Latest commits and reviews in Upsource.": {
+    "Dashboard": "* Najnowsze zatwierdzenia i recenzje w Upsource."
+  },
+  "<h3>Creating review...</h3>": {
+    "Dashboard": "<h3>Tworzenie recenzji...</h3>"
+  },
+  "About": {
+    "Dashboard": "Opis",
+    "$$noContext": "Opis"
+  },
+  "Accessible services": {
+    "Dashboard": "Dostępne usługi",
+    "$$noContext": "Dostępne usługi"
+  },
+  "Add to my dashboards": {
+    "Dashboard": "Dodaj do moich pulpitów nawigacyjnych"
+  },
+  "Add user, group or team": {
+    "Dashboard": "Dodaj użytkownika, grupę lub zespół",
+    "$$noContext": "Dodaj użytkownika, grupę lub zespół"
+  },
+  "Add widget": {
+    "Dashboard": "Dodaj widżet"
+  },
+  "Add widget from existing report": {
+    "Dashboard": "Dodaj widżet z istniejącego raportu"
+  },
+  "All": {
+    "Dashboard": "Wszystkie",
+    "$$noContext": "Wszystkie"
+  },
+  "Allow to edit dashboard": {
+    "Dashboard": "Zezwalaj na edycję pulpitu nawigacyjnego"
+  },
+  "Allows navigation away from the dashboard": {
+    "Dashboard": "Zezwalaj na nawigację spoza pulpitu nawigacyjnego"
+  },
+  "Another dashboard with the name \"{{data.name}}\" already exists": {
+    "Dashboard": "Jest już inny pulpit nawigacyjny o nazwie „{{data.name}}”"
+  },
+  "Apply": {
+    "Dashboard": "Zastosuj",
+    "$$noContext": "Zastosuj"
+  },
+  "Author": {
+    "Dashboard": "Autor",
+    "$$noContext": "Autor"
+  },
+  "Authors": {
+    "Dashboard": "Autorzy"
+  },
+  "Can't connect to dashboard backend": {
+    "Dashboard": "Nie można połączyć się z serwerem zaplecza pulpitu nawigacyjnego"
+  },
+  "Can't load information from service.": {
+    "Dashboard": "Nie można załadować informacji z usługi."
+  },
+  "Cancel": {
+    "Dashboard": "Anuluj",
+    "$$noContext": "Anuluj"
+  },
+  "Cannot create review. Please try again later or contact Ring Dashboard support.": {
+    "Dashboard": "Nie można utworzyć recenzji. Spróbuj ponownie później lub skontaktuj się z obsługą Ring Dashboard."
+  },
+  "Cannot load projects list": {
+    "Dashboard": "Nie można załadować listy projektów"
+  },
+  "Cannot process the provided code. Please try to export the desired dashboard again and use new generated code.": {
+    "Dashboard": "Nie można przetworzyć podanego kodu. Spróbuj ponownie wyeksportować żądany pulpit nawigacyjny i użyć nowego wygenerowanego kodu."
+  },
+  "Capabilities": {
+    "Dashboard": "Możliwości",
+    "$$noContext": "Możliwości"
+  },
+  "Changed to one of the complement states": {
+    "Dashboard": "Zmieniono na jeden ze stanów dopełniających"
+  },
+  "Clone widget": {
+    "Dashboard": "Kopiuj widżet"
+  },
+  "Close": {
+    "Dashboard": "Zamknij",
+    "$$noContext": "Zamknij"
+  },
+  "Code was successfully copied to clipboard": {
+    "Dashboard": "Kod został skopiowany do schowka"
+  },
+  "Commits": {
+    "Dashboard": "Zatwierdzenia"
+  },
+  "Commits:": {
+    "Dashboard": "Zatwierdzenia:"
+  },
+  "Copy": {
+    "Dashboard": "Kopiuj",
+    "$$noContext": "Kopiuj"
+  },
+  "Copy Widget Code": {
+    "Dashboard": "Skopiuj kod widżetu"
+  },
+  "Copy this code to import your configuration into another dashboard": {
+    "Dashboard": "Skopiuj ten kod, aby zaimportować konfigurację do innego pulpitu nawigacyjnego"
+  },
+  "Copy this link and send it to another user": {
+    "Dashboard": "Skopiuj ten link i wyślij go do innego użytkownika"
+  },
+  "Copy widget code": {
+    "Dashboard": "Skopiuj kod widżetu"
+  },
+  "Could not remove dashboard": {
+    "Dashboard": "Nie można usunąć pulpitu nawigacyjnego"
+  },
+  "Could not save changes": {
+    "Dashboard": "Nie można zapisać zmian"
+  },
+  "Create": {
+    "Dashboard": "Utwórz",
+    "Hub Operations": "Utwórz",
+    "$$noContext": "Utwórz"
+  },
+  "Create again": {
+    "Dashboard": "Utwórz ponownie"
+  },
+  "Create new report": {
+    "Dashboard": "Utwórz nowy raport"
+  },
+  "Create review": {
+    "Dashboard": "Utwórz recenzję"
+  },
+  "Create widget": {
+    "Dashboard": "Utwórz widżet"
+  },
+  "Dashboard": {
+    "Dashboard": "Pulpit nawigacyjny",
+    "$$noContext": "Pulpit nawigacyjny"
+  },
+  "Dashboard \"{{ dashboardName }}\" has been removed.": {
+    "Dashboard": "Pulpit nawigacyjny „{{ dashboardName }}” został usunięty."
+  },
+  "Dashboard not found": {
+    "Dashboard": "Nie znaleziono pulpitu nawigacyjnego"
+  },
+  "Date:": {
+    "Dashboard": "Data:",
+    "$$noContext": "Data:"
+  },
+  "Days": {
+    "Dashboard": "Dni",
+    "$$noContext": "Dni"
+  },
+  "Delete": {
+    "Dashboard": "Usuń",
+    "Hub Operations": "Usuń",
+    "Remove action": "Usuń",
+    "$$noContext_one": "Usuń",
+    "$$noContext_few": "Usuń",
+    "$$noContext_many": "Usuń",
+    "$$noContext_other": "Usuń"
+  },
+  "Details...": {
+    "Dashboard": "Szczegóły..."
+  },
+  "Dismiss": {
+    "Dashboard": "Zamknij"
+  },
+  "Edit": {
+    "Dashboard": "Edytuj",
+    "Hub Operations": "Edytuj",
+    "$$noContext": "Edytuj"
+  },
+  "Edit search query": {
+    "Dashboard": "Edytuj zapytanie wyszukiwania"
+  },
+  "Enter widget hosting URL": {
+    "Dashboard": "Wprowadź adres URL widżetu"
+  },
+  "Fixed": {
+    "Dashboard": "Naprawiono",
+    "Fix Rate Report": "Naprawiono",
+    "$$noContext": "Naprawiono"
+  },
+  "For detailed instructions, <a target=\"_blank\" ng-href=\"{{playgroundCtrl.dshGetWidgetPlaygroundHelpLink()}}\" class=\"ring-link\"><span>read the documentation</span></a>": {
+    "Dashboard": "Aby uzyskać szczegółowe instrukcje, <a target=\"_blank\" ng-href=\"{{playgroundCtrl.dshGetWidgetPlaygroundHelpLink()}}\" class=\"ring-link\"><span>przeczytaj dokumentację</span></a>"
+  },
+  "Get an overview of your projects at a glance. Add widgets to the dashboard as cards\n      and arrange them any way you like. Different widgets are available for each of the JetBrains team tools\n      that are integrated with your installation. Build a personal dashboard or share the dashboard with your project team.": {
+    "Dashboard": "Uzyskaj przegląd Twoich projektów w skrócie. Dodawaj widżety do pulpitu nawigacyjnego jako karty i układaj je w dowolny żądany sposób. Dla każdego z narzędzi zespołu JetBrains dostępne są różne widżety, integrowane z Twoją instalacją. Utwórz osobisty pulpit nawigacyjney lub udostępnij go swojemu zespołowi projektowemu."
+  },
+  "Groups": {
+    "Dashboard": "Grupy",
+    "$$noContext": "Grupy"
+  },
+  "Import from dashboard": {
+    "Dashboard": "Importowanie z pulpitu nawigacyjnego"
+  },
+  "Insert the code of an exported dashboard configuration": {
+    "Dashboard": "Wstaw kod wyeksportowanej konfiguracji pulpitu nawigacyjnego"
+  },
+  "Link was successfully copied to clipboard": {
+    "Dashboard": "Link został skopiowany do schowka"
+  },
+  "List dashboards": {
+    "Dashboard": "Wyświetl listę pulpitów nawigacyjnych"
+  },
+  "Loading...": {
+    "Dashboard": "Ładowanie...",
+    "$$noContext": "Ładowanie..."
+  },
+  "Most likely, the widget has been removed from the system by its developers.": {
+    "Dashboard": "Najprawdopodobniej widżet został usunięty z systemu przez jego twórców."
+  },
+  "Move": {
+    "Dashboard": "Przenieś",
+    "$$noContext": "Przenieś"
+  },
+  "Move the widget to another dashboard": {
+    "Dashboard": "Przenieś widżet do innego pulpitu nawigacyjnego"
+  },
+  "Move to another dashboard": {
+    "Dashboard": "Przenieś do innego panelu nawigacyjnego"
+  },
+  "Moving average": {
+    "Dashboard": "Średnia ruchoma"
+  },
+  "Moving maximum": {
+    "Dashboard": "Ruchome maksimum"
+  },
+  "My Dashboard": {
+    "Dashboard": "Mój pulpit nawigacyjny"
+  },
+  "Network error. Please check your connection.": {
+    "Dashboard": "Błąd sieci. Sprawdź połączenie."
+  },
+  "New Dashboard": {
+    "Dashboard": "Nowy pulpit nawigacyjny"
+  },
+  "New dashboard... ({{shortcut}})": {
+    "Dashboard": "Nowy pulpit nawigacyjny... ({{shortcut}})"
+  },
+  "New/Reopened": {
+    "Dashboard": "Nowy / otwarty ponownie",
+    "$$noContext": "Nowy / otwarty ponownie"
+  },
+  "Next dashboard": {
+    "Dashboard": "Następny pulpit nawigacyjny"
+  },
+  "No commits found": {
+    "Dashboard": "Nie znaleziono zatwierdzeń"
+  },
+  "No connection to service": {
+    "Dashboard": "Brak połączenia z usługą"
+  },
+  "No groups": {
+    "Dashboard": "Brak grup",
+    "$$noContext": "Brak grup"
+  },
+  "No project teams": {
+    "Dashboard": "Brak zespołów projektowych"
+  },
+  "No reports available.": {
+    "Dashboard": "Brak dostępnych raportów."
+  },
+  "No reviews found": {
+    "Dashboard": "Nie znaleziono recenzji"
+  },
+  "No users": {
+    "Dashboard": "Brak użytkowników",
+    "$$noContext": "Brak użytkowników"
+  },
+  "Nothing found": {
+    "Dashboard": "Niczego nie znaleziono",
+    "$$noContext": "Niczego nie znaleziono"
+  },
+  "Per Issue": {
+    "Dashboard": "Na jedno zgłoszenie"
+  },
+  "Per User": {
+    "Dashboard": "Na jednego użytkownika"
+  },
+  "Please contact your system administrator to check if the service is connected to Hub or delete the widget.": {
+    "Dashboard": "Skontaktuj się z administratorem systemu, aby sprawdzić, czy usługa jest połączona z Hub lub usunąć widżet."
+  },
+  "Preview and test the functionality of custom widgets. Reload the widget to apply updates to widget code.": {
+    "Dashboard": "Wyświetl podgląd i przetestuj działanie widżetów niestandardowych. Załaduj ponownie widżet, aby zastosować aktualizacje do kodu widżetu."
+  },
+  "Previous dashboard": {
+    "Dashboard": "Poprzedni pulpit nawigacyjny"
+  },
+  "Project teams": {
+    "Dashboard": "Zespoły projektowe"
+  },
+  "Remains in one of the selected states": {
+    "Dashboard": "Pozostaje w jednym z wybranych Stanów"
+  },
+  "Remove": {
+    "Dashboard": "Usuń",
+    "$$noContext": "Usuń"
+  },
+  "Rename": {
+    "Dashboard": "Zmień nazwę"
+  },
+  "Rename Dashboard": {
+    "Dashboard": "Zmień nazwę pulpitu nawigacyjnego"
+  },
+  "Reopened": {
+    "Dashboard": "Ponownie otwarto",
+    "$$noContext": "Ponownie otwarto"
+  },
+  "Reorder Favorite Dashboards": {
+    "Dashboard": "Zmień kolejność ulubionych pulpitów nawigacyjnych"
+  },
+  "Reorder favorite dashboards...": {
+    "Dashboard": "Zmienianie kolejności ulubionych pulpitów nawigacyjnych..."
+  },
+  "Report": {
+    "Dashboard": "Zgłoś"
+  },
+  "Reported": {
+    "Dashboard": "Zgłoszono",
+    "$$noContext": "Zgłoszono"
+  },
+  "Resolved": {
+    "Dashboard": "Rozwiązano",
+    "Resolve Rate Report": "Rozwiązano",
+    "$$noContext": "Rozwiązano"
+  },
+  "Resolved that day": {
+    "Dashboard": "Rozwiązano tego dnia",
+    "$$noContext": "Rozwiązano tego dnia"
+  },
+  "Restore": {
+    "Dashboard": "Przywróć",
+    "$$noContext": "Przywróć"
+  },
+  "Review is closed": {
+    "Dashboard": "Recenzja jest zamknięta"
+  },
+  "Review is opened": {
+    "Dashboard": "Recenzja jest otwarta"
+  },
+  "Reviewer accepted the changes": {
+    "Dashboard": "Recenzent zaakceptował zmiany"
+  },
+  "Reviewer raised concern about the changes": {
+    "Dashboard": "Recenzent wyraził zastrzeżenie do zmian"
+  },
+  "Reviews": {
+    "Dashboard": "Recenzje",
+    "$$noContext": "Recenzje"
+  },
+  "Save": {
+    "Dashboard": "Zapisz",
+    "$$noContext": "Zapisz"
+  },
+  "Search query:": {
+    "Dashboard": "Zapytanie wyszukiwania:"
+  },
+  "Search reports": {
+    "Dashboard": "Raporty wyszukiwania"
+  },
+  "Select dashboard": {
+    "Dashboard": "Wybierz pulpit nawigacyjny"
+  },
+  "Select existing report": {
+    "Dashboard": "Wybierz istniejący raport"
+  },
+  "Select project": {
+    "Dashboard": "Wybierz projekt",
+    "$$noContext": "Wybierz projekt"
+  },
+  "Select projects": {
+    "Dashboard": "Wybierz projekty",
+    "$$noContext": "Wybierz projekty"
+  },
+  "Select service": {
+    "Dashboard": "Wybierz usługę"
+  },
+  "Select the target dashboard": {
+    "Dashboard": "Wybierz docelowy pulpit nawigacyjny"
+  },
+  "Share": {
+    "Dashboard": "Udostępnij",
+    "Hub Operations": "Udostępnij"
+  },
+  "Share \"{{dashboardName}}\"": {
+    "Dashboard": "Udostępnij „{{dashboardName}}”"
+  },
+  "Share Link": {
+    "Dashboard": "Udostępnij link"
+  },
+  "Share dashboard": {
+    "Dashboard": "Udostępnij pulpit nawigacyjny"
+  },
+  "Share link": {
+    "Dashboard": "Udostępnij link"
+  },
+  "Show alerts and open links in new browser tabs or windows": {
+    "Dashboard": "Wyświetlanie alertów i otwieranie linków w nowych kartach lub oknach przeglądarki"
+  },
+  "Show widget configuration": {
+    "Dashboard": "Pokaż konfigurację widżetu"
+  },
+  "Still unresolved": {
+    "Dashboard": "Nadal nierozwiązane",
+    "$$noContext": "Nadal nierozwiązane"
+  },
+  "Submit and copy": {
+    "Dashboard": "Prześlij i skopiuj"
+  },
+  "The report could not be displayed.": {
+    "Dashboard": "Nie można wyświetlić raportu."
+  },
+  "The widget \"{{ widgetName }}\" has been moved to the": {
+    "Dashboard": "Widżet „{{ widgetName }}” został przeniesiony do"
+  },
+  "The widget was not found in the system": {
+    "Dashboard": "Widżet nie został znaleziony w systemie"
+  },
+  "This widget can’t connect to the {{serviceName}} service.": {
+    "Dashboard": "Ten widżet nie może połączyć się z usługą {{serviceName}}."
+  },
+  "Time spent": {
+    "Dashboard": "Poświęcony czas",
+    "$$noContext": "Poświęcony czas"
+  },
+  "To reorder your personal list, drag a dashboard by its handle": {
+    "Dashboard": "Aby zmienić kolejność listy osobistej, przeciągnij pulpit nawigacyjny za pomocą uchwytu"
+  },
+  "To view and test your widget, upload it to an HTTP server and point to its location in the input field": {
+    "Dashboard": "Aby wyświetlić i przetestować widżet, prześlij go na serwer HTTP i wskaż jego lokalizację w polu wprowadzania danych"
+  },
+  "Too many cells": {
+    "Dashboard": "Zbyt wiele komórek"
+  },
+  "Total": {
+    "Dashboard": "Razem",
+    "$$noContext": "Razem"
+  },
+  "Use ⇧ ← → to switch between dashboards": {
+    "Dashboard": "Użyj ⇧ ← → do przełączania się pomiędzy pulpitami nawigacyjnymi"
+  },
+  "Users": {
+    "Dashboard": "Użytkownicy",
+    "$$noContext": "Użytkownicy"
+  },
+  "Verified": {
+    "Dashboard": "Zweryfikowane",
+    "Email verification state": "Zweryfikowane",
+    "Jabber verification state": "Zweryfikowane",
+    "Verify Rate Report": "Zweryfikowane"
+  },
+  "Widget \"{{ widgetName }}\" has been removed.": {
+    "Dashboard": "Widżet „{{ widgetName }}” został usunięty."
+  },
+  "You": {
+    "Dashboard": "Ty",
+    "Dashboard: you are the owner of dashboard": "Ty"
+  },
+  "You might want to remove the current widget and replace it with an alternative one.": {
+    "Dashboard": "Możesz usunąć bieżący widżet i zastąpić go innym."
+  },
+  "d": {
+    "Dashboard": "d",
+    "$$noContext": "d"
+  },
+  "days": {
+    "Dashboard": "dni",
+    "$$noContext": "dni"
+  },
+  "h": {
+    "Dashboard": "g",
+    "$$noContext": "g"
+  },
+  "m": {
+    "Dashboard": "m",
+    "$$noContext": "m"
+  },
+  "{{ usersCountString }} and {{ groupsCountString }}": {
+    "Dashboard": "{{ usersCountString }} i {{ groupsCountString }}"
+  },
+  "{{ usersCountString }}, {{ groupsCountString }}, and {{ teamsCountString }}": {
+    "Dashboard": "{{ usersCountString }}, {{ groupsCountString }} i {{ teamsCountString }}"
+  },
+  "1 Draft": {
+    "Drafts dropdown_one": "1 wersja robocza",
+    "Drafts dropdown_few": "{{count}} wersje robocze",
+    "Drafts dropdown_many": "{{count}} wersji roboczych",
+    "Drafts dropdown_other": "{{count}} wersji roboczej"
+  },
+  "Unverified": {
+    "Email verification state": "Nie zweryfikowano",
+    "Jabber verification state": "Nie zweryfikowano"
+  },
+  "Confirm": {
+    "Form field label": "Potwierdź",
+    "$$noContext": "Potwierdź"
+  },
+  "Add": {
+    "Gantt chart add issues": "Dodaj",
+    "$$noContext": "Dodaj"
+  },
+  "issues": {
+    "Gantt chart add issues": "zgłoszenia"
+  },
+  "Admin": {
+    "Hub Operations": "Administrator"
+  },
+  "Delete Not Own": {
+    "Hub Operations": "Usuń cudze"
+  },
+  "Delete Own": {
+    "Hub Operations": "Usuń własne"
+  },
+  "Link": {
+    "Hub Operations": "Link",
+    "WYSIWYG": "Link"
+  },
+  "Private Read": {
+    "Hub Operations": "Odczyt prywatny"
+  },
+  "Project Admin": {
+    "Hub Operations": "Administrator projektu"
+  },
+  "Read": {
+    "Hub Operations": "Odczyt"
+  },
+  "Update": {
+    "Hub Operations": "Zaktualizuj",
+    "$$noContext": "Zaktualizuj"
+  },
+  "Update Watchers": {
+    "Hub Operations": "Aktualizacja obserwatorów"
+  },
+  "View Voters": {
+    "Hub Operations": "Wyświetlanie głosujących"
+  },
+  "View Watchers": {
+    "Hub Operations": "Wyświetlanie obserwatorów"
+  },
+  "Standard": {
+    "Keyboard Layout Name": "Standardowa"
+  },
+  "List": {
+    "List Mode": "Lista"
+  },
+  "Tree": {
+    "List Mode": "Drzewo"
+  },
+  "Fair": {
+    "Password strength policy": "Przeciętne"
+  },
+  "Good": {
+    "Password strength policy": "Dobre"
+  },
+  "Very Strong": {
+    "Password strength policy": "Bardzo silne"
+  },
+  "Create Group": {
+    "Permission name": "Utwórz grupę"
+  },
+  "Create Project": {
+    "Permission name": "Utwórz projekt",
+    "$$noContext": "Utwórz projekt"
+  },
+  "Create User": {
+    "Permission name": "Tworzenie użytkownika"
+  },
+  "Delete Group": {
+    "Permission name": "Usuń grupę",
+    "$$noContext_one": "Usuń grupę",
+    "$$noContext_few": "Usuń grupy",
+    "$$noContext_many": "Usuń grupy",
+    "$$noContext_other": "Usuń grupy"
+  },
+  "Delete Project": {
+    "Permission name": "Usunięcie projektu"
+  },
+  "Delete User": {
+    "Permission name": "Usunięcie użytkownika",
+    "$$noContext_one": "Usuń użytkownika",
+    "$$noContext_few": "Usuń użytkowników",
+    "$$noContext_many": "Usuń użytkowników",
+    "$$noContext_other": "Usuń użytkowników"
+  },
+  "Read Role": {
+    "Permission name": "Odczyt roli"
+  },
+  "Update Project": {
+    "Permission name": "Aktualizacja projektu"
+  },
+  "Update User": {
+    "Permission name": "Aktualizacja użytkownika"
+  },
+  "created": {
+    "Predefined fields": "utworzono",
+    "$$noContext": "utworzono"
+  },
+  "resolved date": {
+    "Predefined fields": "data rozwiązana"
+  },
+  "updated": {
+    "Predefined fields": "zaktualizowano",
+    "$$noContext": "zaktualizowano"
+  },
+  "Comments": {
+    "Profile Notifications": "Komentarze",
+    "$$noContext": "Komentarze"
+  },
+  "I post a comment to an issue or article": {
+    "Profile Notifications": "Komentuję zgłoszenie lub artykuł"
+  },
+  "I update an issue or article": {
+    "Profile Notifications": "Aktualizuję zgłoszenie lub artykuł"
+  },
+  "I vote for an issue": {
+    "Profile Notifications": "Głosuję na zgłoszenie"
+  },
+  "Issue and article comments": {
+    "Profile Notifications": "Komentarze do zgłoszeń i artykułów"
+  },
+  "Issue and article updates": {
+    "Profile Notifications": "Aktualizacje zgłoszeń i artykułów"
+  },
+  "Issue created": {
+    "Profile Notifications": "Zgłoszenie utworzone"
+  },
+  "Issue resolved": {
+    "Profile Notifications": "Zgłoszenie rozwiązane"
+  },
+  "Spent time": {
+    "Profile Notifications": "Poświęcony czas",
+    "$$noContext": "Poświęcony czas"
+  },
+  "Tag added": {
+    "Profile Notifications": "Tag dodany"
+  },
+  "Tag removed": {
+    "Profile Notifications": "Tag usunięty"
+  },
+  "Updates": {
+    "Profile Notifications": "Aktualizacje",
+    "$$noContext": "Aktualizacje"
+  },
+  "Votes": {
+    "Profile Notifications": "Głosy",
+    "$$noContext": "Głosy"
+  },
+  "Unassigned": {
+    "Project Create": "Nie przypisano",
+    "$$noContext": "Nie przypisano"
+  },
+  "import from another tracker": {
+    "Project Create": "importuj z innego trackera",
+    "Project List": "importuj z innego trackera"
+  },
+  "Remove \"{{data.names}}\"?": {
+    "Remove Custom Field": "Usuń \"{{data.names}}\"?"
+  },
+  "Group by": {
+    "Report Axis": "Grupuj wg",
+    "$$noContext": "Grupuj wg"
+  },
+  "Project or organization": {
+    "Roles tab of Users/Groups page, 'view by' toggle": "Projekt lub organizacja"
+  },
+  "From": {
+    "State Transition": "Od"
+  },
+  "To": {
+    "State Transition": "Do"
+  },
+  "Attach": {
+    "Teamcity Integration": "Załącz",
+    "$$noContext": "Załącz"
+  },
+  "Disabled": {
+    "User merge, Two-factor authentication setting": "Wyłączono",
+    "$$noContext": "Wyłączono"
+  },
+  "M": {
+    "WYSIWYG": "M"
+  },
+  "Markdown": {
+    "WYSIWYG": "Markdown",
+    "$$noContext": "Markdown"
+  },
+  "guinness": {
+    "bear": "guinness",
+    "$$noContext": "guinness"
+  },
+  "Custom refresh rate, seconds": {
+    "dashboard": "Niestandardowa częstotliwość odświeżania, w sekundach"
+  },
+  "Optional title": {
+    "dashboard": "Opcjonalny tytuł"
+  },
+  "and <a class=\"{{className}}\" href=>{{total - 1}} more</a>": {
+    "user-list, membership column: and X groups more": "i <a class=\"{{className}}\" href=>{{total - 1}} więcej</a>"
+  },
+  "![](attachment.png)": "![](załącznik.png)",
+  "!attachment.png!": "!załącznik.png!",
+  "\"manifest.version\" field does not satisfy \"Semantic Versioning\" principles. Visit https://semver.org for details.": "Pole „manifest.version” nie spełnia zasad „wersjonowania semantycznego”. Aby uzyskać szczegółowe informacje, odwiedź witrynę https://semver.org.",
+  "\"{{name}}\" added to favorites": "„{{name}}” dodano do ulubionych",
+  "\"{{name}}\" is added to favorites": "„{{name}}” dodano do ulubionych",
+  "\"{{name}}\" is created": "Trwa tworzenie „{{name}}”",
+  "\"{{name}}\" is removed from favorites": "„{{name}}” usunięto z ulubionych",
+  "\"{{name}}\" is updated": "Trwa aktualizowanie „{{name}}”",
+  "\"{{name}}\" notifications updated": "Zaktualizowano powiadomienia „{{name}}”",
+  "\"{{name}}\" removed from favorites": "„{{name}}” usunięto z ulubionych",
+  "\"{{queryName}}\" deleted": "„{{queryName}}” usunięto",
+  "\"{{queryName}}\" saved": "„{{queryName}}” zapisano",
+  "\"{{queryName}}\" updated": "„{{queryName}}” zaktualizowano",
+  "\"{{tagName}}\" deleted": "„{{tagName}}” usunięto",
+  "\"{{tagName}}\" saved": "„{{tagName}}” zapisano",
+  "\"{{tagName}}\" updated": "„{{tagName}}” zaktualizowano",
+  "# Title": "# Tytuł",
+  "&lt;issue was removed&gt;": "&lt;zgłoszenie zostało usunięte&gt;",
+  "(Paused)": "(Wstrzymane)",
+  "**Strong**": "**Pogrubienie**",
+  "*Strong*": "*Pogrubienie*",
+  "+ 1 card_one": "+ 1 karta",
+  "+ 1 card_few": "+ {{count}} kart",
+  "+ 1 card_many": "+ {{count}} kart",
+  "+ 1 card_other": "+ {{count}} kart",
+  "-12 or 34": "-12 lub 34",
+  "0 cards": "0 kart",
+  "1 Project_one": "1 Projekt",
+  "1 Project_few": "{{count}} Projektów",
+  "1 Project_many": "{{count}} Projektów",
+  "1 Project_other": "{{count}} Projektów",
+  "1 card_one": "1 karta",
+  "1 card_few": "{{count}} kart",
+  "1 card_many": "{{count}} kart",
+  "1 card_other": "{{count}} kart",
+  "1 file": "1 plik",
+  "1 hour": "1 godzina",
+  "1 issue_one": "1 zgłoszenie",
+  "1 issue_few": "{{count}} zgłoszeń",
+  "1 issue_many": "{{count}} zgłoszeń",
+  "1 issue_other": "{{count}} zgłoszeń",
+  "1 issue found": "Znaleziono 1 zgłoszenie",
+  "1 minute": "1 minuta",
+  "1 week = {{daysAWeek}} days, 1 day = {{minutesADayPresentation}}": "1 tydzień = {{daysAWeek}} dni, 1 dzień = {{minutesADayPresentation}}",
+  "2FA": "Uwierzytelnianie dwustopniowe",
+  "<a class=\"ring-link\" target=\"_blank\" href=\"{{ login.detail.changePasswordUrl }}\">Change password</a>\n  in JetBrains Account": "<a class=\"ring-link\" target=\"_blank\" href=\"{{ login.detail.changePasswordUrl }}\">Zmień hasło</a>\n  na koncie JetBrains",
+  "<a class=\"ring-link\" target=\"_blank\" href=\"{{ login.detail.changePasswordUrl }}\">Change password</a> in Atlassian Jira": "<a class=\"ring-link\" target=\"_blank\" href=\"{{ login.detail.changePasswordUrl }}\">Zmień hasło</a> w Atlassian Jira",
+  "<span ng-if=\"!tableActiveItem.data.fieldDefaults.canBeEmpty\" ng-include=\"'pages/admin/template/custom-fields/required-field-warning.html'\"></span>\n          No value": "<span ng-if=\"!tableActiveItem.data.fieldDefaults.canBeEmpty\" ng-include=\"'pages/admin/template/custom-fields/required-field-warning.html'\"></span>\n          Brak wartości",
+  "=Title=": "=Tytuł=",
+  "@mentions that reference my username": "@mentions, które odwołują się do mojej nazwy użytkownika",
+  "A batch update is in progress. If you leave this page, unprocessed changes are discarded.": "Trwa aktualizacja wsadowa. Jeśli opuścisz tę stronę, nieprzetworzone zmiany zostaną odrzucone.",
+  "AM|PM": "AM|PM",
+  "Accept": "Zaakceptuj",
+  "Accept agreement": "Zaakceptuj umowę",
+  "Accept only emails sent to this address. Leave blank to accept all emails.": "Akceptuj tylko wiadomości e-mail wysyłane na ten adres. Pozostaw puste, aby akceptować wszystkie wiadomości e-mail.",
+  "Access": "Dostęp",
+  "Access Management": "Zarządzanie dostępem",
+  "Account disabled": "Konto wyłączone",
+  "Account expired": "Konto wygasło",
+  "Account status": "Stan konta",
+  "Accounts": "Konta",
+  "Action": "Akcja",
+  "Actions": "Akcje",
+  "Activate": "Aktywuj",
+  "Active Directory": "Active Directory",
+  "Activity Types": "Typy aktywności",
+  "Activity settings": "Ustawienia aktywności",
+  "Add Credentials": "Dodaj poświadczenia",
+  "Add Image": "Dodaj obraz",
+  "Add Mapping": "Dodaj mapowanie",
+  "Add New Mail Server": "Dodaj nowy serwer poczty",
+  "Add Rule": "Dodaj regułę",
+  "Add SSH Public Key": "Dodaj klucz publiczny SSH",
+  "Add Server": "Dodaj serwer",
+  "Add Team Members": "Dodaj członków zespołu",
+  "Add and open": "Dodaj i otwórz",
+  "Add article to favorites": "Dodaj artykuł do ulubionych",
+  "Add card": "Dodaj kartę",
+  "Add card to sprint": "Dodaj kartę do sprintu",
+  "Add certificates": "Dodaj certyfikat",
+  "Add column": "Dodaj kolumnę",
+  "Add comment": "Dodaj komentarz",
+  "Add commit": "Dodaj zatwierdzenie",
+  "Add credentials": "Dodaj poświadczenia",
+  "Add field": "Dodaj pole",
+  "Add field to": "Dodaj pole do",
+  "Add field to project": "Dodaj pole do projektu",
+  "Add fields": "Dodaj pola",
+  "Add files": "Dodaj pliki",
+  "Add group": "Dodaj grupę",
+  "Add key": "Dodaj klucz",
+  "Add link": "Dodaj link",
+  "Add mapping": "Dodaj mapowanie",
+  "Add members": "Dodaj członków",
+  "Add module": "Dodaj moduł",
+  "Add new value": "Dodaj nową wartość",
+  "Add options": "Dodaj opcje",
+  "Add project": "Dodaj projekt",
+  "Add projects": "Dodaj projekty",
+  "Add reaction": "Dodaj reakcję",
+  "Add row": "Dodaj wiersz",
+  "Add selected users to Group": "Dodaj wybranych użytkowników do grupy",
+  "Add tag": "Dodaj tag",
+  "Add to assignees": "Dodaj do przypisanych",
+  "Add to board": "Dodaj do tablicy",
+  "Add to favorites": "Dodaj do ulubionych",
+  "Add to group": "Dodaj do grupy",
+  "Add to sprint": "Dodaj do sprintu",
+  "Add user": "Dodaj użytkownika",
+  "Add users": "Dodaj użytkowników",
+  "Add value": "Dodaj wartość",
+  "Add widgets to monitor the current status in your project. Widgets are visible to all users who can see this project.": "Dodaj widżety, aby monitorować bieżący stan projektu. Widżety są widoczne dla wszystkich użytkowników, którzy mogą zobaczyć ten projekt.",
+  "Add {{module.name}} credentials to profile": "Dodaj poświadczenia {{module.name}} do profilu",
+  "Added {{userName}} to group {{groupName}}": "{{userName}} dodano do grupy {{groupName}}",
+  "Adding a trusted server certificate means that you trust the server that possesses a respective key. <br>\n      Upload a trusted certificate to configure a secure connection with supported authentication modules.": "Dodanie certyfikatu zaufanego serwera znaczy, że ufasz serwerowi, który posiada odpowiedni klucz. <br>\n      Prześlij zaufany certyfikat, aby skonfigurować bezpieczne połączenie z obsługiwanymi modułami uwierzytelniania.",
+  "Administration": "Administracja",
+  "Advanced Settings": "Ustawienia zaawansowane",
+  "Agile Boards": "Tablice zwinne",
+  "Agile name is required": "Zwinna nazwa jest wymagana",
+  "Aliases": "Aliasy",
+  "All Projects": "Wszystkie projekty",
+  "All Users": "Wszyscy użytkownicy",
+  "All authors": "Wszyscy autorzy",
+  "All cards": "Wszystkie karty",
+  "All projects": "Wszystkie projekty",
+  "All references to the merged groups are replaced with the resulting group. This includes sharing settings for dashboards, auto-join options in authentication modules, and project team memberships.": "Wszystkie odwołania do scalonych grup są zastępowane grupą wynikową. Obejmuje to ustawienia udostępniania pulpitów nawigacyjnych, opcje automatycznego dołączania w modułach uwierzytelniania i członkostwa w zespołach projektowych.",
+  "All sessions logged in with the \"{{login.name || login.login}}\" username will be terminated when its access token expires.": "Wszystkie sesje, do których zalogowano się za pomocą nazwy użytkownika „{{login.name || login.login}}” zostaną zakończone po wygaśnięciu tokenu dostępu.",
+  "All sessions will be logged out and subsequent login attempts will be denied. Any current session will be terminated when its access token expires.": "Nastąpi wylogowanie z wszystkich sesji, a dalsze próby zalogowania będą odrzucane. Każda bieżąca sesja zostanie zakończona po wygaśnięciu jej tokenu dostępu.",
+  "All work types": "Wszystkie rodzaje pracy",
+  "Allow editing": "Zezwalaj na edycję",
+  "Allowed Applications": "Dozwolone aplikacje",
+  "Allowed organizations": "Dozwolone organizacje",
+  "Already exists": "Już istnieje",
+  "Amazon": "Amazon",
+  "An administrator has required two-factor authentication for one or more groups that you are a member of": "Administrator wymaga uwierzytelniania dwuskładnikowego w co najmniej jednej grupie, do której należysz",
+  "An administrator has required two-factor authentication for one or more groups that you are a member of. To continue working with the access that is granted to your account, enable this feature.": "Administrator wymaga uwierzytelniania dwuskładnikowego w co najmniej jednej grupie, do której należysz. Aby kontynuować pracę z dostępem przyznanym Twojemu kontu, włącz tę funkcję.",
+  "Analytics": "Analityka",
+  "Annual Subscription": "Subskrypcja roczna",
+  "App password": "Hasło aplikacji",
+  "Application logo": "Logo aplikacji",
+  "Apply Command": "Zastosuj polecenie",
+  "Apply Fixes": "Zastosuj poprawki",
+  "Apply Quick Fix": "Zastosuj szybką poprawkę",
+  "Apply all updates": "Zastosuj wszystkie aktualizacje",
+  "Apply changes": "Zastosuj zmiany",
+  "Apply fixes for project {{projectName}}?": "Zastosuj poprawki do projektu {{projectName}}?",
+  "Apply without notification": "Zastosuj bez powiadamiania",
+  "Archive": "Archiwizuj",
+  "Archive Format": "Format archiwum",
+  "Archived": "Zarchiwizowano",
+  "Are you sure you want to clear all values?": "Czy na pewno chcesz wyczyścić wszystkie wartości?",
+  "Are you sure you want to delete \"{{layout}}\" layout?": "Czy na pewno chcesz usunąć układ „{{layout}}”?",
+  "Are you sure you want to delete \"{{name}}\"?": "Czy na pewno chcesz usunąć „{{name}}”?",
+  "Asc": "Rosnąco",
+  "Assign issue": "Przypisz zgłoszenie",
+  "Assign to me": "Przypisz do mnie",
+  "Assign to...": "Przypisz do...",
+  "At least one of certificates must be signed with provided private key": "Co najmniej jeden z certyfikatów musi być podpisany dostarczonym kluczem prywatnym",
+  "Atlassian Jira": "Atlassian Jira",
+  "Attach files": "Załącz pliki",
+  "Attach files...": "Załącz pliki...",
+  "Attach this rule to one or more projects": "Dołącz tę regułę do jednego lub więcej projektów",
+  "Attached Files": "Załączone pliki",
+  "Attachment": "Załącznik",
+  "Attachments": "Załączniki",
+  "Attributes": "Atrybuty",
+  "Authentication failed": "Uwierzytelnienie nie powiodło się",
+  "Authorization required": "Wymagana autoryzacja",
+  "Authorization type": "Typ autoryzacji",
+  "Auto-detected": "Automatycznie wykryte",
+  "Auto-fix all": "Automatycznie napraw wszystko",
+  "Available version": "Dostępna wersja",
+  "Avatar": "Awatar",
+  "Average": "Średnia",
+  "Back": "Wstecz",
+  "Backlog": "Backlog",
+  "Backup": "Kopia zapasowa",
+  "Backup Interval": "Interwał kopii zapasowych",
+  "Backup Location": "Lokalizacja kopii zapasowej",
+  "Backup database now": "Wykonaj kopię zapasową bazy danych teraz",
+  "Bad query": "Błędne zapytanie",
+  "Bars": "Pasek",
+  "Block quotes": "Cytaty blokowe",
+  "Blur": "Rozmycie",
+  "Board Settings": "Ustawienia tablicy",
+  "Board behavior": "Sposób działania tablicy",
+  "Board owner:": "Właściciel tablicy:",
+  "Board settings": "Ustawienia tablicy",
+  "Board should have at least one project": "Tablica powinna mieć co najmniej jeden projekt",
+  "Board...": "Tablica...",
+  "Boards": "Tablice",
+  "Branch name cannot be empty": "Nazwa oddziału nie może być pusta",
+  "Build": "Kompilacja",
+  "Bulleted list": "Lista punktowana",
+  "Buy YouTrack": "Kup YouTrack",
+  "By group": "Według grupy",
+  "By the way, you're currently browsing as a <b>Guest</b>. If you have an account, you might have more luck if you\n      log in.": "Przy okazji, obecnie przeglądasz jako <b>Gość</b>. Jeżeli masz już konto, możesz mieć więcej szczęścia, jeśli się\n      zalogujesz.",
+  "Can be empty": "Może być puste",
+  "Can edit": "Można edytować",
+  "Can use": "Może użyć",
+  "Can view": "Może wyświetlić",
+  "Can view and use": "Może wyświetlać i używać",
+  "Cancel uploading": "Anuluj przesyłanie",
+  "Cannot add SSH public key": "Nie można dodać klucza publicznego SSH",
+  "Cannot add group": "Nie można dodać grupy",
+  "Cannot add permission": "Nie można dodać uprawnienia",
+  "Cannot add resource": "Nie można dodać zasobu",
+  "Cannot add role": "Nie można dodać roli",
+  "Cannot add user": "Nie można dodać użytkownika",
+  "Cannot be empty": "Nie może być puste",
+  "Cannot change contact": "Nie można zmienić kontaktu",
+  "Cannot change password": "Nie można zmienić hasła",
+  "Cannot change subdomains on default domain": "Nie można zmienić poddomeny domeny domyślnej",
+  "Cannot create resource": "Nie można utworzyć zasobu",
+  "Cannot delete \"{{name}}\"": "Nie można usunąć „{{name}}”",
+  "Cannot find": "Nie można znaleźć",
+  "Cannot load TeamCity project data": "Nie można załadować danych projektu TeamCity",
+  "Cannot load TeamCity servers": "Nie można załadować serwerów TeamCity",
+  "Cannot load Upsource servers": "Nie można załadować serwerów Upsource",
+  "Cannot load certificates": "Nie można załadować certyfikatów",
+  "Cannot load options": "Nie można załadować opcji",
+  "Cannot load private key": "Nie można załadować klucza prywatnego",
+  "Cannot load private key with password": "Nie można załadować klucza prywatnego z hasłem",
+  "Cannot load report": "Nie można załadować raportu",
+  "Cannot pin report.": "Nie można przypiąć raportu.",
+  "Cannot remove license": "Nie można usunąć licencji",
+  "Cannot set license": "Nie można ustawić licencji",
+  "Cannot toggle flag": "Nie można przełączyć flagi",
+  "Cannot update field": "Nie można zaktualizować pola",
+  "Cannot use HTTPS-only mode with custom domain without certificates": "Nie można użyć trybu tylko HTTPS z domeną niestandardową bez certyfikatów",
+  "Capacity": "Pojemność",
+  "Card": "Karta",
+  "Certificate": "Certyfikat",
+  "Certificate {{ presentation }} is not valid after .": "Certyfikat {{ presentation }} jest nieważny po .",
+  "Certificate {{ presentation }} is not valid until .": "Certyfikat {{ presentation }} jest nieważny do .",
+  "Certificates are required": "Certyfikaty są wymagane",
+  "Change Logo": "Zmień logo",
+  "Change Password": "Zmień hasło",
+  "Change Sort Order": "Zmień kolejność sortowania",
+  "Change option": "Zmień opcję",
+  "Change owner": "Zmień właściciela",
+  "Change password": "Zmień hasło",
+  "Changes applied by me": "Zmiany zastosowane przeze mnie",
+  "Changes saved": "Zmiany zapisane",
+  "Chart": "Wykres",
+  "Checklist": "Lista kontrolna",
+  "Checklists": "Listy kontrolne",
+  "Choose a date": "Wybierz datę",
+  "Choose file": "Wybierz plik",
+  "Clear": "Wyczyść",
+  "Clear cell": "Wyczyść komórkę",
+  "Clear search": "Wyczyść wyszukiwanie",
+  "Clear search input": "Wyczyść pole wyszukiwania",
+  "Clear selection": "Wyczyść zaznaczenie",
+  "Clear values": "Wyczyść wartości",
+  "Click to attach, drag files, or press Ctrl+V to paste an image": "Kliknij, aby załączyć, przeciągnij pliki albo naciśnij klawisze Ctrl+V, aby wkleić obraz",
+  "Clone": "Klonuj",
+  "Clone project": "Sklonuj produkt",
+  "Code block": "Blok kodu",
+  "Collapse": "Zwiń",
+  "Color": "Kolor",
+  "Color scheme": "Schemat kolorów",
+  "Color settings": "Ustawienia kolorów",
+  "Columns": "Kolumny",
+  "Comment": "Komentarz",
+  "Comment added by {{userName}} at {{date}}.": "Komentarz dodany przez {{userName}} {{date}}.",
+  "Comment text (optional)": "Tekst komentarza (opcjonalnie)",
+  "Comment was deleted": "Komentarz został usunięty",
+  "Comment was deleted.": "Komentarz został usunięty.",
+  "Comments are disabled in issue drafts": "Komentarze są wyłączone w wersjach roboczych zgłoszeń",
+  "Common settings": "Ustawienia wspólne",
+  "Configuration": "Konfiguracja",
+  "Configuration is wrong": "Konfiguracja jest nieprawidłowa",
+  "Configure": "Konfiguruj",
+  "Connected Profiles": "Połączone profile",
+  "Connection lost": "Utracono połączenie",
+  "Connection timeout": "Limit czasu połączenia",
+  "Console": "Konsola",
+  "Copied": "Skopiowano",
+  "Copy ID and summary to clipboard": "Kopiuj ID i podsumowanie do schowka",
+  "Copy description to clipboard": "Kopiuj opis do schowka",
+  "Create Report": "Utwórz raport",
+  "Create issue": "Utwórz zgłoszenie",
+  "Create new": "Utwórz nowy",
+  "Create new project": "Utwórz nowy projekt",
+  "Create project": "Utwórz projekt",
+  "Create report": "Utwórz raport",
+  "Create user": "Utwórz użytkownika",
+  "Created": "Utworzono",
+  "Created by": "Utworzone przez",
+  "Created by me": "Utworzone przeze mnie",
+  "Created by {{user}}": "Utworzone przez {{user}}",
+  "Created by {{user}} on {{date}}": "Utworzone przez {{user}} dnia {{date}}",
+  "Crop": "Przytnij",
+  "Custom": "Niestandardowe",
+  "Custom Fields": "Pola niestandardowe",
+  "Custom Fields Configuration": "Konfiguracja pól niestandardowych",
+  "Custom fields": "Pola niestandardowe",
+  "Custom logo": "Własne logo",
+  "Daily at 9 AM": "Codziennie o 9:00",
+  "Dark": "Ciemny",
+  "Dashboards": "Pulpity nawigacyjne",
+  "Data Export": "Eksport danych",
+  "Date": "Data",
+  "Date format": "Format daty",
+  "Day": "Dzień",
+  "Days, hours, and minutes": "Dni, godziny i minuty",
+  "Default": "Domyślny",
+  "Default Avatar": "Domyślny awatar",
+  "Default Value": "Wartość domyślna",
+  "Default Value(s)": "Wartości domyślne",
+  "Default user:": "Użytkownik domyślny:",
+  "Delete Image": "Usuń obraz",
+  "Delete all": "Usuń wszystkie",
+  "Delete column": "Usuń kolumnę",
+  "Delete comment": "Usuń komentarz",
+  "Delete group": "Usuń grupę",
+  "Delete groups.": "Usuń grupy.",
+  "Delete issue": "Usuń zgłoszenie",
+  "Delete module": "Usuń moduł",
+  "Delete projects.": "Usuń projekty.",
+  "Delete role {{ name }}?": "Usunąć rolę {{ name }}?",
+  "Delete row": "Usuń wiersz",
+  "Desc": "Malejąco",
+  "Description": "Opis",
+  "Despite our best efforts, the server is not working properly.": "Mimo naszych starań serwer nie działa prawidłowo.",
+  "Detach": "Odłącz",
+  "Details": "Szczegóły",
+  "Directed": "Skierowane",
+  "Disable": "Wyłącz",
+  "Disable two-factor authentication": "Wyłącz uwierzytelnianie dwuskładnikowe",
+  "Discard": "Odrzuć",
+  "Disconnected": "Rozłączono",
+  "Disk Space": "Miejsce na dysku",
+  "Doesn't match the pattern": "Nie pasuje do wzorca",
+  "Domain Settings": "Ustawienia Domeny",
+  "Download": "Pobierz",
+  "Download all": "Pobierz wszystkie",
+  "Download as CSV file": "Pobierz jako plik CSV",
+  "Download as MS Excel spreadsheet": "Pobierz jako arkusz MS Excel",
+  "Download in CSV format": "Pobierz w formacie CSV",
+  "Drop files here": "Upuść pliki tutaj",
+  "EU (Ireland)": "UE (Irlandia)",
+  "Earlier": "Wcześniej",
+  "Edit Attachment": "Edytuj załącznik",
+  "Edit Project": "Edytuj projekt",
+  "Edit Server": "Edytuj serwer",
+  "Edit Sprint": "Edytuj sprint",
+  "Edit comment": "Edytuj komentarz",
+  "Edit default sort options": "Edytuj domyślne opcje sortowania",
+  "Edit field": "Edytuj pole",
+  "Edit issue": "Edytuj zgłoszenie",
+  "Edit link": "Edytuj link",
+  "Edit value": "Edytuj wartość",
+  "Edit...": "Edytuj...",
+  "Email": "E-mail",
+  "Email Address": "Adres e-mail",
+  "Email address has been unblocked": "Adres e-mail został odblokowany",
+  "Email:": "E-mail:",
+  "Emails": "Wiadomości e-mail",
+  "Embed Link": "Osadź link",
+  "Embed a file": "Osadź plik",
+  "Embedding a file...": "Osadzanie pliku...",
+  "Empty Value": "Pusta wartość",
+  "Empty value": "Pusta wartość",
+  "Enable": "Włącz",
+  "Enabled": "Włączone",
+  "Enter an optional explanation for banning this user": "Wprowadź opcjonalne wyjaśnienie dotyczące zablokowania tego użytkownika",
+  "Enter search request": "Wprowadź żądanie wyszukiwania",
+  "Entropy 20-26 bits": "Entropia 20–26 bitów",
+  "Entropy 26-33 bits": "Entropia 26–33 bity",
+  "Entropy > 33 bits": "Entropia > 33 bitów",
+  "Errors": "Błędy",
+  "Estimation": "Oszacowanie",
+  "Event categories": "Kategorie zdarzeń",
+  "Every 10 min": "Co 10 minut",
+  "Every 12 hours": "Co 12 godzin",
+  "Every 15 min": "Co 15 minut",
+  "Every 2 hours": "Co 2 godziny",
+  "Every 20 min": "Co 20 minut",
+  "Every 3 hours": "Co 3 godziny",
+  "Every 30 min": "Co 30 minut",
+  "Every Day": "Codziennie",
+  "Every Month": "Co miesiąc",
+  "Every Week": "Co tydzień",
+  "Every day at 2 am": "Codziennie o 2:00 w nocy",
+  "Every day at 9 am": "Codziennie o 9:00 rano",
+  "Every hour": "Co godzinę",
+  "Everything": "Wszystko",
+  "Expand": "Rozwiń",
+  "Expand/collapse exception stack traces in UI by default": "Domyślnie rozwiń/zwiń śledzenie stosu wyjątku w UI",
+  "Experience YouTrack on a larger scale for 14 days with support for up to 100 users and 30 GB of disk space": "Używaj YouTrack na większą skalę przez 14 dni z obsługą do 100 użytkowników i 30 GB miejsca na dysku",
+  "Expires": "Wygasa",
+  "Export": "Wyksportuj",
+  "Export in CSV": "Eksportuj do CSV",
+  "Export issue data": "Eksportuj dane zgłoszenia",
+  "Extend current plan": "Przedłuż bieżący plan",
+  "FAQ": "FAQ",
+  "Facebook": "Facebook",
+  "Failed to validate {{ presentation }} certificate.": "Nie można sprawdzić poprawności certyfikatu {{ presentation }}.",
+  "Feedback": "Opinie",
+  "Field": "Pole",
+  "Field Name": "Nazwa pola",
+  "Fields": "Pola",
+  "File uploaded": "Plik przesłany",
+  "Files, images, or documents": "Pliki, obrazy lub dokumenty",
+  "Filter users, groups, and teams": "Filtrowanie użytkowników, grup i zespołów",
+  "Find duplicates": "Znajdź duplikaty",
+  "Find similar issues": "Znajdź podobne zgłoszenia",
+  "First day of week": "Pierwszy dzień tygodnia",
+  "First page": "Pierwsza strona",
+  "Folder": "Folder",
+  "Friday": "Piątek",
+  "Full name": "Imię i nazwisko",
+  "Full screen": "Pełny ekran",
+  "GB": "GB",
+  "General": "Ogólne",
+  "Generate issue template URL": "Generuj szablon URL zgłoszenia",
+  "Get one-click access to&nbsp;issues in&nbsp;your&nbsp;favorite projects&nbsp;— open this list to&nbsp;find a favorite": "Uzyskaj dostęp jednym kliknięciem do&nbsp;zgłoszeń w&nbsp;Twoich&nbsp;ulubionych projektach&nbsp;&mdash; otwórz tę&nbsp;listę, aby&nbsp;znaleźć ulubione",
+  "GitHub": "GitHub",
+  "Goal": "Cel",
+  "Google": "Google",
+  "Got It!": "Wszystko jasne!",
+  "Got it": "Rozumiem",
+  "Grant Role": "Przyznaj rolę",
+  "Grant role": "Przyznaj rolę",
+  "Group": "Grupa",
+  "Groups and teams": "Grupy i zespoły",
+  "Guess URL": "Zgadnij adres URL",
+  "Guess time zone": "Zgadnij strefę czasową",
+  "HTTPS is not available in your license plan": "Protokół HTTPS nie jest dostępny w tym planie licencyjnym",
+  "Heading 1": "Nagłówek 1",
+  "Heading 2": "Nagłówek 2",
+  "Heading 3": "Nagłówek 3",
+  "Help": "Pomoc",
+  "Hide": "Ukryj",
+  "Hide card": "Ukryj kartę",
+  "Hide details": "Ukryj szczegóły",
+  "Hide sidebar": "Ukryj pasek boczny",
+  "Hide tips": "Ukryj wskazówki",
+  "Host": "Host",
+  "Hours": "Godziny",
+  "Hours and minutes": "Godziny i minuty",
+  "Hub account": "Konto Hub",
+  "ID": "ID",
+  "Identity provider URL": "Adres URL dostawcy tożsamości",
+  "If {{oldOwner}} isn't a member of a group that can view and use the board or change board settings, this user won't have these access rights anymore.": "Jeśli {{oldOwner}} nie jest członkiem grupy, która może wyświetlać i używać tablicę lub zmieniać jej ustawienia, użytkownik ten nie będzie już mieć tych praw dostępu.",
+  "Image is loading": "Obraz jest ładowany",
+  "In progress...": "W toku...",
+  "Insert column": "Wstaw kolumnę",
+  "Insert row": "Wstaw wiersz",
+  "Invalid URL": "Nieprawidłowy adres URL",
+  "Invite": "Zaproś",
+  "Invite users": "Zaproś użytkowników",
+  "Inviting user {{ dialog.data.invite.progress.done }} of {{ dialog.data.invite.progress.total }}": "Zapraszanie użytkownika {{ dialog.data.invite.progress.done }} z {{ dialog.data.invite.progress.total }}",
+  "Is not the same": "Nie są takie same",
+  "Is not unique": "Nie jest unikalny",
+  "Is out of range": "Jest spoza zakresu",
+  "Is shared with group {{name}}": "Jest współdzielony z grupą {{name}}",
+  "Is too long": "Jest zbyt długi",
+  "Is too short": "Jest zbyt krótki",
+  "Is used in hidden projects": "Jest używany w ukrytych projektach",
+  "Issue \"{{id}}\" not found": "Nie znaleziono zgłoszenia „{{id}}”",
+  "Issue ID": "ID zgłoszenia",
+  "Issue ID and summary copied": "Skopiowano ID zgłoszenia i podsumowanie",
+  "Issue ID copied": "Skopiowano ID zgłoszenia",
+  "Issue fields": "Pola zgłoszeń",
+  "Issue has no image attachments": "Zgłoszenie nie ma załączonych obrazów",
+  "Issue history": "Historia zgłoszeń",
+  "Issue summary": "Podsumowanie zgłoszenia",
+  "Jabber": "Jabber",
+  "Jabber Account": "Konto Jabber",
+  "January|February|March|April|May|June|July|August|September|October|November|December": "Styczeń|Luty|Marzec|Kwiecień|Maj|Czerwiec|Lipiec|Sierpień|Wrzesień|Październik|Listopad|Grudzień",
+  "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec": "Sty|Lut|Mar|Kwi|Maj|Cze|Lip|Sie|Wrz|Paź|Lis|Gru",
+  "Jenkins": "Jenkins",
+  "JetBrains Account": "Konto JetBrains",
+  "JetBrains, Inc.": "JetBrains, Inc.",
+  "Jira": "Jira",
+  "Kanban board": "Tablica Kanban",
+  "Key": "Klucz",
+  "Knowledge Base": "Baza wiedzy",
+  "LOCAL VARIABLE": "ZMIENNA LOKALNA",
+  "Language": "Język",
+  "Last month": "Poprzedni miesiąc",
+  "Last page": "Ostatnia strona",
+  "Last week": "Poprzedni tydzień",
+  "Last working day": "Ostatni dzień roboczy",
+  "Learn more": "Więcej informacji",
+  "Learn more →": "Dowiedz się więcej →",
+  "Left": "Po lewej",
+  "Less than 10% disk space available": "Mniej niż 10% dostępnego miejsca na dysku",
+  "Level 1 heading": "Nagłówek poziomu 1",
+  "Level 2 heading": "Nagłówek poziomu 2",
+  "Level 3 heading": "Nagłówek poziomu 3",
+  "Level 4 heading": "Nagłówek poziomu 4",
+  "License Details": "Szczegóły licencji",
+  "License key": "Klucz licencyjny",
+  "License valid forever": "Licencja ważna na zawsze",
+  "Ligatures": "Ligatury",
+  "Light": "Jasny",
+  "Link issue": "Powiąż zgłoszenie",
+  "List of voters": "Lista głosujących",
+  "List view": "Widok listy",
+  "Lists": "Listy",
+  "Live Dashboard allows you to get an overview of the current status of your tasks and your team progress. Use the search box at the top of the dashboard to search for issues — you will be navigated to YouTrack's Issues List with the results of your query.": "Pulpit nawigacyjny umożliwia uzyskanie przeglądu bieżącego stanu zadań i postępów zespołu. Użyj pola wyszukiwania w górnej części pulpitu nawigacyjnego, aby wyszukać zadania — przejdziesz do listy zadań YouTrack z wynikami zapytania.",
+  "Load more": "Załaduj więcej",
+  "Loading": "Ładowanie",
+  "Local time zone": "Lokalna strefa czasowa",
+  "Localization for this language is supported by the YouTrack user community. Untranslated interface text appears in English. You may encounter other errors and inconsistencies. If you'd like to help the community with this translation, you're more than welcome to join.": "Lokalizację na ten język wspiera społeczność YouTrack. Nieprzetłumaczony tekst wyświetlany jest w języku angielskim. Mogą wystąpić inne błędy i niespójności. Jeżeli chcesz pomóc społeczności w tym tłumaczeniu, zapraszamy.",
+  "Localized Name": "Nazwa Lokalizowana",
+  "Log in...": "Zaloguj się...",
+  "Login": "Logowanie",
+  "Login from your IP address \"{{ ip }}\" requires verification that you are not a robot.": "Logowanie z adresu IP: „{{ ip }}” wymaga sprawdzenia, czy nie jesteś robotem.",
+  "Logo": "Logo",
+  "Looking for similar issues and articles...": "Szukam podobnych zadań i artykułów...",
+  "MB": "MB",
+  "MS Exchange compatibility mode": "Tryb zgodności z MS Exchange",
+  "Mail protocol": "Protokół poczty",
+  "Mail server URL. For example, mail.xxx.com": "Adres URL serwera poczty. Na przykład mail.xxx.com",
+  "Main YouTrack project": "Główny projekt YouTrack",
+  "Maintainer": "Opiekun",
+  "Maintenance Calendar": "Zdarzenia i & Kalendarz utrzymania",
+  "Make private": "Ustaw jako prywatny",
+  "Make public": "Ustaw jako publiczny",
+  "Markup": "Znaczniki",
+  "Matches {{count}} issue_one": "Pasuje do {{count}} zgłoszenia",
+  "Matches {{count}} issue_few": "Pasuje do {{count}} zgłoszeń",
+  "Matches {{count}} issue_many": "Pasuje do {{count}} zgłoszeń",
+  "Matches {{count}} issue_other": "Pasuje do {{count}} zgłoszeń",
+  "Matrix": "Macierz",
+  "Me": "Ja",
+  "Member of": "Członek",
+  "Members": "Członkowie",
+  "Merge": "Scal",
+  "Minimum": "Minimum",
+  "Minutes": "Minuty",
+  "Module name is not valid": "Nazwa modułu jest nieprawidłowa",
+  "Monday": "Poniedziałek",
+  "Month": "Miesiąc",
+  "Monthly Subscription": "Subskrypcja miesięczna",
+  "Months": "Miesiące",
+  "More filters": "Więcej filtrów",
+  "Move the current card to the right": "Przenieś bieżącą kartę na prawą stronę",
+  "Name": "Nazwa",
+  "Name can only contain lowercase alphanumeric characters, -, _, ., and ~": "Nazwa może zawierać tylko małe litery, cyfry oraz znaki -, _, ., i ~",
+  "Name is not unique. Select other name": "Nazwa nie jest unikatowa. Wybierz inną nazwę",
+  "Name is required": "Nazwa jest wymagana",
+  "Never": "Nigdy",
+  "New": "Nowa",
+  "New Bugs": "Nowe usterki",
+  "New Issue": "Nowe zgłoszenie",
+  "New Name": "Nowa nazwa",
+  "New Password": "Nowe hasło",
+  "New User": "Nowy użytkownik",
+  "New card": "Nowa karta",
+  "New issue": "Nowe zgłoszenie",
+  "New item": "Nowa pozycja",
+  "New saved search": "Nowe zapisane wyszukiwanie",
+  "New tag": "Nowy tag",
+  "New version is available.": "Dostępna jest nowa wersja.",
+  "Next": "Dalej",
+  "Next page": "Następna strona",
+  "No": "Nie",
+  "No Data Available.": "Brak dostępnych danych.",
+  "No Keystores": "Brak magazynów kluczy",
+  "No Project": "Brak projektu",
+  "No Registered Service Providers": "Brak zarejestrowanych usługodawców",
+  "No SAML 2.0 service providers are registered yet.": "Nie zarejestrowano jeszcze dostawców usług SAML 2.0.",
+  "No SSL key found": "Nie znaleziono klucza SSL",
+  "No Trusted SSL Certificates": "Brak zaufanych certyfikatów SSL",
+  "No Users": "Brak użytkowników",
+  "No Value": "Brak wartości",
+  "No aliases": "Brak aliasów",
+  "No assigned roles": "Brak przypisanych ról",
+  "No assignees available": "Brak dostępnych przypisanych",
+  "No automatic fixes available": "Brak dostępnych automatycznych poprawek",
+  "No color": "Bez koloru",
+  "No color scheme": "Brak schematu kolorów",
+  "No columns": "Brak kolumn",
+  "No custom logo": "Brak własnego logo",
+  "No default value": "Brak wartości domyślnej",
+  "No favorites": "Brak ulubionych",
+  "No fields": "Brak pól",
+  "No grouping": "Brak grupowania",
+  "No image file was selected": "Nie wybrano żadnego pliku obrazu",
+  "No issues found": "Nie znaleziono zgłoszeń",
+  "No items found": "Nie znaleziono żadnych pozycji",
+  "No key": "Brak klucza",
+  "No matches found": "Nie znaleziono dopasowań",
+  "No options found": "Nie znaleziono opcji",
+  "No previous issue found": "Nie znaleziono poprzedniego zgłoszenia",
+  "No tags and saved searches": "Brak tagów i zapisanych wyszukiwań",
+  "No tags available": "Brak dostępnych tagów",
+  "No threads": "Brak wątków",
+  "No value": "Brak wartości",
+  "No value (required)": "Brak wartości (wymagane)",
+  "No values": "Brak wartości",
+  "No, no one's there.": "Nie, nikogo tu nie ma.",
+  "None": "Brak",
+  "Nope, can't find it!": "Nope, nie mogę tego znaleźć!",
+  "Normal text": "Zwykły tekst",
+  "Nothing selected": "Niczego nie wybrano",
+  "Notifications": "Powiadomienia",
+  "Numbered list": "Lista numerowana",
+  "OK": "OK",
+  "Oh-oh... Something went seriously wrong": "Ojej... Coś poszło poważnie nie tak",
+  "Oh-oh... Something went seriously wrong.": "Ojej... Coś poszło poważnie nie tak.",
+  "Ok": "OK",
+  "Old Password": "Stare hasło",
+  "Online Users": "Użytkownicy online",
+  "Only public projects": "Tylko projekty publiczne",
+  "Oops! Something went wrong while loading the sprint": "Ups! Coś poszło nie tak podczas ładowania sprintu",
+  "Oops! Something went wrong with your search request": "Ups! Coś poszło nie tak z Twoim zapytaniem wyszukiwania",
+  "Open My Saved Searches and My Tags list": "Otwórz Moje zapisane wyszukiwania i listę Moje tagi",
+  "Open all images in new tab": "Otwórz wszystkie obrazy w nowej karcie",
+  "Open command dialog ({{:: 'CommandDialog' | ytShortcutStroke}} or press any key)": "Otwórz okno dialogowe poleceń ({{:: 'CommandDialog' | ytShortcutStroke}} lub naciśnij dowolny klawisz)",
+  "Open in a separate tab": "Otwórz w osobnej karcie",
+  "Open the Apply Command dialog": "Otwórz okno dialogowe Zastosuj polecenie",
+  "OpenID 2.0": "OpenID 2.0",
+  "Other groups and teams": "Inne grupy i zespoły",
+  "Otherwise, maybe one of these links will get you back on track:": "W przeciwnym razie być może pomoże Ci jeden z tych linków:",
+  "Owner": "Właściciel",
+  "PB": "PB",
+  "PREVIEW": "PODGLĄD",
+  "Parent issue": "Problem nadrzędny",
+  "Password": "Hasło",
+  "Period": "Okres",
+  "Permissions": "Uprawnienia",
+  "Pie chart": "Wykres kołowy",
+  "Plain text": "Zwykły tekst",
+  "Plan and deliver incremental improvements in a series of sprints.": "Planuj i dostarczaj przyrostowe usprawnienia w serii sprintów.",
+  "Play video": "Odtwórz film",
+  "Please confirm the change": "Potwierdź zmianę",
+  "Port": "Port",
+  "Prepaid": "Przedpłacone",
+  "Press ⇥ to complete first item": "Naaciśnij ⇥, aby ukończyć pierwszą pozycję",
+  "Preview": "Podgląd",
+  "Preview is not accessible": "Podgląd jest niedostępny",
+  "Previous": "Poprzednia",
+  "Print": "Drukuj",
+  "Print issue": "Drukuj zgłoszenie",
+  "Print issues": "Drukuj zgłoszenia",
+  "Private key is required": "Klucz prywatny jest wymagany",
+  "Profile": "Profil",
+  "Prohibit editing": "Zabroń edycji",
+  "Project": "Projekt",
+  "Project Type": "Typ projektu",
+  "Project owner": "Właściciel projektu",
+  "Projects": "Projekty",
+  "Query": "Zapytanie",
+  "Quick Notes": "Szybkie notatki",
+  "Quick fix has been applied": "Zastosowano szybką poprawkę",
+  "Quote": "Cytat",
+  "README Files": "Pliki README",
+  "RTL support": "Obsługa RTL",
+  "Raw HTML": "Nieprzetworzony HTML",
+  "Re-calculate": "Oblicz ponownie",
+  "Read more": "Czytaj więcej",
+  "Read timeout": "'Read timeout'",
+  "Read-only mode": "Tryb tylko do odczytu",
+  "Reason": "Powód",
+  "Recommended groups and teams": "Polecane grupy i zespoły",
+  "Redo": "Ponów",
+  "Refresh": "Odświeżyć",
+  "Refresh.": "Odświeżyć.",
+  "Release": "Wydanie",
+  "Release date": "Data wydania",
+  "Release notes": "Informacje o wersji",
+  "Released": "Wydano",
+  "Remove article from favorites": "Usuń artykuł z ulubionych",
+  "Remove from Team": "Usuń z zespołu",
+  "Remove from favorites": "Usuń z ulubionych",
+  "Remove link": "Usuń link",
+  "Remove project": "Usuń projekt",
+  "Remove table": "Usuń tabelę",
+  "Remove tag": "Usuń etykietę",
+  "Rename...": "Zmień nazwę...",
+  "Reply": "Odpowiedz",
+  "Report name": "Nazwa raportu",
+  "Report not found. Probably it was removed": "Nie znaleziono raportu. Prawdopodobnie został usunięty",
+  "Reporter": "Zgłaszający",
+  "Reports": "Raporty",
+  "Repository URL": "Adres URL repozytorium",
+  "Required": "Wymagane",
+  "Resend verification email": "Wyślij ponownie weryfikacyjną wiadomość e-mail",
+  "Reset": "Resetuj",
+  "Reset visibility": "Resetuj widoczność",
+  "Restore Selected": "Przywróć zaznaczone",
+  "Restore project": "Przywróć projekt",
+  "Revert": "Cofnij",
+  "Review": "Recenzja",
+  "Revoke role": "Odbierz rolę",
+  "Right": "Po prawej",
+  "Roles": "Role",
+  "Run": "Uruchom",
+  "SLA Policies": "Polityki SLA",
+  "Same as issue": "Takie same jak zgłoszenie",
+  "Saturday": "Sobota",
+  "Save changes": "Czy chcesz zapisać zmiany",
+  "Save changes?": "Czy chcesz zapisać zmiany?",
+  "Save link": "Zapisz link",
+  "Save search": "Zapisz wyszukiwanie",
+  "Saved": "Zapisane",
+  "Saved Searches": "Zapisane wyszukiwania",
+  "Saved searches": "Zapisane wyszukiwania",
+  "Search": "Wyszukaj",
+  "Search issues": "Wyszukaj zgłoszenia",
+  "Search tags and searches": "Przeszukaj tagi i wyszukiwania",
+  "Search:": "Wyszukaj:",
+  "Select an option": "Wybierz opcję",
+  "Select files to embed": "Wybierz pliki do osadzenia",
+  "Send verification email": "Wyślij weryfikacyjną wiadomość e-mail",
+  "Services": "Usługi",
+  "Set": "Ustaw",
+  "Shortcuts": "Skróty",
+  "Should be a number": "Powinno być numerem",
+  "Should be a valid URL": "Powinno być prawidłowym adresem URL",
+  "Should be a valid email": "Powinno być prawidłowym adresem e-mail",
+  "Show": "Pokaż",
+  "Show description": "Pokaż opis",
+  "Show details": "Pokaż szczegóły",
+  "Show filters": "Pokaż filtry",
+  "Show less": "Pokaż mniej",
+  "Show more": "Pokaż więcej",
+  "Show preview": "Pokaż podgląd",
+  "Size": "Rozmiar",
+  "Size:": "Rozmiar:",
+  "Socket timeout": "'Socket timeout'",
+  "Sorry, your browser doesn't support File API": "Niestety, twoja przeglądarka nie obsługuje interfejsu API plików",
+  "Sort: newest first": "Sortowanie: najpierw najnowsze",
+  "Sort: oldest first": "Sortowanie: najpierw najstarsze",
+  "Sorted by": "Sortuj wg",
+  "Star issue": "Wyróżnij zgłoszenie",
+  "Status": "Status",
+  "Strong": "Silne",
+  "Summary": "Podsumowanie",
+  "Sunday": "Niedziela",
+  "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday": "Niedziela|Poniedziałek|Wtorek|Środa|Czwartek|Piątek|Sobota",
+  "Sun|Mon|Tue|Wed|Thu|Fri|Sat": "N|Po|Wt|Śr|Cz|Pt|So",
+  "Support": "Wsparcie",
+  "Switch user": "Przełącz użytkownika",
+  "System Language": "Język systemu",
+  "TB": "TB",
+  "Table": "Tabela",
+  "Tables": "Tabele",
+  "Tag color": "Kolor tagu",
+  "Tags": "Tagi",
+  "Tags and Saved Searches": "Tagi i zapisane wyszukiwania",
+  "Take your vote back": "Cofnij swój głos",
+  "Text": "Tekst",
+  "The change has been detached from this issue. It is still displayed here because its comment mentions the issue.": "Zmiana została odłączona z tego zgłoszenia. Jest ciągle tutaj widoczna, ponieważ jej komentarz nawiązuje do zgłoszenia.",
+  "The change has been manually attached to this issue.": "Zmiana została ręcznie dołączona do tego zgłoszenia.",
+  "There are no projects to create an issue in": "Brak projektu do stworzenia zgłoszenia",
+  "This field does not exist in some of the selected projects": "To pole nie istnieje w niektórych wybranych projektach",
+  "This month": "W tym miesiącu",
+  "This week": "W tym tygodniu",
+  "This year": "Ten rok",
+  "Thursday": "Czwartek",
+  "Time Tracking": "Śledzenie czasu",
+  "Timeouts, reCAPTCHA, throttling, and other common authentication settings": "Limity czasu, reCAPTCHA, ograniczanie przepustowości i inne typowe ustawienia uwierzytelniania",
+  "Title": "Tytuł",
+  "To see the preview, start typing": "Aby wyświetlić podgląd, zacznij pisać",
+  "Today": "Dziś",
+  "Tree view": "Widok drzewa",
+  "Tuesday": "Wtorek",
+  "Two-factor authentication": "Uwierzytelnianie dwuskładnikowe",
+  "Type": "Typ",
+  "URL": "URL",
+  "Uncategorized Cards": "Karty nieskategoryzowane",
+  "Undirected": "Bezkierunkowe",
+  "Unknown": "Nieznane",
+  "Unscheduled": "Niezaplanowany",
+  "Unstar issue": "Odznacz zgłoszenie jako wyróżnione",
+  "Updated": "Zaktualizowano",
+  "Updated by": "Zaktualizowany przez",
+  "Updated {{date}}": "Zaktualizowano {{date}}",
+  "Upload": "Prześlij",
+  "Upload a file": "Prześlij plik",
+  "Use existing": "Użyj istniejącego",
+  "User or group": "Użytkownik lub grupa",
+  "Users:": "Użytkownicy:",
+  "Value is invalid": "Wartość jest nieprawidłowa",
+  "Value is required": "Wartość jest wymagana",
+  "Version": "Wersja",
+  "View issue": "Widok zgłoszeń",
+  "View translations": "Pokaż tłumaczenia",
+  "Visibility Restrictions": "Ograniczenia widoczności",
+  "Visible to": "Widoczne dla",
+  "Visible to Group": "Widoczne dla grupy",
+  "Vote for issue": "Głosuj na zgłoszenie",
+  "Wednesday": "Środa",
+  "Week": "Tydzień",
+  "Weeks, days, hours, and minutes": "Tygodnie, dni, godziny i minuty",
+  "When integrating TeamCity and YouTrack, the users are matched by their email addresses. TeamCity has not provided any email address of the committer.": "Podczas integracji TeamCity z YouTrackużytkownicy są dopasowywani poprzez ich adresy email. TeamCity nie dostarczyło żadnego adresu email zatwierdzajacego zmiany.",
+  "When you confirm this action,": "Jeżeli potwierdzisz tę czynność,",
+  "When you confirm this action:": "Jeżeli potwierdzisz tę czynność:",
+  "Will be linked to selected as:": "Będzie linkowane do wybranego jako:",
+  "Work author": "Autor pracy",
+  "Work type": "Typ pracy",
+  "Workflow": "Przepływ pracy",
+  "Workflows": "Przepływy Pracy",
+  "Workspace": "Obszar roboczy",
+  "Write a comment, @mention people": "Napisz komentarz, @wspomnij o kimś",
+  "Yes": "Tak",
+  "Yesterday": "Wczoraj",
+  "You can't add the Star tag as a guest. Please log in.": "Nie możesz dodać tagu Gwiazdki jako gość. Zaloguj się.",
+  "You can't vote for an issue that you reported": "Nie możesz głosować na zgłoszenie, które zgłosiłeś",
+  "You can't vote for the issue": "Nie możesz głosować na to zgłoszenie",
+  "You have unsaved changes. Are you sure that you want to leave the page?": "Masz niezapisane zmiany. Czy na pewno chcesz opuścić stronę?",
+  "You have unsaved changes. Do you want to discard or save them?": "Masz niezapisane zmiany. Chcesz je odrzucić czy zapisać?",
+  "YouTrack": "YouTrack",
+  "YouTrack Dashboard": "Pulpit nawigacyjny YouTrack",
+  "YouTrack Knowledge Base": "Baza wiedzy YouTrack",
+  "Your reply": "Twoja odpowiedź",
+  "allowed:": "dozwolone:",
+  "and": "i",
+  "and {{item.instances.length - 1}} more": "i {{item.instances.length - 1}} więcej",
+  "archived": "zarchiwizowano",
+  "asc": "rosnąco",
+  "attachment": "załącznik",
+  "banned": "zbanowany",
+  "bytes": "bajtów",
+  "calculating...": "obliczanie...",
+  "collapse": "zwiń",
+  "commented": "skomentowano",
+  "comments": "komentarze",
+  "custom fields": "pola niestandardowe",
+  "day": "dzień",
+  "desc": "malejąco",
+  "disable": "wyłącz",
+  "enable": "włącz",
+  "estimation": "oszacowanie",
+  "expand": "rozwiń",
+  "first": "pierwszy",
+  "group by": "grupuj wg",
+  "hours": "godziny",
+  "image": "obraz",
+  "issue readers": "czytelnicy zgłoszeń",
+  "kB": "kB",
+  "login": "logowanie",
+  "me": "ja",
+  "member of": "członek",
+  "minutes": "minuty",
+  "more": "więcej",
+  "name": "nazwa",
+  "new": "nowa",
+  "new issue": "nowe zgłoszenie",
+  "next": "dalej",
+  "next page": "następna strona",
+  "or": "lub",
+  "overdue": "zaległe",
+  "password": "hasło",
+  "per page": "na stronę",
+  "previous": "poprzednia",
+  "project owner": "właściciel projektu",
+  "projects": "projekty",
+  "release date": "data wydania",
+  "required": "wymagane",
+  "search": "wyszukaj",
+  "second": "drugi",
+  "spent time": "spędzony czas",
+  "tags": "tagi",
+  "third": "trzeci",
+  "total spent time": "całkowity przepracowany czas",
+  "unknown error.": "nieznany błąd.",
+  "verified": "zweryfikowane",
+  "w": "t",
+  "week": "tydzień",
+  "yesterday": "wczoraj",
+  "{{ count }} Group_one": "{{ count }} Grupa",
+  "{{ count }} Group_few": "{{ count }} Grup",
+  "{{ count }} Group_many": "{{ count }} Grup",
+  "{{ count }} Group_other": "{{ count }} Grup",
+  "{{count}} group_one": "{{count}} grupa",
+  "{{count}} group_few": "{{count}} grup",
+  "{{count}} group_many": "{{count}} grup",
+  "{{count}} group_other": "{{count}} grup",
+  "{{count}} user_one": "{{count}} użytkownik",
+  "{{count}} user_few": "{{count}} użytkowników",
+  "{{count}} user_many": "{{count}} użytkowników",
+  "{{count}} user_other": "{{count}} użytkowników",
+  "{{columnCardsAmount}} cards": "{{columnCardsAmount}} kart",
+  "{{count}} minute ago_one": "{{count}} minutę temu",
+  "{{count}} minute ago_few": "{{count}} minuty temu",
+  "{{count}} minute ago_many": "{{count}} minut temu",
+  "{{count}} minute ago_other": "{{count}} minuty temu",
+  "{{dshPageCtrl.getActiveDashboardNum()}} of {{dshPageCtrl.getDashboardShortList().length}}": "{{dshPageCtrl.getActiveDashboardNum()}} z {{dshPageCtrl.getDashboardShortList().length}}",
+  "{{issuesCount}} issue_one": "{{issuesCount}} zgłoszenie",
+  "{{issuesCount}} issue_few": "{{issuesCount}} zgłoszeń",
+  "{{issuesCount}} issue_many": "{{issuesCount}} zgłoszeń",
+  "{{issuesCount}} issue_other": "{{issuesCount}} zgłoszeń",
+  "{{item.usersCount}} users": "{{item.usersCount}} użytkowników",
+  "{{totalUsers}} of": "{{totalUsers}} z",
+  "＋Add field": "＋Dodaj pole"
+}

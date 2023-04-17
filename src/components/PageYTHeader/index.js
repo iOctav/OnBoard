@@ -6,14 +6,11 @@ import Header from '@jetbrains/ring-ui/dist/header/header';
 import Icon from '@jetbrains/ring-ui/dist/icon';
 import Link from '@jetbrains/ring-ui/dist/link/link';
 import { Link as RouterLink } from 'react-router-dom';
-import Theme, { useTheme } from '@jetbrains/ring-ui/dist/global/theme';
+import { useTheme } from '@jetbrains/ring-ui/dist/global/theme';
 import careDown10pxIcon from '@jetbrains/icons/caret-down-10px';
 import bellIcon from '@jetbrains/icons/bell';
 import helpIcon from '@jetbrains/icons/help-20px';
 import settingsIcon from '@jetbrains/icons/settings-20px';
-import { ReactComponent as smallObLogo } from './ob-logo-small.svg';
-import { ReactComponent as largeObLogoLight } from './ob-logo-large.light.svg';
-import { ReactComponent as largeObLogoDark } from './ob-logo-large.dark.svg';
 import Tray from '@jetbrains/ring-ui/dist/header/tray';
 import TrayIcon from '@jetbrains/ring-ui/dist/header/tray-icon';
 import Select from '@jetbrains/ring-ui/dist/select/select';
@@ -23,8 +20,9 @@ import {
   homePageUri,
   YT_PAGES
 } from '../../services/linkService';
-import Logo from '@jetbrains/ring-ui/dist/header/logo';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
+import HeaderLogo from './HeaderLogo';
 
 const StyledObHeader = styled(Header)`
   font-size: 13px;
@@ -32,34 +30,30 @@ const StyledObHeader = styled(Header)`
 `;
 
 function PageYTHeader({isCompact}) {
-  // TODO: Why it's crashing when translation is used here
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   const theme = useTheme();
   const dropdownMenuData = [
-    { label: 'Card...' },
-    { label: 'Board...', href: createAgileBoardPageUri() },
+    { label: t('Card...') },
+    { label: t('Board...'), href: createAgileBoardPageUri() },
   ];
-  const dropdownAnchor = (<Button primary>Create <Icon glyph={careDown10pxIcon}></Icon></Button>);
+  const dropdownAnchor = (<Button primary>{t('Create.Hub Operations')}<Icon glyph={careDown10pxIcon}></Icon></Button>);
   const issuesDataset = [];
   return (
     <StyledObHeader theme={theme} className={'compactHeader'}>
       <RouterLink rel="noreferrer" to={homePageUri()} >
-        {isCompact
-          ? <Logo className="compactLogo" glyph={smallObLogo} size={Logo.Size.Size40}/>
-          : <Logo glyph={theme === Theme.LIGHT ? largeObLogoLight : largeObLogoDark} size={Logo.Size.Size128}/>
-        }
+        <HeaderLogo isCompact={isCompact}/>
       </RouterLink>
       <span>
-        <Link target="_blank" href={YT_PAGES.issues}>Issues</Link>
+        <Link target="_blank" href={YT_PAGES.issues}>{t('Issues.$$noContext')}</Link>
         <Select type="INLINE" filter={true} data={issuesDataset} label={''} />
       </span>
-      <Link target="_blank" href={YT_PAGES.dashboard}>Dashboards</Link>
-      <Link target="_blank" href={YT_PAGES.agiles}>Agile Boards</Link>
-      <Link target="_blank" href={YT_PAGES.reports}>Reports</Link>
-      <Link target="_blank" href={YT_PAGES.projects}>Projects</Link>
-      <Link target="_blank" href={YT_PAGES.knowledgeBase}>Knowledge Base</Link>
-      <Link target="_blank" href={YT_PAGES.timesheets}>Timesheets</Link>
-      <Link target="_blank" href={YT_PAGES.ganttCharts}>Gantt Charts</Link>
+      <Link target="_blank" href={YT_PAGES.dashboard}>{t('Dashboards')}</Link>
+      <Link target="_blank" href={YT_PAGES.agiles}>{t('Agile Boards')}</Link>
+      <Link target="_blank" href={YT_PAGES.reports}>{t('Reports')}</Link>
+      <Link target="_blank" href={YT_PAGES.projects}>{t('Projects')}</Link>
+      <Link target="_blank" href={YT_PAGES.knowledgeBase}>{t('Knowledge Base')}</Link>
+      <Link target="_blank" href={YT_PAGES.timesheets}>{t('Timesheets')}</Link>
+      <Link target="_blank" href={YT_PAGES.ganttCharts}>{t('Gantt Charts')}</Link>
       <DropdownMenu data={dropdownMenuData} anchor={dropdownAnchor}></DropdownMenu>
       <Tray>
         <TrayIcon title="Notifications" icon={bellIcon}/>
