@@ -10,7 +10,6 @@ import ChartSettings from '../ChartSettings';
 import GeneralSettings from '../GeneralSettings';
 import CardSettings from '../CardSettings';
 import NestedSwimlanesSettings from '../NestedSwimlanesSettings';
-import { YT_PAGES } from '../../services/linkService';
 import YouTrackAgileSettingsLink from './YouTrackAgileSettingsLink';
 
 const HeaderSpan = styled.span`
@@ -56,14 +55,14 @@ function AgileBoardSettings({visible, disabled, selectedTab, agileId, agileName,
         selected={selected}
         onSelect={selectHandler}>
       <Tab id="general" key="general" title={t('General')}>
-        <YouTrackAgileSettingsLink agileId={agileId} sprintId={sprintId} title="YouTrack General" linkId="general"/>
+        <YouTrackAgileSettingsLink agileId={agileId} sprintId={sprintId} title={'YouTrack ' + t('General')} linkId="general"/>
         <GeneralSettings disabled={disabled} agileName={agileName} agileId={agileId}
                          initialOwner={owner} sprintsSettings={sprintsSettings}
                          projects={projects} readSharingSettings={readSharingSettings}
                          updateSharingSettings={updateSharingSettings}/>
       </Tab>
       <Tab id="columns-and swimlanes" key="columns-and swimlanes" title={t('Columns and Swimlanes')}>
-        <YouTrackAgileSettingsLink agileId={agileId} sprintId={sprintId} title="YouTrack Columns and Swimlanes" linkId="columns-and swimlanes"/>
+        <YouTrackAgileSettingsLink agileId={agileId} sprintId={sprintId} title={'YouTrack ' + t('Columns and Swimlanes')} linkId="columns-and swimlanes"/>
         <ColumnsSettings disabled={disabled} agileId={agileId} columnSettings={columnSettings}/>
         <SwimlanesSettings
           disabled={disabled}
@@ -74,7 +73,7 @@ function AgileBoardSettings({visible, disabled, selectedTab, agileId, agileName,
           hideOrphansSwimlane={hideOrphansSwimlane}/>
       </Tab>
       <Tab id="card" key="card" title={t('Card')}>
-        <YouTrackAgileSettingsLink agileId={agileId} sprintId={sprintId} title="YouTrack Card" linkId="card"/>
+        <YouTrackAgileSettingsLink agileId={agileId} sprintId={sprintId} title={'YouTrack ' + t('Card')} linkId="card"/>
         <CardSettings disabled={disabled}
                       cardSettings={cardSettings}
                       cardOnSeveralSprints={sprintsSettings.cardOnSeveralSprints}
@@ -86,7 +85,7 @@ function AgileBoardSettings({visible, disabled, selectedTab, agileId, agileName,
                       sprintsEnabled={!sprintsSettings.disableSprints}/>
       </Tab>
       <Tab id="chart" key="chart" title={t('Chart')}>
-        <YouTrackAgileSettingsLink agileId={agileId} sprintId={sprintId} title="YouTrack Chart" linkId="chart"/>
+        <YouTrackAgileSettingsLink agileId={agileId} sprintId={sprintId} title={'YouTrack ' + t('Chart')} linkId="chart"/>
         <ChartSettings disabled={disabled} reportSettings={reportSettings}/>
       </Tab>
       <Tab id="nested-swimlanes" key="nested-swimlanes" title={t('Nested Swimlanes')}>

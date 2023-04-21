@@ -25,9 +25,9 @@ function SwimlaneAttributesList({disabled, agileId, fieldValues}) {
   const tableColumns = [
     {key: 'name', id: 'name', getValue: (item, column) => (<div>
         <span>{item.name}</span>
-        <Button disabled={disabled} icon={pencilIcon} title={t('Edit')}/>
+        <Button disabled={disabled} icon={pencilIcon} title={t('Edit.$$noContext')}/>
       </div>) },
-    {key: 'remove', id: 'remove', getValue: (item, column) => (<Button disabled={disabled} icon={closeIcon} title={t('Remove')}/>)},
+    {key: 'remove', id: 'remove', getValue: (item, column) => (<Button disabled={disabled} icon={closeIcon} title={t('Remove.$$noContext')}/>)},
   ]
   const data = [...selectedAttributes].map(col => ({...col, key: col.id}));
   const selection = new Selection({data: data});

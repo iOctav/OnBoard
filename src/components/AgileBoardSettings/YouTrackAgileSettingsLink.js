@@ -8,8 +8,8 @@ function YouTrackAgileSettingsLink({agileId, sprintId, title, linkId}) {
   const { t } = useTranslation();
   return (
     <Alert showWithAnimation={false} type={Alert.Type.WARNING} closeable={false}>
-      {t('YouTrack settings are disabled to keep consistency. You can change them in the ')}
-      <Link target="_blank" href={`${YT_PAGES.agiles}/${agileId}/${sprintId}?tab=${linkId}&settings`}>{t(title)}</Link>
+      {t('YouTrack settings are disabled to keep consistency. You can change them in the') + ' '}
+      <Link target="_blank" href={`${YT_PAGES.agiles}/${agileId}/${sprintId}?tab=${linkId}&settings`}>{title}</Link>
     </Alert>
   )
 }

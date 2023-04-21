@@ -39,7 +39,7 @@ function CustomFieldsTable({disabled, fields, projects}) {
       </div>) },
     { key: 'display', id: 'display', title: t('Display'), getValue: (item, column) =>
         (<Select hideSelected disabled={disabled} type="INLINE" selected={displayDataSet.find(data => data.key === item.presentation.id)} data={displayDataSet}/>)},
-    { key: 'remove', id: 'remove', getValue: (item, column) => (<Button disabled={disabled} icon={closeIcon} title={t('Remove')}/>)},
+    { key: 'remove', id: 'remove', getValue: (item, column) => (<Button disabled={disabled} icon={closeIcon} title={t('Remove.$$noContext')}/>)},
   ]
   const data = customFields ? [...customFields].map(col => ({...col, key: col.id})) : [];
   const selection = new Selection({data: customFields});

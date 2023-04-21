@@ -13,7 +13,7 @@ function ProjectColorTable({projectColors}) {
   const tableColumns = [
     {key: 'name', id: 'name', getValue: (item, column) => (<div>
         <span>{item.project.name}</span>
-        <Button icon={pencilIcon} title={t('Edit')}/>
+        <Button icon={pencilIcon} title={t('Edit.$$noContext')}/>
       </div>) },
     {key: 'color', id: 'color', getValue: (item, column) =>
         (<ColorPicker selected={item.color.id}

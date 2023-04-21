@@ -37,7 +37,7 @@ function ColumnsSettingsTable({disabled, columns}) {
     {key: 'merge', id: 'merge', getValue: (item, column) => (<Select disabled={disabled} type="INLINE" filter label={t('Merge with') + ' '}/>)},
     {key: 'remove', id: 'remove', getValue: (item, column) => (item.fieldValues.map(
       field =>
-        (<div key={field.id}><Button disabled={disabled} icon={closeIcon} title={t('Remove')}/></div>)
+        (<div key={field.id}><Button disabled={disabled} icon={closeIcon} title={t('Remove.$$noContext')}/></div>)
       ))},
   ]
   const data = [...columns].sort((a, b) => a.ordinal - b.ordinal).map(col => ({...col, key: col.id}));

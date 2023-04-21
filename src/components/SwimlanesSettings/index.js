@@ -40,7 +40,7 @@ function SwimlanesSettings({disabled, agileId, swimlaneSettings, projectShortNam
   return (<div className="columns-settings">
     <span>
       <SettingsLabel>
-        <Trans t={t}><b>Swimlanes</b> are identified by</Trans>
+        <Trans t={t}><strong>Swimlanes</strong> are identified by</Trans>
       </SettingsLabel>
       <ButtonGroup>
         <Button disabled={disabled} active={swimlaneType === SwimlaneType.None} height={ControlsHeight.S}

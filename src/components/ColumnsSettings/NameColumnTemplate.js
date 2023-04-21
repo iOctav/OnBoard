@@ -39,7 +39,7 @@ function NameColumnTemplate({disabled, fieldValues}) {
               icon={dragIcon}></Button>
             <span>{field.name}</span>
             {field.isResolved && (<BorderedSpan><span>{t('Resolved.$$noContext')}</span></BorderedSpan>)}
-            <Button disabled={disabled} icon={pencilIcon} title={t('Edit')}/>
+            <Button disabled={disabled} icon={pencilIcon} title={t('Edit.$$noContext')}/>
           </div>)
       )
     }
@@ -49,7 +49,7 @@ function NameColumnTemplate({disabled, fieldValues}) {
   return (<div key={field.id}>
     <span>{field.name} </span>
     {field.isResolved && (<BorderedSpan><span>{t('Resolved.$$noContext')}</span></BorderedSpan>)}
-    <Button disabled={disabled} icon={pencilIcon} title={t('Edit')}/>
+    <Button disabled={disabled} icon={pencilIcon} title={t('Edit.$$noContext')}/>
   </div>);
 }
 

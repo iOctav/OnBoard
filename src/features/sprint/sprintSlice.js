@@ -70,7 +70,7 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
             body: { value: propertyUpdate.value },
             params: {
               fields: '$type, id',
-              muteUpdateNotifications: true,
+              muteUpdateNotifications: false,
             }
           });
           if (result.error) {

@@ -22,7 +22,7 @@ function ColumnsSettings({disabled, agileId, columnSettings}) {
   const usedColumns = columnSettings.columns.reduce((acc, column) => [...acc, ...column.fieldValues], []).map(field => field.name);
   return (<div className="columns-settings">
     <span>
-      <span><Trans t={t}><b>Columns</b> are identified by</Trans></span>
+      <Trans t={t}><strong>Columns</strong> are identified by</Trans>
       <MarginedSelectBox
         disabled={disabled}
         selected={selected}

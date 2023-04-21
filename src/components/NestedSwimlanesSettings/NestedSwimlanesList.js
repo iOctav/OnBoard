@@ -94,7 +94,7 @@ function NestedSwimlanesList({projectShortNames, systemSwimlane}) {
   }
 
   const tableColumns = [
-    {key: 'type', id: 'type', title: t('Identifier'), getValue: (item) => (
+    {key: 'type', id: 'type', title: t('Identified by'), getValue: (item) => (
       <>
         <ButtonGroup>
           <Button active={item.type === SwimlaneType.Values} height={ControlsHeight.S} disabled={item.system}
@@ -104,16 +104,16 @@ function NestedSwimlanesList({projectShortNames, systemSwimlane}) {
                   onClick={() => item.type !== SwimlaneType.Issues && changeSwimlaneType(item.id, SwimlaneType.Issues)}>{t('Issues.Agile Row Settings')}
           </Button>
         </ButtonGroup>
-        {!item.system ? (<LevelMarker>L{item.index}</LevelMarker>) : (<BorderedSpan><span>{t('System')}</span></BorderedSpan>)}
+        {!item.system ? (<LevelMarker>L{item.index}</LevelMarker>) : (<BorderedSpan><span>{t('System.swimlane')}</span></BorderedSpan>)}
 
        </>
       )},
     {key: 'field', id: 'field', title: t('Field'), getValue: (item) =>
         (item.type === SwimlaneType.Values || item.type === SwimlaneType.Issues) &&
         (<SwimlaneFieldSelect projectShortNames={projectShortNames} swimlane={item} onChange={(properties) => updateSwimlane(item.id, properties)}/>)},
-    {key: 'values', id: 'values', title: t('Values'), getValue: (item) =>
+    {key: 'values', id: 'values', title: t('Values.$$noContext'), getValue: (item) =>
         (item.field?.id && <SwimlaneValuesTagBox swimlane={item} onChange={(properties => updateSwimlane(item.id, properties))}/>)},
-    {key: 'enableColor', id: 'enableColor', title: t('Enable background color'), getValue: (item) =>
+    {key: 'enableColor', id: 'enableColor', title: t('Enable color'), getValue: (item) =>
         (<Checkbox checked={item.enableColor} disabled={item.system}
           onChange={(event) => updateSwimlane(item.id, {enableColor: event.target.checked})} />)},
     {key: 'hideOrphan', id: 'hideOrphan', title: t('Show swimlane for uncategorized cards'), getValue: (item) =>
@@ -134,8 +134,8 @@ function NestedSwimlanesList({projectShortNames, systemSwimlane}) {
            selectable={false}
            selection={selection} onSelect={() => {}}
            columns={tableColumns} />
-    <Button text onClick={() => createSwimlane(data.length > 0 ? data[data.length - 1].order + 1 : 1)}>Add swimlane</Button>
-    <Button disabled={data.length < 1 || (data.length === 1 && systemSwimlane?.id)} text onClick={() => removeSwimlane(data[data.length-1].id)}>Remove last</Button>
+    <Button text onClick={() => createSwimlane(data.length > 0 ? data[data.length - 1].order + 1 : 1)}>{t('Add swimlane')}</Button>
+    <Button disabled={data.length < 1 || (data.length === 1 && systemSwimlane?.id)} text onClick={() => removeSwimlane(data[data.length-1].id)}>{t('Remove last')}</Button>
   </div>);
 }
 
