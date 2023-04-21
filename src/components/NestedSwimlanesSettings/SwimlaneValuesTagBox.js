@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import { selectCustomFieldMetadataById } from '../../features/customFields/customFieldsSlice';
 import DateValuesSelect from './DateValuesSelect';
+import { COLORS } from '../ColorPalette/colors';
 
 const mapTypeDataRequest = (fieldType) => {
   switch (fieldType) {
@@ -46,8 +47,11 @@ function SwimlaneValuesTagBox({swimlane, onChange}) {
               onRemoveTag={(tag) => onChange({ values: swimlane.values.filter(value => value !== tag.tag)})}
               lazyDataLoaderHook={lazyDataBundleHook}
               lazyDataLoaderHookParams={customField?.bundle?.id}
-              makeDataSource={(data) => data.map(item => ({label: item.name, key: item.name, id: item.id,
-                colorId: item.color?.id !== '0' ? item.color?.id : null}))}/>)
+              makeDataSource={(data) => data.map(item => {
+                const colorId = item.color?.id !== '0' ? item.color?.id : null;
+                return ({label: item.name, key: item.name, id: item.id,
+                  colorId, backgroundColor: colorId && COLORS[colorId].background, textColor: colorId && COLORS[colorId].text});
+              })}/>)
   } else {
     return (<DateValuesSelect swimlane={swimlane} onChange={onChange}/>);
   }

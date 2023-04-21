@@ -14,6 +14,7 @@ import SwimlaneFieldSelect from './SwimlaneFieldSelect';
 import { useStateParams } from '../../hooks/useStateParams';
 import { v4 as uuidv4 } from 'uuid';
 import update from 'immutability-helper';
+import { COLORS } from '../ColorPalette/colors';
 
 const BorderedSpan = styled.span`
   display: inline-block;
@@ -120,7 +121,11 @@ function NestedSwimlanesList({projectShortNames, systemSwimlane}) {
         (<Checkbox checked={!item.hideOrphansSwimlane} disabled={item.system}
           onChange={(event) => updateSwimlane(item.id, {hideOrphansSwimlane: !event.target.checked})} />)},
   ];
-  let data = Object.keys(swimlanes).map(key => ({...swimlanes[key], key: key}))
+
+  let data = Object.keys(swimlanes).map(key => (
+      {...swimlanes[key], key: key, 
+        backgroundColor: swimlanes[key].colorId && COLORS[swimlanes[key].colorId].background,
+        textColor: swimlanes[key].colorId && COLORS[swimlanes[key].colorId].text}))
     .sort((a, b) => a.order - b.order);
   (systemSwimlane?.id && data.unshift(systemSwimlane));
   data.forEach((swimlane, index) => swimlane.index = index);

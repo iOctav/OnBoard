@@ -26,7 +26,7 @@ function NestedSwimlanesSettings({projectShortNames, swimlaneSettings, hideOrpha
         aggregateable: swimlaneSettings.values?.length > 0 || swimlaneSettings.field.multiValue,
         dateType: dateType,
       },
-      values:  !dateType ? [...swimlaneSettings.values].map(val => ({key: val.name, id: val.id, label: val.presentation, color: null}))
+      values:  !dateType ? [...swimlaneSettings.values].map(val => ({key: val.name, id: val.id, label: val.presentation, colorId: null}))
         : dateType === DatePeriodType.Both ? DateSwimlanePeriods : DateSwimlanePastPeriods,
         hideOrphansSwimlane: hideOrphansSwimlane,
         enableColor: false,
