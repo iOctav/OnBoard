@@ -95,6 +95,14 @@ export const youtrackApi = createApi({
         },
       })
     }),
+    getGroupValues: builder.query({
+      query: (id) => ({
+        url: `groups`,
+        params: {
+          fields: 'icon,id,name,ringId,usersCount',
+        },
+      })
+    }),
     getAvailableColumnFields: builder.query({
       query: (id) => ({
         url: `agiles/${id}/availableColumnFields`,
@@ -209,7 +217,7 @@ export const youtrackApi = createApi({
 });
 
 export const { useGetCustomFieldValuesQuery,
-  useLazyGetSprintsForAgileQuery,
+  useLazyGetSprintsForAgileQuery, useLazyGetGroupValuesQuery,
   useGetCurrentUserInfoQuery, useLazyGetAgilesQuery, useGetAgileUserProfileQuery,
   useLazyGetEnumBundleValuesQuery, useLazyGetOwnedBundleValuesQuery, useLazyGetStateBundleValuesQuery,
   useLazyGetVersionBundleValuesQuery, useLazyGetUserBundleValuesQuery, useLazyGetBuildBundleValuesQuery,

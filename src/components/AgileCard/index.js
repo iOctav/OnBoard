@@ -13,7 +13,7 @@ const AgileCardDiv = styled.div`
   width: calc(100% - calc(var(--ring-unit) + 1px)) !important;
   min-width: calc(100% - calc(var(--ring-unit) + 1px)) !important;
   height: 84px;
-  background: #FFFFFF;
+  background: var(--ring-content-background-color);
   border: 1px solid #DFE5EB;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
@@ -76,6 +76,7 @@ const AgileCardFooter = styled.div`
   max-height: 24px;
   transition: max-height 0.3s ease-out;
   transition-delay: 0.5s;
+  // overflow: hidden;
 `;
 
 function compareCardField(a, b) {

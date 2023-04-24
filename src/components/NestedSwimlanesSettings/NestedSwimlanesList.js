@@ -123,7 +123,7 @@ function NestedSwimlanesList({projectShortNames, systemSwimlane}) {
   ];
 
   let data = Object.keys(swimlanes).map(key => (
-      {...swimlanes[key], key: key, 
+      {...swimlanes[key], key: key,
         backgroundColor: swimlanes[key].colorId && COLORS[swimlanes[key].colorId].background,
         textColor: swimlanes[key].colorId && COLORS[swimlanes[key].colorId].text}))
     .sort((a, b) => a.order - b.order);

@@ -1,80 +1,46 @@
 import '../ColorPalette/palette.css';
-import styled from 'styled-components';
 
 import PropTypes from 'prop-types';
-import LazySelectBox from '../LazySelectBox';
+import { useSelector } from 'react-redux';
+import { selectCustomFieldMetadataById } from '../../features/customFields/customFieldsSlice';
+import SelectCardField from './SelectCardField';
 import {
-    useLazyGetBuildBundleValuesQuery,
-    useLazyGetEnumBundleValuesQuery,
-    useLazyGetOwnedBundleValuesQuery,
-    useLazyGetStateBundleValuesQuery,
-    useLazyGetUserBundleValuesQuery,
-    useLazyGetVersionBundleValuesQuery
-} from '../../app/services/youtrackApi';
-import {useState} from 'react';
-import Marker from './Marker';
-import { COLORS } from '../ColorPalette/colors';
-
-const CardFieldAnchor = styled.span`
-    cursor: pointer;
-    text-decoration: none;
-    color: var(--ring-secondary-color);
-    border: 0;
-    &:hover {
-        color: var(--ring-link-hover-color);
-        text-decoration: none;
-    }
-`;
-
-const LeftMarginSpan = styled.span`
-    margin-left: calc(var(--ring-unit));
-`;
-
-const mapTypeDataRequest = (fieldType) => {
-    switch (fieldType) {
-        case 'EnumProjectCustomField': return useLazyGetEnumBundleValuesQuery;
-        case 'StateProjectCustomField': return useLazyGetStateBundleValuesQuery;
-        case 'UserProjectCustomField': return useLazyGetUserBundleValuesQuery;
-        case 'OwnedProjectCustomField': return useLazyGetOwnedBundleValuesQuery;
-        case 'VersionProjectCustomField': return useLazyGetVersionBundleValuesQuery;
-        case 'BuildProjectCustomField': return useLazyGetBuildBundleValuesQuery;
-        default: return null;
-    }
-}
+    getDataPattern, getDataPlaceholder,
+    isDateField,
+    isDateTimeField,
+    isPeriodField,
+    isSelectField
+} from '../../features/customFields/fieldUtils';
+import FieldDatePicker from './FieldDatePicker';
+import FieldInput from './FieldInput';
+import FieldPeriod from './FieldPeriod';
 
 function AgileCardField({field}) {
-    let selected;
-    const isMultiValue = field.projectCustomField.field.fieldType.isMultiValue;
-    let label = field.projectCustomField?.emptyFieldText ?? '?';
-    if (isMultiValue) {
-        selected = field.value.length > 0 ? field.value.map(item => ({ label: item.name, key: item.id })) : [];
-    } else {
-        selected = field.value && { label: field.value.name, key: field.value.id };
-    }
-    const [selectedItem, setSelectedItem] = useState(selected);
-    if (!field.projectCustomField.bundle) return null;
-    const mapBundleDataItem = item => ({label: item.name, key: item.id});
-    const lazyDataBundleHook = mapTypeDataRequest(field.projectCustomField.$type);
-    const markerColor = parseInt(field.value?.color?.id);
+    const customField = useSelector(state => selectCustomFieldMetadataById(state, field.projectCustomField.field.id));
 
-    return (
-      <LazySelectBox
-                selected={selected}
-                lazyDataLoaderHook={lazyDataBundleHook}
-                label={label}
-                lazyDataLoaderHookParams={field.projectCustomField.bundle.id}
-                makeDataset={(data) => data.map(mapBundleDataItem)}
-                multiple={field.projectCustomField.field.fieldType.isMultiValue}
-                type="CUSTOM"
-                onSelect={(item) => setSelectedItem(item)}
-                customAnchor={({wrapperProps, buttonProps, popup}) => (
-                <LeftMarginSpan className="agile-card-enumeration-item" {...wrapperProps}>
-                    {!!markerColor && <Marker className={`ring-palette_tone-${COLORS[markerColor].tone}-${COLORS[markerColor].brightness}`}/>}
-                    <CardFieldAnchor title={field.projectCustomField.field.name + ': ' + (selectedItem?.label ?? label)} {...buttonProps}></CardFieldAnchor>
-                    {popup}
-                </LeftMarginSpan>)}>
-        </LazySelectBox>
-    );
+    if (isDateField(customField.valueType)) {
+        return (<FieldDatePicker customField={customField} value={field.value} withTime={isDateTimeField(customField.valueType)}/>);
+    }
+    if (isPeriodField(customField.valueType)) {
+        return <FieldPeriod customField={customField} value={field.value?.minutes}/>;
+    }
+
+    if (isSelectField(customField.valueType)) {
+        const selected = {
+            value: undefined,
+            colorId: parseInt(field.value?.color?.id),
+        };
+        if (customField.isMultiValue) {
+            selected.value = field.value?.length > 0 ? field.value.map(item => ({ label: item.name, key: item.id })) : [];
+        } else {
+            selected.value = field.value && { label: field.value?.name, key: field.value?.id };
+        }
+        return (<SelectCardField customField={ customField } selected={selected}/>);
+    } else {
+        const dataPattern = getDataPattern(customField.valueType);
+        const placeholder = getDataPlaceholder(customField.valueType);
+        return (<FieldInput customField={customField} value={field.value} placeholder={placeholder} errorText="Doesn't match the pattern" pattern={dataPattern}/>);
+    }
 }
 
 AgileCardField.propTypes = {

@@ -1,12 +1,4 @@
 import PropTypes from 'prop-types';
-import {
-  useLazyGetBuildBundleValuesQuery,
-  useLazyGetEnumBundleValuesQuery, useLazyGetIssueTagsQuery,
-  useLazyGetOwnedBundleValuesQuery,
-  useLazyGetStateBundleValuesQuery,
-  useLazyGetUserBundleValuesQuery,
-  useLazyGetVersionBundleValuesQuery
-} from '../../app/services/youtrackApi';
 import LazyTagBox from '../LazyTagBox';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -14,32 +6,13 @@ import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import { selectCustomFieldMetadataById } from '../../features/customFields/customFieldsSlice';
 import DateValuesSelect from './DateValuesSelect';
 import { COLORS } from '../ColorPalette/colors';
-
-const mapTypeDataRequest = (fieldType) => {
-  switch (fieldType) {
-    case 'EnumBundle': return useLazyGetEnumBundleValuesQuery;
-    case 'StateBundle': return useLazyGetStateBundleValuesQuery;
-    case 'UserBundle': return useLazyGetUserBundleValuesQuery;
-    case 'OwnedBundle': return useLazyGetOwnedBundleValuesQuery;
-    case 'VersionBundle': return useLazyGetVersionBundleValuesQuery;
-    case 'BuildBundle': return useLazyGetBuildBundleValuesQuery;
-    default: return null;
-  }
-}
-
-const mapIdDataRequest = (fieldId) => {
-  switch (fieldId.toLowerCase()) {
-    case 'tag': return useLazyGetIssueTagsQuery;
-    default: return null;
-  }
-}
-
+import { mapIdDataRequest, mapTypeDataRequest } from '../../features/customFields/fieldUtils';
 
 function SwimlaneValuesTagBox({swimlane, onChange}) {
   const { t } = useTranslation();
   const customField = useSelector(state => selectCustomFieldMetadataById(state, swimlane.field.id));
 
-  const lazyDataBundleHook = mapTypeDataRequest(customField?.bundle?.type) || mapIdDataRequest(swimlane.field.id);
+  const lazyDataBundleHook = mapTypeDataRequest(customField?.valueType) || mapIdDataRequest(swimlane.field.id);
   if (lazyDataBundleHook) {
     return (<LazyTagBox placeholder={t('Add value')} size={Size.L}
               tags={swimlane.values} disabled={swimlane.system}
