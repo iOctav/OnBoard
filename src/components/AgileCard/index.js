@@ -76,7 +76,7 @@ const AgileCardFooter = styled.div`
   max-height: 24px;
   transition: max-height 0.3s ease-out;
   transition-delay: 0.5s;
-  // overflow: hidden;
+  overflow: hidden;
 `;
 
 function compareCardField(a, b) {
