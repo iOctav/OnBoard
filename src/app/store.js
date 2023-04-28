@@ -4,6 +4,7 @@ import { youtrackApi } from './services/youtrackApi';
 import authReducer from '../features/auth/authSlice';
 import customFieldsReducer from '../features/customFields/customFieldsSlice';
 import columnsReducer from '../features/sprint/sprintSlice';
+import cardReducer from '../features/card/cardSlice';
 import { createReduxHistoryContext } from 'redux-first-history';
 import { createBrowserHistory } from 'history';
 
@@ -20,6 +21,7 @@ export const store = configureStore({
         columns: columnsReducer,
         [youtrackApi.reducerPath]: youtrackApi.reducer,
         router: routerReducer,
+        card: cardReducer,
 
     }),
     middleware: (getDefaultMiddleware) =>

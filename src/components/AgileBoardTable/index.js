@@ -7,6 +7,8 @@ import AgileBoardColGroup from './AgileBoardColGroup';
 import { useGetSpecificSprintForSpecificAgileQuery } from '../../features/sprint/sprintSlice';
 import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
 import { useStateParams } from '../../hooks/useStateParams';
+import { useDispatch } from 'react-redux';
+import { resetSelection } from '../../features/card/cardSlice';
 
 const TableContainer = styled.table`
   min-width: 720px;
@@ -23,6 +25,7 @@ const TableContainer = styled.table`
 
 function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldName, explicitQuery, hideOrphansSwimlane,
                            orphansAtTheTop, colorField, systemSwimlaneExist, visibleCardFields, swimlaneFieldName}) {
+  const dispatch = useDispatch();
   const { data: sprint,
     isLoading,
     isSuccess,
@@ -33,11 +36,15 @@ function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldN
 
   const [swimlanes] = useStateParams({}, 'nested-swimlanes', (s) => JSON.stringify(s), (s) => JSON.parse(s));
   const swimlanesDepth = Object.keys(swimlanes).length;
+  const onTableClickHandler = (event) => {
+    event.stopPropagation();
+    dispatch(resetSelection());
+  };
 
   if (isLoading) {
     return <LoaderScreen/>;
   } else if (isSuccess) {
-    return (<TableContainer>
+    return (<TableContainer onClick={onTableClickHandler}>
       <AgileBoardColGroup swimlanesDepth={swimlanesDepth}/>
       <AgileBoardHeader agileName={agileName}
                         sprintName={sprintName}

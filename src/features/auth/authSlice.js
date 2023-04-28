@@ -38,7 +38,7 @@ const slice = createSlice({
       state.expires_at = expires_at;
     },
   },
-})
+});
 
 export const { setCredentials } = slice.actions
 

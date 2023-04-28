@@ -5,6 +5,10 @@ import AgileCardAssignee from '../AgileCardAssignee';
 import AgileCardField from '../AgileCardField';
 import { issueDetails } from '../../services/linkService';
 import { ASSIGNEE_FIELDNAME } from '../../utils/cardFieldConstants';
+import { useDrag } from 'react-dnd';
+import { ItemTypes } from '../../utils/item-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { pickCard, selectCard, selectPickedCards, selectSelectedCard } from '../../features/card/cardSlice';
 
 const AgileCardDiv = styled.div`
   box-sizing: border-box;
@@ -18,6 +22,9 @@ const AgileCardDiv = styled.div`
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   margin: 0 calc(var(--ring-unit)/2) 6px;
+  ${props => props.selected ? `border-color: var(--ring-main-color);` : ''};
+  ${props => props.selected ? `box-shadow: 0px 0px 0px 2px var(--ring-main-color);` : ''};
+  ${props => props.picked ? `background-color: var(--ring-selected-background-color);` : ''};
 
   &::before {
     display: block;
@@ -27,7 +34,7 @@ const AgileCardDiv = styled.div`
     position: absolute;
     left: 0;
     top: 0;
-    ${props => props.bgColor ? `background-color: ${props.bgColor};` : ''}
+    ${props => props.bgColor ? `background-color: ${props.bgColor};` : ''};
     border-right: solid 1px transparent;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
@@ -84,27 +91,49 @@ function compareCardField(a, b) {
 }
 
 function AgileCard({ issueData, colorField, visibleFields }) {
-    const cardFooterFields = [...issueData.fields].filter(issue => !visibleFields || visibleFields.includes(issue.name))
-      .sort(compareCardField).map(field => {
-            return (<AgileCardField field={field} key={field?.id}/>);
-        });
-    const issueDetailsLink = issueDetails(issueData.idReadable, issueData.summary);
-    const assigneeField = issueData.fields.find(field => field.name === ASSIGNEE_FIELDNAME);
-    const bgColor = colorField && issueData.fields.find(field => field.name === colorField)?.value?.color?.background;
+  const dispatch = useDispatch();
+  const [{ isDragging }, drag] = useDrag(() => ({
+      type: ItemTypes.AgileCard,
+      item: { id: issueData.id },
+      collect: (monitor) => ({
+          isDragging: !!monitor.isDragging()
+      })
+  }));
+  const selectedCard = useSelector(selectSelectedCard);
+  const pickedCards = useSelector(selectPickedCards);
 
-    return <AgileCardDiv bgColor={bgColor} className="ob-agile-card">
-        <AgileCardSummaryDiv>
-            <IdLink href={issueDetailsLink} target="_blank" resolved={issueData.resolved ? 1 : 0}>{issueData.idReadable}</IdLink>
-            <SummarySpan>{issueData.summary}</SummarySpan>
-        </AgileCardSummaryDiv>
+  const cardFooterFields = [...issueData.fields].filter(issue => !visibleFields || visibleFields.includes(issue.name))
+    .sort(compareCardField).map(field => {
+          return (<AgileCardField field={field} key={field?.id}/>);
+      });
+  const issueDetailsLink = issueDetails(issueData.idReadable, issueData.summary);
+  const assigneeField = issueData.fields.find(field => field.name === ASSIGNEE_FIELDNAME);
+  const bgColor = colorField && issueData.fields.find(field => field.name === colorField)?.value?.color?.background;
+  const cardClickHandler = (event) => {
+    event.stopPropagation();
+    if (!event.ctrlKey) {
+      dispatch(selectCard({cardId: issueData.id}));
+    } else {
+      dispatch(pickCard({cardId: issueData.id}));
+    }
+  };
 
-        <AgileCardFooter className="agile-card-footer">
-            <span className="agile-card-enumeration">
-                <AgileCardAssignee field={assigneeField}/>
-                {cardFooterFields}
-            </span>
-        </AgileCardFooter>
-    </AgileCardDiv>
+  return <AgileCardDiv ref={drag}
+            style={{
+                opacity: isDragging ? 0.5 : 1,
+            }} bgColor={bgColor} className="ob-agile-card" onClick={cardClickHandler} selected={selectedCard?.id === issueData.id} picked={pickedCards.findIndex(x => x.id === issueData.id) >= 0}>
+      <AgileCardSummaryDiv>
+          <IdLink href={issueDetailsLink} target="_blank" resolved={issueData.resolved ? 1 : 0}>{issueData.idReadable}</IdLink>
+          <SummarySpan>{issueData.summary}</SummarySpan>
+      </AgileCardSummaryDiv>
+
+      <AgileCardFooter className="agile-card-footer">
+          <span className="agile-card-enumeration">
+              <AgileCardAssignee field={assigneeField}/>
+              {cardFooterFields}
+          </span>
+      </AgileCardFooter>
+  </AgileCardDiv>
 }
 
 AgileCard.propTypes = {
