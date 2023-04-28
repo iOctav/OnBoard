@@ -10,7 +10,9 @@ const slice = createSlice({
       state.selected = {
         id: cardId,
       };
-      state.picked = [];
+      state.picked = [{
+        id: cardId,
+      }];
     },
     pickCard: (state, { payload: { cardId } }) => {
       state.selected = {
@@ -20,14 +22,22 @@ const slice = createSlice({
         id: cardId,
       });
     },
+    softSelectCard: (state, { payload: { cardId } }) => {
+      state.selected = {
+        id: cardId,
+      };
+    },
     resetSelection: (state) => {
       state.selected = undefined;
+      state.picked = [];
+    },
+    resetPicked: (state) => {
       state.picked = [];
     },
   },
 });
 
-export const { selectCard, pickCard, resetSelection } = slice.actions
+export const { selectCard, pickCard, softSelectCard, resetSelection, resetPicked } = slice.actions
 
 export default slice.reducer
 

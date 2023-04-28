@@ -8,7 +8,13 @@ import { ASSIGNEE_FIELDNAME } from '../../utils/cardFieldConstants';
 import { useDrag } from 'react-dnd';
 import { ItemTypes } from '../../utils/item-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { pickCard, selectCard, selectPickedCards, selectSelectedCard } from '../../features/card/cardSlice';
+import {
+  pickCard,
+  selectCard,
+  selectPickedCards,
+  selectSelectedCard,
+  softSelectCard
+} from '../../features/card/cardSlice';
 
 const AgileCardDiv = styled.div`
   box-sizing: border-box;
@@ -16,7 +22,7 @@ const AgileCardDiv = styled.div`
   min-width: 97% !important;
   width: calc(100% - calc(var(--ring-unit) + 1px)) !important;
   min-width: calc(100% - calc(var(--ring-unit) + 1px)) !important;
-  height: 84px;
+  height: auto;
   background: var(--ring-content-background-color);
   border: 1px solid #DFE5EB;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
@@ -62,7 +68,7 @@ const IdLink = styled.a`
   color: var(--ring-secondary-color);
   font-variant: tabular-nums;
   text-decoration: none;
-  ${props => props.resolved ? 'text-decoration: line-through' : ''};
+  ${props => props.resolved ? 'text-decoration: line-through;' : ''};
 
   &:hover {
     text-decoration: underline;
@@ -80,7 +86,7 @@ const AgileCardFooter = styled.div`
   position: static;
   height: auto;
   line-height: 20px;
-  max-height: 24px;
+  ${props => props.selected ? 'max-height: 96px;' : 'max-height: 24px;'};
   transition: max-height 0.3s ease-out;
   transition-delay: 0.5s;
   overflow: hidden;
@@ -112,7 +118,11 @@ function AgileCard({ issueData, colorField, visibleFields }) {
   const cardClickHandler = (event) => {
     event.stopPropagation();
     if (!event.ctrlKey) {
-      dispatch(selectCard({cardId: issueData.id}));
+      if (!event.shiftKey) {
+        dispatch(selectCard({cardId: issueData.id}));
+      } else {
+        dispatch(softSelectCard({cardId: issueData.id}));
+      }
     } else {
       dispatch(pickCard({cardId: issueData.id}));
     }
@@ -121,13 +131,13 @@ function AgileCard({ issueData, colorField, visibleFields }) {
   return <AgileCardDiv ref={drag}
             style={{
                 opacity: isDragging ? 0.5 : 1,
-            }} bgColor={bgColor} className="ob-agile-card" onClick={cardClickHandler} selected={selectedCard?.id === issueData.id} picked={pickedCards.findIndex(x => x.id === issueData.id) >= 0}>
+            }} bgColor={bgColor} className="ob-agile-card" onClick={cardClickHandler} selected={selectedCard?.id === issueData.id} picked={pickedCards.length > 1 && pickedCards.findIndex(x => x.id === issueData.id) >= 0}>
       <AgileCardSummaryDiv>
           <IdLink href={issueDetailsLink} target="_blank" resolved={issueData.resolved ? 1 : 0}>{issueData.idReadable}</IdLink>
           <SummarySpan>{issueData.summary}</SummarySpan>
       </AgileCardSummaryDiv>
 
-      <AgileCardFooter className="agile-card-footer">
+      <AgileCardFooter className="agile-card-footer" selected={selectedCard?.id === issueData.id}>
           <span className="agile-card-enumeration">
               <AgileCardAssignee field={assigneeField}/>
               {cardFooterFields}
