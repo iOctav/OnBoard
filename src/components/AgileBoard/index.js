@@ -9,8 +9,11 @@ import AgileBoardTable from '../AgileBoardTable';
 import AgileBoardFooter from './AgileBoardFooter';
 import { useTranslation } from 'react-i18next';
 import { SUPPORTED_LANGUAGES } from '../../features/auth/localeUtils';
+import { useDispatch } from 'react-redux';
+import { resetSelection } from '../../features/card/cardSlice';
 
 function AgileBoard() {
+  const dispatch = useDispatch();
   const { agileId, sprintId } = useParams();
   const { search } = useLocation();
   const { i18n } = useTranslation();
@@ -25,7 +28,8 @@ function AgileBoard() {
       }
       link.href = '/favicon_ru.ico';
     }
-  }, [i18n.language]);
+    return () => dispatch(resetSelection());
+  }, [i18n.language, agileId, sprintId]);
 
   const [settingsVisible, setSettingsVisible] = useState(search.startsWith('settings'));
   const { data: agile,
@@ -34,7 +38,7 @@ function AgileBoard() {
     isError,
     error
   } = useGetAgilesByIdQuery(agileId, {
-    pollingInterval: 60000,
+    pollingInterval: 58000,
   });
 
   let content
