@@ -8,7 +8,6 @@ export const Marker = styled.span`
   display: inline-block;
   border: 1px solid var(--ring-content-background-color);
   border-color: transparent !important;
-  margin-right: 4px;
 `;
 
 export const CardFieldAnchor = styled.span`

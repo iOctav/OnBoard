@@ -37,15 +37,7 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
       providesTags: ['Sprint']
     }),
     getIssuesByAgileSprint: builder.query({
-      async queryFn({agileId, sprintId}, _queryApi, _extraOptions, baseQuery) {
-        const sprint = selectCurrentSprint(_queryApi.getState(), {agileId, sprintId});
-        const issueIds = [sprint.data.board.orphanRow, ...sprint.data.board.trimmedSwimlanes]
-          .reduce((acc1, row) =>
-              [...acc1, ...(row.cells.reduce((acc1, cell) =>
-                [...acc1, ...cell.issues.reduce((acc2, issue) => [...acc2, issue.id], [])], [])),[]],
-            [])
-          .filter(id => !(id instanceof Array))
-          .sort();
+      async queryFn(issueIds, _queryApi, _extraOptions, baseQuery) {
         const result = await baseQuery({
           url: `issuesGetter`,
           method: 'POST',

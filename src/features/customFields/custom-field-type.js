@@ -11,6 +11,6 @@ export const CustomFieldType = {
   Build: 'build',
   State: 'state',
   Version: 'version',
-  OwnedField: 'ownedField',
+  OwnedField: 'ownedfield',
   Enum: 'enum',
 };

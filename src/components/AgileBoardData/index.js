@@ -1,15 +1,21 @@
 import AgileBoardRows from '../AgileBoardRows';
 import PropTypes from 'prop-types';
 import { useGetIssuesByAgileSprintQuery } from '../../features/sprint/sprintSlice';
+import { useMemo } from 'react';
 
 function AgileBoardData({agileId, sprintId, sprint, hideOrphansSwimlane, orphansAtTheTop,
                           colorField, systemSwimlaneExist, visibleCardFields, swimlaneFieldName}) {
-
+  const issueIds = useMemo(() => {
+    if (!sprint?.board) return [];
+    return [sprint.board.orphanRow, ...sprint.board.trimmedSwimlanes].reduce((acc1, row) =>
+      [...acc1, ...(row.cells.reduce((acc1, cell) =>
+        [...acc1, ...cell.issues.reduce((acc2, issue) => [...acc2, issue.id], [])], [])),[]],
+    [])
+    .filter(id => !(id instanceof Array))
+    .sort()}, [sprint?.board]);
   const { data: issues,
-    isLoading,
-    isSuccess,
-    isError
-  } = useGetIssuesByAgileSprintQuery({agileId, sprintId});
+    isSuccess
+  } = useGetIssuesByAgileSprintQuery(issueIds);
   let issuesDict = undefined;
   if (isSuccess) {
     issuesDict = issues.entities;

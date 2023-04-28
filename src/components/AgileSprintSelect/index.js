@@ -53,11 +53,12 @@ function AgileSprintSelect({agileId, sprint}) {
 
   useEffect(() => {
     const importLocaleFile = async () => {
-      const localeToSet = await import(
+      return import(
         /* webpackMode: "lazy", webpackChunkName: "df-[index]", webpackExclude: /_lib/ */
         `date-fns/locale/${i18n.language}/index.js`
-        );
-      setLocale(localeToSet.default);
+        ).then(
+          (localeToSet) => setLocale(localeToSet.default),
+          () => import(`date-fns/locale/en-GB/index.js`).then((localeToSet) => setLocale(localeToSet.default)));
     };
 
     // If the locale has not yet been loaded.

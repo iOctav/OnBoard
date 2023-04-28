@@ -103,13 +103,13 @@ function BoardRow({agileId, sprintId, row, issuesDict, swimlaneTitle, level, isO
       {
         row.cells.map((cell, index) =>
           (<BorderedTd key={'cell-' + cell.id}>
-            { !columns[index].collapsed
+            { !columns[index]?.collapsed
               ? (<AgileBoardCell key={ 'agile-cell-' + cell.id }
                                  agileId={agileId}
                                  sprintId={sprintId}
-                                 columnFieldId={columns[index].agileColumn.parent.field.name}
+                                 columnFieldId={columns[index]?.agileColumn.parent.field.name}
                                  swimlanes={currentSwimlanes}
-                                 columnName={ columns[index].agileColumn.fieldValues[0].name }
+                                 columnName={ columns[index]?.agileColumn.fieldValues[0].name }
                                  issuesDict={issuesDict}>
                   { cell.issues.map((c) => issuesDict && issuesDict[c.id]
                       ? <AgileCard issueData={issuesDict[c.id]} colorField={colorField} visibleFields={visibleCardFields} key={'agile-card-' + c.id}/>
