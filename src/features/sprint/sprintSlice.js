@@ -20,6 +20,14 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
       }),
       providesTags: ['Sprint'],
     }),
+    getSubtasksIssues: builder.query({
+      query: ({issueId, linkId}) => ({
+        url: `issues/${issueId}/links/${linkId}/issues`,
+        params: {
+          fields: '$type,id,idReadable,isDraft,numberInProject,project($type,id,isDemo,leader(id),name,plugins(helpDeskSettings(enabled),timeTrackingSettings(enabled,estimate(field(id,name),id),timeSpent(field(id,name),id)),vcsIntegrationSettings(processors(enabled,migrationFailed,server(enabled,url),upsourceHubResourceKey,url))),ringId,shortName,team($type,allUsersGroup,icon,id,name,ringId)),resolved,summary',
+        },
+      })
+    }),
     getIssues: builder.query({
       query: (ids) => ({
         url: `issuesGetter`,
@@ -118,7 +126,8 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
   })
 })
 
-export const { useGetSpecificSprintForSpecificAgileQuery, useGetIssuesQuery, useUpdateIssueFieldMutation, useGetIssuesByAgileSprintQuery } = extendedYoutrackApi;
+export const { useGetSpecificSprintForSpecificAgileQuery, useGetIssuesQuery, useUpdateIssueFieldMutation,
+  useGetIssuesByAgileSprintQuery, useLazyGetSubtasksIssuesQuery } = extendedYoutrackApi;
 
 export const selectCurrentSprint = (state, args) => extendedYoutrackApi.endpoints.getSpecificSprintForSpecificAgile.select(args)(state);
 

@@ -15,6 +15,7 @@ import {
   selectSelectedCard,
   softSelectCard
 } from '../../features/card/cardSlice';
+import AgileCardSubtask from '../AgileCardSubtask';
 
 const AgileCardDiv = styled.div`
   box-sizing: border-box;
@@ -92,6 +93,11 @@ const AgileCardFooter = styled.div`
   overflow: hidden;
 `;
 
+const AgileCardSubtasksFlexContainer = styled.span`
+  flex-shrink: 0;
+  flex-grow: 0;
+`;
+
 function compareCardField(a, b) {
     return a.projectCustomField.ordinal - b.projectCustomField.ordinal;
 }
@@ -138,10 +144,13 @@ function AgileCard({ issueData, colorField, visibleFields }) {
       </AgileCardSummaryDiv>
 
       <AgileCardFooter className="agile-card-footer" selected={selectedCard?.id === issueData.id}>
-          <span className="agile-card-enumeration">
-              <AgileCardAssignee field={assigneeField}/>
-              {cardFooterFields}
-          </span>
+        <span className="agile-card-enumeration">
+            <AgileCardAssignee field={assigneeField}/>
+            {cardFooterFields}
+        </span>
+        <AgileCardSubtasksFlexContainer>
+          <AgileCardSubtask  issueId={issueData.id} subtasks={issueData.subtasks}/>
+        </AgileCardSubtasksFlexContainer>
       </AgileCardFooter>
   </AgileCardDiv>
 }
