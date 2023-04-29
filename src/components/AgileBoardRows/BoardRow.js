@@ -96,80 +96,98 @@ function BoardRow({agileId, sprintId, row, issuesDict, swimlaneTitle, level, isO
   const [rollUp, setRollUp] = useState(!row.collapsed);
 
   const issuesCount = row.cells.reduce((acc, cell) => acc + cell.issues.length, 0);
-  let swimlaneContent;
-  if (!swimlanesDepth || swimlanesDepth === (level + 1)) {
-    swimlaneContent = (<tr>
-      <FakeTableCells swimlanesDepth={swimlanesDepth}/>
-      {
-        row.cells.map((cell, index) =>
-          (<BorderedTd key={'cell-' + cell.id}>
-            { !columns[index]?.collapsed
-              ? (<AgileBoardCell key={ 'agile-cell-' + cell.id }
-                                 agileId={agileId}
-                                 sprintId={sprintId}
-                                 columnFieldId={columns[index]?.agileColumn.parent.field.name}
-                                 swimlanes={currentSwimlanes}
-                                 columnName={ columns[index]?.agileColumn.fieldValues[0].name }
-                                 issuesDict={issuesDict}>
+  const swimlaneContent = useMemo(() => {
+    if (!swimlanesDepth || swimlanesDepth === (level + 1)) {
+      return (<tr>
+        <FakeTableCells swimlanesDepth={swimlanesDepth}/>
+        {
+          row.cells.map((cell, index) =>
+            (<BorderedTd key={'cell-' + cell.id}>
+              { !columns[index]?.collapsed
+                ? (<AgileBoardCell key={ 'agile-cell-' + cell.id }
+                                   agileId={agileId}
+                                   sprintId={sprintId}
+                                   columnFieldId={columns[index]?.agileColumn.parent.field.name}
+                                   swimlanes={currentSwimlanes}
+                                   columnName={ columns[index]?.agileColumn.fieldValues[0].name }
+                                   issuesDict={issuesDict}>
                   { cell.issues.map((c) => issuesDict && issuesDict[c.id]
-                      ? <AgileCard issueData={issuesDict[c.id]} colorField={colorField} visibleFields={visibleCardFields} key={'agile-card-' + c.id}/>
-                      : <AgileCardPreview issueData={c} key={'agile-card-' + c.id}/> )}
+                    ? <AgileCard issueData={issuesDict[c.id]} colorField={colorField} visibleFields={visibleCardFields} key={'agile-card-' + c.id}/>
+                    : <AgileCardPreview issueData={c} key={'agile-card-' + c.id}/> )}
                   <NewCardButton/>
                 </AgileBoardCell>)
-              : cell.issues.map((c) => {
-                const issueData = issuesDict && issuesDict[c.id];
-                const issueColor = colorField && issueData?.fields?.find(field => field.name === colorField)?.value?.color?.background;
-                return (<CollapsedIssue bgColor={issueColor} key={'agile-card-' + c.id}/>);
-              })}
-          </BorderedTd>)
-        )
-      }
-    </tr>);
-  } else {
-    const orphanRow = makeEmptyOrphanRow(row.cells.map(cell => ({...cell, issues: [], issuesCount: 0})));
-    const trimmedSwimlanes = nestedSwimlane?.field && nestedSwimlane.values.length > 0 && nestedSwimlane.type === SwimlaneType.Values
-      ? makeEmptyTrimmedSwimlanes(nestedSwimlane, row.cells) : [];
-    let swimlaneFieldIndex = -1;
-    row.cells.forEach((cell, index) => {
-      if (!issuesDict) return;
-      cell.issues?.forEach(issue => {
-        const issueData = issuesDict[issue.id];
-        swimlaneFieldIndex > -1 || (swimlaneFieldIndex = issueData?.fields
-          .findIndex(field => field.name.toLowerCase() === nestedSwimlane?.field?.name?.toLowerCase()));
-        const swimlaneFieldValue = issueData?.fields[swimlaneFieldIndex]?.value ||
-          getPredefinedDateValue(issueData, nestedSwimlane?.field?.name);
-        const issueTags = issueData?.tags.map(tag => tag.name);
-        if (swimlaneFieldValue || issueTags) {
-          const trimmedSwimlane = trimmedSwimlanes.find(smln => {
-            return !smln.dateType
-              ? smln.name === swimlaneFieldValue?.name || issueTags.includes(smln.name)
-              : smln.name === getDateSwimlanePeriod(swimlaneFieldValue);
-          });
-          if (trimmedSwimlane) {
-            const trimmedSwimlaneCell = trimmedSwimlane.cells[index];
-            trimmedSwimlaneCell.issues.push(issue);
-            trimmedSwimlaneCell.issuesCount++;
-            return;
-          } else {
-            if (nestedSwimlane?.values.findIndex(value => value.key === swimlaneFieldValue?.name) >= 0) {
-              trimmedSwimlanes.push(makeIssueTrimmedSwimlane(issueData, swimlaneFieldValue, nestedSwimlane,
-                row.cells.map(cell => ({...cell, issues: [], issuesCount: 0}))));
+                : cell.issues.map((c) => {
+                  const issueData = issuesDict && issuesDict[c.id];
+                  const issueColor = colorField && issueData?.fields?.find(field => field.name === colorField)?.value?.color?.background;
+                  return (<CollapsedIssue bgColor={issueColor} key={'agile-card-' + c.id}/>);
+                })}
+            </BorderedTd>)
+          )
+        }
+      </tr>);
+    } else {
+      const orphanRow = makeEmptyOrphanRow(row.cells.map(cell => ({...cell, issues: [], issuesCount: 0})));
+      const trimmedSwimlanes = nestedSwimlane?.field && nestedSwimlane.values.length > 0 && nestedSwimlane.type === SwimlaneType.Values
+        ? makeEmptyTrimmedSwimlanes(nestedSwimlane, row.cells) : [];
+      let swimlaneFieldIndex = -1;
+      row.cells.forEach((cell, index) => {
+        if (!issuesDict) return;
+        cell.issues?.forEach(issue => {
+          const issueData = issuesDict[issue.id];
+          swimlaneFieldIndex > -1 || (swimlaneFieldIndex = issueData?.fields
+            .findIndex(field => field.name.toLowerCase() === nestedSwimlane?.field?.name?.toLowerCase()));
+          const swimlaneFieldValue = issueData?.fields[swimlaneFieldIndex]?.value ||
+            getPredefinedDateValue(issueData, nestedSwimlane?.field?.name);
+          const issueTags = issueData?.tags.map(tag => tag.name);
+          if (swimlaneFieldValue || issueTags) {
+            const trimmedSwimlane = trimmedSwimlanes.find(smln => {
+              return !smln.dateType
+                ? smln.name === swimlaneFieldValue?.name || issueTags.includes(smln.name)
+                : smln.name === getDateSwimlanePeriod(swimlaneFieldValue);
+            });
+            if (trimmedSwimlane) {
+              const trimmedSwimlaneCell = trimmedSwimlane.cells[index];
+              trimmedSwimlaneCell.issues.push(issue);
+              trimmedSwimlaneCell.issuesCount++;
               return;
+            } else {
+              if (nestedSwimlane?.values.findIndex(value => value.key === swimlaneFieldValue?.name) >= 0) {
+                trimmedSwimlanes.push(makeIssueTrimmedSwimlane(issueData, swimlaneFieldValue, nestedSwimlane,
+                  row.cells.map(cell => ({...cell, issues: [], issuesCount: 0}))));
+                return;
+              }
             }
           }
-        }
-        const orphanCell = orphanRow.cells[index];
-        orphanCell.issues.push(issue);
-        orphanCell.issuesCount++;
-      })
-    });
+          const orphanCell = orphanRow.cells[index];
+          orphanCell.issues.push(issue);
+          orphanCell.issuesCount++;
+        })
+      });
 
-    swimlaneContent =
-      (<AgileBoardRows agileId={agileId} sprintId={sprintId} orphanRow={orphanRow} level={level+1}
-                       colorField={colorField} visibleCardFields={visibleCardFields} swimlaneFieldName={nestedSwimlane.field.name}
-                       orphansAtTheTop={true} hideOrphansSwimlane={nestedSwimlane?.hideOrphansSwimlane} currentSwimlanes={currentSwimlanes}
-                       trimmedSwimlanes={trimmedSwimlanes} issuesDict={issuesDict}/>)
-  }
+      trimmedSwimlanes && trimmedSwimlanes.filter(ts => ts.issue).forEach(trimmedSwimlane => {
+        const issueData = issuesDict[trimmedSwimlane.issue.id];
+        if (issueData.subtasks?.issues?.length > 0) {
+          issueData.subtasks.issues.forEach(subtask => {
+            orphanRow.cells.forEach((cell, index) => {
+              const subtaskIndex = cell.issues.findIndex(issue => issue.id === subtask.id);
+              if (subtaskIndex >= 0) {
+                cell.issues.splice(subtaskIndex, 1);
+                cell.issuesCount--;
+                trimmedSwimlane.cells[index].issues.push(subtask);
+                trimmedSwimlane.cells[index].issuesCount++;
+              }
+            });
+          });
+        }
+      });
+
+      return (<AgileBoardRows agileId={agileId} sprintId={sprintId} orphanRow={orphanRow} level={level+1}
+                         colorField={colorField} visibleCardFields={visibleCardFields} swimlaneFieldName={nestedSwimlane.field.name}
+                         orphansAtTheTop={true} hideOrphansSwimlane={nestedSwimlane?.hideOrphansSwimlane} currentSwimlanes={currentSwimlanes}
+                         trimmedSwimlanes={trimmedSwimlanes} issuesDict={issuesDict}/>);
+    }    
+  }, [swimlanesDepth, level, row.cells, agileId, sprintId, issuesDict, colorField, visibleCardFields, nestedSwimlane, columns])
+
   return (<>
     { (swimlaneTitle || level === 0) && <Swimlane title={swimlaneTitle} issueId={row.issue?.idReadable}
                                                   striked={row.issue?.resolved > 0} cardsNumber={issuesCount}
