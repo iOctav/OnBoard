@@ -15,7 +15,7 @@ export const mapTypeDataRequest = (fieldType) => {
     case 'enum': return useLazyGetEnumBundleValuesQuery;
     case 'state': return useLazyGetStateBundleValuesQuery;
     case 'user': return useLazyGetUserBundleValuesQuery;
-    case 'ownedField': return useLazyGetOwnedBundleValuesQuery;
+    case 'ownedfield': return useLazyGetOwnedBundleValuesQuery;
     case 'version': return useLazyGetVersionBundleValuesQuery;
     case 'build': return useLazyGetBuildBundleValuesQuery;
     case 'group': return useLazyGetGroupValuesQuery;
