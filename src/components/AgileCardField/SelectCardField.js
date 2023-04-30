@@ -4,12 +4,14 @@ import { mapTypeDataRequest } from '../../features/customFields/fieldUtils';
 import LazySelectBox from '../LazySelectBox';
 import { CardFieldAnchor, LeftMarginSpan, Marker } from './styled-components';
 import { COLORS } from '../ColorPalette/colors';
+import ColorAnchor from '../ColorPicker/ColorAnchor';
+import { CustomFieldPresentationType } from '../../features/customFields/custom-field-presentation-type';
 
 function SelectCardField({customField, selected}) {
   const [selectedItem, setSelectedItem] = useState(selected);
   const lazyDataBundleHook = mapTypeDataRequest(customField?.valueType);
   if (!lazyDataBundleHook) return null;
-  const mapBundleDataItem = item => ({label: item.name, key: item.id});
+  const mapBundleDataItem = item => ({label: item.name, key: item.id, description: item.color?.id !== '0' && (<ColorAnchor label={item.name[0]} colorId={item.color?.id}/>)});
   const emptyFieldText = customField?.emptyFieldText ?? '?';
 
   return (
@@ -24,8 +26,13 @@ function SelectCardField({customField, selected}) {
       onSelect={(item) => setSelectedItem(item)}
       customAnchor={({wrapperProps, buttonProps, popup}) => (
         <LeftMarginSpan className="agile-card-enumeration-item" {...wrapperProps}>
-          {!!selected.colorId && <Marker className={`ring-palette_tone-${COLORS[selected.colorId].tone}-${COLORS[selected.colorId].brightness}`}/>}
-          <CardFieldAnchor title={customField?.name + ': ' + (selectedItem?.label ?? emptyFieldText)} {...buttonProps}></CardFieldAnchor>
+          {customField.presentationType === CustomFieldPresentationType.FullName
+            ? (<>
+                {!!selectedItem.colorId && <Marker className={`ring-palette_tone-${COLORS[selectedItem.colorId].tone}-${COLORS[selectedItem.colorId].brightness}`}/>}
+                <CardFieldAnchor title={customField?.name + ': ' + (selectedItem?.label ?? emptyFieldText)} {...buttonProps}/>
+              </>)
+            : <ColorAnchor label={selectedItem.value && selectedItem.value.label[0]} colorId={selected.colorId} {...buttonProps}/>
+          }
           {popup}
         </LeftMarginSpan>)}>
     </LazySelectBox>

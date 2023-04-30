@@ -1,5 +1,6 @@
 import { createEntityAdapter, createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { youtrackApi } from '../../app/services/youtrackApi';
+import { CustomFieldPresentationType } from './custom-field-presentation-type';
 
 const customFieldsAdapter = createEntityAdapter();
 
@@ -27,6 +28,7 @@ const customFieldsSlice = createSlice({
               type: customField.bundle?.$type,
               id: customField.bundle?.id,
             },
+            presentationType: action.payload.cardSettings.fields.find(field => field.field.name === customField.field.name)?.presentation?.id ?? CustomFieldPresentationType.FullName,
           }));
         customFieldsAdapter.upsertMany(state, customFields);
       }
