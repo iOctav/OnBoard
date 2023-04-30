@@ -11,7 +11,7 @@ import {
 import { CustomFieldType } from './custom-field-type';
 
 export const mapTypeDataRequest = (fieldType) => {
-  switch (fieldType.toLowerCase()) {
+  switch (fieldType?.toLowerCase()) {
     case 'enum': return useLazyGetEnumBundleValuesQuery;
     case 'state': return useLazyGetStateBundleValuesQuery;
     case 'user': return useLazyGetUserBundleValuesQuery;
