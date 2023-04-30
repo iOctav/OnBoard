@@ -27,6 +27,11 @@ export const popLocalLocation = (state) => {
   return restoreLocation;
 }
 
+export const getLocalLocation = (state) => {
+  const localStorageKey = restoreLocationStorageKey(state);
+  return localStorage.getItem(localStorageKey);
+}
+
 export const setLocalTokenInfo = (hashParams) => {
   const expires_in = hashParams.expires_in * 1;
   let expirationTime = (Date.now() / 1000) + expires_in;
