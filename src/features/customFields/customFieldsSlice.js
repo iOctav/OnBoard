@@ -28,7 +28,7 @@ const customFieldsSlice = createSlice({
               type: customField.bundle?.$type,
               id: customField.bundle?.id,
             },
-            presentationType: action.payload.cardSettings.fields.find(field => field.field.name === customField.field.name)?.presentation?.id ?? CustomFieldPresentationType.FullName,
+            presentationType: action.payload.cardSettings?.fields.find(field => field.field.name === customField.field.name)?.presentation?.id ?? CustomFieldPresentationType.FullName,
           }));
         customFieldsAdapter.upsertMany(state, customFields);
       }
