@@ -157,7 +157,13 @@ const columnsSlice = createSlice({
     builder.addMatcher(matchASprintUpdated, (state, action) => {
       columnsAdapter.removeAll(state);
       if (action.payload.board?.columns) {
-        columnsAdapter.upsertMany(state, action.payload.board.columns.map((col, index) => ({...col, id: index})));
+        const cardsCount = action.payload.board.orphanRow.cells.map(cell => cell.issues.length);
+        if (action.payload.board.trimmedSwimlanes?.length > 0) {
+          action.payload.board.trimmedSwimlanes.forEach(swimlane => {
+            swimlane.cells.forEach((cell, index) => cardsCount[index] += cell.issues.length);
+          });
+        }
+        columnsAdapter.upsertMany(state, action.payload.board.columns.map((col, index) => ({...col, id: index, cardsCount: cardsCount[index]})));
       }
     });
   },

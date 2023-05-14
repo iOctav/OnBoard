@@ -77,6 +77,9 @@ function HeaderCell({column, agileName, sprintName, fieldName, cardsCount, expli
 
   return (
     <HeaderCellTd>
+      <FloatRightCounterDiv title={t('1 card', { count: cardsCount })}>
+        {cardsCount}
+      </FloatRightCounterDiv>
       <HeaderTitle>
         <FloatLeftButton icon={column.collapsed ? chevronRight : chevronLeft}
                          onClick={() => dispatch(updateColumn({id: column.id, changes: { collapsed: !column.collapsed}}))}>

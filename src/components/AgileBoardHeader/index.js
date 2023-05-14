@@ -26,6 +26,7 @@ function AgileBoardHeader({agileName, sprintName, fieldName, explicitQuery, swim
                         agileName={agileName}
                         sprintName={sprintName}
                         fieldName={fieldName}
+                        cardsCount={column.cardsCount}
                         explicitQuery={explicitQuery}/>)
           )
         }
