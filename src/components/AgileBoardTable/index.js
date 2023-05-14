@@ -10,9 +10,7 @@ import { useStateParams } from '../../hooks/useStateParams';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetSelection } from '../../features/card/cardSlice';
 import ErrorPage from '../ErrorPage';
-import { useEffect } from 'react';
 import alertService from '@jetbrains/ring-ui/dist/alert-service/alert-service';
-import { useTranslation } from 'react-i18next';
 
 const TableContainer = styled.table`
   min-width: 720px;
@@ -34,6 +32,7 @@ function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldN
   const { data: sprint,
     isLoading,
     isError,
+    isSuccess,
     error
   } = useGetSpecificSprintForSpecificAgileQuery({agileId, sprintId: sprintId || 'current', issuesQuery: query}, {
     pollingInterval: 20000,
@@ -55,7 +54,7 @@ function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldN
 
   if (isLoading || !sprint) {
     return <LoaderScreen/>;
-  } else {
+  } else if (isSuccess) {
     return (<TableContainer onClick={onTableClickHandler}>
       <AgileBoardColGroup swimlanesDepth={swimlanesDepth}/>
       <AgileBoardHeader agileName={agileName}

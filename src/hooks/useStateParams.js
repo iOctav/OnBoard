@@ -18,7 +18,7 @@ export const useStateParams = (initialState, paramsName, serialize, deserialize)
     if (existingValue && deserialize(existingValue) !== state) {
       setState(deserialize(existingValue));
     }
-  }, [existingValue, deserialize, state]);
+  }, [existingValue]);
 
   const onChange = (s) => {
     setState(s);
