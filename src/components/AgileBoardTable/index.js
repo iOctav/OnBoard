@@ -46,7 +46,8 @@ function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldN
   };
 
   if (isError) {
-    alertService.error(error.errorMessage, 5000);
+    // TODO: Use own alert service because that one uses deprecated API
+    // alertService.error(error.errorMessage, 5000);
     if (!sprint) {
       return <ErrorPage message={ error.errorTitle } description={ error.errorDescription }/>
     }
