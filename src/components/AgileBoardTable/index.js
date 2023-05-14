@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { resetSelection } from '../../features/card/cardSlice';
 import ErrorPage from '../ErrorPage';
 import alertService from '@jetbrains/ring-ui/dist/alert-service/alert-service';
+import { selectNestedSwimlanes } from '../../features/nestedSwimlanes/nestedSwimlanesSlice';
 
 const TableContainer = styled.table`
   min-width: 720px;
@@ -38,7 +39,7 @@ function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldN
     pollingInterval: 20000,
   });
 
-  const [swimlanes] = useStateParams({}, 'nested-swimlanes', (s) => JSON.stringify(s), (s) => JSON.parse(s));
+  const swimlanes = useSelector(selectNestedSwimlanes);
   const swimlanesDepth = Object.keys(swimlanes).length;
   const onTableClickHandler = (event) => {
     event.stopPropagation();

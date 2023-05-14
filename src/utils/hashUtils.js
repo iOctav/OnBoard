@@ -14,6 +14,13 @@ export const extractQueryFromSearch = (search) => {
   return params?.query ?? undefined;
 }
 
+export const extractNestedSwimlanesFromSearch = (search) => {
+  const params = new Proxy(new URLSearchParams(search), {
+    get: (searchParams, prop) => searchParams.get(prop),
+  });
+  return JSON.parse(params['nested-swimlanes']) ?? {};
+}
+
 const extractHashParamsFromHash = (urlHash) => {
   return urlHash
     .substring(1)

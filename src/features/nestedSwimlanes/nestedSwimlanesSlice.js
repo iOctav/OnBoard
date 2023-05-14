@@ -1,4 +1,5 @@
 import { youtrackApi } from '../../app/services/youtrackApi';
+import { extractNestedSwimlanesFromSearch, extractQueryFromSearch } from '../../utils/hashUtils';
 
 export const extendedYoutrackApi = youtrackApi.injectEndpoints({
   endpoints: builder => ({
@@ -18,3 +19,5 @@ export const extendedYoutrackApi = youtrackApi.injectEndpoints({
 })
 
 export const { useUpdateGeneralSwimlaneSettingsMutation } = extendedYoutrackApi
+
+export const selectNestedSwimlanes = (state) => extractNestedSwimlanesFromSearch(state.router.location.search)
