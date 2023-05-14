@@ -4,11 +4,15 @@ import PropTypes from 'prop-types';
 import AgileBoardHeader from '../AgileBoardHeader';
 import AgileBoardData from '../AgileBoardData';
 import AgileBoardColGroup from './AgileBoardColGroup';
-import { useGetSpecificSprintForSpecificAgileQuery } from '../../features/sprint/sprintSlice';
+import { selectIssuesQuery, useGetSpecificSprintForSpecificAgileQuery } from '../../features/sprint/sprintSlice';
 import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
 import { useStateParams } from '../../hooks/useStateParams';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { resetSelection } from '../../features/card/cardSlice';
+import ErrorPage from '../ErrorPage';
+import { useEffect } from 'react';
+import alertService from '@jetbrains/ring-ui/dist/alert-service/alert-service';
+import { useTranslation } from 'react-i18next';
 
 const TableContainer = styled.table`
   min-width: 720px;
@@ -25,12 +29,13 @@ const TableContainer = styled.table`
 
 function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldName, explicitQuery, hideOrphansSwimlane,
                            orphansAtTheTop, colorField, systemSwimlaneExist, visibleCardFields, swimlaneFieldName}) {
+  const query = useSelector(selectIssuesQuery);
   const dispatch = useDispatch();
   const { data: sprint,
     isLoading,
-    isSuccess,
-    isError
-  } = useGetSpecificSprintForSpecificAgileQuery({agileId, sprintId: sprintId || 'current'}, {
+    isError,
+    error
+  } = useGetSpecificSprintForSpecificAgileQuery({agileId, sprintId: sprintId || 'current', issuesQuery: query}, {
     pollingInterval: 20000,
   });
 
@@ -41,9 +46,16 @@ function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldN
     dispatch(resetSelection());
   };
 
-  if (isLoading) {
+  if (isError) {
+    alertService.error(error.errorMessage, 5000);
+    if (!sprint) {
+      return <ErrorPage message={ error.errorTitle } description={ error.errorDescription }/>
+    }
+  }
+
+  if (isLoading || !sprint) {
     return <LoaderScreen/>;
-  } else if (isSuccess) {
+  } else {
     return (<TableContainer onClick={onTableClickHandler}>
       <AgileBoardColGroup swimlanesDepth={swimlanesDepth}/>
       <AgileBoardHeader agileName={agileName}
@@ -61,8 +73,6 @@ function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldN
                       visibleCardFields={visibleCardFields}
                       swimlaneFieldName={swimlaneFieldName}/>
     </TableContainer>);
-  } else if (isError) {
-    return null;
   }
 }
 

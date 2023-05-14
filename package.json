@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@jetbrains/icons": "^3.21.0",
-    "@jetbrains/ring-ui": "^5.0.112",
+    "@jetbrains/ring-ui": "^5.0.139",
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

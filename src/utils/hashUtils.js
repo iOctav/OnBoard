@@ -7,6 +7,13 @@ export const extractHashParamsFromRedirectUrl = (redirectUrl) => {
   return extractHashParamsFromHash(url.hash);
 }
 
+export const extractQueryFromSearch = (search) => {
+  const params = new Proxy(new URLSearchParams(search), {
+    get: (searchParams, prop) => searchParams.get(prop),
+  });
+  return params?.query ?? undefined;
+}
+
 const extractHashParamsFromHash = (urlHash) => {
   return urlHash
     .substring(1)

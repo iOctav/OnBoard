@@ -213,6 +213,16 @@ export const youtrackApi = createApi({
         },
       })
     }),
+    getQueryAssist: builder.query({
+      query: (queryBody) => ({
+        url: `search/assist`,
+        method: 'POST',
+        params: {
+          fields: 'caret,ignoreUnresolvedSetting,query,styleRanges(length,start,style,title),suggestions(auxiliaryIcon,caret,className,completionEnd,completionStart,description,group,icon,matchingEnd,matchingStart,option,prefix,suffix)',
+        },
+        body: queryBody,
+      })
+    }),
   }),
 });
 
@@ -224,4 +234,5 @@ export const { useGetCustomFieldValuesQuery,
   useLazyGetAvailableColumnFieldsQuery, useLazyGetColorSchemeFilterFieldsQuery, useLazyGetEstimationFilterFieldsQuery,
   useLazyGetColumnSettingsAvailableColumnFieldsQuery, useLazyGetCustomFilterFieldsQuery,
   useLazyGetValuesFilterFieldsQuery, useLazyGetIssuesFilterFieldsQuery, useLazyGetAvailableSwimlaneFieldsQuery,
-  useLazyGetUsersQuery, useLazyGetProjectsQuery, useLazyGetVisibilityGroupsQuery, useLazyGetIssueTagsQuery } = youtrackApi;
+  useLazyGetUsersQuery, useLazyGetProjectsQuery, useLazyGetVisibilityGroupsQuery, useLazyGetIssueTagsQuery,
+  useLazyGetQueryAssistQuery } = youtrackApi;

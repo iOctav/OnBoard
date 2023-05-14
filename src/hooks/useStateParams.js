@@ -18,12 +18,17 @@ export const useStateParams = (initialState, paramsName, serialize, deserialize)
     if (existingValue && deserialize(existingValue) !== state) {
       setState(deserialize(existingValue));
     }
-  }, [existingValue]);
+  }, [existingValue, deserialize, state]);
 
   const onChange = (s) => {
     setState(s);
     const searchParams = new URLSearchParams(location.search);
-    searchParams.set(paramsName, serialize(s));
+    const serializedParam = serialize(s);
+    if (!serializedParam) {
+      searchParams.delete(paramsName);
+    } else {
+      searchParams.set(paramsName, serialize(s));
+    }
     const pathname = location.pathname;
     dispatch(replace({ pathname, search: searchParams.toString() }));
   };
