@@ -16,6 +16,7 @@ import {
   softSelectCard
 } from '../../features/card/cardSlice';
 import AgileCardSubtask from '../AgileCardSubtask';
+import { useMemo } from 'react';
 
 const AgileCardDiv = styled.div`
   box-sizing: border-box;
@@ -114,10 +115,10 @@ function AgileCard({ issueData, colorField, visibleFields }) {
   const selectedCard = useSelector(selectSelectedCard);
   const pickedCards = useSelector(selectPickedCards);
 
-  const cardFooterFields = [...issueData.fields].filter(issue => !visibleFields || visibleFields.includes(issue.name))
+  const cardFooterFields = useMemo(() => [...issueData.fields].filter(issue => !visibleFields || visibleFields.includes(issue.name))
     .sort(compareCardField).map(field => {
-          return (<AgileCardField field={field} key={field?.id}/>);
-      });
+          return (<AgileCardField issueId={issueData.id} field={field} key={field?.id}/>);
+      }), [issueData.fields]);
   const issueDetailsLink = issueDetails(issueData.idReadable, issueData.summary);
   const assigneeField = issueData.fields.find(field => field.name === ASSIGNEE_FIELDNAME);
   const bgColor = colorField && issueData.fields.find(field => field.name === colorField)?.value?.color?.background;

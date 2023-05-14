@@ -15,7 +15,7 @@ import FieldDatePicker from './FieldDatePicker';
 import FieldInput from './FieldInput';
 import FieldPeriod from './FieldPeriod';
 
-function AgileCardField({field}) {
+function AgileCardField({issueId, field}) {
     const customField = useSelector(state => selectCustomFieldMetadataById(state, field.projectCustomField.field.id));
 
     if (isDateField(customField.valueType)) {
@@ -35,7 +35,7 @@ function AgileCardField({field}) {
         } else {
             selected.value = field.value && { label: field.value?.name, key: field.value?.id };
         }
-        return (<SelectCardField customField={ customField } selected={selected}/>);
+        return (<SelectCardField issueId={issueId} customField={ customField } selected={selected}/>);
     } else {
         const dataPattern = getDataPattern(customField.valueType);
         const placeholder = getDataPlaceholder(customField.valueType);
@@ -44,6 +44,7 @@ function AgileCardField({field}) {
 }
 
 AgileCardField.propTypes = {
+    issueId: PropTypes.string.isRequired,
     field: PropTypes.object,
 }
 

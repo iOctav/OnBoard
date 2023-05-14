@@ -15,7 +15,7 @@ const AgileBoardCellContainer = styled.div`
 `;
 
 function AgileBoardCell({agileId, sprintId, columnFieldId, swimlanes, columnName, issuesDict, children}) {
-  const [updateIssueField, result] = useUpdateIssueFieldMutation();
+  const [updateIssueField] = useUpdateIssueFieldMutation();
   const [{ isOver }, drop] = useDrop(() => {
     return {
       accept: ItemTypes.AgileCard,
