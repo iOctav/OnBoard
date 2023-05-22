@@ -6,7 +6,6 @@ import AgileBoardData from '../AgileBoardData';
 import AgileBoardColGroup from './AgileBoardColGroup';
 import { selectIssuesQuery, useGetSpecificSprintForSpecificAgileQuery } from '../../features/sprint/sprintSlice';
 import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
-import { useStateParams } from '../../hooks/useStateParams';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetSelection } from '../../features/card/cardSlice';
 import ErrorPage from '../ErrorPage';

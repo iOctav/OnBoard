@@ -4,4 +4,8 @@ module.exports = {
       '<rootDir>/__mocks__/fileMock.js',
     '\\.(css|less)$': 'identity-obj-proxy',
   },
+  setupFiles: [
+    '<rootDir>/test-helpers/jest-globals.js',
+    'dotenv/config'
+  ],
 };

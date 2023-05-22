@@ -1,54 +1,55 @@
 import React from 'react';
-import { act } from '@testing-library/react';
+import { act, screen } from '@testing-library/react';
 import ReactDOMClient from 'react-dom/client';
 import App from './App';
 
-// Mocking @jetbrains/ring-ui components
 jest.mock('@jetbrains/ring-ui/dist/style.css', () => ({}));
-jest.mock('@jetbrains/ring-ui/dist/global/theme', () => ({
-  ThemeProvider: jest.fn(({ children }) =>
-    <div data-testid="theme-provider" href="123">{children}</div>),
-  Theme: { AUTO: 'auto' },
+jest.mock('react-dnd', () => ({
+  DndProvider: ({children}) => <div data-testid="dnd-provider">{children}</div>,
 }));
-jest.mock('./AgileRoutePage', () => {
-  return function MockedAgileRoutePage() {
-    return (
-      <div data-testid="agile-route-page">Mocked AgileRoutePage</div>
-    );
-  };
-});
+jest.mock('react-dnd-html5-backend', () => ({
+  HTML5Backend: jest.fn(),
+}));
+jest.mock('@jetbrains/ring-ui/dist/global/theme', () => ({
+  __esModule: true,
+  ThemeProvider: ({ children }) =>
+    (<div data-testid="theme-provider" href="123">{children}</div>),
+  default: { AUTO: 'auto' }
+}));
 
-let container = null;
-let root = null;
+jest.mock('./AgileRoutePage', () =>
+  ({}) => (<div data-testid="agile-route-page">Mocked AgileRoutePage</div>)
+);
 
-beforeEach(() => {
-  // setup a DOM element as a render target
-  container = document.createElement("div");
-  root = ReactDOMClient.createRoot(container);
-  document.body.appendChild(container);
-});
+jest.mock('../features/auth/SilentTokenRenew', () =>
+  ({}) => (<div data-testid="silent-token-renew">Mocked SilentTokenRenew</div>)
+);
 
-afterEach(() => {
-  // cleanup on exiting
-  // root.unmount();
-  container.remove();
-  container = null;
-});
+describe('App', () => {
+  let container = null;
+  let root = null;
 
-it("should render App", () => {
-  act(() => {
-    root.render(<App/>);
+  beforeEach(() => {
+    // setup a DOM element as a render target
+    container = document.createElement("div");
+    root = ReactDOMClient.createRoot(container);
+    document.body.appendChild(container);
   });
 
-  expect(
-    container.querySelector("[data-testid='theme-provider']")
-  ).toBeDefined();
+  afterEach(() => {
+    // cleanup on exiting
+    container.remove();
+    container = null;
+  });
 
-  // expect(
-  //   container.querySelector('[data-testid="site"]').getAttribute("href")
-  // ).toEqual("http://test.com");
-  //
-  // expect(container.querySelector('[data-testid="map"]').textContent).toEqual(
-  //   "0:0"
-  // );
+  it("should render App", () => {
+    act(() => {
+      root.render(<App/>);
+    });
+
+    expect(screen.getByTestId('theme-provider')).toBeInTheDocument();
+    expect(screen.getByTestId('silent-token-renew')).toBeInTheDocument();
+    expect(screen.getByTestId('agile-route-page')).toBeInTheDocument();
+    expect(screen.getByTestId('dnd-provider')).toBeInTheDocument();
+  });
 });

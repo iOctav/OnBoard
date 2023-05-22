@@ -8,7 +8,6 @@ import drag from '@jetbrains/icons/drag';
 import Button from '@jetbrains/ring-ui/dist/button/button';
 import Icon from '@jetbrains/ring-ui/dist/icon/icon';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { COLORS } from '../ColorPalette/colors';
 import Link from '@jetbrains/ring-ui/dist/link/link';
 import { issueDetails } from '../../services/linkService';
@@ -80,8 +79,8 @@ function Swimlane({title, issueId, isOrphan, striked, cardsNumber, columnsNumber
   const issueDetailsLink = issueDetails(issueId, title);
 
   return (
-    <tr>
-      <td colSpan={columnsNumber + extraSpans}>
+    <tr data-testid="swimlane-tr">
+      <td colSpan={columnsNumber + extraSpans} data-testid="swimlane-td">
         {!!title && (
           <SwimlaneContainer>
             <FloatLeftDiv level={level}>
@@ -97,7 +96,7 @@ function Swimlane({title, issueId, isOrphan, striked, cardsNumber, columnsNumber
               </div>
             </FloatLeftDiv>
             <FloatRightDiv>
-              { !!cardsNumber && (<CardsCounterSpan>{t('1 card', { count: cardsNumber })}</CardsCounterSpan>)}
+              { cardsNumber > 0 && (<CardsCounterSpan>{t('1 card', { count: cardsNumber })}</CardsCounterSpan>)}
             </FloatRightDiv>
           </SwimlaneContainer>
         )}
@@ -112,13 +111,13 @@ Swimlane.propTypes = {
   striked: PropTypes.bool,
   isOrphan: PropTypes.bool,
   cardsNumber: PropTypes.number,
-  columnsNumber: PropTypes.number,
-  level: PropTypes.number,
+  columnsNumber: PropTypes.number.isRequired,
+  level: PropTypes.number.isRequired,
   rollUp: PropTypes.bool,
   onRollUp: PropTypes.func,
   backgroundId: PropTypes.string,
   isTag: PropTypes.bool,
-  swimlanesDepth: PropTypes.number,
+  swimlanesDepth: PropTypes.number.isRequired,
 }
 
 export default Swimlane

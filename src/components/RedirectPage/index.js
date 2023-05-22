@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
+
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ReactComponent as smallObLogo } from '../PageYTHeader/logos/ob-logo-small.svg';
 import ErrorMessage from '@jetbrains/ring-ui/dist/error-message/error-message';
 import { homePageUri } from '../../services/linkService';
 
-
-function RedirectPage() {
+function RedirectPage({redirectTimeout}) {
   const location = useLocation();
-  const [seconds, setSeconds] = useState(3);
+  const [seconds, setSeconds] = useState(redirectTimeout > 0 ? Math.ceil(redirectTimeout) : 3);
   const redirectUrl = process.env.REACT_APP_YOUTRACK_BASE_URL + location.pathname + location.search;
   useEffect(() => {
     const interval = setInterval(
@@ -28,4 +29,8 @@ function RedirectPage() {
     </ErrorMessage>);
 }
 
-export default RedirectPage
+RedirectPage.propTypes = {
+  redirectTimeout: PropTypes.number,
+};
+
+export default RedirectPage;

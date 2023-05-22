@@ -1,5 +1,5 @@
 import { youtrackApi } from '../../app/services/youtrackApi';
-import { extractNestedSwimlanesFromSearch, extractQueryFromSearch } from '../../utils/hashUtils';
+import { extractNestedSwimlanesFromSearch } from '../../utils/hashUtils';
 
 export const extendedYoutrackApi = youtrackApi.injectEndpoints({
   endpoints: builder => ({
