@@ -39,7 +39,7 @@ function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldN
   });
 
   const swimlanes = useSelector(selectNestedSwimlanes);
-  const swimlanesDepth = Object.keys(swimlanes).length;
+  const swimlanesDepth = swimlanes && Object.keys(swimlanes).length;
   const onTableClickHandler = (event) => {
     event.stopPropagation();
     dispatch(resetSelection());
@@ -56,7 +56,7 @@ function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldN
   if (isLoading || !sprint) {
     return <LoaderScreen/>;
   } else if (isSuccess) {
-    return (<TableContainer onClick={onTableClickHandler}>
+    return (<TableContainer data-testid="agile-board-table" onClick={onTableClickHandler}>
       <AgileBoardColGroup swimlanesDepth={swimlanesDepth}/>
       <AgileBoardHeader agileName={agileName}
                         sprintName={sprintName}

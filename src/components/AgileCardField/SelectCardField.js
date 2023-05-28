@@ -41,7 +41,7 @@ function SelectCardField({issueId, customField, selected}) {
 
   return (
     <LazySelectBox
-      selected={selected.value}
+      selected={selected?.value}
       lazyDataLoaderHook={lazyDataBundleHook}
       label={emptyFieldText}
       lazyDataLoaderHookParams={customField?.bundle?.id}

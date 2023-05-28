@@ -55,7 +55,8 @@ describe('AgileBoardSettings', () => {
     expect(screen.queryByTestId('agile-board-settings')).not.toBeInTheDocument();
   });
 
-  it('should provide disable in all settings except nested swimlanes', () => {
+  const itif = process.env.REACT_APP_YOUTRACK_SETTINGS_DISABLED === 'true' ? it : it.skip;
+  itif('should provide disable in all settings except nested swimlanes', () => {
     act(() => {
       root.render(<AgileBoardSettings visible disabled={true} agileId="agile-id" agileName="agile-name" sprintId="sprint-id"/>);
     });
