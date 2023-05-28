@@ -53,3 +53,5 @@ jest.mock('@jetbrains/icons', () => {
 
   return new Proxy(icons, handler);
 });
+
+jest.mock('@jetbrains/ring-ui/dist/alert-service/alert-service', () => jest.fn());

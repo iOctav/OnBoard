@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import PropTypes from 'prop-types';
-import HeaderCell from '../HeaderCell';
+import HeaderCell from './HeaderCell';
 import FakeTableCells from '../FakeTableCells';
 import { useSelector } from 'react-redux';
 import { selectColumnsMetadata } from '../../features/sprint/sprintSlice';
@@ -16,11 +16,11 @@ function AgileBoardHeader({agileName, sprintName, fieldName, explicitQuery, swim
   const columns = useSelector(selectColumnsMetadata);
 
   return (
-    <StickyTHead>
+    <StickyTHead data-testid="agile-board-header">
       <tr>
         <FakeTableCells swimlanesDepth={swimlanesDepth}/>
         {
-          columns.map(column => (
+          columns?.map(column => (
             <HeaderCell key={'cell-head-' + column.id}
                         column={column}
                         agileName={agileName}

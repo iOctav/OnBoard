@@ -7,7 +7,7 @@ function AgileBoardRows({agileId, sprintId, orphanRow, trimmedSwimlanes, hideOrp
   let content;
   const { t } = useTranslation();
 
-  const swimlanesAgileRow = trimmedSwimlanes.map(row => {
+  const swimlanesAgileRow = trimmedSwimlanes?.map(row => {
     return (<BoardRow key={ `${ row.id }-${ level }` } agileId={ agileId } sprintId={ sprintId } level={ level } row={ row }
                issuesDict={ issuesDict } visibleCardFields={ visibleCardFields }
                currentSwimlanes={[...currentSwimlanes, {swimlaneFieldlId: swimlaneFieldName, swimlaneValue: row.name}]}
@@ -21,10 +21,10 @@ function AgileBoardRows({agileId, sprintId, orphanRow, trimmedSwimlanes, hideOrp
       ? [...currentSwimlanes, {swimlaneFieldlId: swimlaneFieldName, swimlaneValue: undefined}]
       : [...currentSwimlanes];
     const orphanAgileRow =
-      (<BoardRow isOrphan key={`${orphanRow.id}-${level}`} agileId={agileId} sprintId={sprintId} row={orphanRow}
+      (<BoardRow isOrphan key={`${orphanRow?.id}-${level}`} agileId={agileId} sprintId={sprintId} row={orphanRow}
                  issuesDict={issuesDict} level={level} visibleCardFields={visibleCardFields}
                  currentSwimlanes={swimlaneWithOrphanValue}
-                 swimlaneTitle={trimmedSwimlanes.length > 0 ? t('Uncategorized Cards') : undefined} colorField={colorField} system={system}/>);
+                 swimlaneTitle={trimmedSwimlanes?.length > 0 ? t('Uncategorized Cards') : undefined} colorField={colorField} system={system}/>);
     if (orphansAtTheTop) {
       content = [orphanAgileRow, ...swimlanesAgileRow];
     } else {
@@ -38,7 +38,7 @@ AgileBoardRows.propTypes = {
   agileId: PropTypes.string.isRequired,
   sprintId: PropTypes.string.isRequired,
   orphanRow: PropTypes.object,
-  trimmedSwimlanes: PropTypes.arrayOf(PropTypes.object),
+  trimmedSwimlanes: PropTypes.arrayOf(PropTypes.object).isRequired,
   hideOrphansSwimlane: PropTypes.bool,
   orphansAtTheTop: PropTypes.bool,
   level: PropTypes.number,
@@ -49,7 +49,7 @@ AgileBoardRows.propTypes = {
   currentSwimlanes: PropTypes.arrayOf(PropTypes.shape({
     swimlaneFieldlId: PropTypes.string,
     swimlaneName: PropTypes.string,
-  })),
+  })).isRequired,
   issuesDict: PropTypes.object,
 }
 

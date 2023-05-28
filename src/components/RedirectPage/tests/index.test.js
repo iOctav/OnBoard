@@ -1,5 +1,5 @@
 import React from 'react';
-import { act, screen, waitFor } from '@testing-library/react';
+import { act, screen } from '@testing-library/react';
 import ReactDOMClient from 'react-dom/client';
 import RedirectPage from '../index';
 
