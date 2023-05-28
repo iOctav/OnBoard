@@ -1,0 +1,91 @@
+html,body {
+  height:100%;
+  margin:0;
+  overflow-y: hidden;
+}
+
+.main-container {
+  height:100%;
+  margin:0;
+}
+
+.agile-page {
+  height: 100%;
+  margin: 0;
+  overflow: auto;
+}
+
+[id="root"] {
+  height:100%;
+  display:flex;
+  flex-direction:column;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.global {
+  font-size: var(--ring-font-size);
+  font-family: var(--ring-font-family);
+}
+
+.ob-agile-card {
+  background-color: var(--ring-content-background-color);
+  position: relative;
+  padding: calc(var(--ring-unit));
+  font-size: var(--ring-font-size-smaller);
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  display: inline-block;
+  cursor: default;
+  box-sizing: border-box;
+  box-shadow: 0 0 3px 0 rgb(0 0 0 / 10%);
+  border-radius: var(--ring-border-radius);
+  border: 1px solid var(--ring-line-color);
+  transition: 0.3s linear height;
+}
+
+.ob-agile-select-button {
+  color: var(--ring-white-text-color);
+  background-color: var(--ring-main-color);
+  box-shadow: none;
+}
+
+.ob-agile-select-button:hover {
+  transition: none;
+  background-color: var(--ring-main-hover-color);
+  box-shadow: none;
+}
