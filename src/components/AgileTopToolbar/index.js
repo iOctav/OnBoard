@@ -40,7 +40,7 @@ function AgileTopToolbar({agileId, sprint, sprintsDisabled, onSettingsButtonClic
   const { t } = useTranslation();
   const [settingsButtonActive, setSettingsButtonActive] = useState(false);
   return (
-    <AgileTopToolbarContainer>
+    <AgileTopToolbarContainer data-testid="agile-top-toolbar">
         <AgileTopToolbarDiv className="agile-top-toolbar">
           <FloatRightButtonGroup>
             <ToolbarButton icon={Chart16pxIcon} title={t('Chart')}/>

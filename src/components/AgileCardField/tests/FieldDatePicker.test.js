@@ -5,11 +5,6 @@ import FieldDatePicker from '../FieldDatePicker';
 
 jest.mock('@jetbrains/ring-ui/dist/date-picker/date-picker', () => ({datePlaceholder}) =>
   (<input data-testid="date-picker-input" placeholder={datePlaceholder}></input>));
-jest.mock('@jetbrains/ring-ui/dist/input/input', () => ({
-  Size: {
-    AUTO: 'AUTO',
-  }
-}));
 
 describe('FieldDatePicker', () => {
   let container = null;

@@ -18,9 +18,9 @@ const MarginedSelectBox = styled(LazySelectBox)`
 
 function ColumnsSettings({disabled, agileId, columnSettings}) {
   const { t } = useTranslation();
-  const [selected, setSelected] = useState({key: columnSettings.field.id, label: columnSettings.field.name});
-  const usedColumns = columnSettings.columns.reduce((acc, column) => [...acc, ...column.fieldValues], []).map(field => field.name);
-  return (<div className="columns-settings">
+  const [selected, setSelected] = useState({key: columnSettings?.field?.id, label: columnSettings?.field.name});
+  const usedColumns = columnSettings?.columns?.reduce((acc, column) => [...acc, ...column.fieldValues], []).map(field => field.name);
+  return (<div data-testid="columns-settings" className="columns-settings">
     <span>
       <Trans t={t}><strong>Columns</strong> are identified by</Trans>
       <MarginedSelectBox
@@ -34,7 +34,7 @@ function ColumnsSettings({disabled, agileId, columnSettings}) {
         onSelect={setSelected}
         add={{label: t('New custom field'), alwaysVisible: true}}/>
     </span>
-    <ColumnsSettingsTable disabled={disabled} columns={columnSettings.columns}/>
+    <ColumnsSettingsTable disabled={disabled} columns={columnSettings?.columns}/>
     <LazySelectBox
       disabled={disabled}
       type="INLINE"

@@ -12,7 +12,7 @@ import withScrolling from 'react-dnd-scrolling';
 function AgileRoutePage() {
   const ScrollingComponent = withScrolling('div');
 
-  return (<ScrollingComponent className="agile-page">
+  return (<ScrollingComponent data-testid="scrolling-component" className="agile-page">
     <PageYTHeader/>
     <Routes>
       <Route path="/" element={<AuthOutlet />}>

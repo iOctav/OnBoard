@@ -3,7 +3,6 @@ import { act, screen  } from '@testing-library/react';
 import ReactDOMClient from 'react-dom/client';
 import SwimlanesSettings from '../index';
 
-
 jest.mock('@jetbrains/ring-ui/dist/button-group/button-group', () =>
   ({children}) => (<div data-testid="button-group">{children}</div>));
 
@@ -19,10 +18,6 @@ jest.mock('@jetbrains/ring-ui/dist/select/select', () => ({children, data, selec
         <option key={index} value={item.key} defaultValue={selected && selected.key === item.key}>{item.label}</option>
       )}
     </select>));
-
-jest.mock('@jetbrains/ring-ui/dist/input/input', () => ({
-  Size: { S: 'S', M: 'M', L: 'L', AUTO: 'AUTO' },
-}));
 
 jest.mock('../SwimlaneAttributesList', () => {
   return function MockedSwimlaneAttributesList() {

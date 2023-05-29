@@ -55,7 +55,7 @@ function AgileSearchQueryPanel({currentAgileId, currentAgileName}) {
   };
 
   return (
-    <AgileSearchPanelDiv className="agile-search-panel">
+    <AgileSearchPanelDiv data-testid="agile-search-query-panel" className="agile-search-panel">
       <FloatSelect
         type="BUTTON"
         buttonClassName="ob-agile-select-button"

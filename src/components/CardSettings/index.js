@@ -28,7 +28,7 @@ function CardSettings({disabled, cardSettings, colorCoding, estimationField, ori
   const { t } = useTranslation();
   const [colorizeCustomFieldsValue, setColorizeCustomFieldsValue] = useState(colorizeCustomFields);
   const [cardOnSeveralSprintsValue, setCardOnSeveralSprintsValue] = useState(cardOnSeveralSprints);
-  const projectShortNames = projects.map(project => project.shortName);
+  const projectShortNames = projects?.map(project => project.shortName);
   const noEstimationField = { label: t('No current estimation field'), key: 'no-estimation' };
   const noColorItem = { label: t('No color scheme'), key: 'no-color' };
   const projectColorItem = { label: t('Project'), key: 'project-colors' };
@@ -40,7 +40,7 @@ function CardSettings({disabled, cardSettings, colorCoding, estimationField, ori
   const [originalEstimationFieldItem, setOriginalEstimationFieldItem] = useState(
     originalEstimationField ? { key: originalEstimationField.id, label: originalEstimationField.name } : noEstimationField);
   // const []
-  return (<div>
+  return (<div data-testid="card-settings">
     <SettingsControl label={t('Current estimation field')}>
       <LazySelectBox disabled={disabled}
                      selected={estimationFieldItem}

@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 const AgileCardDiv = styled.div`
   height: auto;
   min-height: auto;
-  width: 97% !important;
-  min-width: 97% !important;
   width: calc(100% - calc(var(--ring-unit) + 1px)) !important;
   min-width: calc(100% - calc(var(--ring-unit) + 1px)) !important;
   display: inline-block;
@@ -44,7 +42,7 @@ const EmptyLink = styled.a`
 `;
 
 function AgileCardPreview({ issueData }) {
-  return <AgileCardDiv>
+  return <AgileCardDiv data-testid="agile-card-preview">
     <AgileCardSummaryDiv>
       <EmptyLink/>
       <SummarySpan>{issueData.summary}</SummarySpan>
@@ -53,7 +51,7 @@ function AgileCardPreview({ issueData }) {
 }
 
 AgileCardPreview.propTypes = {
-  issueData: PropTypes.object
-}
+  issueData: PropTypes.object.isRequired,
+};
 
-export default AgileCardPreview
+export default AgileCardPreview;

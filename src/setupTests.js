@@ -20,10 +20,6 @@ jest.mock('react-i18next', () => ({
   }
 }));
 
-jest.mock('@jetbrains/ring-ui/dist/global/controls-height', () => ({
-  ControlsHeight: { S: 'S', M: 'M', L: 'L' },
-}));
-
 jest.mock('@jetbrains/ring-ui/dist/table/selection', () => {
   return jest.fn().mockImplementation(({ data }) => {
     return {
@@ -36,9 +32,31 @@ jest.mock('@jetbrains/ring-ui/dist/table/selection', () => {
   });
 });
 
-jest.mock('@jetbrains/ring-ui/dist/list/list', () =>  {
- return null;
-});
+jest.mock('@jetbrains/ring-ui/dist/input/input', () => ({
+  Size: { S: 'S', M: 'M', L: 'L', AUTO: 'AUTO' },
+}));
+jest.mock('@jetbrains/ring-ui/dist/global/controls-height', () => ({
+  ControlsHeight: { S: 'S', M: 'M', L: 'L' },
+  ControlsHeightContext: {
+    Provider: () => jest.fn()
+  },
+}));
+jest.mock('@jetbrains/ring-ui/dist/icon', () => ({
+  Size: {
+    Size12: 12,
+    Size14: 14,
+    Size16: 16,
+    Size18: 18,
+    Size20: 20,
+    Size24: 24,
+    Size32: 32,
+    Size40: 40,
+    Size48: 48,
+    Size64: 64,
+    Size96: 96,
+    Size128: 128
+  }
+}));
 
 jest.mock('@jetbrains/icons', () => {
   const icons = {
@@ -53,5 +71,9 @@ jest.mock('@jetbrains/icons', () => {
 
   return new Proxy(icons, handler);
 });
+
+jest.mock('@jetbrains/ring-ui/dist/global/theme', () => ({
+  useTheme: () => jest.fn(),
+}));
 
 jest.mock('@jetbrains/ring-ui/dist/alert-service/alert-service', () => jest.fn());
