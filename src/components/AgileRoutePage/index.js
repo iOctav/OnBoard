@@ -13,7 +13,7 @@ function AgileRoutePage() {
   const ScrollingComponent = withScrolling('div');
 
   return (<ScrollingComponent data-testid="scrolling-component" className="agile-page">
-    <PageYTHeader/>
+    <PageYTHeader isCompact={false}/>
     <Routes>
       <Route path="/" element={<AuthOutlet />}>
         <Route path=":agileId">
