@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { mapTypeDataRequest } from '../../features/customFields/fieldUtils';
 import LazySelectBox from '../LazySelectBox';
 import { CardFieldAnchor, LeftMarginSpan, Marker } from './styled-components';
-import { COLORS } from '../ColorPalette/colors';
+import { COLORS, NO_COLOR } from '../ColorPalette/colors';
 import ColorAnchor from '../ColorPicker/ColorAnchor';
 import { CustomFieldPresentationType } from '../../features/customFields/custom-field-presentation-type';
 import { useUpdateIssueFieldMutation } from '../../features/sprint/sprintSlice';
@@ -19,6 +19,7 @@ function SelectCardField({issueId, customField, selected}) {
   const mapBundleDataItem = item => ({label: item.name, key: item.id, colorId: parseInt(item.color?.id), value: { label: item.name, key: item.id },
     description: item.color?.id !== '0' ? (<ColorAnchor label={item.name[0]} colorId={item.color?.id}/>) : ''});
   const emptyFieldText = customField?.emptyFieldText ?? '?';
+  const emptyField = customField?.canBeEmpty && !customField?.isMultiValue ? [{label: emptyFieldText, key: 'empty', value: null, colorId: NO_COLOR}] : [];
   const updateField = (value) => {
     setSelectedItem(value)
     updateIssueField({
@@ -31,9 +32,7 @@ function SelectCardField({issueId, customField, selected}) {
           type: PropertyUpdateType.CardField,
           value: customField.isMultiValue
             ? value.map(item => ({name: item.label}))
-            : {
-                name: value.label
-              },
+            : value?.value ? { name: value.label } : null,
         }
       ]
     });
@@ -45,7 +44,7 @@ function SelectCardField({issueId, customField, selected}) {
       lazyDataLoaderHook={lazyDataBundleHook}
       label={emptyFieldText}
       lazyDataLoaderHookParams={customField?.bundle?.id}
-      makeDataset={(data) => data.map(mapBundleDataItem)}
+      makeDataset={(data) => [...emptyField, ...data.map(mapBundleDataItem)]}
       multiple={customField.isMultiValue}
       type="CUSTOM"
       onChange={(values) => updateField(values)}

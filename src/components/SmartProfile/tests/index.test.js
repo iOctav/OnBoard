@@ -81,7 +81,7 @@ describe('SmartProfile', () => {
     await waitFor(() => expect(screen.getByTestId('avatar')).toBeInTheDocument());
   });
 
-  it('should render guest avatar ', async () => {
+  it('should render guest avatar', async () => {
     useGetCurrentUserInfoQuery.mockReturnValue({ data: { name: undefined }, isLoading: false });
 
     act(() => {

@@ -24,6 +24,7 @@ const customFieldsSlice = createSlice({
             valueType: customField.field.fieldType.valueType,
             isMultiValue: customField.field.fieldType.isMultiValue,
             emptyFieldText: customField.emptyFieldText,
+            canBeEmpty: customField.canBeEmpty,
             bundle: {
               type: customField.bundle?.$type,
               id: customField.bundle?.id,

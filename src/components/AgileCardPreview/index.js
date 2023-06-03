@@ -45,7 +45,7 @@ function AgileCardPreview({ issueData }) {
   return <AgileCardDiv data-testid="agile-card-preview">
     <AgileCardSummaryDiv>
       <EmptyLink/>
-      <SummarySpan>{issueData.summary}</SummarySpan>
+      <SummarySpan data-testid="summary-span">{issueData?.summary}</SummarySpan>
     </AgileCardSummaryDiv>
   </AgileCardDiv>
 }
