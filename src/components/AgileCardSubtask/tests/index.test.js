@@ -5,7 +5,6 @@ import AgileCardSubtask from '../index';
 
 let mockMakeDataset = null;
 
-
 jest.mock('@jetbrains/ring-ui/dist/list/list', () => {
   const mockList = ({children}) =>
     (<div data-testid="list">{children}</div>);

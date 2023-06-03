@@ -105,7 +105,7 @@ function NestedSwimlanesList({projectShortNames, systemSwimlane}) {
                   onClick={() => item.type !== SwimlaneType.Issues && changeSwimlaneType(item.id, SwimlaneType.Issues)}>{t('Issues.Agile Row Settings')}
           </Button>
         </ButtonGroup>
-        {!item.system ? (<LevelMarker>L{item.index}</LevelMarker>) : (<BorderedSpan><span>{t('System.swimlane')}</span></BorderedSpan>)}
+        {!item.system ? (<LevelMarker>L{item.index}</LevelMarker>) : (<BorderedSpan><span>{t('System', { context: 'swimlane' })}</span></BorderedSpan>)}
 
        </>
       )},

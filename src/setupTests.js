@@ -10,6 +10,7 @@ jest.mock('react-i18next', () => ({
       t: (str) => str,
       i18n: {
         changeLanguage: () => new Promise(() => {}),
+        language: 'en-GB',
       },
     };
   },
@@ -35,12 +36,15 @@ jest.mock('@jetbrains/ring-ui/dist/table/selection', () => {
 jest.mock('@jetbrains/ring-ui/dist/input/input', () => ({
   Size: { S: 'S', M: 'M', L: 'L', AUTO: 'AUTO' },
 }));
-jest.mock('@jetbrains/ring-ui/dist/global/controls-height', () => ({
-  ControlsHeight: { S: 'S', M: 'M', L: 'L' },
-  ControlsHeightContext: {
-    Provider: () => jest.fn()
-  },
-}));
+jest.mock('@jetbrains/ring-ui/dist/global/controls-height', () => {
+
+  return {
+    ControlsHeight: { S: 'S', M: 'M', L: 'L' },
+    ControlsHeightContext: {
+      Provider: ({children}) => <div data-testid="controls-height-context-provider">{children}</div>
+    },
+  }
+});
 jest.mock('@jetbrains/ring-ui/dist/icon', () => ({
   Size: {
     Size12: 12,

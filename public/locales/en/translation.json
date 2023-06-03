@@ -3927,10 +3927,8 @@
   "Synchronization": "Synchronization",
   "Synchronization settings were specified in Zendesk before sending\n          agreement": "Synchronization settings were specified in Zendesk before sending\n          agreement",
   "Synchronize now": "Synchronize now",
-  "System": {
-    "swimlane": "System",
-    "$$noContext": "System"
-  },
+  "System": "System",
+  "System_swimlane": "System",
   "System Language": "System Language",
   "System-wide Features": "System-wide Features",
   "System-wide banner": "System-wide banner",
