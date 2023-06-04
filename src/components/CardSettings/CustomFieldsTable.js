@@ -35,7 +35,7 @@ function CustomFieldsTable({disabled, fields, projects}) {
   const tableColumns = [
     { key: 'name', id: 'name', title: t('Name'), getValue: (item, column) => (<span>{item.field.name}</span>)},
     { key: 'projects', id: 'projects', title: t('Projects'), getValue: (item, column) => (<div>
-        <span>{item.field.instances.map(instance => projectDict[instance.project.id]).filter(item => item).join(', ')}</span>
+        <span>{item.field.instances?.map(instance => projectDict[instance.project.id]).filter(item => item).join(', ')}</span>
       </div>) },
     { key: 'display', id: 'display', title: t('Display'), getValue: (item, column) =>
         (<Select hideSelected disabled={disabled} type="INLINE" selected={displayDataSet.find(data => data.key === item.presentation.id)} data={displayDataSet}/>)},
@@ -44,7 +44,7 @@ function CustomFieldsTable({disabled, fields, projects}) {
   const data = customFields ? [...customFields].map(col => ({...col, key: col.id})) : [];
   const selection = new Selection({data: customFields});
   return (
-    <CustomFieldsTableContainer>
+    <CustomFieldsTableContainer data-testid="custom-fields-table">
       <Table draggable={!disabled} alwaysShowDragHandle dragHandleTitle={t('Drag to change the order')}
              data={data}
              selectable={false}
@@ -71,7 +71,7 @@ function CustomFieldsTable({disabled, fields, projects}) {
 CustomFieldsTable.propTypes = {
   disabled: PropTypes.bool,
   fields: PropTypes.arrayOf(PropTypes.object).isRequired,
-  projects: PropTypes.arrayOf(PropTypes.object),
+  projects: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 export default CustomFieldsTable;
