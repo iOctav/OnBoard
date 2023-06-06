@@ -40,10 +40,10 @@ function AgileTopToolbar({agileId, sprint, sprintsDisabled, onSettingsButtonClic
   const { t } = useTranslation();
   const [settingsButtonActive, setSettingsButtonActive] = useState(false);
   return (
-    <AgileTopToolbarContainer>
+    <AgileTopToolbarContainer data-testid="agile-top-toolbar">
         <AgileTopToolbarDiv className="agile-top-toolbar">
           <FloatRightButtonGroup>
-            <ToolbarButton icon={Chart16pxIcon} title={t('Chart')}/>
+            <ToolbarButton disabled icon={Chart16pxIcon} title={t('Chart')}/>
             <ToolbarButton icon={Settings16pxIcon} active={settingsButtonActive} title={t('Board settings')} onClick={() => {
               setSettingsButtonActive(!settingsButtonActive);
               onSettingsButtonClick();
@@ -51,7 +51,7 @@ function AgileTopToolbar({agileId, sprint, sprintsDisabled, onSettingsButtonClic
           </FloatRightButtonGroup>
           <FloatLeftDiv>
             <MarginRightButtonGroup>
-              <ToolbarButton icon={Backlog16pxIcon} title={t('Backlog')}/>
+              <ToolbarButton disabled icon={Backlog16pxIcon} title={t('Backlog')}/>
             </MarginRightButtonGroup>
             { !sprintsDisabled && <AgileSprintSelect agileId={agileId} sprint={sprint}/> }
           </FloatLeftDiv>

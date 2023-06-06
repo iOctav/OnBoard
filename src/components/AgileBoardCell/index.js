@@ -54,7 +54,7 @@ function AgileBoardCell({agileId, sprintId, columnFieldId, swimlanes, columnName
       }),
     };
   }, [columnName, swimlanes, issuesDict])
-  return (<AgileBoardCellContainer
+  return (<AgileBoardCellContainer  data-testid=" cell-container"
     ref={drop} isOver={isOver ? 1 : 0}>
     {children}
   </AgileBoardCellContainer>)

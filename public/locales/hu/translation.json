@@ -3530,6 +3530,7 @@
   "Synchronization settings were specified in Zendesk before sending\n          agreement": "A szinkronizálási beállításokat a Zendesk megadta, mielőtt elküldte a megállapodást",
   "Synchronize now": "Szinkronizálás most",
   "System": "Rendszer",
+  "System_swimlane": "Rendszer",
   "System Language": "Rendszer nyelv",
   "System-wide Features": "Rendszerszintű funkciók",
   "System-wide banner": "Rendszerszintű kitiltó",

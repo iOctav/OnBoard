@@ -11,8 +11,8 @@ removeHashParamsFromUrl();
 export function OAuth() {
   const dispatch = useDispatch();
   useEffect(() => {
-    popLocalLocation(hashParams.state);
-  }, [hashParams.state])
+    popLocalLocation(hashParams?.state);
+  }, [hashParams])
 
   if (hashParams && hashParams.access_token) {
     const tokenInfo = setLocalTokenInfo(hashParams);

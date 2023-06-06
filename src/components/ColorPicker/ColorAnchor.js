@@ -17,7 +17,7 @@ const ColorAnchorContainer = styled.div`
 `;
 
 function ColorAnchor({label, colorId, ...restProps}) {
-  return <ColorAnchorContainer background={COLORS[colorId]?.background} color={COLORS[colorId]?.text} {...restProps}>
+  return <ColorAnchorContainer data-testid="color-anchor" background={COLORS[colorId]?.background} color={COLORS[colorId]?.text} {...restProps}>
     {label ?? 'A'}
   </ColorAnchorContainer>
 }

@@ -3812,6 +3812,7 @@
   "Synchronization settings were specified in Zendesk before sending\n          agreement": "계약을 보내기 전에 Zendesk에서 동기화 설정을\n          지정했습니다",
   "Synchronize now": "지금 동기화",
   "System": "시스템",
+  "System_swimlane": "시스템",
   "System Language": "시스템 언어",
   "System-wide Features": "시스템 전체 기능",
   "System-wide banner": "시스템 전역 배너",

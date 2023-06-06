@@ -17,10 +17,13 @@ function DefaultAgileBoard() {
     content = <LoaderScreen/>
   } else if (isSuccess) {
     const agileId = agileUserProfile?.defaultAgile?.id;
+    if (!agileId) {
+      return <div data-testid="board-error">Agile board not found</div>;
+    }
     const sprintId = agileUserProfile?.defaultAgile?.currentSprint?.id || 'current';
     content = (<Navigate to={agileBoardUri(agileId, sprintId)}/>);
   } else if (isError) {
-    content = <div>{error.toString()}</div>
+    content = <div data-testid="board-error">{error.toString()}</div>
   }
   return content;
 }

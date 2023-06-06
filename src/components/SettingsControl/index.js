@@ -30,9 +30,9 @@ const ControlContainer = styled.div`
 
 function SettingsControl({label, children}) {
   return (
-    <LabelledControl>
-      <SettingsLabel>{label}</SettingsLabel>
-      <ControlContainer>
+    <LabelledControl data-testid="labelled-control">
+      <SettingsLabel data-testid="settings-label">{label}</SettingsLabel>
+      <ControlContainer data-testid="control-container">
         {children}
       </ControlContainer>
     </LabelledControl>

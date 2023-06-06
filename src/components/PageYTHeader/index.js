@@ -66,7 +66,7 @@ function PageYTHeader({isCompact}) {
 }
 
 PageYTHeader.propTypes = {
-  isCompact: PropTypes.bool,
+  isCompact: PropTypes.bool.isRequired,
 }
 
 export default PageYTHeader

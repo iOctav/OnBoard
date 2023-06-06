@@ -46,7 +46,7 @@ function GeneralSettings({disabled, agileName, agileId, initialOwner, sprintsSet
     canEditGroupsAndUsers.push({key: 'project-base', label: t('project updaters')});
   }
   const [ canEdit, setCanEdit ] = useState(canEditGroupsAndUsers);
-  return (<div>
+  return (<div data-testid="general-settings">
     <FloatRightButtonGroup className="general-settings-action-buttons">
       <Button disabled={disabled} onClick={() => {}} height={ControlsHeight.S}>{t('Clone board')}</Button>
       <Button disabled={disabled} danger onClick={() => {}} height={ControlsHeight.S}>{t('Delete board')}</Button>
@@ -124,6 +124,7 @@ GeneralSettings.propTypes = {
   sprintsSettings: PropTypes.object.isRequired,
   projects: PropTypes.arrayOf(PropTypes.object).isRequired,
   readSharingSettings: PropTypes.object.isRequired,
+  updateSharingSettings: PropTypes.object.isRequired,
 };
 
 export default GeneralSettings;

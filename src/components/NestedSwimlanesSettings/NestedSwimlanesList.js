@@ -105,7 +105,7 @@ function NestedSwimlanesList({projectShortNames, systemSwimlane}) {
                   onClick={() => item.type !== SwimlaneType.Issues && changeSwimlaneType(item.id, SwimlaneType.Issues)}>{t('Issues.Agile Row Settings')}
           </Button>
         </ButtonGroup>
-        {!item.system ? (<LevelMarker>L{item.index}</LevelMarker>) : (<BorderedSpan><span>{t('System.swimlane')}</span></BorderedSpan>)}
+        {!item.system ? (<LevelMarker>L{item.index}</LevelMarker>) : (<BorderedSpan><span>{t('System', { context: 'swimlane' })}</span></BorderedSpan>)}
 
        </>
       )},
@@ -131,7 +131,7 @@ function NestedSwimlanesList({projectShortNames, systemSwimlane}) {
   data.forEach((swimlane, index) => swimlane.index = index);
 
   const selection = new Selection({data: data});
-  return (<div>
+  return (<div data-testid="nested-swimlanes-list">
     <Table draggable alwaysShowDragHandle sortOrder sortKey="order"
            onReorder={(reorder) => swapSwimlanes(data[reorder.oldIndex].id, data[reorder.newIndex].id)}
            metaColumnStyle={{display: 'none'}}

@@ -39,23 +39,28 @@ function ColorPalette({selected, onSelect}) {
   const arr7 = xrange(7);
 
   const { t } = useTranslation();
-  const [pickedColor, setPickedColor] = useState(selected);
+  const [pickedColor, setPickedColor] = useState(parseInt(selected ?? '0'));
   const selectColor = (colorId) => {
     setPickedColor(colorId);
     onSelect(colorId);
   };
 
   return (
-    <div className="color-palette">
+    <div data-testid="color-palette" className="color-palette">
       {arr5.map(i => (<div key={i * 7}>{
-        arr7.map(j => (<ColorInlineBlock active={COLORS[pickedColor].tone === j && COLORS[pickedColor].brightness === i}
-                                         key={i * 7 + j + 1}
-                                         className={`ring-palette_tone-${j}-${i}`}
-                                         onClick={() => selectColor(MAPPING[j][i])}>
-                         a
-                       </ColorInlineBlock>))
+        arr7.map(j => {
+          const calculatedColorId = i * 7 + j + 1;
+          return (<ColorInlineBlock
+            data-testid={ `color-palette-block-${calculatedColorId}`}
+            active={ COLORS[pickedColor]?.tone === j && COLORS[pickedColor]?.brightness === i }
+            key={calculatedColorId}
+            className={ `ring-palette_tone-${ j }-${ i }` }
+            onClick={ () => selectColor(MAPPING[j][i].index) }>
+            a
+          </ColorInlineBlock>)
+        })
       }</div>))}
-      <NoColorSample active={pickedColor === '0'} onClick={() => selectColor('0')}>{t('No color')}</NoColorSample>
+      <NoColorSample active={pickedColor === 0} onClick={() => selectColor(0)}>{t('No color')}</NoColorSample>
     </div>
   )
 }

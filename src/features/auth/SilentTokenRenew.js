@@ -91,7 +91,7 @@ function SilentTokenRenew() {
     const url = getAuthorizeHref(stateId, true);
 
     return (
-      <iframe
+      <iframe data-testid='silent-token-renew'
         style={{ width: 0, height: 0, position: 'absolute', left: 0, top: 0, display: 'none', visibility: 'hidden' }}
         width={0}
         height={0}

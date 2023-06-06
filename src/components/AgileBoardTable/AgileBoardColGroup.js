@@ -17,11 +17,11 @@ function AgileBoardColGroup({swimlanesDepth}) {
   const columns = useSelector(selectColumnsMetadata);
 
   return (
-    <colgroup>
-      { swimlanesDepth >= 1 && Array.from({length: swimlanesDepth}, (_, i) => (
-        <FakeCol key={`fake-col-${i}`} />
+    <colgroup data-testid="agile-board-col-group">
+      { swimlanesDepth > 0 && Array.from({length: swimlanesDepth}, (_, i) => (
+        <FakeCol data-testid="fake-col" key={`fake-col-${i}`} />
       )) }
-      { columns.map(col => col.collapsed ? (<CollapsedCol key={`col-${col.id}-collapsed`}/>) : (<col key={`col-${col.id}`}/>)) }
+      { columns?.map(col => col.collapsed ? (<CollapsedCol data-testid="collapsed-col" key={`col-${col.id}-collapsed`}/>) : (<col data-testid="column" key={`col-${col.id}`}/>)) }
     </colgroup>
   );
 }

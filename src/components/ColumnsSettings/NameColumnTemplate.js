@@ -35,7 +35,7 @@ function NameColumnTemplate({disabled, fieldValues}) {
           (<div key={field.id}>
             <Button disabled={disabled}
               data-movable-handle
-              title="Drag to reorder"
+              title={t('Drag to reorder')}
               icon={dragIcon}></Button>
             <span>{field.name}</span>
             {field.isResolved && (<BorderedSpan><span>{t('Resolved.$$noContext')}</span></BorderedSpan>)}

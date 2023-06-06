@@ -72,7 +72,7 @@ function AgileSprintSelect({agileId, sprint}) {
     return formatSprintRange(sprint.from, sprint.to, locale);
   }
   return (
-    <InlineSprintContainer>
+    <InlineSprintContainer data-testid="agile-sprint-selector">
 
       <ControlsHeightContext.Provider value={ControlsHeight.S}>
         <LazySelectBox

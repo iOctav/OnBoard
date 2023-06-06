@@ -60,7 +60,7 @@ const makeQuery = (agileName, sprintName, fieldName, values, explicitQuery) => {
     query = `has: {Board ${agileName}}`;
   }
   if (fieldName) {
-    values.forEach(value => {
+    values?.forEach(value => {
       query = `${query} ${fieldName}: {${value}}`;
     })
   }
@@ -73,20 +73,20 @@ const makeQuery = (agileName, sprintName, fieldName, values, explicitQuery) => {
 function HeaderCell({column, agileName, sprintName, fieldName, cardsCount, explicitQuery}) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const issuesQuery = makeQuery(agileName, sprintName, fieldName, column.agileColumn?.fieldValues.map(x => x.presentation), explicitQuery);
+  const issuesQuery = makeQuery(agileName, sprintName, fieldName, column?.agileColumn?.fieldValues?.map(x => x.presentation), explicitQuery);
 
   return (
-    <HeaderCellTd>
-      <FloatRightCounterDiv title={t('1 card', { count: cardsCount })}>
+    <HeaderCellTd data-testid="header-cell-td">
+      <FloatRightCounterDiv data-testid="cards-count" title={t('1 card', { count: cardsCount })}>
         {cardsCount}
       </FloatRightCounterDiv>
       <HeaderTitle>
-        <FloatLeftButton icon={column.collapsed ? chevronRight : chevronLeft}
-                         onClick={() => dispatch(updateColumn({id: column.id, changes: { collapsed: !column.collapsed}}))}>
-          {column.agileColumn?.presentation}
+        <FloatLeftButton data-testid="collapse-button" icon={column?.collapsed ? chevronRight : chevronLeft}
+                         onClick={() => dispatch(updateColumn({id: column?.id, changes: { collapsed: !column?.collapsed}}))}>
+          {column?.agileColumn?.presentation}
         </FloatLeftButton>
-        <IssuesLinkButton className="column-issues-link" icon={newWindowsIcon} href={issuesQueryUri(issuesQuery)} target="_blank"
-                          title={t('View all {{columnPresentation}} issues on the Issues list', {columnPresentation: column.agileColumn?.presentation})}/>
+        {issuesQuery && <IssuesLinkButton data-testid="issues-link-button" className="column-issues-link" icon={newWindowsIcon} href={issuesQueryUri(issuesQuery)} target="_blank"
+                          title={t('View all {{columnPresentation}} issues on the Issues list', {columnPresentation: column?.agileColumn?.presentation})}/>}
       </HeaderTitle>
     </HeaderCellTd>
   );

@@ -3812,6 +3812,7 @@
   "Synchronization settings were specified in Zendesk before sending\n          agreement": "发送协议前已在 Zendesk 中指定同步设置",
   "Synchronize now": "立即同步",
   "System": "系统",
+  "System_swimlane": "系统",
   "System Language": "系统语言",
   "System-wide Features": "系统范围功能",
   "System-wide banner": "系统范围的横幅",

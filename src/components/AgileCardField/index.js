@@ -45,7 +45,7 @@ function AgileCardField({issueId, field}) {
 
 AgileCardField.propTypes = {
     issueId: PropTypes.string.isRequired,
-    field: PropTypes.object,
+    field: PropTypes.object.isRequired,
 }
 
 export default AgileCardField
