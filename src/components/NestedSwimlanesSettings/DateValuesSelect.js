@@ -19,6 +19,7 @@ function DateValuesSelect({swimlane, onChange}) {
 
 DateValuesSelect.propTypes = {
   swimlane: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired
 }
 
 export default DateValuesSelect;
