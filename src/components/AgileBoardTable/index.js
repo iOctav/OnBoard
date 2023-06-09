@@ -6,7 +6,6 @@ import AgileBoardData from '../AgileBoardData';
 import AgileBoardColGroup from './AgileBoardColGroup';
 import { selectIssuesQuery, useGetSpecificSprintForSpecificAgileQuery } from '../../features/sprint/sprintSlice';
 import LoaderScreen from '@jetbrains/ring-ui/dist/loader-screen/loader-screen';
-import { useStateParams } from '../../hooks/useStateParams';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetSelection } from '../../features/card/cardSlice';
 import ErrorPage from '../ErrorPage';
@@ -40,7 +39,7 @@ function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldN
   });
 
   const swimlanes = useSelector(selectNestedSwimlanes);
-  const swimlanesDepth = Object.keys(swimlanes).length;
+  const swimlanesDepth = swimlanes && Object.keys(swimlanes).length;
   const onTableClickHandler = (event) => {
     event.stopPropagation();
     dispatch(resetSelection());
@@ -57,7 +56,7 @@ function AgileBoardTable({agileId, sprintId, agileName, sprintName, columnFieldN
   if (isLoading || !sprint) {
     return <LoaderScreen/>;
   } else if (isSuccess) {
-    return (<TableContainer onClick={onTableClickHandler}>
+    return (<TableContainer data-testid="agile-board-table" onClick={onTableClickHandler}>
       <AgileBoardColGroup swimlanesDepth={swimlanesDepth}/>
       <AgileBoardHeader agileName={agileName}
                         sprintName={sprintName}

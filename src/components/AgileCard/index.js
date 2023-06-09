@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import AgileCardAssignee from '../AgileCardAssignee';
 import AgileCardField from '../AgileCardField';
 import { issueDetails } from '../../services/linkService';
-import { ASSIGNEE_FIELDNAME } from '../../utils/cardFieldConstants';
+import { ASSIGNEE_FIELD_TYPE } from '../../utils/cardFieldConstants';
 import { useDrag } from 'react-dnd';
 import { ItemTypes } from '../../utils/item-types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,10 +18,8 @@ import {
 import AgileCardSubtask from '../AgileCardSubtask';
 import { useMemo } from 'react';
 
-const AgileCardDiv = styled.div`
+export const AgileCardDiv = styled.div`
   box-sizing: border-box;
-  width: 97% !important;
-  min-width: 97% !important;
   width: calc(100% - calc(var(--ring-unit) + 1px)) !important;
   min-width: calc(100% - calc(var(--ring-unit) + 1px)) !important;
   height: auto;
@@ -120,7 +118,7 @@ function AgileCard({ issueData, colorField, visibleFields }) {
           return (<AgileCardField issueId={issueData.id} field={field} key={field?.id}/>);
       }), [issueData.fields]);
   const issueDetailsLink = issueDetails(issueData.idReadable, issueData.summary);
-  const assigneeField = issueData.fields.find(field => field.name === ASSIGNEE_FIELDNAME);
+  const assigneeField = issueData.fields.find(field => field.$type === ASSIGNEE_FIELD_TYPE);
   const bgColor = colorField && issueData.fields.find(field => field.name === colorField)?.value?.color?.background;
   const cardClickHandler = (event) => {
     event.stopPropagation();
@@ -135,10 +133,10 @@ function AgileCard({ issueData, colorField, visibleFields }) {
     }
   };
 
-  return <AgileCardDiv ref={drag}
+  return <AgileCardDiv data-testid="agile-card" ref={drag}
             style={{
                 opacity: isDragging ? 0.5 : 1,
-            }} bgColor={bgColor} className="ob-agile-card" onClick={cardClickHandler} selected={selectedCard?.id === issueData.id} picked={pickedCards.length > 1 && pickedCards.findIndex(x => x.id === issueData.id) >= 0}>
+            }} bgColor={bgColor} className="ob-agile-card" onClick={cardClickHandler} selected={selectedCard?.id === issueData.id} picked={pickedCards?.length > 1 && pickedCards.findIndex(x => x.id === issueData.id) >= 0}>
       <AgileCardSummaryDiv>
           <IdLink href={issueDetailsLink} target="_blank" resolved={issueData.resolved ? 1 : 0}>{issueData.idReadable}</IdLink>
           <SummarySpan>{issueData.summary}</SummarySpan>
@@ -157,7 +155,7 @@ function AgileCard({ issueData, colorField, visibleFields }) {
 }
 
 AgileCard.propTypes = {
-  issueData: PropTypes.object,
+  issueData: PropTypes.object.isRequired,
   colorField: PropTypes.string,
   visibleFields: PropTypes.arrayOf(PropTypes.string),
 }

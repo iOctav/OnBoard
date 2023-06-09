@@ -9,14 +9,17 @@ import {
     isDateField,
     isDateTimeField,
     isPeriodField,
-    isSelectField
+    isSelectField, mapCustomFields
 } from '../../features/customFields/fieldUtils';
 import FieldDatePicker from './FieldDatePicker';
 import FieldInput from './FieldInput';
 import FieldPeriod from './FieldPeriod';
 
 function AgileCardField({issueId, field}) {
-    const customField = useSelector(state => selectCustomFieldMetadataById(state, field.projectCustomField.field.id));
+    let customField = useSelector(state => selectCustomFieldMetadataById(state, field.projectCustomField.field.id));
+    if (!customField) {
+        customField = mapCustomFields(field.projectCustomField);
+    }
 
     if (isDateField(customField.valueType)) {
         return (<FieldDatePicker customField={customField} value={field.value} withTime={isDateTimeField(customField.valueType)}/>);
@@ -45,7 +48,7 @@ function AgileCardField({issueId, field}) {
 
 AgileCardField.propTypes = {
     issueId: PropTypes.string.isRequired,
-    field: PropTypes.object,
+    field: PropTypes.object.isRequired,
 }
 
 export default AgileCardField

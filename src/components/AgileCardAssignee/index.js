@@ -18,17 +18,18 @@ const UnassignedKey = 'unassigned-key';
 
 function AgileCardAssignee({field}) {
   const { t } = useTranslation();
-  const selected = field.value && { label: field.value.name, key: field.value.id, type: 'user', showGeneratedAvatar: true, username: field.value.fullName, description: field.value.login };
+  const selected = field.value &&
+    { label: field.value.name, key: field.value.id, type: 'user', showGeneratedAvatar: true, username: field.value.fullName, description: field.value.login };
   const [selectedItem, setSelectedItem] = useState(selected);
   const mapBundleDataItem = item => ({ label: item.name, key: item.id, type: 'user', showGeneratedAvatar: true, username: item.fullName, description: item.login });
 
   return (
-    <span className="agile-card-assignee">
+    <span data-testid="agile-card-assignee" className="agile-card-assignee">
       <LazySelectBox className="agile-card-enumeration-item"
                      selected={selected}
                      lazyDataLoaderHook={useLazyGetUserBundleValuesQuery}
-                     lazyDataLoaderHookParams={field.projectCustomField.bundle.id}
-                     makeDataset={(data) => [...data.map(mapBundleDataItem), { label: t('Unassigned.$$noContext'), key: UnassignedKey }]}
+                     lazyDataLoaderHookParams={field.projectCustomField.bundle?.id}
+                     makeDataset={(data) => [{ label: t('Unassigned.$$noContext'), key: UnassignedKey }, ...data.map(mapBundleDataItem)]}
                      type="CUSTOM" label=""
                      onSelect={(item) => setSelectedItem(item.key !== UnassignedKey ? item : undefined)}
                      customAnchor={({wrapperProps, buttonProps, popup}) => (
@@ -45,7 +46,7 @@ function AgileCardAssignee({field}) {
 }
 
 AgileCardAssignee.propTypes = {
-  field: PropTypes.object,
+  field: PropTypes.object.isRequired,
 }
 
 export default AgileCardAssignee

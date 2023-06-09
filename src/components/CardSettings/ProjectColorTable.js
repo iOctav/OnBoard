@@ -18,8 +18,7 @@ function ProjectColorTable({projectColors}) {
     {key: 'color', id: 'color', getValue: (item, column) =>
         (<ColorPicker selected={item.color.id}
                       label={item.project?.name && item.project.name[0]}
-                      onSave={(colorId) => setSelectedProjectColors(
-                        selectedProjectColors.find(project => project.id === item.id).color.id = colorId)}/>
+                      onSave={(colorId) => setSelectedProjectColors(selectedProjectColors.map(col => col.id === item.id ? {...col, color: {id: colorId}} : col))} />
         )},
   ]
   const data = selectedProjectColors ? [...selectedProjectColors].map(col => ({...col, key: col.id})) : [];

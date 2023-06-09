@@ -36,3 +36,5 @@ export const COLORS = [
   { tone: 6, brightness: 4, background: '#553000', text: '#fff' },
   { tone: 0, brightness: 4, background: '#1a1a1a', text: '#fff' },
 ];
+
+export const NO_COLOR = 0;

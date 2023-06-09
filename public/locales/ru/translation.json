@@ -4081,10 +4081,8 @@
   "Synchronization": "Синхронизация",
   "Synchronization settings were specified in Zendesk before sending\n          agreement": "Настройки синхронизации были заданы в Zendesk перед отправкой \n соглашения",
   "Synchronize now": "Синхронизировать сейчас",
-  "System": {
-    "swimlane": "Системный",
-    "$$noContext": "Система"
-  },
+  "System": "Система",
+  "System_swimlane": "Системный",
   "System Language": "Системный язык",
   "System-wide Features": "Общесистемные функции",
   "System-wide banner": "Общесистемный баннер",

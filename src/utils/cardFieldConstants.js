@@ -1,1 +1,1 @@
-export const ASSIGNEE_FIELDNAME = 'Assignee';
+export const ASSIGNEE_FIELD_TYPE = 'SingleUserIssueCustomField';

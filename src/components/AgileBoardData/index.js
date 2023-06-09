@@ -21,12 +21,12 @@ function AgileBoardData({agileId, sprintId, sprint, hideOrphansSwimlane, orphans
     issuesDict = issues.entities;
   }
 
-  return(<tbody>
+  return(<tbody data-testid="agile-board-data-tbody">
   <AgileBoardRows
       agileId={agileId}
       sprintId={sprintId}
-      orphanRow={sprint.board.orphanRow}
-      trimmedSwimlanes={sprint.board.trimmedSwimlanes}
+      orphanRow={sprint?.board?.orphanRow}
+      trimmedSwimlanes={sprint?.board?.trimmedSwimlanes}
       hideOrphansSwimlane={hideOrphansSwimlane}
       orphansAtTheTop={orphansAtTheTop}
       level={-1}

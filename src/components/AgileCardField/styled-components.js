@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const Marker = styled.span`
   width: 6px;
   height: 6px;
-  margin-left: -3px;
+  margin-left: 3px;
+  margin-right: 3px;
   border-radius: calc(var(--ring-unit));
   display: inline-block;
   border: 1px solid var(--ring-content-background-color);
@@ -23,6 +24,7 @@ export const CardFieldAnchor = styled.span`
 
 export const LeftMarginSpan = styled.span`
     margin-left: calc(var(--ring-unit));
+    display: inline-block;
 `;
 
 export const IssueFieldValue = styled.span`

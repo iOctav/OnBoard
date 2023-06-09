@@ -37,6 +37,8 @@ function NestedSwimlanesSettings({projectShortNames, swimlaneSettings, hideOrpha
 
 NestedSwimlanesSettings.propTypes = {
   projectShortNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+  swimlaneSettings: PropTypes.object,
+  hideOrphansSwimlane: PropTypes.bool,
 }
 
 export default NestedSwimlanesSettings;

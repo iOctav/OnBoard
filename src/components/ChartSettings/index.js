@@ -14,7 +14,7 @@ function ChartSettings({disabled, reportSettings}) {
   const [ doNotUseBurndown, setDoNotUseBurndown ] = useState(reportSettings.doNotUseBurndown);
   const [ filterType, setFilterType ] = useState(reportSettings.filterType.id);
   const [ subQuery, setSubQuery ] = useState(reportSettings.subQuery);
-  return (<div>
+  return (<div data-testid="chart-settings">
     <SettingsControl label={t('Type')}>
       <ButtonGroup>
         <Button disabled={disabled} active={!doNotUseBurndown} height={ControlsHeight.S} onClick={() => setDoNotUseBurndown(false)}>

@@ -4,7 +4,6 @@ import { Size } from '@jetbrains/ring-ui/dist/input/input';
 import { useTranslation } from 'react-i18next';
 import Select from '@jetbrains/ring-ui/dist/select/select';
 
-
 function DateValuesSelect({swimlane, onChange}) {
   const { t } = useTranslation();
   const dataset = getDatasetByDatePeriodType(swimlane.field?.dateType);
@@ -20,6 +19,7 @@ function DateValuesSelect({swimlane, onChange}) {
 
 DateValuesSelect.propTypes = {
   swimlane: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired
 }
 
 export default DateValuesSelect;

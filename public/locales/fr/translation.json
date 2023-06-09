@@ -3901,6 +3901,7 @@
   "Synchronization settings were specified in Zendesk before sending\n          agreement": "Les paramètres de synchronisation ont été spécifiés dans Zendesk avant d'envoyer l'accord.",
   "Synchronize now": "Synchroniser maintenant",
   "System": "Système",
+  "System_swimlane": "Système",
   "System Language": "Langue du système",
   "System-wide Features": "Fonctionnalités à l'échelle du système",
   "System-wide banner": "Bandeau à l'échelle du système",

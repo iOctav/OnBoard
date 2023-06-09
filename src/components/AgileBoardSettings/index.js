@@ -44,9 +44,9 @@ function AgileBoardSettings({visible, disabled, selectedTab, agileId, agileName,
   const selectHandler = useCallback((key) => {
     setSelected(key);
   }, []);
-  const projectShortNames = projects.map(project => project.shortName);
+  const projectShortNames = projects?.map(project => project.shortName);
 
-  return visible && (<AgileBoardSettingsContainer className="agile-board-settings">
+  return visible && (<AgileBoardSettingsContainer data-testid="agile-board-settings" className="agile-board-settings">
     <HeaderSettingsDiv className="agile-board-settings-title">
       <HeaderSpan>{t('Board Settings')}</HeaderSpan>
       <TitleSpan>{agileName}</TitleSpan>
@@ -76,13 +76,13 @@ function AgileBoardSettings({visible, disabled, selectedTab, agileId, agileName,
         <YouTrackAgileSettingsLink agileId={agileId} sprintId={sprintId} title={'YouTrack ' + t('Card')} linkId="card"/>
         <CardSettings disabled={disabled}
                       cardSettings={cardSettings}
-                      cardOnSeveralSprints={sprintsSettings.cardOnSeveralSprints}
+                      cardOnSeveralSprints={sprintsSettings?.cardOnSeveralSprints}
                       colorizeCustomFields={colorizeCustomFields}
                       projects={projects}
                       colorCoding={colorCoding}
                       estimationField={estimationField}
                       originalEstimationField={originalEstimationField}
-                      sprintsEnabled={!sprintsSettings.disableSprints}/>
+                      sprintsEnabled={!sprintsSettings?.disableSprints}/>
       </Tab>
       <Tab id="chart" key="chart" title={t('Chart')}>
         <YouTrackAgileSettingsLink agileId={agileId} sprintId={sprintId} title={'YouTrack ' + t('Chart')} linkId="chart"/>

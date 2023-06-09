@@ -7,7 +7,7 @@ function AppearanceMenu() {
     {rgItemType: DropdownMenu.ListProps.Type.LINK, label: 'More settings...', href: '/users/me?tab=workspace'},
   ];
   return (
-    <DropdownMenu data={dropdownMenuData} anchor='Appearance' menuProps={ {onmouseover: () => console.log('123')}}  />
+    <DropdownMenu data={dropdownMenuData} anchor='Appearance' menuProps={{onmouseover: () => {} }} />
   )
 }
 export default AppearanceMenu

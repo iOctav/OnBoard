@@ -23,7 +23,7 @@ function AgileCardSubtask({issueId, subtasks}) {
   }));
 
   return (
-    <span className="agile-card-subtask">
+    <span data-testid="agile-card-subtask" className="agile-card-subtask">
       {subtasks && subtasks.issuesSize > 0 && <LazySelectBox className="agile-card-enumeration-item"
                      lazyDataLoaderHook={useLazyGetSubtasksIssuesQuery}
                      lazyDataLoaderHookParams={{issueId, linkId: subtasks.id}}

@@ -47,11 +47,14 @@ function AgileBoard() {
     content = <LoaderScreen/>
   } else if (isSuccess) {
     const realSprintId = sprintId.toLowerCase() === 'current'
-      ? agile.currentSprint.id : sprintId;
+      ? agile.currentSprint?.id : sprintId;
     const sprint = agile.sprints.find(sprint => sprint.id === realSprintId);
-    content = <div>
+    if (!sprint) {
+      return <div data-testid="board-error">Sprint not found</div>;
+    }
+    content = <div data-testid="agile-board">
       <AgileSearchQueryPanel currentAgileId={agile.id} currentAgileName={agile.name}/>
-      <AgileTopToolbar sprintsDisabled={agile.sprintsSettings.disableSprints}
+      <AgileTopToolbar sprintsDisabled={agile.sprintsSettings?.disableSprints}
                        agileId={agile.id}
                        sprint={{id: sprint.id, name: sprint.name, from: sprint.start, to: sprint.finish}}
                        onSettingsButtonClick={() => setSettingsVisible((state) => !state)}/>
@@ -80,7 +83,7 @@ function AgileBoard() {
       <AgileBoardTable agileId={agile.id} sprintId={realSprintId}
                        agileName={agile.name} sprintName={sprint.name}
                        columnFieldName={agile.columnSettings?.field?.name}
-                       explicitQuery={agile.sprintsSettings.explicitQuery}
+                       explicitQuery={agile.sprintsSettings?.explicitQuery}
                        hideOrphansSwimlane={agile.hideOrphansSwimlane}
                        orphansAtTheTop={agile.orphansAtTheTop}
                        colorField={agile.colorCoding?.prototype?.name}
@@ -90,7 +93,7 @@ function AgileBoard() {
       <AgileBoardFooter owner={agile.owner}/>
     </div>
   } else if (isError) {
-    content = <div>{error.toString()}</div>
+    content = <div data-testid="board-error">{error.toString()}</div>
   }
 
   return content;

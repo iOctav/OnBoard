@@ -1,6 +1,5 @@
 import DropdownMenu from '@jetbrains/ring-ui/dist/dropdown-menu/dropdown-menu';
-import Avatar from '@jetbrains/ring-ui/dist/avatar/avatar';
-import { Size } from '@jetbrains/ring-ui/dist/avatar/avatar';
+import Avatar, { Size } from '@jetbrains/ring-ui/dist/avatar/avatar';
 import { myProfilePageUri } from '../../services/linkService';
 import { useGetCurrentUserInfoQuery } from '../../features/auth/authSlice';
 import { useAuth } from '../../hooks/useAuth';
@@ -27,4 +26,5 @@ function SmartProfile() {
     <DropdownMenu data={dropdownMenuData} anchor={profileAnchor}/>
   )
 }
-export default SmartProfile
+
+export default SmartProfile;
