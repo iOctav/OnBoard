@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import AgileCardAssignee from '../AgileCardAssignee';
 import AgileCardField from '../AgileCardField';
 import { issueDetails } from '../../services/linkService';
-import { ASSIGNEE_FIELDNAME } from '../../utils/cardFieldConstants';
+import { ASSIGNEE_FIELD_TYPE } from '../../utils/cardFieldConstants';
 import { useDrag } from 'react-dnd';
 import { ItemTypes } from '../../utils/item-types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -118,7 +118,7 @@ function AgileCard({ issueData, colorField, visibleFields }) {
           return (<AgileCardField issueId={issueData.id} field={field} key={field?.id}/>);
       }), [issueData.fields]);
   const issueDetailsLink = issueDetails(issueData.idReadable, issueData.summary);
-  const assigneeField = issueData.fields.find(field => field.name === ASSIGNEE_FIELDNAME);
+  const assigneeField = issueData.fields.find(field => field.$type === ASSIGNEE_FIELD_TYPE);
   const bgColor = colorField && issueData.fields.find(field => field.name === colorField)?.value?.color?.background;
   const cardClickHandler = (event) => {
     event.stopPropagation();

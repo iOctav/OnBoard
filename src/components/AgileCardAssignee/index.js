@@ -28,8 +28,8 @@ function AgileCardAssignee({field}) {
       <LazySelectBox className="agile-card-enumeration-item"
                      selected={selected}
                      lazyDataLoaderHook={useLazyGetUserBundleValuesQuery}
-                     lazyDataLoaderHookParams={field.projectCustomField.bundle.id}
-                     makeDataset={(data) => [...data.map(mapBundleDataItem), { label: t('Unassigned.$$noContext'), key: UnassignedKey }]}
+                     lazyDataLoaderHookParams={field.projectCustomField.bundle?.id}
+                     makeDataset={(data) => [{ label: t('Unassigned.$$noContext'), key: UnassignedKey }, ...data.map(mapBundleDataItem)]}
                      type="CUSTOM" label=""
                      onSelect={(item) => setSelectedItem(item.key !== UnassignedKey ? item : undefined)}
                      customAnchor={({wrapperProps, buttonProps, popup}) => (

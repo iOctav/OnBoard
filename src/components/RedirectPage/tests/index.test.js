@@ -73,12 +73,12 @@ describe('RedirectPage', () => {
     });
     expect(screen.getByTestId('error-message')).toBeInTheDocument();
 
-    for(let i = 0; i < 3; i++) {
+    for(let i = 0; i < 1; i++) {
       expect(mockLocationReplace).not.toHaveBeenCalled();
       act(() => {
         jest.advanceTimersByTime(1000)
       })
-      expect(mockMessage).toHaveBeenCalledWith(`Will redirect to YouTrack in ${3 - i} seconds...`);
+      expect(mockMessage).toHaveBeenCalledWith(`Will redirect to YouTrack in ${1 - i} seconds...`);
     }
   });
 

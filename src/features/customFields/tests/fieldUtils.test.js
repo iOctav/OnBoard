@@ -3,7 +3,7 @@ import {
   isDateField,
   isDateTimeField,
   isPeriodField,
-  isSelectField, mapIdDataRequest,
+  isSelectField, mapCustomFields, mapIdDataRequest,
   mapTypeDataRequest
 } from '../fieldUtils';
 import {
@@ -16,6 +16,7 @@ import {
   useLazyGetUserBundleValuesQuery,
   useLazyGetVersionBundleValuesQuery
 } from '../../../app/services/youtrackApi';
+import { CustomFieldPresentationType } from '../custom-field-presentation-type';
 
 describe('mapTypeDataRequest', () => {
   it('should return correct function based on fieldType', () => {
@@ -87,5 +88,87 @@ describe('isSelectField', () => {
     expect(isSelectField('unknown')).toBe(false);
     expect(isSelectField('')).toBe(false);
     expect(isSelectField(undefined)).toBe(false);
+  });
+});
+
+describe('mapCustomFields', () => {
+  it('maps project custom fields correctly without optional values', () => {
+    const projectCustomField = {
+      field: {
+        id: '1',
+        name: 'Field1',
+        fieldType: {
+          id: 'Type1',
+          valueType: 'ValueType1',
+          isMultiValue: true,
+        },
+      },
+      emptyFieldText: 'Empty1',
+      canBeEmpty: true,
+    };
+
+    const expected = {
+      id: '1',
+      name: 'Field1',
+      type: 'Type1',
+      valueType: 'ValueType1',
+      isMultiValue: true,
+      emptyFieldText: 'Empty1',
+      canBeEmpty: true,
+      bundle: undefined,
+      presentationType: CustomFieldPresentationType.FullName,
+    };
+
+    expect(mapCustomFields(projectCustomField)).toEqual(expected);
+  });
+
+  it('maps project custom fields correctly with all values', () => {
+    const projectCustomField = {
+      field: {
+        id: '1',
+        name: 'Field1',
+        fieldType: {
+          id: 'Type1',
+          valueType: 'ValueType1',
+          isMultiValue: true,
+        },
+      },
+      emptyFieldText: 'Empty1',
+      canBeEmpty: true,
+      bundle: {
+        $type: 'Bundle1',
+        id: 'BundleId1'
+      }
+    };
+
+    const cardSettings = {
+      fields: [
+        {
+          field: {
+            name: 'Field1',
+          },
+          presentation: {
+            id: 'Presentation1'
+          }
+        }
+      ]
+    };
+
+    const expected = {
+      id: '1',
+      name: 'Field1',
+      type: 'Type1',
+      valueType: 'ValueType1',
+      isMultiValue: true,
+      emptyFieldText: 'Empty1',
+      canBeEmpty: true,
+      bundle: {
+        type: 'Bundle1',
+        id: 'BundleId1'
+      },
+      presentationType: 'Presentation1',
+    };
+
+    expect(mapCustomFields(projectCustomField, cardSettings)).toEqual(expected);
   });
 });

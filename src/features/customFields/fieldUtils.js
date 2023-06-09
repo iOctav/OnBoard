@@ -9,6 +9,7 @@ import {
   useLazyGetVersionBundleValuesQuery
 } from '../../app/services/youtrackApi';
 import { CustomFieldType } from './custom-field-type';
+import { CustomFieldPresentationType } from './custom-field-presentation-type';
 
 export const mapTypeDataRequest = (fieldType) => {
   switch (fieldType?.toLowerCase()) {
@@ -68,3 +69,20 @@ export const isSelectField = (fieldType) => {
     || lcFieldType === CustomFieldType.Build
     || lcFieldType === CustomFieldType.Group;
 };
+
+export const mapCustomFields = (projectCustomField, cardSettings) => (
+  {
+    id: projectCustomField.field.id,
+    name: projectCustomField.field.name,
+    type: projectCustomField.field.fieldType.id,
+    valueType: projectCustomField.field.fieldType.valueType,
+    isMultiValue: projectCustomField.field.fieldType.isMultiValue,
+    emptyFieldText: projectCustomField.emptyFieldText,
+    canBeEmpty: projectCustomField.canBeEmpty,
+    bundle: projectCustomField.bundle && {
+      type: projectCustomField.bundle?.$type,
+      id: projectCustomField.bundle?.id,
+    },
+    presentationType: cardSettings?.fields.find(field => field.field.name === projectCustomField.field.name)?.presentation?.id ?? CustomFieldPresentationType.FullName,
+  }
+);

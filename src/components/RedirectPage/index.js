@@ -8,7 +8,7 @@ import { homePageUri } from '../../services/linkService';
 
 function RedirectPage({redirectTimeout}) {
   const location = useLocation();
-  const [seconds, setSeconds] = useState(redirectTimeout > 0 ? Math.ceil(redirectTimeout) : 3);
+  const [seconds, setSeconds] = useState(redirectTimeout > 0 ? Math.ceil(redirectTimeout) : 1);
   const redirectUrl = process.env.REACT_APP_YOUTRACK_BASE_URL + location.pathname + location.search;
   useEffect(() => {
     const interval = setInterval(

@@ -58,16 +58,16 @@ function AgileBoardFooter({owner}) {
         t('1 card selected', { count: selectedCardsCount}),
         (<Button data-testid="reset-selection" key="reset-selection" icon={closeIcon} onClick={() => dispatch(pickedCards && pickedCards.length ? resetPicked() : resetSelection())}/>),
         (<ButtonGroup data-testid="left-button-group" key="left-button-group">
-          <Button key="set-assignee" icon={SetPerson14px} title={t('Set assignee')}/>
-          <Button key="add-tag" icon={tagIcon} title={t('Add tag')}/>
-          <Button key="link-issues" icon={linkIcon} title={t('Link issues')}/>
+          <Button disabled key="set-assignee" icon={SetPerson14px} title={t('Set assignee')}/>
+          <Button disabled key="add-tag" icon={tagIcon} title={t('Add tag')}/>
+          <Button disabled key="link-issues" icon={linkIcon} title={t('Link issues')}/>
         </ButtonGroup>)
       ],
     ];
     rightContent = [
       (<RightButtonGroupContent data-testid="right-button-group" key="right-button-group">
-        <Button key="move-next-sprint-button">{t('Move to next sprint')}</Button>
-        <Button key="sprints-dropdown" icon={caretDown}></Button>
+        <Button disabled key="move-next-sprint-button">{t('Move to next sprint')}</Button>
+        <Button disabled key="sprints-dropdown" icon={caretDown}></Button>
       </RightButtonGroupContent>)
     ];
   } else {
