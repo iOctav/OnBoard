@@ -9,8 +9,15 @@ jest.mock('@jetbrains/ring-ui/dist/dropdown-menu/dropdown-menu', () => ({data, a
   (<div data-testid="dropdown-menu">{anchor}</div>))
 jest.mock('@jetbrains/ring-ui/dist/header/header', () => ({children}) =>
   (<div data-testid="header">{children}</div>));
-jest.mock('@jetbrains/ring-ui/dist/icon', () => ({glyph}) =>
-  (<span data-testid="icon">{glyph}</span>));
+jest.mock('@jetbrains/ring-ui/dist/icon', () => ({
+  __esModule: true,
+  Size: {
+    Size20: 'Size20',
+    Size24: 'Size24',
+  },
+  default: ({glyph}) =>
+    (<span data-testid="icon">{glyph}</span>),
+}));
 jest.mock('@jetbrains/ring-ui/dist/link/link', () => ({children}) =>
   (<a data-testid="link">{children}</a>));
 jest.mock('@jetbrains/ring-ui/dist/header/tray-icon', () => ({icon}) =>
@@ -47,6 +54,7 @@ describe('PageYTHeader', () => {
   });
 
   it('should render PageYTHeader with props', () => {
+    global.innerWidth = 1920;
     act(() => {
       root.render(<PageYTHeader isCompact={false}/>);
     });
