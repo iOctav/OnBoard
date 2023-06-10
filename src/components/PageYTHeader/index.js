@@ -57,6 +57,7 @@ function PageYTHeader({isCompact}) {
     { label: t('Board...'), href: createAgileBoardPageUri() },
   ];
   let menuLinks;
+  const isCompactMode = isCompact || deviceSize < 1024;
   if (deviceSize > 1024) {
     menuLinks = (
       <>
@@ -89,7 +90,7 @@ function PageYTHeader({isCompact}) {
   return (
     <StyledObHeader theme={theme} className={'compactHeader'}>
       <RouterLink rel="noreferrer" to={homePageUri()} >
-        <HeaderLogo isCompact={isCompact}/>
+        <HeaderLogo isCompact={isCompactMode}/>
       </RouterLink>
       <span>
         <Link target="_blank" href={YT_PAGES.issues}>{t('Issues.$$noContext')}</Link>
