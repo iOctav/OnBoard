@@ -25,7 +25,7 @@ function AgileBoardCell({agileId, sprintId, columnFieldId, swimlanes, columnName
           && field.value.name.toLowerCase() !== columnName.toLowerCase());
         let propertiesUpdates = [];
         swimlanes.forEach(({ swimlaneFieldlId, swimlaneValue }) => {
-          const prevSwimlane = issueData.fields.find(field => field.name.toLowerCase() === swimlaneFieldlId.toLowerCase()).value?.name;
+          const prevSwimlane = issueData.fields.find(field => field.name.toLowerCase() === swimlaneFieldlId.toLowerCase())?.value?.name;
           const swimlaneChanged = prevSwimlane?.toLowerCase() !== swimlaneValue?.toLowerCase() || (prevSwimlane && !swimlaneValue) || (!prevSwimlane && swimlaneValue)
           swimlaneChanged && propertiesUpdates.push({
             fieldId: swimlaneFieldlId,
