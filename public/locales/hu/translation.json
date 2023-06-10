@@ -727,17 +727,11 @@
   "Update User": {
     "Permission name": "Felhasználó módosítása"
   },
-  "created": {
-    "Predefined fields": "létrehozva",
-    "$$noContext": "létrehozva"
-  },
-  "resolved date": {
-    "Predefined fields": "megoldás dátuma"
-  },
-  "updated": {
-    "Predefined fields": "frissítve",
-    "$$noContext": "frissítve"
-  },
+  "created" : "létrehozva",
+  "created_Predefined fields" : "létrehozva",
+  "resolved date_Predefined fields": "megoldás dátuma",
+  "updated": "frissítve",
+  "updated_Predefined fields": "frissítve",
   "Comments": {
     "Profile Notifications": "Hozzászólások",
     "$$noContext": "Hozzászólások"

@@ -24,7 +24,7 @@ function SmartProfile() {
   const profileAnchor = (<div><CenteredAvatar size={Size.Size32} username={data?.name ?? 'guest'} /></div>);
 
   const dropdownMenuData = [
-    { label: t('Profile'), href: myProfilePageUri() },
+    { label: t('Profile'), href: myProfilePageUri(), target: '_blank' },
     { label: t('Appearance'), href: '#' },
     { label: t('Switch user'), href: '#' },
     { label: t('Log out'), href: '#' },

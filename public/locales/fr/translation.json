@@ -734,17 +734,11 @@
   "Update User": {
     "Permission name": "Mettre à jour l’utilisateur"
   },
-  "created": {
-    "Predefined fields": "créé",
-    "$$noContext": "créé"
-  },
-  "resolved date": {
-    "Predefined fields": "date de résolution"
-  },
-  "updated": {
-    "Predefined fields": "mis à jour",
-    "$$noContext": "mis à jour"
-  },
+  "created" : "créé",
+  "created_Predefined fields" : "créé",
+  "resolved date_Predefined fields": "date de résolution",
+  "updated": "mis à jour",
+  "updated_Predefined fields": "mis à jour",
   "Comments": {
     "Profile Notifications": "Commentaires",
     "$$noContext": "Commentaires"

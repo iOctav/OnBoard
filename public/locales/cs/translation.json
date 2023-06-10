@@ -702,17 +702,11 @@
   "Update User": {
     "Permission name": "Aktualizovat uživatele"
   },
-  "created": {
-    "Predefined fields": "vytvořeno",
-    "$$noContext": "vytvořeno"
-  },
-  "resolved date": {
-    "Predefined fields": "datum vyřešení"
-  },
-  "updated": {
-    "Predefined fields": "aktualizováno",
-    "$$noContext": "aktualizováno"
-  },
+  "created" : "vytvořeno",
+  "created_Predefined fields" : "vytvořeno",
+  "resolved date_Predefined fields": "datum vyřešení",
+  "updated": "aktualizováno",
+  "updated_Predefined fields": "aktualizováno",
   "Comments": {
     "Profile Notifications": "Komentáře",
     "$$noContext": "Komentáře"

@@ -9,6 +9,7 @@ export const YT_PAGES = {
   timesheets: '/timesheets',
   ganttCharts: '/gantt-charts',
   users: '/users',
+  newIssue: '/newIssue',
 };
 
 export const homePageUri = () => '/';
@@ -19,3 +20,4 @@ export const currentAgileBoardUri = (agileId) => `/${agileId}/current`;
 export const agileBoardUri = (agileId, sprintId) => `/${agileId}/${sprintId}`;
 export const issueDetails = (id, summary) => `${YT_PAGES.issue}/${id}/${summary}`;
 export const issuesQueryUri = (query) => `${YT_PAGES.issues}?q=${query}`;
+export const newIssueUri = (project) => `${YT_PAGES.newIssue}?project=${project ?? ''}`;

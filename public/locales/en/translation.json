@@ -734,17 +734,11 @@
   "Update User": {
     "Permission name": "Update User"
   },
-  "created": {
-    "Predefined fields": "created",
-    "$$noContext": "created"
-  },
-  "resolved date": {
-    "Predefined fields": "resolved date"
-  },
-  "updated": {
-    "Predefined fields": "updated",
-    "$$noContext": "updated"
-  },
+  "created" : "created",
+  "created_Predefined fields" : "created",
+  "resolved date_Predefined fields": "resolved date",
+  "updated": "updated",
+  "updated_Predefined fields": "updated",
   "Comments": {
     "Profile Notifications": "Comments",
     "$$noContext": "Comments"
@@ -2009,6 +2003,7 @@
   "EU (Ireland)": "EU (Ireland)",
   "Each SSH public key must be unique in your Hub instance. The selected SSH public key is already associated with an account in Hub.": "Each SSH public key must be unique in your Hub instance. The selected SSH public key is already associated with an account in Hub.",
   "Earlier": "Earlier",
+  "earlier": "earlier",
   "Edit Archived Sprint": "Edit Archived Sprint",
   "Edit Attachment": "Edit Attachment",
   "Edit Build Server": "Edit Build Server",
@@ -2640,12 +2635,19 @@
   "Last modified by": "Last modified by",
   "Last modified on <span>{{ tableActiveItem.data.updated | ytUserDateTime }}</span> <span ng-if=\"tableActiveItem.data.updatedBy.fullName || tableActiveItem.data.updatedBy.login\">by {{tableActiveItem.data.updatedBy.fullName || tableActiveItem.data.updatedBy.login}}</span>": "Last modified on <span>{{ tableActiveItem.data.updated | ytUserDateTime }}</span> <span ng-if=\"tableActiveItem.data.updatedBy.fullName || tableActiveItem.data.updatedBy.login\">by {{tableActiveItem.data.updatedBy.fullName || tableActiveItem.data.updatedBy.login}}</span>",
   "Last month": "Last month",
+  "a last month": "a last month",
+  "a next month": "a next month",
   "Last name": "Last name",
   "Last page": "Last page",
   "Last processed build": "Last processed build",
   "Last usage": "Last usage",
   "Last used": "Last used",
   "Last week": "Last week",
+  "a last week": "last week",
+  "between period": "between {{fromDate}} and  {{toDate}}",
+  "between from and earlier": "between {{fromDate}} and earlier",
+  "between from and later": "between {{fromDate}} and later",
+  "a next week": "a next week",
   "Last working day": "Last working day",
   "Learn more": "Learn more",
   "Learn more →": "Learn more →",
@@ -4352,6 +4354,8 @@
   "To view details, select a keystore": "To view details, select a keystore",
   "To view or change the board configuration, click here": "To view or change the board configuration, click here",
   "Today": "Today",
+  "today": "today",
+  "tomorrow": "tomorrow",
   "Toggle backlog visibility": "Toggle backlog visibility",
   "Toggle distraction-free mode (Ctrl+Alt+D)": "Toggle distraction-free mode (Ctrl+Alt+D)",
   "Toggle fullscreen mode": "Toggle fullscreen mode",
@@ -4918,6 +4922,7 @@
   "`code`": "`code`",
   "a minute ago": "a minute ago",
   "a month ago": "a month ago",
+  "a month later": "a month later",
   "a week ago": "a week ago",
   "a year ago": "a year ago",
   "accepted": "accepted",

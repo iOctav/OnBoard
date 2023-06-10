@@ -719,17 +719,11 @@
   "Update User": {
     "Permission name": "更新用户"
   },
-  "created": {
-    "Predefined fields": "创建",
-    "$$noContext": "创建"
-  },
-  "resolved date": {
-    "Predefined fields": "解决日期"
-  },
-  "updated": {
-    "Predefined fields": "已更新",
-    "$$noContext": "已更新"
-  },
+  "created" : "创建",
+  "created_Predefined fields" : "创建",
+  "resolved date_Predefined fields": "解决日期",
+  "updated": "已更新",
+  "updated_Predefined fields": "已更新",
   "Comments": {
     "Profile Notifications": "评论",
     "$$noContext": "评论"

@@ -525,17 +525,11 @@
   "Good": {
     "Password strength policy": "טוב"
   },
-  "created": {
-    "Predefined fields": "נוצר",
-    "$$noContext": "נוצר"
-  },
-  "resolved date": {
-    "Predefined fields": "תאריך פתירה"
-  },
-  "updated": {
-    "Predefined fields": "עודכן",
-    "$$noContext": "עודכן"
-  },
+  "created" : "נוצר",
+  "created_Predefined fields" : "נוצר",
+  "resolved date_Predefined fields": "תאריך פתירה",
+  "updated": "עודכן",
+  "updated_Predefined fields": "עודכן",
   "Comments": {
     "Profile Notifications": "הערות/ תגובות",
     "$$noContext": "הערות/ תגובות"
