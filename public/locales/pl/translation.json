@@ -652,17 +652,11 @@
   "Update User": {
     "Permission name": "Aktualizacja użytkownika"
   },
-  "created": {
-    "Predefined fields": "utworzono",
-    "$$noContext": "utworzono"
-  },
-  "resolved date": {
-    "Predefined fields": "data rozwiązana"
-  },
-  "updated": {
-    "Predefined fields": "zaktualizowano",
-    "$$noContext": "zaktualizowano"
-  },
+  "created" : "utworzono",
+  "created_Predefined fields" : "utworzono",
+  "resolved date_Predefined fields": "data rozwiązana",
+  "updated": "zaktualizowano",
+  "updated_Predefined fields": "zaktualizowano",
   "Comments": {
     "Profile Notifications": "Komentarze",
     "$$noContext": "Komentarze"

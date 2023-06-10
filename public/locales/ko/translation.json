@@ -719,17 +719,11 @@
   "Update User": {
     "Permission name": "사용자 업데이트"
   },
-  "created": {
-    "Predefined fields": "생성됨",
-    "$$noContext": "생성됨"
-  },
-  "resolved date": {
-    "Predefined fields": "해결된 날짜"
-  },
-  "updated": {
-    "Predefined fields": "업데이트됨",
-    "$$noContext": "업데이트됨"
-  },
+  "created" : "생성됨",
+  "created_Predefined fields" : "생성됨",
+  "resolved date_Predefined fields": "해결된 날짜",
+  "updated": "업데이트됨",
+  "updated_Predefined fields": "업데이트됨",
   "Comments": {
     "Profile Notifications": "코멘트",
     "$$noContext": "코멘트"

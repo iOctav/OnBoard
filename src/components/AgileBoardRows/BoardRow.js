@@ -8,7 +8,7 @@ import NewCardButton from '../NewCardButton';
 import { useSelector } from 'react-redux';
 import AgileBoardRows from './index';
 import FakeTableCells from '../FakeTableCells';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   getDateSwimlanePeriod,
   getPredefinedDateValue,
@@ -18,6 +18,8 @@ import { selectColumnsMetadata } from '../../features/sprint/sprintSlice';
 import { SwimlaneType } from '../../features/nestedSwimlanes/swimlane-type';
 import { useStateParams } from '../../hooks/useStateParams';
 import AgileBoardCell from '../AgileBoardCell';
+import enLocale from 'date-fns/locale/en-US';
+import { useTranslation } from 'react-i18next';
 
 const BorderedTd = styled.td`
   border-bottom: 1px solid var(--ring-line-color);
@@ -51,7 +53,7 @@ const makeEmptyOrphanRow = (emptyCells) => {
   };
 };
 
-const makeEmptyTrimmedSwimlanes = (swimlane, emptyCells) => {
+const makeEmptyTrimmedSwimlanes = (swimlane, emptyCells, t, locale) => {
   return swimlane.values.map((value, index) => ({
     cells: emptyCells.map(cell => ({...cell, issues: [], issuesCount: 0})),
     collapsed: false,
@@ -60,7 +62,7 @@ const makeEmptyTrimmedSwimlanes = (swimlane, emptyCells) => {
     name: value.key,
     timeTrackingData: null,
     value: {
-      presentation: swimlane.field?.dateType ? getSwimlanePeriodLabel(value.key, swimlane.field.presentation) : value.label,
+      presentation: swimlane.field?.dateType ? getSwimlanePeriodLabel(value.key, swimlane.field.presentation, t, locale) : value.label,
     },
     isTag: swimlane.field?.id === 'tag',
     dateType: swimlane.field?.dateType,
@@ -86,6 +88,7 @@ const makeIssueTrimmedSwimlane = (issue, value, swimlane, emptyCells) => ({
 });
 
 function BoardRow({agileId, sprintId, row, issuesDict, swimlaneTitle, level, isOrphan, colorField, system, visibleCardFields, currentSwimlanes}) {
+  const { t, i18n } = useTranslation();
   const [swimlanes] = useStateParams({}, 'nested-swimlanes', (s) => JSON.stringify(s), (s) => JSON.parse(s));
   const sortedSwimlanes = useMemo(() => {
     return Object.keys(swimlanes).map(key => swimlanes[key]).sort((a, b) => a.order - b.order);
@@ -94,6 +97,23 @@ function BoardRow({agileId, sprintId, row, issuesDict, swimlaneTitle, level, isO
   const swimlanesDepth = Object.keys(swimlanes).length;
   const columns = useSelector(selectColumnsMetadata);
   const [rollUp, setRollUp] = useState(!row.collapsed);
+  const [locale, setLocale] = useState(enLocale);
+
+  useEffect(() => {
+    const importLocaleFile = async () => {
+      return import(
+        /* webpackMode: "lazy", webpackChunkName: "df-[index]", webpackExclude: /_lib/ */
+        `date-fns/locale/${i18n.language}/index.js`
+        ).then(
+        (localeToSet) => setLocale(localeToSet.default),
+        () => import(`date-fns/locale/en-GB/index.js`).then((localeToSet) => setLocale(localeToSet.default)));
+    };
+
+    // If the locale has not yet been loaded.
+    if (locale.code !== i18n.language) {
+      importLocaleFile();
+    }
+  }, [locale.code, i18n.language]);
 
   const issuesCount = row.cells.reduce((acc, cell) => acc + cell.issues.length, 0);
   const swimlaneContent = useMemo(() => {
@@ -128,7 +148,7 @@ function BoardRow({agileId, sprintId, row, issuesDict, swimlaneTitle, level, isO
     } else {
       const orphanRow = makeEmptyOrphanRow(row.cells.map(cell => ({...cell, issues: [], issuesCount: 0})));
       const trimmedSwimlanes = nestedSwimlane?.field && nestedSwimlane.values.length > 0 && nestedSwimlane.type === SwimlaneType.Values
-        ? makeEmptyTrimmedSwimlanes(nestedSwimlane, row.cells) : [];
+        ? makeEmptyTrimmedSwimlanes(nestedSwimlane, row.cells, t, locale) : [];
       let swimlaneFieldIndex = -1;
       row.cells.forEach((cell, index) => {
         if (!issuesDict) return;

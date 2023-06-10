@@ -764,17 +764,11 @@
   "Update User": {
     "Permission name": "Обновление пользователя"
   },
-  "created": {
-    "Predefined fields": "создано",
-    "$$noContext": "создано"
-  },
-  "resolved date": {
-    "Predefined fields": "дата завершения"
-  },
-  "updated": {
-    "Predefined fields": "обновлено",
-    "$$noContext": "обновлено"
-  },
+  "created" : "создано",
+  "created_Predefined fields" : "создано",
+  "resolved date_Predefined fields": "дата завершения",
+  "updated": "обновлено",
+  "updated_Predefined fields": "обновлено",
   "Comments": {
     "Profile Notifications": "Комментарии",
     "$$noContext": "Комментарии"
@@ -2754,12 +2748,19 @@
   "Last modified by": "Автор последнего изменения:",
   "Last modified on <span>{{ tableActiveItem.data.updated | ytUserDateTime }}</span> <span ng-if=\"tableActiveItem.data.updatedBy.fullName || tableActiveItem.data.updatedBy.login\">by {{tableActiveItem.data.updatedBy.fullName || tableActiveItem.data.updatedBy.login}}</span>": "Последнее изменение: <span>{{ tableActiveItem.data.updated | ytUserDateTime }}</span> <span ng-if=\"tableActiveItem.data.updatedBy.fullName || tableActiveItem.data.updatedBy.login\">пользователем {{tableActiveItem.data.updatedBy.fullName || tableActiveItem.data.updatedBy.login}}</span>",
   "Last month": "В прошлом месяце",
+  "a last month": "прошлый месяц",
+  "a next month": "следующий месяц",
   "Last name": "Фамилия",
   "Last page": "Последняя страница",
   "Last processed build": "Последняя обработанная сборка",
   "Last usage": "Последнее использование",
   "Last used": "Последний",
   "Last week": "На прошлой неделе",
+  "a last week": "прошлая неделя",
+  "between period": "в период с {{fromDate}} по {{toDate}}",
+  "between from and earlier": "в период с {{fromDate}} и ранее",
+  "between from and later": "в период с {{fromDate}} и позже",
+  "a next week": "следующая неделя",
   "Last working day": "Последний рабочий день",
   "Learn more": "Дополнительные сведения",
   "Learn more →": "Подробнее →",
@@ -4523,6 +4524,8 @@
   "To view details, select a keystore": "Для просмотра подробностей выберите хранилище ключей",
   "To view or change the board configuration, click here": "Чтобы просмотреть или изменить конфигурацию доски, нажмите здесь",
   "Today": "Сегодня",
+  "today": "сегодня",
+  "tomorrow": "завтра",
   "Toggle backlog visibility": "Включить или выключить отображение очереди задач",
   "Toggle distraction-free mode (Ctrl+Alt+D)": "Переключить неотвлекающий режим (Ctrl+Alt+D)",
   "Toggle fullscreen mode": "Включить или выключить полноэкранный режим",
@@ -5102,6 +5105,7 @@
   "`code`": "`код`",
   "a minute ago": "минуту назад",
   "a month ago": "месяц назад",
+  "a month later": "через месяц",
   "a week ago": "неделю назад",
   "a year ago": "год назад",
   "accepted": "принято",

@@ -719,17 +719,11 @@
   "Update User": {
     "Permission name": "ユーザーの更新"
   },
-  "created": {
-    "Predefined fields": "作成されました",
-    "$$noContext": "作成されました"
-  },
-  "resolved date": {
-    "Predefined fields": "解決日時"
-  },
-  "updated": {
-    "Predefined fields": "更新日",
-    "$$noContext": "更新日"
-  },
+  "created" : "作成されました",
+  "created_Predefined fields" : "作成されました",
+  "resolved date_Predefined fields": "解決日時",
+  "updated": "更新日",
+  "updated_Predefined fields": "更新日",
   "Comments": {
     "Profile Notifications": "コメント",
     "$$noContext": "コメント"

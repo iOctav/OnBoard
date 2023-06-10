@@ -7,6 +7,7 @@ import {
 } from '../dateFieldUtils';
 import { DatePeriodType } from '../date-period-type';
 import formatDate from 'date-fns/format';
+import i18n from 'i18next';
 
 describe('getDateFieldType', () => {
   it('should return both DateFieldType for date field', () => {
@@ -86,79 +87,92 @@ describe('getDateSwimlanePeriod', () => {
 
 describe('getSwimlanePeriodLabel', () => {
   const today = new Date();
+  const locale = i18n.language;
+  const t = (key, params) => {
+    if (key === 'between period') {
+      return `between ${params.fromDate} and ${params.toDate}`;
+    }
+    if (key === 'between from and earlier') {
+      return `between ${params.fromDate} and earlier`;
+    }
+    if (key === 'between from and later') {
+      return `between ${params.fromDate} and later`;
+    }
+    return key;
+  };
 
   it('should return today for today date', () => {
-    expect(getSwimlanePeriodLabel('today', '')).toEqual(' today');
-    expect(getSwimlanePeriodLabel('today', 'field')).toEqual('field today');
+    expect(getSwimlanePeriodLabel('today', '', t, locale)).toEqual(' today');
+    expect(getSwimlanePeriodLabel('today', 'field', t, locale)).toEqual('field today');
   });
 
   it('should return yesterday for yesterday date', () => {
-    expect(getSwimlanePeriodLabel('yesterday', '')).toEqual(' yesterday');
-    expect(getSwimlanePeriodLabel('yesterday', 'field')).toEqual('field yesterday');
+    expect(getSwimlanePeriodLabel('yesterday', '', t, locale)).toEqual(' yesterday');
+    expect(getSwimlanePeriodLabel('yesterday', 'field', t, locale)).toEqual('field yesterday');
   });
 
   it('should return tomorrow for tomorrow date', () => {
-    expect(getSwimlanePeriodLabel('tomorrow', '')).toEqual(' tomorrow');
-    expect(getSwimlanePeriodLabel('tomorrow', 'field')).toEqual('field tomorrow');
+    expect(getSwimlanePeriodLabel('tomorrow', '', t, locale)).toEqual(' tomorrow');
+    expect(getSwimlanePeriodLabel('tomorrow', 'field', t, locale)).toEqual('field tomorrow');
   });
 
   it('should return period for 5 days for last week period', () => {
     const sevenDaysAgo = today - 7 * 24 * 60 * 60 * 1000;
     const twoDaysAgo = today - 2 * 24 * 60 * 60 * 1000;
-    expect(getSwimlanePeriodLabel('last-week', ''))
+    expect(getSwimlanePeriodLabel('last-week', '', t, locale))
       .toEqual(` between ${formatDate(sevenDaysAgo, 'd MMM yyyy')} and ${formatDate(twoDaysAgo, 'd MMM yyyy')}`);
-    expect(getSwimlanePeriodLabel('last-week', 'field'))
+    expect(getSwimlanePeriodLabel('last-week', 'field', t, locale))
       .toEqual(`field between ${formatDate(sevenDaysAgo, 'd MMM yyyy')} and ${formatDate(twoDaysAgo, 'd MMM yyyy')}`);
   });
 
   it('should return period for 5 days for next week period', () => {
     const twoDaysLater = today.getTime() + (2 * 24 * 60 * 60 * 1000);
     const sevenDaysLater = today.getTime() + (7 * 24 * 60 * 60 * 1000);
-    expect(getSwimlanePeriodLabel('next-week', ''))
+    expect(getSwimlanePeriodLabel('next-week', '', t, locale))
       .toEqual(` between ${formatDate(twoDaysLater, 'd MMM yyyy')} and ${formatDate(sevenDaysLater, 'd MMM yyyy')}`);
-    expect(getSwimlanePeriodLabel('next-week', 'field'))
+    expect(getSwimlanePeriodLabel('next-week', 'field', t, locale))
       .toEqual(`field between ${formatDate(twoDaysLater, 'd MMM yyyy')} and ${formatDate(sevenDaysLater, 'd MMM yyyy')}`);
   });
 
   it('should return period for 22 days for last month period', () => {
     const thirtyDaysAgo = today - 30 * 24 * 60 * 60 * 1000;
     const eightDaysAgo = today - 8 * 24 * 60 * 60 * 1000;
-    expect(getSwimlanePeriodLabel('last-month', ''))
+    expect(getSwimlanePeriodLabel('last-month', '', t, locale))
       .toEqual(` between ${formatDate(thirtyDaysAgo, 'd MMM yyyy')} and ${formatDate(eightDaysAgo, 'd MMM yyyy')}`);
-    expect(getSwimlanePeriodLabel('last-month', 'field'))
+    expect(getSwimlanePeriodLabel('last-month', 'field', t, locale))
       .toEqual(`field between ${formatDate(thirtyDaysAgo, 'd MMM yyyy')} and ${formatDate(eightDaysAgo, 'd MMM yyyy')}`);
   });
 
   it('should return period for 22 days for next month period', () => {
     const eightDaysLater = today.getTime() + (8 * 24 * 60 * 60 * 1000);
     const thirtyDaysLater = today.getTime() + (30 * 24 * 60 * 60 * 1000);
-    expect(getSwimlanePeriodLabel('next-month', ''))
+    expect(getSwimlanePeriodLabel('next-month', '', t, locale))
       .toEqual(` between ${formatDate(eightDaysLater, 'd MMM yyyy')} and ${formatDate(thirtyDaysLater, 'd MMM yyyy')}`);
-    expect(getSwimlanePeriodLabel('next-month', 'field'))
+    expect(getSwimlanePeriodLabel('next-month', 'field', t, locale))
       .toEqual(`field between ${formatDate(eightDaysLater, 'd MMM yyyy')} and ${formatDate(thirtyDaysLater, 'd MMM yyyy')}`);
   });
 
   it('should return period for more than 30 days for month ago period', () => {
     const thirtyOneDaysAgo = today - 31 * 24 * 60 * 60 * 1000;
-    expect(getSwimlanePeriodLabel('month-ago', ''))
+    expect(getSwimlanePeriodLabel('month-ago', '', t, locale))
       .toEqual(` between ${formatDate(thirtyOneDaysAgo, 'd MMM yyyy')} and earlier`);
-    expect(getSwimlanePeriodLabel('month-ago', 'field'))
+    expect(getSwimlanePeriodLabel('month-ago', 'field', t, locale))
       .toEqual(`field between ${formatDate(thirtyOneDaysAgo, 'd MMM yyyy')} and earlier`);
   });
 
   it('should return period for more than 30 days for month later period', () => {
     const thirtyOneDaysLater = today.getTime() + (31 * 24 * 60 * 60 * 1000);
-    expect(getSwimlanePeriodLabel('month-later', ''))
+    expect(getSwimlanePeriodLabel('month-later', '', t, locale))
       .toEqual(` between ${formatDate(thirtyOneDaysLater, 'd MMM yyyy')} and later`);
-    expect(getSwimlanePeriodLabel('month-later', 'field'))
+    expect(getSwimlanePeriodLabel('month-later', 'field', t, locale))
       .toEqual(`field between ${formatDate(thirtyOneDaysLater, 'd MMM yyyy')} and later`);
   });
 
   it('should return return just field if period incorrect or undefined', () => {
-    expect(getSwimlanePeriodLabel('incorrect', 'field')).toEqual('field');
-    expect(getSwimlanePeriodLabel(undefined, 'field')).toEqual('field');
-    expect(getSwimlanePeriodLabel(null, 'field')).toEqual('field');
-    expect(getSwimlanePeriodLabel('', 'field')).toEqual('field');
+    expect(getSwimlanePeriodLabel('incorrect', 'field', t, locale)).toEqual('field');
+    expect(getSwimlanePeriodLabel(undefined, 'field', t, locale)).toEqual('field');
+    expect(getSwimlanePeriodLabel(null, 'field', t, locale)).toEqual('field');
+    expect(getSwimlanePeriodLabel('', 'field', t, locale)).toEqual('field');
   });
 });
 

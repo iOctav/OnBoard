@@ -764,17 +764,11 @@
   "Update User": {
     "Permission name": "Оновити користувача"
   },
-  "created": {
-    "Predefined fields": "створено",
-    "$$noContext": "створено"
-  },
-  "resolved date": {
-    "Predefined fields": "дата виконання"
-  },
-  "updated": {
-    "Predefined fields": "оновлено",
-    "$$noContext": "оновлено"
-  },
+  "created" : "створено",
+  "created_Predefined fields" : "створено",
+  "resolved date_Predefined fields": "дата виконання",
+  "updated": "оновлено",
+  "updated_Predefined fields": "оновлено",
   "Comments": {
     "Profile Notifications": "Коментарі",
     "$$noContext": "Коментарі"
