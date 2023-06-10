@@ -139,7 +139,7 @@ function NestedSwimlanesList({projectShortNames, systemSwimlane}) {
            selectable={false}
            selection={selection} onSelect={() => {}}
            columns={tableColumns} />
-    <Button text onClick={() => createSwimlane(data.length > 0 ? data[data.length - 1].order + 1 : 1)}>{t('Add swimlane')}</Button>
+    <Button text disabled={data.length > 4} onClick={() => createSwimlane(data.length > 0 ? data[data.length - 1].order + 1 : 1)}>{t('Add swimlane')}</Button>
     <Button disabled={data.length < 1 || (data.length === 1 && systemSwimlane?.id)} text onClick={() => removeSwimlane(data[data.length-1].id)}>{t('Remove last')}</Button>
   </div>);
 }
