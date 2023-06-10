@@ -18,7 +18,7 @@ import Select from '@jetbrains/ring-ui/dist/select/select';
 import SmartProfile from '../SmartProfile';
 import {
   createAgileBoardPageUri,
-  homePageUri,
+  homePageUri, newIssueUri,
   YT_PAGES
 } from '../../services/linkService';
 import PropTypes from 'prop-types';
@@ -53,8 +53,8 @@ function PageYTHeader({isCompact}) {
   });
 
   const dropdownMenuData = [
-    { label: t('Card...') },
-    { label: t('Board...'), href: createAgileBoardPageUri() },
+    { label: t('Card...'), href: newIssueUri(), target: '_blank' },
+    { label: t('Board...'), href: createAgileBoardPageUri(), target: '_blank' },
   ];
   let menuLinks;
   const isCompactMode = isCompact || deviceSize < 1024;
