@@ -14,6 +14,10 @@ const AddPerson14px = styled(AddPerson)`
   height: 14px;
 `;
 
+const AvatarSpan = styled.span`
+  vertical-align: middle;
+`;
+
 const UnassignedKey = 'unassigned-key';
 
 function AgileCardAssignee({field}) {
@@ -33,13 +37,13 @@ function AgileCardAssignee({field}) {
                      type="CUSTOM" label=""
                      onSelect={(item) => setSelectedItem(item.key !== UnassignedKey ? item : undefined)}
                      customAnchor={({wrapperProps, buttonProps, popup}) => (
-                       <span {...wrapperProps}>
+                       <AvatarSpan {...wrapperProps}>
                          { selectedItem
                              ? <Avatar size={Size.Size14} username={selectedItem.username} {...buttonProps}/>
                              : <Button icon={AddPerson14px} title={t('Set assignee')} {...buttonProps}>{''}</Button>
                          }
                          {popup}
-                       </span>)}>
+                       </AvatarSpan>)}>
       </LazySelectBox>
     </span>
   );

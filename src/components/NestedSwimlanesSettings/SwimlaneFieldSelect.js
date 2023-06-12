@@ -17,10 +17,13 @@ function SwimlaneFieldSelect({projectShortNames, swimlane, onChange}) {
   return (<LazySelectBox disabled={swimlane.system}
     selected={{label: capitalizeFirstLetter(swimlane.field?.presentation), key: swimlane.field?.id}}
     makeDataset={data => data.filter(field => availableFields.includes(field.id) || field.instant || field.id === 'tag')
-      .map(field => ({value: field.id,
+      .map(field => ({
+        value: field.id,
+        name: field.name,
         label: capitalizeFirstLetter(t(field.name, { context: 'Predefined fields'})), description: field.customField?.fieldType?.presentation,
         fieldTypeId: field?.customField?.fieldType?.id,
-        aggregateable: field.aggregateable}))}
+        aggregateable: field.aggregateable
+      }))}
     lazyDataLoaderHook={swimlane.type === SwimlaneType.Values ? useLazyGetValuesFilterFieldsQuery : useLazyGetIssuesFilterFieldsQuery}
     lazyDataLoaderHookParams={projectShortNames}
     size={Size.M}
@@ -29,7 +32,7 @@ function SwimlaneFieldSelect({projectShortNames, swimlane, onChange}) {
       if (field.value !== swimlane.field?.id) {
         const dateType = getDateFieldType(field.fieldTypeId, field.value);
         onChange({ field:
-                { id: field.value, presentation: field.label, aggregateable: field.aggregateable, name: field.value, dateType: dateType },
+                { id: field.value, presentation: field.label, aggregateable: field.aggregateable, name: field.name, dateType: dateType },
               values: !dateType ? [] :  getDatasetByDatePeriodType(dateType)
             });
       }}}
