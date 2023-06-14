@@ -30,6 +30,9 @@ jest.mock('@jetbrains/ring-ui/dist/select/select', () => ({data, selected}) =>
       <option key={index} value={item.key} defaultValue={selected && selected.key === item.key}>{item.label}</option>
     )}
   </select>));
+jest.mock('@jetbrains/ring-ui/dist/global/theme', () => ({
+  default: { AUTO: 'auto', LIGHT: 'light' }
+}));
 jest.mock('react-router-dom', () => ({
   Link: ({children}) => (<div data-testid="link">{children}</div>),
 }));
