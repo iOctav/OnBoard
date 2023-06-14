@@ -6,7 +6,7 @@ import Header from '@jetbrains/ring-ui/dist/header/header';
 import Icon, { Size } from '@jetbrains/ring-ui/dist/icon';
 import Link from '@jetbrains/ring-ui/dist/link/link';
 import { Link as RouterLink } from 'react-router-dom';
-import { useTheme } from '@jetbrains/ring-ui/dist/global/theme';
+import Theme from '@jetbrains/ring-ui/dist/global/theme';
 import careDown10pxIcon from '@jetbrains/icons/caret-down-10px';
 import bellIcon from '@jetbrains/icons/bell';
 import helpIcon from '@jetbrains/icons/help-20px';
@@ -40,7 +40,6 @@ const NavigationSettings20px = styled(navigationSettings)`
 
 function PageYTHeader({isCompact}) {
   const { t } = useTranslation();
-  const theme = useTheme();
 
   const [deviceSize, changeDeviceSize] = useState(window.innerWidth);
 
@@ -88,7 +87,7 @@ function PageYTHeader({isCompact}) {
   const dropdownAnchor = (<Button primary>{t('Create.Hub Operations')}<Icon glyph={careDown10pxIcon}></Icon></Button>);
   const issuesDataset = [];
   return (
-    <StyledObHeader theme={theme} className={'compactHeader'}>
+    <StyledObHeader theme={Theme.LIGHT} className={'compactHeader'}>
       <RouterLink rel="noreferrer" to={homePageUri()} >
         <HeaderLogo isCompact={isCompactMode}/>
       </RouterLink>
