@@ -15,7 +15,7 @@ DndProvider.propTypes = {
 
 function App() {
   return (
-    <ThemeProvider className="main-container" theme={Theme.AUTO}>
+    <ThemeProvider className="main-container" theme={Theme.LIGHT}>
       <DndProvider className="main-container" backend={HTML5Backend}>
         <div data-testid="app-container" className="App main-container">
 	        <AgileRoutePage/>

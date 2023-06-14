@@ -14,7 +14,7 @@ jest.mock('@jetbrains/ring-ui/dist/global/theme', () => ({
   __esModule: true,
   ThemeProvider: ({ children }) =>
     (<div data-testid="theme-provider" href="123">{children}</div>),
-  default: { AUTO: 'auto' }
+  default: { AUTO: 'auto', LIGHT: 'light' }
 }));
 
 jest.mock('./AgileRoutePage', () =>
